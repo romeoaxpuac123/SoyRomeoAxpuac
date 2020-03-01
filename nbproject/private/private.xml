@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/Aritmetica.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/ModificarVector.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/Analizadores/Analizador_Lexico.jflex</file>
+            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/Nodo.java</file>
             <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/Analizadores/Analizador_Sintactico.cup</file>
+            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/DeclararAsignar.java</file>
         </group>
     </open-files>
 </project-private>
