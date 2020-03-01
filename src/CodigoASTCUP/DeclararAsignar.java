@@ -28,8 +28,9 @@ public class DeclararAsignar extends NodoAbstracto{
     public String Ejecutar(Entorno entorno, JTextArea salida) {
       String Identificador = this.Hijos.get(0).Nombre;
       
-      String Tipo1 = this.Hijos.get(1).TipoDato;
+      
        String val1 = this.Hijos.get(1).Ejecutar(entorno, salida);
+       String Tipo1 = this.Hijos.get(1).TipoDato;
          System.out.println("Se esta declarando el vector:" + Identificador + " Tipo->" + Tipo1 + " Valor->" + val1);
       if("RomeoAxpuac".equals(val1)){
         System.out.println("SUMA DE DOS VECTORES");
