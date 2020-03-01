@@ -462,7 +462,7 @@ public class Aritmetica extends NodoAbstracto{
                    
                   }else if(entorno.ObtenerListaN(Vector1) !=0 && entorno.ObtenerListaN(Vector2) ==0){
                       //Vector1 tiene muchos lados y vector dos solo 1
-                       ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
+                    ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
                     boolean ExisteVectorx =   entorno.ExisteVector("VectorDragonBallBeatles"); 
                     if(!ExisteVectorx == true){
@@ -582,7 +582,309 @@ public class Aritmetica extends NodoAbstracto{
                     return "RomeoAxpuac";
                   }else{
                       //NINGUNO DE LOS DOS VECTORES ES DE TAMAÑO 1 :(
-                      
+                        ArrayList <NodoAbstracto> ExpresionesRomeo1 = new ArrayList();
+                        ArrayList <NodoAbstracto> ExpresionesRomeo2= new ArrayList();
+                        ExpresionesRomeo1 = entorno.ObtenerLista(Vector1);
+                        ExpresionesRomeo2 = entorno.ObtenerLista(Vector2);
+                        int TamanioVector1 = ExpresionesRomeo1.size();
+                        int TamanioVector2 = ExpresionesRomeo2.size();
+                        
+                        
+                             boolean ExisteVectorx =   entorno.ExisteVector("VectorDragonBallBeatles"); 
+                        if(!ExisteVectorx == true){
+                             entorno.Agregar2("VectorDragonBallBeatles", entorno.ObtenerLista(Vector1), entorno.ObtenerTipo(Vector1), "ss");
+                        }else{
+                            entorno.ModificarValorLista("VectorDragonBallBeatles", entorno.ObtenerLista(Vector1), entorno.ObtenerTipo(Vector1), "ss");
+                        }
+                        ExpresionesRomeo1 = entorno.ObtenerLista("VectorDragonBallBeatles");
+                        //veamos el verdadero tipo del vector XD
+                        int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
+                        for(int i= 0; i < ExpresionesRomeo1.size();i++){
+                        String Tipo1x =  ExpresionesRomeo1.get(i).TipoDato;
+                            switch (Tipo1x){
+                            case "Lista":
+                                valor1 = 1;
+                                break;
+                            case "cadena":
+                                valor2 = 1;
+                                break;
+                            case "entero":
+                                valor4 = 1;
+                                break;
+                            case "decimal":
+                                valor3 = 1;
+                                break;
+                            case "booleano":
+                                valor5 = 1;
+                                break;
+                            case "id":
+                                if(entorno.ObtenerListaN(this.Expresiones.get(i).Nombre)==1){
+                                    String TipoVectorx = entorno.ObtenerTipo(this.Expresiones.get(i).Nombre);
+                                        switch (TipoVectorx){
+                                        case "Lista":
+                                            valor1 = 1;
+                                            break;
+                                        case "cadena":
+                                            valor2 = 1;
+                                            break;
+                                        case "entero":
+                                            valor4 = 1;
+                                            break;
+                                        case "decimal":
+                                            valor3 = 1;
+                                            break;
+                                        case "booleano":
+                                            valor5 = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        String Tipo1y = "";
+                        if(valor1 == 1){
+                            Tipo1y = "Lista";
+                        }else if(valor2 == 1){
+                            Tipo1y = "cadena";
+                        }
+                        else if(valor3 == 1){
+                            Tipo1y = "decimal";
+                        }
+                        else if(valor4 == 1){
+                            Tipo1y = "entero";
+                        }
+                        else if(valor5 == 1){
+                            Tipo1y = "booleano";
+                        }
+                        valor1 = 0 ;valor2= 0 ;valor3= 0 ;valor4= 0 ;valor5 = 0;valor6 = 0;
+                        for(int i= 0; i < ExpresionesRomeo2.size();i++){
+                        String Tipo1x =  ExpresionesRomeo2.get(i).TipoDato;
+                            switch (Tipo1x){
+                            case "Lista":
+                                valor1 = 1;
+                                break;
+                            case "cadena":
+                                valor2 = 1;
+                                break;
+                            case "entero":
+                                valor4 = 1;
+                                break;
+                            case "decimal":
+                                valor3 = 1;
+                                break;
+                            case "booleano":
+                                valor5 = 1;
+                                break;
+                            case "id":
+                                if(entorno.ObtenerListaN(this.Expresiones.get(i).Nombre)==1){
+                                    String TipoVectorx = entorno.ObtenerTipo(this.Expresiones.get(i).Nombre);
+                                        switch (TipoVectorx){
+                                        case "Lista":
+                                            valor1 = 1;
+                                            break;
+                                        case "cadena":
+                                            valor2 = 1;
+                                            break;
+                                        case "entero":
+                                            valor4 = 1;
+                                            break;
+                                        case "decimal":
+                                            valor3 = 1;
+                                            break;
+                                        case "booleano":
+                                            valor5 = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        String Tipo1y2 = "";
+                        if(valor1 == 1){
+                            Tipo1y2 = "Lista";
+                        }else if(valor2 == 1){
+                            Tipo1y2 = "cadena";
+                        }
+                        else if(valor3 == 1){
+                            Tipo1y2 = "decimal";
+                        }
+                        else if(valor4 == 1){
+                            Tipo1y2 = "entero";
+                        }
+                        else if(valor5 == 1){
+                            Tipo1y2 = "booleano";
+                        }
+                        System.out.println("El vector1 tiene tipo: " + Tipo1y);
+                        System.out.println("El vector2 tiene tipo: " + Tipo1y2);
+                        if(TamanioVector1 == TamanioVector2){ 
+                            //vecotres iguales
+                             ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
+                            System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD" + TamanioVector1);
+                            for(int i = 0; i < TamanioVector1 ; i ++){
+                                String ValorVector1 = ExpresionesRomeo1.get(i).Ejecutar(entorno, salida);
+                                String ValorVector2 = ExpresionesRomeo2.get(i).Ejecutar(entorno, salida);
+                                System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD->" + i);
+                                //System.out.println("Vector"+i+":" + Vector + " Valor->"+ ValorVectori + " Operacion" + this.Hijos.get(1).Nombre  + " TipoVector-> " + TipoVector1 + "TipoDato->" + TipoNodo );
+                                if("cadena".equals(Tipo1y)){
+
+                                    //System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                    NodoAbstracto nuevo = new Nodo("Cadena");
+                                    String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                    NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                    nuevo.Hijos.add(nuevovalor);
+                                   // nuevo.TipoDato = "cadena";
+                                    ExpresionesLola.add(nuevo);
+
+                                }else if("entero".equals(Tipo1y)){
+
+                                   // System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                    NodoAbstracto nuevo = new Nodo("Entero");
+                                    String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                    NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                    nuevo.Hijos.add(nuevovalor);
+                                   // nuevo.TipoDato = "cadena";
+                                    ExpresionesLola.add(nuevo);
+                                } else if("decimal".equals(Tipo1y)){
+                                    //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                    NodoAbstracto nuevo = new Nodo("Decimal");
+                                     String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                    NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                    nuevo.Hijos.add(nuevovalor);
+                                   // nuevo.TipoDato = "cadena";
+                                    ExpresionesLola.add(nuevo);
+                                }else if ("booleano".equals(Tipo1y)){
+                                    //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                    NodoAbstracto nuevo = new Nodo("Booleano");
+                                    String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                    System.out.println("Resultado" + Resultadox);
+                                    NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                    nuevo.Hijos.add(nuevovalor);
+                                   // nuevo.TipoDato = "cadena";
+                                    ExpresionesLola.add(nuevo);
+                                    }
+                                    
+                                }
+                                this.TipoDato = "id";
+                                this.Nombre = "VectorDragonBallBeatles";
+                                entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+                                return "RomeoAxpuac";
+                                }else if(TamanioVector1 > TamanioVector2){
+                                    //vector1 mayor
+                                    System.out.println("VECTOR1 ES MAYORx");
+                                    ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
+                                    System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD" + TamanioVector1);
+                                    for(int i = 0; i < TamanioVector1 ; i ++){
+                                        if(i>TamanioVector2-1){
+                                            ExpresionesLola.add(ExpresionesRomeo1.get(i));
+                                        }else{
+                                        String ValorVector1 = ExpresionesRomeo1.get(i).Ejecutar(entorno, salida);
+                                        String ValorVector2 = ExpresionesRomeo2.get(i).Ejecutar(entorno, salida);
+                                        System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD->" + i);
+                                        //System.out.println("Vector"+i+":" + Vector + " Valor->"+ ValorVectori + " Operacion" + this.Hijos.get(1).Nombre  + " TipoVector-> " + TipoVector1 + "TipoDato->" + TipoNodo );
+                                        if("cadena".equals(Tipo1y)){
+
+                                            //System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Cadena");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+
+                                        }else if("entero".equals(Tipo1y)){
+
+                                           // System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Entero");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                        } else if("decimal".equals(Tipo1y)){
+                                            //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Decimal");
+                                             String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                        }else if ("booleano".equals(Tipo1y)){
+                                            //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Booleano");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            System.out.println("Resultado" + Resultadox);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                            }
+
+                                        }
+                                    }
+                                        this.TipoDato = "id";
+                                        this.Nombre = "VectorDragonBallBeatles";
+                                        entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+                                        return "RomeoAxpuac";
+                                    
+                                }else if(TamanioVector1 < TamanioVector2){
+                                    //vector 2 es mayor
+                                    System.out.println("VECTOR2 ES MAYOR");
+                                    ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
+                                    System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD" + TamanioVector1);
+                                    for(int i = 0; i < TamanioVector2 ; i ++){
+                                         if(i>TamanioVector1-1){
+                                            ExpresionesLola.add(ExpresionesRomeo2.get(i));
+                                        }else{
+                                        String ValorVector1 = ExpresionesRomeo1.get(i).Ejecutar(entorno, salida);
+                                        String ValorVector2 = ExpresionesRomeo2.get(i).Ejecutar(entorno, salida);
+                                        System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD->" + i);
+                                        //System.out.println("Vector"+i+":" + Vector + " Valor->"+ ValorVectori + " Operacion" + this.Hijos.get(1).Nombre  + " TipoVector-> " + TipoVector1 + "TipoDato->" + TipoNodo );
+                                        if("cadena".equals(Tipo1y)){
+
+                                            //System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Cadena");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+
+                                        }else if("entero".equals(Tipo1y)){
+
+                                           // System.out.println("Aca Operamos Cadenas" + ValorVectori + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Entero");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                        } else if("decimal".equals(Tipo1y)){
+                                            //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Decimal");
+                                             String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                        }else if ("booleano".equals(Tipo1y)){
+                                            //System.out.println("Aca Operamos Cadenas->" + ValorVectori + "Tipo->" + Tipo1y + "Dato2->" + val2);
+                                            NodoAbstracto nuevo = new Nodo("Booleano");
+                                            String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                            System.out.println("Resultado" + Resultadox);
+                                            NodoAbstracto nuevovalor = new Nodo(Resultadox);
+                                            nuevo.Hijos.add(nuevovalor);
+                                           // nuevo.TipoDato = "cadena";
+                                            ExpresionesLola.add(nuevo);
+                                            }
+
+                                        }
+                                    }
+                                        this.TipoDato = "id";
+                                        this.Nombre = "VectorDragonBallBeatles";
+                                        entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+                                        return "RomeoAxpuac";
+                                    
+                                }
+                                
+                                
                   }
                 }
             }else{
