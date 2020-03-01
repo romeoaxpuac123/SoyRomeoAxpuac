@@ -1,0 +1,423 @@
+
+package Analizadores;
+
+import java_cup.runtime.Symbol;
+import java.util.ArrayList;
+import CodigoASTCUP.*;
+import Codigo.*;
+
+
+parser code
+{:      
+    public NodoAbstracto Raiz;
+    public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
+    public String Lado1, Lado2 = "";
+    public void syntax_error(Symbol s)
+    {        
+        System.out.println("Error");       
+    }
+
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {        
+        System.out.println("error");        
+    }
+
+    public void semantic(Symbol cur_token, String n) 
+    {
+        System.out.println("error");
+    }
+
+    public void semantic(String msg, Object obj) {}
+:}
+
+action code
+{:
+:}  
+
+
+
+terminal llavecerrar, llaveabrir, parentesisabrir, parentesiscerrar,corcheteabrir,corchetecerrar;
+terminal puntoycoma;
+terminal igual,mas,menos,por,div,potencia,modulo,igualdad,Noigualdad,MenorQue,MayorQue;
+terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
+terminal String id,coma;
+terminal String entero,ttrue,tfalse,nulo;
+terminal String decimal;
+terminal String imprimir;
+terminal String cadena;
+
+non terminal NodoAbstracto INICIO;
+non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
+non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
+non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
+non terminal NodoAbstracto EXP,NUMERO;
+
+precedence right NOT;
+precedence left PREGUNTAC;
+precedence left AND,OR;
+precedence left igualdad,Noigualdad;
+precedence left MenorQue,MayorQue,MenorIgualQue, MayorIgualQue;
+precedence left potencia;
+precedence left mas,menos;
+precedence left por,div,modulo;
+
+
+
+start with INICIO;
+
+INICIO::=          SENTENCIAS:nod 
+                    {:
+                        NodoAbstracto nuevo = new Nodo("INICIO");
+                        nuevo.Hijos.add(nod);
+                        parser.Raiz = nuevo;
+                    :};
+
+SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
+                    {:
+                        
+                        //NodoAbstracto nuevo = new Nodo("SENTENCIAS");
+                        //nuevo.Hijos.add(nodsentencias);
+                        //nuevo.Hijos.add(nod);
+                        //RESULT = nuevo;
+                        
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIAS");
+                        nuevo.Hijos.add(nod);
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+SENTENCIA::=        DECLARARASIGNAR:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |IMPRIM:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |OPERACIONES:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    |DECLARARVECTORC:nod
+                    {:
+                        RESULT=nod;
+                    :}
+                    | MODVECTOR:nod
+                    {:
+                      RESULT=nod;
+                    :};
+
+MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINAL{:
+                NodoAbstracto nuevo = new ModificarVector("Vecto");
+                NodoAbstracto nuevoid = new Nodo(valor);
+                nuevo.Hijos.add(nuevoid);
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(exp2);
+                RESULT=nuevo;
+                
+            :}
+            | id:valor corcheteabrir EXP:exp1 corchetecerrar igual FuncionC parentesisabrir EXP:exp2   parentesiscerrar FINAL{:
+                NodoAbstracto nuevo = new ModificarVector("Vecto");
+                NodoAbstracto nuevoid = new Nodo(valor);
+                nuevo.Hijos.add(nuevoid);
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(exp2);
+                RESULT=nuevo;
+            :};
+
+
+DECLARARVECTORC::= id:valor igual FuncionC parentesisabrir LISTAEXPRESIONES:Lista parentesiscerrar FINAL
+                    {:
+                        NodoAbstracto nuevo = new FuncionC("CASTEAR");
+                        NodoAbstracto nuevoid = new Nodo(valor);
+                        nuevo.Hijos.add(nuevoid);
+                        for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+                        Expresiones.clear();
+                        nuevo.Hijos.add(Lista);
+                        RESULT = nuevo;
+
+                    :};
+
+LISTAEXPRESIONES::= LISTAEXPRESIONES:nodsentencias coma EXP:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("LISTAEXPRESIONES");
+                        nuevo.Hijos.add(nodsentencias);
+                        nuevo.Hijos.add(nod);
+                        Expresiones.add(nod);
+                        RESULT = nuevo;
+                    :}
+                    |EXP:nod{:
+                        NodoAbstracto nuevo = new Nodo("LISTAEXPRESIONES");
+                        nuevo.Hijos.add(nod);
+                        Expresiones.add(nod);
+                        RESULT = nuevo;
+                    :};
+
+DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
+                    {:
+                        NodoAbstracto nuevo = new DeclararAsignar("DECLARARASIGNAR");
+                        NodoAbstracto nuevoid = new Nodo(valor);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(exp1);
+                        RESULT = nuevo;
+                    :};
+
+FINAL::= puntoycoma | ;
+IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar puntoycoma
+                    {:
+                        NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
+                        nuevo.Hijos.add(exp1);
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+
+
+EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
+                        NodoAbstracto nuevo = new Ternario("EXP");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(exp2);  
+                        nuevo.Hijos.add(exp3);  
+                        RESULT = nuevo;
+                    :}
+                    |NOT EXP:exp1{:
+                        NodoAbstracto nuevo = new NOT("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("!");
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp1);                        
+                        nuevo.TipoDato = exp1.TipoDato;
+                        RESULT = nuevo;
+
+                    :}
+                    |menos EXP:exp1{:
+                        NodoAbstracto nuevo = new Negativo("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("-");
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp1);                        
+                        nuevo.TipoDato = exp1.TipoDato;
+                        RESULT = nuevo;
+                    :}
+                    |EXP:exp1 mas EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("+");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        RESULT = nuevo;
+                        
+                    :}
+                    |EXP:exp1 menos EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("-");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);                      
+                        RESULT = nuevo;
+                    :}
+                    |EXP:exp1 por EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("*");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        RESULT = nuevo;
+                    :}
+                  
+                        
+
+                    |EXP:exp1 div EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("/");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);                        
+                        RESULT = nuevo;
+                    :}
+
+                    |EXP:exp1 modulo EXP:exp2
+                    {:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("%%");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);                    
+                        RESULT = nuevo;
+                    :}
+
+                    |EXP:exp1 igualdad EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("==");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                        
+                    :}
+
+                    |EXP:exp1 Noigualdad EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("!=");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+                    |EXP:exp1 MayorQue EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo(">");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+                     |EXP:exp1 MenorQue EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("<");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+
+
+
+                    |EXP:exp1 MayorIgualQue EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo(">=");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+                     |EXP:exp1 MenorIgualQue EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("<=");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+
+
+
+|EXP:exp1 AND EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("&&");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                        
+                    :}
+
+
+|EXP:exp1 OR EXP:exp2{:
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("||");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                        
+                    :}
+                    |parentesisabrir EXP:exp1 parentesiscerrar
+                    {:
+                        RESULT = exp1;
+                    :}
+                    |NUMERO:nod
+                    {:
+                        RESULT = nod;
+                    :}
+        |id:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("id");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "id";
+                        nuevo.Nombre = valor;
+                        RESULT = nuevo;
+                    :}
+        |nulo:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+                    :}
+        |id:valor corcheteabrir EXP:pos corchetecerrar
+                        {:
+                        NodoAbstracto nuevo = new Nodo("Vector");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.TipoDato = "vector";
+                        //RESULT = nuevo;
+                        //nuevo.id = Integer.parseInt(pos);
+                        RESULT = nuevo;
+                    :}
+        |cadena:valor
+                    {:
+                        valor =  valor.replaceAll("\"", "");
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+                    :}
+                    |ttrue:valor
+                    {:
+                        
+                        NodoAbstracto nuevo = new Nodo("Booleano");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+                    |tfalse:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Booleano");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "booleano";
+                        RESULT = nuevo;
+                    :}
+                    ;
+
+NUMERO::=           entero:valor        
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Entero");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+                        RESULT = nuevo;
+                    :}
+                    |decimal:valor
+                    {:
+                        NodoAbstracto nuevo = new Nodo("Decimal");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "decimal";
+                        RESULT = nuevo;
+                    :}
+                  
+                    ;
