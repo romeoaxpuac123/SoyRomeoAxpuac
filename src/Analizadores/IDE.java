@@ -12,12 +12,17 @@ import borradorproyecto1.Graficador;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.Buffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -31,7 +36,18 @@ public class IDE extends javax.swing.JFrame {
      * Creates new form IDE
      */
     public int TotalPestañas = 1;
-  
+    JFileChooser seleccionar1 = new JFileChooser();
+    File Archivo; FileInputStream entrada; FileOutputStream salida;
+    File Archivo1; 
+    File Archivo2; 
+    File Archivo3; 
+    File Archivo4; 
+    File Archivo5; 
+    File Archivo6; 
+    File Archivo7; 
+    File Archivo8; 
+    File Archivo9; 
+    File Archivo10; 
     
     public IDE() {
         initComponents();
@@ -58,6 +74,7 @@ public class IDE extends javax.swing.JFrame {
         
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -294,14 +311,39 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton7.setText("Abrir");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Guardar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Guardar Como");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Graficas");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setText("Cerrar Pestaña");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -375,8 +417,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton13.setText("Abrir");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Guardar");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("Grafica ASC");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -388,6 +440,11 @@ public class IDE extends javax.swing.JFrame {
         jButton16.setText("Grafica DES");
 
         jButton17.setText("Guardar Como");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setText("Tabla de Simbolos");
 
@@ -401,6 +458,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton21.setText("Cerrar Pestaña");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -474,8 +536,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton23.setText("Abrir");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setText("Guardar");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         jButton25.setText("Grafica ASC");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
@@ -487,6 +559,11 @@ public class IDE extends javax.swing.JFrame {
         jButton26.setText("Grafica DES");
 
         jButton27.setText("Guardar Como");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
 
         jButton28.setText("Tabla de Simbolos");
 
@@ -500,6 +577,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton31.setText("Cerrar Pestaña");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -573,8 +655,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton33.setText("Abrir");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
 
         jButton34.setText("Guardar");
+        jButton34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton34ActionPerformed(evt);
+            }
+        });
 
         jButton35.setText("Grafica ASC");
         jButton35.addActionListener(new java.awt.event.ActionListener() {
@@ -586,6 +678,11 @@ public class IDE extends javax.swing.JFrame {
         jButton36.setText("Grafica DES");
 
         jButton37.setText("Guardar Como");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
 
         jButton38.setText("Tabla de Simbolos");
 
@@ -599,6 +696,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton41.setText("Cerrar Pestaña");
+        jButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton41ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -672,8 +774,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton43.setText("Abrir");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
 
         jButton44.setText("Guardar");
+        jButton44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton44ActionPerformed(evt);
+            }
+        });
 
         jButton45.setText("Grafica ASC");
         jButton45.addActionListener(new java.awt.event.ActionListener() {
@@ -685,6 +797,11 @@ public class IDE extends javax.swing.JFrame {
         jButton46.setText("Grafica DES");
 
         jButton47.setText("Guardar Como");
+        jButton47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton47ActionPerformed(evt);
+            }
+        });
 
         jButton48.setText("Tabla de Simbolos");
 
@@ -698,6 +815,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton51.setText("Cerrar Pestaña");
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton51ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -771,8 +893,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton53.setText("Abrir");
+        jButton53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton53ActionPerformed(evt);
+            }
+        });
 
         jButton54.setText("Guardar");
+        jButton54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton54ActionPerformed(evt);
+            }
+        });
 
         jButton55.setText("Grafica ASC");
         jButton55.addActionListener(new java.awt.event.ActionListener() {
@@ -784,6 +916,11 @@ public class IDE extends javax.swing.JFrame {
         jButton56.setText("Grafica DES");
 
         jButton57.setText("Guardar Como");
+        jButton57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton57ActionPerformed(evt);
+            }
+        });
 
         jButton58.setText("Tabla de Simbolos");
 
@@ -797,6 +934,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton61.setText("Cerrar Pestaña");
+        jButton61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton61ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -870,8 +1012,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton63.setText("Abrir");
+        jButton63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton63ActionPerformed(evt);
+            }
+        });
 
         jButton64.setText("Guardar");
+        jButton64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton64ActionPerformed(evt);
+            }
+        });
 
         jButton65.setText("Grafica ASC");
         jButton65.addActionListener(new java.awt.event.ActionListener() {
@@ -883,6 +1035,11 @@ public class IDE extends javax.swing.JFrame {
         jButton66.setText("Grafica DES");
 
         jButton67.setText("Guardar Como");
+        jButton67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton67ActionPerformed(evt);
+            }
+        });
 
         jButton68.setText("Tabla de Simbolos");
 
@@ -896,6 +1053,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton71.setText("Cerrar Pestaña");
+        jButton71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton71ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -955,6 +1117,8 @@ public class IDE extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab7", jPanel26);
 
+        jPanel27.setBackground(new java.awt.Color(0, 0, 0));
+
         jTextArea11.setColumns(20);
         jTextArea11.setRows(5);
         jScrollPane11.setViewportView(jTextArea11);
@@ -967,8 +1131,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton93.setText("Abrir");
+        jButton93.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton93ActionPerformed(evt);
+            }
+        });
 
         jButton94.setText("Guardar");
+        jButton94.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton94ActionPerformed(evt);
+            }
+        });
 
         jButton95.setText("Grafica ASC");
         jButton95.addActionListener(new java.awt.event.ActionListener() {
@@ -980,6 +1154,11 @@ public class IDE extends javax.swing.JFrame {
         jButton96.setText("Grafica DES");
 
         jButton97.setText("Guardar Como");
+        jButton97.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton97ActionPerformed(evt);
+            }
+        });
 
         jButton98.setText("Graficas");
 
@@ -993,6 +1172,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton101.setText("Cerrar Pestaña");
+        jButton101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton101ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -1066,8 +1250,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton103.setText("Abrir");
+        jButton103.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton103ActionPerformed(evt);
+            }
+        });
 
         jButton104.setText("Guardar");
+        jButton104.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton104ActionPerformed(evt);
+            }
+        });
 
         jButton105.setText("Grafica ASC");
         jButton105.addActionListener(new java.awt.event.ActionListener() {
@@ -1079,6 +1273,11 @@ public class IDE extends javax.swing.JFrame {
         jButton106.setText("Grafica DES");
 
         jButton107.setText("Guardar Como");
+        jButton107.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton107ActionPerformed(evt);
+            }
+        });
 
         jButton108.setText("Graficas");
 
@@ -1092,6 +1291,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton111.setText("Cerrar Pestaña");
+        jButton111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton111ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -1165,8 +1369,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton113.setText("Abrir");
+        jButton113.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton113ActionPerformed(evt);
+            }
+        });
 
         jButton114.setText("Guardar");
+        jButton114.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton114ActionPerformed(evt);
+            }
+        });
 
         jButton115.setText("Grafica ASC");
         jButton115.addActionListener(new java.awt.event.ActionListener() {
@@ -1178,6 +1392,11 @@ public class IDE extends javax.swing.JFrame {
         jButton116.setText("Grafica DES");
 
         jButton117.setText("Guardar Como");
+        jButton117.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton117ActionPerformed(evt);
+            }
+        });
 
         jButton118.setText("Graficas");
 
@@ -1191,6 +1410,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton121.setText("Cerrar Pestaña");
+        jButton121.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton121ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -1264,8 +1488,18 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton123.setText("Abrir");
+        jButton123.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton123ActionPerformed(evt);
+            }
+        });
 
         jButton124.setText("Guardar");
+        jButton124.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton124ActionPerformed(evt);
+            }
+        });
 
         jButton125.setText("Grafica ASC");
         jButton125.addActionListener(new java.awt.event.ActionListener() {
@@ -1277,8 +1511,18 @@ public class IDE extends javax.swing.JFrame {
         jButton126.setText("Grafica DES");
 
         jButton127.setText("Guardar Como");
+        jButton127.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton127ActionPerformed(evt);
+            }
+        });
 
         jButton128.setText("Graficas");
+        jButton128.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton128ActionPerformed(evt);
+            }
+        });
 
         jButton129.setText("Tabla de Simbolos");
 
@@ -1290,6 +1534,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton131.setText("Cerrar Pestaña");
+        jButton131.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton131ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1555,7 +1804,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab14", jPanel33);
@@ -1568,7 +1817,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab15", jPanel34);
@@ -1581,7 +1830,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab16", jPanel35);
@@ -1594,7 +1843,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab17", jPanel36);
@@ -1607,7 +1856,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab18", jPanel37);
@@ -1620,7 +1869,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab19", jPanel38);
@@ -1633,7 +1882,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab20", jPanel39);
@@ -1693,12 +1942,40 @@ public class IDE extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
          jTextArea2.setText("");
         //RepasoCompi2 Hola = new RepasoCompi2();
        Analizar2(jTextArea1.getText(), jTextArea2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+   public String AbrirArchivo(File Archivo){
+       String Documento = "";
+        try{
+            entrada = new FileInputStream(Archivo);
+            int ascii;
+            while((ascii = entrada.read())!=-1){
+                char caracter  = (char)ascii;
+                Documento+=caracter;
+            }
+        }catch(Exception e){
+    
+        }
+        return Documento;
+   }
+ 
+   public String GuardarArchivo(File Archivo, String documento){
+       String mensaje = null;
+       try{
+           salida = new FileOutputStream(Archivo);
+           byte[] bytxt = documento.getBytes();
+           salida.write(bytxt);
+           mensaje = "Archivo Guardado";
+       }catch(Exception e){
+       
+       }
+       return mensaje;
+   }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         switch (TotalPestañas) {
@@ -1731,8 +2008,21 @@ public class IDE extends javax.swing.JFrame {
                 jTabbedPane1.addTab("Ventana 7", jPanel27);
                 TotalPestañas++;
                 break;
+             case 8:
+                jTabbedPane1.addTab("Ventana 8", jPanel28);
+                TotalPestañas++;
+                break;
+            case 9:
+                jTabbedPane1.addTab("Ventana 9", jPanel29);
+                TotalPestañas++;
+                break;
+            case 10:
+                jTabbedPane1.addTab("Ventana 10", jPanel30);
+                TotalPestañas++;
+                break;
           
             default:
+                JOptionPane.showMessageDialog(null, "Ha Sobrepasado la cantidad de Pesañas");
                 break;
         }
         
@@ -1885,6 +2175,490 @@ public class IDE extends javax.swing.JFrame {
     private void jButton150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton150ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton150ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        JOptionPane.showMessageDialog(null, "No puede Cerrar la pestaña principal");
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+         jTabbedPane1.remove(jPanel21);
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+         jTabbedPane1.remove(jPanel22);
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel23);
+    }//GEN-LAST:event_jButton41ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        // TODO add your handling code here:
+         jTabbedPane1.remove(jPanel24);
+    }//GEN-LAST:event_jButton51ActionPerformed
+
+    private void jButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton61ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel25);
+    }//GEN-LAST:event_jButton61ActionPerformed
+
+    private void jButton71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton71ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel26);
+    }//GEN-LAST:event_jButton71ActionPerformed
+
+    private void jButton101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton101ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel27);
+    }//GEN-LAST:event_jButton101ActionPerformed
+
+    private void jButton111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton111ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel28);
+    }//GEN-LAST:event_jButton111ActionPerformed
+
+    private void jButton121ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton121ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel29);
+    }//GEN-LAST:event_jButton121ActionPerformed
+
+    private void jButton131ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton131ActionPerformed
+        // TODO add your handling code here:
+        jTabbedPane1.remove(jPanel30);
+    }//GEN-LAST:event_jButton131ActionPerformed
+
+    private void jButton123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton123ActionPerformed
+        // TODO add your handling code here:
+         if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo10 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo10);
+            if(Archivo10.canRead()){
+                String documento = AbrirArchivo(Archivo10);
+                jTextArea14.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+        
+        
+    }//GEN-LAST:event_jButton123ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo);
+            if(Archivo.canRead()){
+                String documento = AbrirArchivo(Archivo);
+                jTextArea1.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+         if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo1 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo1);
+            if(Archivo1.canRead()){
+                String documento = AbrirArchivo(Archivo1);
+                jTextArea3.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo2 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo2);
+            if(Archivo2.canRead()){
+                String documento = AbrirArchivo(Archivo2);
+                jTextArea4.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        // TODO add your handling code here:
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo3 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo3);
+            if(Archivo3.canRead()){
+                String documento = AbrirArchivo(Archivo3);
+                jTextArea5.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        // TODO add your handling code here:
+         if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo4 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo4);
+            if(Archivo4.canRead()){
+                String documento = AbrirArchivo(Archivo4);
+                jTextArea6.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton43ActionPerformed
+
+    private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
+        // TODO add your handling code here:
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo5 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo5);
+            if(Archivo5.canRead()){
+                String documento = AbrirArchivo(Archivo5);
+                jTextArea7.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton53ActionPerformed
+
+    private void jButton63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton63ActionPerformed
+        // TODO add your handling code here:
+         if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo6 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo6);
+            if(Archivo6.canRead()){
+                String documento = AbrirArchivo(Archivo6);
+                jTextArea8.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton63ActionPerformed
+
+    private void jButton93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton93ActionPerformed
+        // TODO add your handling code here:
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo7 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo7);
+            if(Archivo7.canRead()){
+                String documento = AbrirArchivo(Archivo7);
+                jTextArea11.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton93ActionPerformed
+
+    private void jButton103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton103ActionPerformed
+        // TODO add your handling code here:
+        if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo8 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo8);
+            if(Archivo8.canRead()){
+                String documento = AbrirArchivo(Archivo8);
+                jTextArea12.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton103ActionPerformed
+
+    private void jButton113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton113ActionPerformed
+        // TODO add your handling code here:
+         if(seleccionar1.showDialog(null, "Abrir")==JFileChooser.APPROVE_OPTION){
+            Archivo9 = seleccionar1.getSelectedFile();
+            System.out.println("vamos a abrir un archivo" + Archivo9);
+            if(Archivo9.canRead()){
+                String documento = AbrirArchivo(Archivo9);
+                jTextArea13.setText(documento);
+            }
+            
+        }
+        System.out.println("terminaomos de abrir el archivo");
+    }//GEN-LAST:event_jButton113ActionPerformed
+
+    private void jButton128ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton128ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jButton128ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("Este es el archivo" + Archivo);
+        System.out.println("Este es el archivo" + Archivo1);
+        System.out.println("Este es el archivo" + Archivo2);
+        System.out.println("Este es el archivo" + Archivo3);
+        System.out.println("Este es el archivo" + Archivo4);
+        System.out.println("Este es el archivo" + Archivo5);
+        System.out.println("Este es el archivo" + Archivo6);
+        System.out.println("Este es el archivo" + Archivo7);
+        System.out.println("Este es el archivo" + Archivo8);
+        System.out.println("Este es el archivo" + Archivo9);
+        System.out.println("Este es el archivo" + Archivo10);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo,jTextArea1.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo);
+       }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo1,jTextArea3.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo1);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo1);
+       }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo2,jTextArea4.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo2);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo2);
+       }
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo3,jTextArea5.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo3);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo3);
+       }
+    }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo4,jTextArea6.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo4);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo4);
+       }
+    }//GEN-LAST:event_jButton44ActionPerformed
+
+    private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
+        // TODO add your handling code here:
+        String Mensaje = GuardarArchivo(Archivo5,jTextArea7.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo5);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo5);
+       }
+    }//GEN-LAST:event_jButton54ActionPerformed
+
+    private void jButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton64ActionPerformed
+        // TODO add your handling code here:
+         String Mensaje = GuardarArchivo(Archivo6,jTextArea8.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo6);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo6);
+       }
+    }//GEN-LAST:event_jButton64ActionPerformed
+
+    private void jButton94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton94ActionPerformed
+        // TODO add your handling code here:
+         String Mensaje = GuardarArchivo(Archivo7,jTextArea11.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo7);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo7);
+       }
+    }//GEN-LAST:event_jButton94ActionPerformed
+
+    private void jButton104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton104ActionPerformed
+        // TODO add your handling code here:
+       String Mensaje = GuardarArchivo(Archivo8,jTextArea12.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo8);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo8);
+       }
+    }//GEN-LAST:event_jButton104ActionPerformed
+
+    private void jButton114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton114ActionPerformed
+        // TODO add your handling code here:
+         String Mensaje = GuardarArchivo(Archivo9,jTextArea13.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo9);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo9);
+       }
+    }//GEN-LAST:event_jButton114ActionPerformed
+
+    private void jButton124ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton124ActionPerformed
+        // TODO add your handling code here:
+          String Mensaje = GuardarArchivo(Archivo10,jTextArea14.getText());
+       if(Mensaje == null){
+           JOptionPane.showMessageDialog(null, "Problemas al guardar en " + Archivo10);
+       }else{
+           JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo10);
+       }
+    }//GEN-LAST:event_jButton124ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo = fc.getSelectedFile();
+            GuardarArchivo(Archivo,jTextArea1.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo);
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo1 = fc.getSelectedFile();
+            GuardarArchivo(Archivo1,jTextArea3.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo1);
+        }
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo2 = fc.getSelectedFile();
+            GuardarArchivo(Archivo2,jTextArea4.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo2);
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo3 = fc.getSelectedFile();
+            GuardarArchivo(Archivo3,jTextArea5.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo3);
+        }
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo4 = fc.getSelectedFile();
+            GuardarArchivo(Archivo4,jTextArea6.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo4);
+        }
+    }//GEN-LAST:event_jButton47ActionPerformed
+
+    private void jButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57ActionPerformed
+        // TODO add your handling code here:
+          JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo5 = fc.getSelectedFile();
+            GuardarArchivo(Archivo5,jTextArea7.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo5);
+        }
+    }//GEN-LAST:event_jButton57ActionPerformed
+
+    private void jButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton67ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo6 = fc.getSelectedFile();
+            GuardarArchivo(Archivo6,jTextArea8.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo6);
+        }
+    }//GEN-LAST:event_jButton67ActionPerformed
+
+    private void jButton97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton97ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo7 = fc.getSelectedFile();
+            GuardarArchivo(Archivo7,jTextArea11.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo7);
+        }
+    }//GEN-LAST:event_jButton97ActionPerformed
+
+    private void jButton107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton107ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo8 = fc.getSelectedFile();
+            GuardarArchivo(Archivo8,jTextArea12.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo8);
+        }
+    }//GEN-LAST:event_jButton107ActionPerformed
+
+    private void jButton117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton117ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo9 = fc.getSelectedFile();
+            GuardarArchivo(Archivo9,jTextArea13.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo9);
+        }
+    }//GEN-LAST:event_jButton117ActionPerformed
+
+    private void jButton127ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton127ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+        int respuesta = fc.showSaveDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            //Crear un objeto File con el archivo elegido
+            Archivo10 = fc.getSelectedFile();
+            GuardarArchivo(Archivo10,jTextArea14.getText());
+            //Mostrar el nombre del archvivo en un campo de texto
+            JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo10);
+        }
+    }//GEN-LAST:event_jButton127ActionPerformed
 
      public void Analizar(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
@@ -2076,28 +2850,8 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton70;
     private javax.swing.JButton jButton71;
-    private javax.swing.JButton jButton72;
-    private javax.swing.JButton jButton73;
-    private javax.swing.JButton jButton74;
-    private javax.swing.JButton jButton75;
-    private javax.swing.JButton jButton76;
-    private javax.swing.JButton jButton77;
-    private javax.swing.JButton jButton78;
-    private javax.swing.JButton jButton79;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton80;
-    private javax.swing.JButton jButton81;
-    private javax.swing.JButton jButton82;
-    private javax.swing.JButton jButton83;
-    private javax.swing.JButton jButton84;
-    private javax.swing.JButton jButton85;
-    private javax.swing.JButton jButton86;
-    private javax.swing.JButton jButton87;
-    private javax.swing.JButton jButton88;
-    private javax.swing.JButton jButton89;
     private javax.swing.JButton jButton9;
-    private javax.swing.JButton jButton90;
-    private javax.swing.JButton jButton91;
     private javax.swing.JButton jButton92;
     private javax.swing.JButton jButton93;
     private javax.swing.JButton jButton94;
@@ -2107,7 +2861,6 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JButton jButton98;
     private javax.swing.JButton jButton99;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
@@ -2117,7 +2870,6 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
@@ -2129,7 +2881,6 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
@@ -2143,12 +2894,8 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea10;
     private javax.swing.JTextArea jTextArea11;
     private javax.swing.JTextArea jTextArea12;
     private javax.swing.JTextArea jTextArea13;
@@ -2162,6 +2909,5 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
     private javax.swing.JTextArea jTextArea8;
-    private javax.swing.JTextArea jTextArea9;
     // End of variables declaration//GEN-END:variables
 }
