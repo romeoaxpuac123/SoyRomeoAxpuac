@@ -926,6 +926,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     total =  (int) Math.pow(valor1,valor2);
+                    this.TipoDato = "decimal";
                  //   System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1006,6 +1007,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
+                    this.TipoDato = "decimal";
                     System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1182,6 +1184,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
+                    this.TipoDato = "decimal";
                     System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1509,6 +1512,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     total =  (int) Math.pow(valor1,valor2);
+                    this.TipoDato = "decimal";
                  //   System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1590,6 +1594,7 @@ public class Aritmetica extends NodoAbstracto{
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
                     System.out.println("Paso por una potencia");
+                    this.TipoDato = "decimal";
                     break;
               case "%%":
                     totald =  valor1  % valor2;
@@ -1765,6 +1770,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
+                    this.TipoDato = "decimal";
                     System.out.println("Paso por una potencia");
                     break;
               case "%%":

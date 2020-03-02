@@ -23,7 +23,8 @@ import java_cup.runtime.*;
 entero = [0-9]+
 decimal={entero}"."{entero}
 cadena = [\"]([^\"\n]|(\\\"))*[\"]
-id = [a-z](_|[0-9]|[a-z])*
+id = (([A-Za-z]+)["_"|"."|0-9A-Za-z]*) | (([.][A-Za-z]+)["_"|"."|0-9A-Za-z]*)
+//id = ([A-Za-z]*["_"|"."|0-9A-Za-z]*)
 
 COMENT_UNILINEA =("#".*\r\n)|("#".*\n)|("#".*\r)
 COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
@@ -42,7 +43,7 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "print"     {   System.out.println("--->"+yytext()+" - Imprimir");
                             return new Symbol(Simbolos.imprimir, yycolumn, yyline, yytext());}
 
-<YYINITIAL> "c"         {   System.out.println("--->"+yytext()+" - FuncionC");
+<YYINITIAL> "c("         {   System.out.println("--->"+yytext()+" - FuncionC");
                             return new Symbol(Simbolos.FuncionC, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "true"      {   System.out.println("--->"+yytext()+" - true");
