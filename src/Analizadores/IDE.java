@@ -8,8 +8,10 @@ package Analizadores;
 
 import Codigo.Entorno;
 import CodigoASTCUP.NodoAbstracto;
+import borradorproyecto1.BorradorProyecto1;
 import borradorproyecto1.Graficador;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,8 +19,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.nio.Buffer;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -36,6 +40,7 @@ public class IDE extends javax.swing.JFrame {
      * Creates new form IDE
      */
     public int TotalPestañas = 1;
+    public static LinkedList<TError> TABLA_DE_ERRORES_SINTACTICOS = new LinkedList<TError>();
     JFileChooser seleccionar1 = new JFileChooser();
     File Archivo; FileInputStream entrada; FileOutputStream salida;
     File Archivo1; 
@@ -1924,6 +1929,7 @@ public class IDE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -1944,7 +1950,7 @@ public class IDE extends javax.swing.JFrame {
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         jTextArea2.setText("");
+        // jTextArea2.setText("");
         //RepasoCompi2 Hola = new RepasoCompi2();
        Analizar2(jTextArea1.getText(), jTextArea2);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -2030,126 +2036,481 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+       System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    public void CrearReporteErrores(){
+        String cad = "REPORTE DE ERRORES";
+       
+        FileWriter filewriter = null;
+        PrintWriter printw = null;
+       
+       try{
+        filewriter = new FileWriter("Reporte_Errores.html");//declarar el archivo
+        printw = new PrintWriter(filewriter);//declarar un impresor
+
+        printw.println("<html>");
+        printw.println("<head><title>by Romeo Axpuac</title></head>");    
+        //si queremos escribir una comilla " en el
+        //archivo uzamos la diagonal invertida \"
+        printw.println("<body bgcolor=\"#99CC99\">");
+
+        //si quisieramos escribir una cadena que vide de una lista o
+        //de una variable lo concatenamos
+        printw.println("<center><h1><font color=\"navy\">"+cad+"</font></h1></center>");
+        printw.println("<center><h4><font color=\"purple\">Organizacion de Lenguajes y Compiladores 2</font></h4></center>");
+        printw.println("<center><table><tr>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Numero</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Tipo</strong></td>\n" +
+                        "  <td WIDTH=\"370\" HEIGHT=\"50\"><strong>Descripcion</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Fila</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Columna</strong></td>\n" +
+                        "</tr>\n");
+        // creando contendo de la tabla
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea +1;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            printw.println("<tr>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+(i+1)+"</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+Tipo+"</strong></td>\n" +
+                        "  <td WIDTH=\"370\" HEIGHT=\"50\"><strong>"+Descripcion+"</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+fila+"</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+columna+"</strong></td>\n" +
+                        "</tr>\n");
+
+            //System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            //CrearReporteErrores();
+        }
+        
+        
+        printw.println("</table></center>\n");
+        //podemos añadir imagenes con codigo html
+        //printw.println("<center><img src=\"img/www.losiej.blogspot.com.png\" width=\"200\" height=\"150\"></center>");
+
+        printw.println("</body>");
+        printw.println("</html>");
+
+        //no devemos olvidar cerrar el archivo para que su lectura sea correcta
+        printw.close();//cerramos el archivo
+
+        System.out.println("Generado exitosamente");//si todo sale bien mostramos un mensaje de guardado exitoso
+        this.autoAbrir("Reporte_Errores.html");
+       }catch(Exception e){
+
+       }
+    
+    }
+    
+      private void autoAbrir(String ruta)
+    {
+        try
+        {
+            File archivo = new File(ruta);
+            if(archivo.exists())
+            {
+                Desktop.getDesktop().open(archivo);
+            }
+        }
+        catch (IOException ex) 
+        {Logger.getLogger(BorradorProyecto1.class.getName()).log(Level.SEVERE, null, ex);}
+    }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea3.getText(), jTextArea2);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea3.getText(), jTextArea2);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea4.getText(), jTextArea2);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea4.getText(), jTextArea2);
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         // TODO add your handling code here:
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea5.getText(), jTextArea2);
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
         // TODO add your handling code here:
+         Analizar2(jTextArea5.getText(), jTextArea2);
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+         
+        }
+           CrearReporteErrores();
+           TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
         // TODO add your handling code here:
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea6.getText(), jTextArea2);
     }//GEN-LAST:event_jButton42ActionPerformed
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea6.getText(), jTextArea2);
     }//GEN-LAST:event_jButton45ActionPerformed
 
     private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton50ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
         // TODO add your handling code here:
+         BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea7.getText(), jTextArea2);
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
         // TODO add your handling code here:
+          Analizar2(jTextArea7.getText(), jTextArea2);
     }//GEN-LAST:event_jButton55ActionPerformed
 
     private void jButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton60ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton60ActionPerformed
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
         // TODO add your handling code here:
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea8.getText(), jTextArea2);
     }//GEN-LAST:event_jButton62ActionPerformed
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea8.getText(), jTextArea2);
     }//GEN-LAST:event_jButton65ActionPerformed
 
     private void jButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton70ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            //CrearReporteErrores();
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton70ActionPerformed
 
     private void jButton92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton92ActionPerformed
         // TODO add your handling code here:
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea11.getText(), jTextArea2);
     }//GEN-LAST:event_jButton92ActionPerformed
 
     private void jButton95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton95ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea11.getText(), jTextArea2);
     }//GEN-LAST:event_jButton95ActionPerformed
 
     private void jButton100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton100ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton100ActionPerformed
 
     private void jButton102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton102ActionPerformed
         // TODO add your handling code here:
+           BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea12.getText(), jTextArea2);
     }//GEN-LAST:event_jButton102ActionPerformed
 
     private void jButton105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton105ActionPerformed
         // TODO add your handling code here:
+         Analizar2(jTextArea12.getText(), jTextArea2);
     }//GEN-LAST:event_jButton105ActionPerformed
 
     private void jButton110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton110ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+          
+        }
+          CrearReporteErrores();
+          TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton110ActionPerformed
 
     private void jButton112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton112ActionPerformed
         // TODO add your handling code here:
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea13.getText(), jTextArea2);
     }//GEN-LAST:event_jButton112ActionPerformed
 
     private void jButton115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton115ActionPerformed
         // TODO add your handling code here:
+         Analizar2(jTextArea13.getText(), jTextArea2);
     }//GEN-LAST:event_jButton115ActionPerformed
 
     private void jButton120ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton120ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+           
+        }
+         CrearReporteErrores();
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton120ActionPerformed
 
     private void jButton122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton122ActionPerformed
         // TODO add your handling code here:
+                BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("3d.txt"));
+             bw.write("");
+             bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        jTextArea2.setText("");
+       // RepasoCompi2 Hola = new RepasoCompi2();
+        Analizar(jTextArea14.getText(), jTextArea2);
     }//GEN-LAST:event_jButton122ActionPerformed
 
     private void jButton125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton125ActionPerformed
         // TODO add your handling code here:
+        Analizar2(jTextArea14.getText(), jTextArea2);
     }//GEN-LAST:event_jButton125ActionPerformed
 
     private void jButton130ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton130ActionPerformed
         // TODO add your handling code here:
+         System.out.println("REPORTE DE ERROES:");
+        for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
+            String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
+            String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
+            int columna = TABLA_DE_ERRORES_SINTACTICOS.get(i).columna;
+            int fila = TABLA_DE_ERRORES_SINTACTICOS.get(i).linea;
+            String Descripcion = TABLA_DE_ERRORES_SINTACTICOS.get(i).descripcion;
+            System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            
+        }
+        CrearReporteErrores();
+        TABLA_DE_ERRORES_SINTACTICOS.clear();
     }//GEN-LAST:event_jButton130ActionPerformed
 
     private void jButton132ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton132ActionPerformed

@@ -42,6 +42,9 @@ public class Nodo extends NodoAbstracto{
     @Override
     public String Ejecutar(Entorno entorno,JTextArea salida) {
         String sali = "";
+        if(this.Nombre.contains("#Error")){
+             sali = this.Hijos.get(0).Nombre;
+        }
       // System.out.println("nombre...........>" + this.Nombre);
         switch(this.Nombre){
             case "Entero":

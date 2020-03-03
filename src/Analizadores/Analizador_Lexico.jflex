@@ -1,7 +1,7 @@
 
 package Analizadores;
 import java_cup.runtime.*;
-
+import  Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 %%
 
 %{
@@ -24,7 +24,6 @@ entero = [0-9]+
 decimal={entero}"."{entero}
 cadena = [\"]([^\"\n]|(\\\"))*[\"]
 id = (([A-Za-z]+)["_"|"."|0-9A-Za-z]*) | (([.][A-Za-z]+)["_"|"."|0-9A-Za-z]*)
-//id = ([A-Za-z]*["_"|"."|0-9A-Za-z]*)
 
 COMENT_UNILINEA =("#".*\r\n)|("#".*\n)|("#".*\r)
 COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
@@ -145,5 +144,14 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 [ \t\r\n\f]             {/* Se ignora */ }
  
 
-.                       {   System.out.println("#Error léxico: <"+yytext()+"> Linea: "+yyline+" ,Columna: "+yycolumn);}
+.                       {   
+                            String TipoError = "Lexico ";
+                            String Descripcion = "El Caracter:" + yytext() + " no pertenece al lenguaje";
+                            String Fila = " Fila: " + yyline;
+                            String Columna = " Columna: " + yycolumn;
+                            System.out.println("#ERROR"  + TipoError + Descripcion + Fila + Columna );
+                            TError ERRORES = new TError(yytext(),yyline,yycolumn,TipoError, Descripcion);
+                            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            System.out.println(" al agran puta");
+                        }
 

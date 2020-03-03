@@ -1,8 +1,10 @@
 
 package Analizadores;
 
+
 import java_cup.runtime.Symbol;
 import java.util.ArrayList;
+import Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import CodigoASTCUP.*;
 import Codigo.*;
 
@@ -12,20 +14,41 @@ parser code
     public NodoAbstracto Raiz;
     public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
     public String Lado1, Lado2 = "";
-    public void syntax_error(Symbol s)
+     public void syntax_error(Symbol s)
     {        
-        System.out.println("Error");       
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+        
+        System.out.println("!!!!!!! Error Sintactico Recuperado !!!!!!!");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila+1);
+        System.out.println("\t\tColumna: "+columna);
+
+         TError ERRORES = new TError(lexema,fila,columna,"Sintactico", "Sentencia mal declarada");
+        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+       
+        
+        
     }
 
+//Metodo al que se llama en el momento en que ya no es posible una recuperacion de errores
     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
     {        
-        System.out.println("error");        
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+        
+        System.out.println("!!!!!!! Error Sintactico, Panic Mode !!!!!!! ");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);
+
+       // TERROR ERRORES = new TERROR(lexema,"Error Sintactico","Caracter no esperado",fila,columna);
+       // TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+     
     }
 
-    public void semantic(Symbol cur_token, String n) 
-    {
-        System.out.println("error");
-    }
 
     public void semantic(String msg, Object obj) {}
 :}
@@ -70,7 +93,7 @@ INICIO::=          SENTENCIAS:nod
                         NodoAbstracto nuevo = new Nodo("INICIO");
                         nuevo.Hijos.add(nod);
                         parser.Raiz = nuevo;
-                    :};
+                    :} ;
 
 SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
                     {:
@@ -89,7 +112,7 @@ SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     :}
-                    ;
+                     ;
 
 SENTENCIA::=        DECLARARASIGNAR:nod
                     {:
@@ -110,7 +133,20 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     | MODVECTOR:nod
                     {:
                       RESULT=nod;
-                    :};
+                    :}
+                    | error puntoycoma {:
+                         NodoAbstracto nuevo = new ERRORES("Error");
+                         NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
+                         nuevo.Cadena   = "#Error Semantico Encontrado ver reporte";
+                         RESULT= nuevo; 
+                     :} 
+                     | error  SENTENCIA{:
+                         NodoAbstracto nuevo = new ERRORES("Error");
+                         NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
+                         nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
+                         RESULT= nuevo; 
+                     :} 
+                    ;
 
 MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINAL{:
                 NodoAbstracto nuevo = new ModificarVector("Vecto");
@@ -128,7 +164,9 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(exp2);
                 RESULT=nuevo;
-            :};
+            :}
+             
+             ;
 
 
 DECLARARVECTORC::= id:valor igual FuncionC  LISTAEXPRESIONES:Lista parentesiscerrar FINAL
@@ -143,7 +181,7 @@ DECLARARVECTORC::= id:valor igual FuncionC  LISTAEXPRESIONES:Lista parentesiscer
                         nuevo.Hijos.add(Lista);
                         RESULT = nuevo;
 
-                    :};
+                    :} ;
 
 LISTAEXPRESIONES::= LISTAEXPRESIONES:nodsentencias coma EXP:nod
                     {:
