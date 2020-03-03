@@ -26,12 +26,17 @@ public class LlamadoAVector extends NodoAbstracto{
     public String Ejecutar(Entorno entorno, JTextArea salida) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String Identificador = this.Hijos.get(0).Nombre;
+        if(entorno.ExisteVector(Identificador) == false){
+            System.out.println("El Vector: " + Identificador + "No Existe");
+            return "#Error el vector no existe";
+        }
         System.out.println("DATOS LLAMADO-> Vector:" + Identificador + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificador));
         if(entorno.ObtenerListaN(Identificador) ==0 && this.id ==0){
            
             this.TipoDato = entorno.ObtenerTipo(Identificador);
             
         }
+        
         return "#ERROR: la posición no existe\n";
     }
     

@@ -168,7 +168,8 @@ public class Aritmetica extends NodoAbstracto{
                     return "RomeoAxpuac";
                 }
             }else{
-                return "#Error";
+                salida.append("#ERROR: El vector "+ Vector + " No Existe "  +"\n");
+                return "#ERROR: El vector "+ Vector + " No Existe " ;
             }
             
             
@@ -309,7 +310,8 @@ public class Aritmetica extends NodoAbstracto{
                 
                 
             }else{
-                return "#Error";
+                salida.append("#ERROR: El vector "+ Vector + " No Existe "  +"\n");
+                return "#ERROR: El vector "+ Vector + " No Existe " ;
             }
             
             
@@ -888,8 +890,8 @@ public class Aritmetica extends NodoAbstracto{
                   }
                 }
             }else{
-                    
-                return "#Error";
+                salida.append("#ERROR: El vector "+ Vector1 + "o" + Vector2 + " No Existe "  +"\n");
+                return "#ERROR: El vector "+ Vector1 + "o" + Vector2 + " No Existe " ;
             }
             
         

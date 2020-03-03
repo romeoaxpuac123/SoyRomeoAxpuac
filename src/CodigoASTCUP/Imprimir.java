@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import Analizadores.TError;
 import Codigo.Entorno;
 import javax.swing.JTextArea;
 
@@ -31,7 +33,9 @@ public class Imprimir extends NodoAbstracto{
         if (!val.equalsIgnoreCase("#Error")){
             salida.append(val+"\n");
         }else{
-            salida.append("#ERROR: "+val +"\n");
+            TError ERRORES = new TError("Imprimir",this.linea,this.columna,"Semantico", "Error en el contenido a imprimir"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            salida.append("#Error en el contenido a imprimir: "+val +"\n");
         }
         return "imprimir";
     }

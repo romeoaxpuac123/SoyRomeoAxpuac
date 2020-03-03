@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import Analizadores.TError;
 import Codigo.Entorno;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
@@ -103,7 +105,11 @@ public class ModificarVector extends NodoAbstracto{
                 }
         }else{
             //entorno.ModificarValor(Identificador, val1, Tipo1);
-            System.out.println("\"#ERROR: No Existe el Vector\";");
+            System.out.println("#ERROR: No Existe el Vector " + Vector);
+            salida.append("#ERROR: No Existe el Vector " + Vector +"\n");
+            //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+            TError ERRORES = new TError(Vector,this.linea,this.columna,"Semantico", "No Existe el Vector " + Vector );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
             return "#ERROR: No Existe el Vector";
         }
         System.out.println("-------------->");

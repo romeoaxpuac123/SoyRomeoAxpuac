@@ -14,6 +14,7 @@ parser code
     public NodoAbstracto Raiz;
     public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
     public String Lado1, Lado2 = "";
+    public String Manejor_Error = "";
      public void syntax_error(Symbol s)
     {        
         String lexema = s.value.toString();
@@ -25,8 +26,8 @@ parser code
         System.out.println("\t\tFila: "+fila+1);
         System.out.println("\t\tColumna: "+columna);
 
-         TError ERRORES = new TError(lexema,fila,columna,"Sintactico", "Sentencia mal declarada");
-        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+         TError ERRORES = new TError(lexema,fila,columna,"Sintactico", "Sentencia incorrecta" );
+         TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
        
         
         
@@ -116,22 +117,24 @@ SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
 
 SENTENCIA::=        DECLARARASIGNAR:nod
                     {:
+                        
+                        Manejor_Error = "SENTENCIA INCORRECTA";
                         RESULT=nod;
                     :}
                     |IMPRIM:nod
                     {:
-                        RESULT=nod;
-                    :}
-                    |OPERACIONES:nod
-                    {:
+                        Manejor_Error = "SENTENCIA INCORRECTA";
+                        //System.out.println("ID LINEA : SENTENCIA IMPRIMIR" + nodleft + " Columna " + nodright);
                         RESULT=nod;
                     :}
                     |DECLARARVECTORC:nod
                     {:
+                        Manejor_Error = "SENTENCIA INCORRECTA";
                         RESULT=nod;
                     :}
                     | MODVECTOR:nod
                     {:
+                      Manejor_Error = "SENTENCIA INCORRECTA";
                       RESULT=nod;
                     :}
                     | error puntoycoma {:
@@ -154,6 +157,9 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
                 nuevo.Hijos.add(nuevoid);
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(exp2);
+                Manejor_Error = "Error al Modificar Vector" + valor;
+                nuevo.columna = valorleft;
+                nuevo.linea = valorright;
                 RESULT=nuevo;
                 
             :}
@@ -163,7 +169,11 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
                 nuevo.Hijos.add(nuevoid);
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(exp2);
+                Manejor_Error = "Error al Modificar Vector" + valor;
+                nuevo.columna = valorleft;
+                nuevo.linea = valorright;
                 RESULT=nuevo;
+                
             :}
              
              ;
@@ -179,6 +189,7 @@ DECLARARVECTORC::= id:valor igual FuncionC  LISTAEXPRESIONES:Lista parentesiscer
                         }
                         Expresiones.clear();
                         nuevo.Hijos.add(Lista);
+                        Manejor_Error = "Error al crear vector" + valor;
                         RESULT = nuevo;
 
                     :} ;
@@ -204,6 +215,10 @@ DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
                         NodoAbstracto nuevoid = new Nodo(valor);
                         nuevo.Hijos.add(nuevoid);
                         nuevo.Hijos.add(exp1);
+                        Manejor_Error = "Error al crear vector" + valor;
+                        //System.out.println("ID LINEA : SENTENCIA IMPRIMIR" + nodleft + " Columna " + nodright);
+                        nuevo.columna = exp1left;
+                        nuevo.linea = exp1right;
                         RESULT = nuevo;
                     :};
 
@@ -212,6 +227,9 @@ IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar puntoycom
                     {:
                         NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
                         nuevo.Hijos.add(exp1);
+                         Manejor_Error = "Error al imprimir";
+                        nuevo.columna = exp1left;
+                        nuevo.linea = exp1right;
                         RESULT = nuevo;
                     :}
                     ;
@@ -222,7 +240,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevo = new Ternario("EXP");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(exp2);  
-                        nuevo.Hijos.add(exp3);  
+                        nuevo.Hijos.add(exp3);
+                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |NOT EXP:exp1{:
@@ -231,6 +250,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp1);                        
                         nuevo.TipoDato = exp1.TipoDato;
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
 
                     :}
@@ -240,6 +260,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp1);                        
                         nuevo.TipoDato = exp1.TipoDato;
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |EXP:exp1 mas EXP:exp2
@@ -249,6 +270,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                         
                     :}
@@ -258,7 +280,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevooperador = new Nodo("-");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
-                        nuevo.Hijos.add(exp2);                      
+                        nuevo.Hijos.add(exp2);  
+                        Manejor_Error = "Error en expresion";                    
                         RESULT = nuevo;
                     :}
                     |EXP:exp1 por EXP:exp2
@@ -268,6 +291,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                   
@@ -279,7 +303,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevooperador = new Nodo("/");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
-                        nuevo.Hijos.add(exp2);                        
+                        nuevo.Hijos.add(exp2);  
+                        Manejor_Error = "Error en expresion";                      
                         RESULT = nuevo;
                     :}
 
@@ -289,7 +314,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevooperador = new Nodo("%%");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
-                        nuevo.Hijos.add(exp2);                    
+                        nuevo.Hijos.add(exp2); 
+                        Manejor_Error = "Error en expresion";                   
                         RESULT = nuevo;
                     :}
 |EXP:exp1 potencia EXP:exp2
@@ -298,7 +324,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevooperador = new Nodo("^");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
-                        nuevo.Hijos.add(exp2);                    
+                        nuevo.Hijos.add(exp2);   
+                        Manejor_Error = "Error en expresion";                 
                         RESULT = nuevo;
                     :}
 
@@ -309,6 +336,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                         
                     :}
@@ -320,6 +348,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |EXP:exp1 MayorQue EXP:exp2{:
@@ -329,6 +358,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                      |EXP:exp1 MenorQue EXP:exp2{:
@@ -338,6 +368,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
 
@@ -350,6 +381,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                      |EXP:exp1 MenorIgualQue EXP:exp2{:
@@ -359,6 +391,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
 
@@ -370,7 +403,8 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
-                        nuevo.TipoDato = "booleano";
+                        nuevo.TipoDato = "booleano";                      
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                         
                     :}
@@ -383,15 +417,18 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevooperador);
                         nuevo.Hijos.add(exp2);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                         
                     :}
                     |parentesisabrir EXP:exp1 parentesiscerrar
                     {:
+                        Manejor_Error = "Error en expresion";
                         RESULT = exp1;
                     :}
                     |NUMERO:nod
                     {:
+                        Manejor_Error = "Error en expresion";
                         RESULT = nod;
                     :}
         |id:valor
@@ -401,6 +438,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "id";
                         nuevo.Nombre = valor;
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
         |nulo:valor
@@ -409,6 +447,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
         |id:valor corcheteabrir EXP:pos corchetecerrar
@@ -418,8 +457,11 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.Hijos.add(pos);
                         nuevo.TipoDato = "vector";
+                        Manejor_Error = "Error en expresion";
                         //RESULT = nuevo;
                         //nuevo.id = Integer.parseInt(pos);
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
                         RESULT = nuevo;
                     :}
         |cadena:valor
@@ -429,6 +471,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |ttrue:valor
@@ -438,6 +481,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |tfalse:valor
@@ -446,6 +490,7 @@ EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "booleano";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     ;
@@ -456,6 +501,7 @@ NUMERO::=           entero:valor
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                     |decimal:valor
@@ -464,6 +510,7 @@ NUMERO::=           entero:valor
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "decimal";
+                        Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
                   

@@ -30,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 /**
  *
  * @author Bayyron
@@ -76,9 +78,12 @@ public class IDE extends javax.swing.JFrame {
         jTabbedPane1.remove(jPanel37);
         jTabbedPane1.remove(jPanel38);
         jTabbedPane1.remove(jPanel39);
+        int currentCaretPosition = jTextArea1.getCaretPosition ();
+      
         
     }
 
+     
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -269,6 +274,10 @@ public class IDE extends javax.swing.JFrame {
         jPanel38 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 255));
@@ -1809,7 +1818,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab14", jPanel33);
@@ -1822,7 +1831,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab15", jPanel34);
@@ -1835,7 +1844,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab16", jPanel35);
@@ -1848,7 +1857,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab17", jPanel36);
@@ -1861,7 +1870,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab18", jPanel37);
@@ -1874,7 +1883,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab19", jPanel38);
@@ -1887,7 +1896,7 @@ public class IDE extends javax.swing.JFrame {
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab20", jPanel39);
@@ -1898,6 +1907,18 @@ public class IDE extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Linea");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Columna");
+
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1911,14 +1932,29 @@ public class IDE extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3221,6 +3257,10 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JButton jButton97;
     private javax.swing.JButton jButton98;
     private javax.swing.JButton jButton99;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;

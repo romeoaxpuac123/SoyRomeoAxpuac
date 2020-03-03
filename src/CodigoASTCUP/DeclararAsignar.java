@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import Analizadores.TError;
 import Codigo.Entorno;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
@@ -48,6 +50,20 @@ public class DeclararAsignar extends NodoAbstracto{
          entorno.MostrarVectoresLista(entorno,salida);
          System.out.println("---------");
           return "Fin";
+      }else if(val1.indexOf("#ERROR: El vector ")==0){
+          salida.append(val1 +"\n");
+          System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+          TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", val1  );
+          TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+          
+          return "ERROR AL DECLRAR VECTOR";
+          
+      }else if(val1.indexOf("#Error")==0){
+          salida.append("#ERROR Aritmetico: El vector no puede ser asignado" +"\n");
+          System.out.println("-------->"+  "Error en operación aritmetica"    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+          TError ERRORES2 = new TError(Identificador,this.linea,this.columna,"Semantico", "Error en operación aritmetica"  );
+          TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES2);
+          return "ERROR AL DECLRAR VECTOR";
       }
       boolean ExisteVector =  entorno.ExisteVector(Identificador); 
       

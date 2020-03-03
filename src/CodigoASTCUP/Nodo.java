@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import Analizadores.TError;
 import Codigo.Entorno;
 import java.util.ArrayList;
 import javax.swing.JTextArea;
@@ -69,6 +71,13 @@ public class Nodo extends NodoAbstracto{
                 break;
             case "Vector":
                 String Identificador = this.Hijos.get(0).Nombre;
+                if(entorno.ExisteVector(Identificador)==false){
+                    System.out.println("El vector" + Identificador + "No Existe");
+                    salida.append("#Error: No se ha encontrado el vector -> "+Identificador+"\n");
+                    TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+Identificador );
+                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    return "#Error";
+                }
                System.out.println("DATOS LLAMADO-> Vector:" + Identificador + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificador));
                 if(entorno.ObtenerListaN(Identificador) ==0){
                     sali = entorno.ObtenerValor(Identificador);
