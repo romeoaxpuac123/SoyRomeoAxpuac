@@ -13,6 +13,9 @@ parser code
 {:      
     public NodoAbstracto Raiz;
     public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
+    public ArrayList <NodoAbstracto> Expresiones2 = new ArrayList();
+    public ArrayList <NodoAbstracto> Expresiones3 = new ArrayList();
+    public ArrayList <NodoAbstracto> Expresiones4 = new ArrayList();
     public String Lado1, Lado2 = "";
     public String Manejor_Error = "";
      public void syntax_error(Symbol s)
@@ -68,13 +71,14 @@ terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo;
 terminal String decimal;
 terminal String imprimir;
-terminal String cadena;
+terminal String cadena,IF,ELSE;
 
 non terminal NodoAbstracto INICIO;
 non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
 non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
 non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
-non terminal NodoAbstracto EXP,NUMERO;
+non terminal NodoAbstracto EXP,NUMERO,LISTASENTENCIAS2,LISTASENTENCIAS3 ;
+non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES;
 
 precedence right NOT;
 precedence left PREGUNTAC;
@@ -137,6 +141,12 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                       Manejor_Error = "SENTENCIA INCORRECTA";
                       RESULT=nod;
                     :}
+                    |ELIF:nod{:
+                        RESULT = nod;
+                    :}
+                    |ELIFELSE:nod{:
+                        RESULT = nod;
+                    :}
                     | error puntoycoma {:
                          NodoAbstracto nuevo = new ERRORES("Error");
                          NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
@@ -149,8 +159,168 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                          nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
                          RESULT= nuevo; 
                      :} 
+                      | error  llavecerrar{:
+                         NodoAbstracto nuevo = new ERRORES("Error");
+                         NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
+                         nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
+                         RESULT= nuevo; 
+                     :} 
                     ;
 
+
+
+              
+
+ELIF ::= IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar
+        {:
+            NodoAbstracto nuevo = new SentenciaIF("IF");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(sentencias);
+            nuevo.Hijos.add(null);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+            Expresiones.clear();
+            RESULT = nuevo;
+        :}
+        |IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar ELSE llaveabrir LISTASENTENCIAS2:sentencias2 llavecerrar{:
+            NodoAbstracto nuevo = new SentenciaIF("IF");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(sentencias);
+            nuevo.Hijos.add(sentencias2);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+            Expresiones.clear();
+            for(int i = 0; i< Expresiones2.size();i++){
+                           nuevo.Expresiones2.add(Expresiones2.get(i));
+                        }
+            Expresiones2.clear();
+            RESULT = nuevo;
+        :}
+        |IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar LISTAELSES:sentencias2
+        {:
+            NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(sentencias);
+            nuevo.Hijos.add(sentencias2);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones2.add(Expresiones.get(i));
+           }
+            Expresiones.clear();
+            for(int i = 0; i< Expresiones3.size();i++){
+                           nuevo.Expresiones.add(Expresiones3.get(i));
+                        }
+            Expresiones3.clear();
+            RESULT = nuevo;
+        :}
+        |IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar LISTAELSES:sentencias2 ELSE llaveabrir LISTASENTENCIAS3 llavecerrar
+        {:
+            NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(sentencias);
+            nuevo.Hijos.add(sentencias2);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones2.add(Expresiones.get(i));
+           }
+            Expresiones.clear();
+            for(int i = 0; i< Expresiones3.size();i++){
+                           nuevo.Expresiones.add(Expresiones3.get(i));
+                        }
+            Expresiones3.clear();
+            for(int i = 0; i< Expresiones4.size();i++){
+                           nuevo.Expresiones3.add(Expresiones4.get(i));
+                        }
+            Expresiones4.clear();
+
+            //agregar parte del else
+            
+            RESULT = nuevo;
+            
+            
+        :};
+
+
+LISTAELSES::= LISTAELSES ELSE IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS2:sentencias llavecerrar{:
+                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(sentencias);
+                nuevo.columna = exp1left;
+                nuevo.linea = exp1right;
+                for(int i = 0; i< Expresiones2.size();i++){
+                           nuevo.Expresiones.add(Expresiones2.get(i));
+                        }
+                Expresiones2.clear();
+                Expresiones3.add(nuevo);
+                RESULT = nuevo;
+              :}
+              | ELSE IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS2:sentencias llavecerrar{:
+                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(sentencias);
+                nuevo.columna = exp1left;
+                nuevo.linea = exp1right;
+                Expresiones3.add(nuevo);
+                for(int i = 0; i< Expresiones2.size();i++){
+                           nuevo.Expresiones.add(Expresiones2.get(i));
+                        }
+                Expresiones2.clear();
+                RESULT = nuevo;
+              :};
+
+LISTASENTENCIAS ::= LISTASENTENCIAS:nodsentencias SENTENCIA:nod{:
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                        Expresiones.add(nod);
+                       // Expresiones2.add(nod);
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIA");
+                        nuevo.Hijos.add(nod);
+                        Expresiones.add(nod);
+                       // Expresiones2.add(nod);
+                        RESULT = nuevo;
+                    :};
+
+LISTASENTENCIAS3 ::= LISTASENTENCIAS3:nodsentencias SENTENCIA:nod{:
+                        nodsentencias.Hijos.add(nod);
+                        
+                        Expresiones4.add(nod);
+                       // Expresiones2.add(nod);
+                        RESULT = nodsentencias;
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIA");
+                        nuevo.Hijos.add(nod);
+                        Expresiones4.add(nod);
+                       // Expresiones2.add(nod);
+                        RESULT = nuevo;
+                    :};
+
+LISTASENTENCIAS2 ::= LISTASENTENCIAS2:nodsentencias SENTENCIA:nod{:
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                        //Expresiones.add(nod);
+                        Expresiones2.add(nod);
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIA");
+                        nuevo.Hijos.add(nod);
+                        //Expresiones.add(nod);
+                        Expresiones2.add(nod);
+                        RESULT = nuevo;
+                    :};
 MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINAL{:
                 NodoAbstracto nuevo = new ModificarVector("Vecto");
                 NodoAbstracto nuevoid = new Nodo(valor);

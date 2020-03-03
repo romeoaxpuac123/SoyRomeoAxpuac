@@ -23,6 +23,7 @@ public class Simbolos {
   public static final int puntoycoma = 8;
   public static final int PREGUNTAC = 25;
   public static final int ttrue = 31;
+  public static final int IF = 37;
   public static final int menos = 11;
   public static final int llaveabrir = 3;
   public static final int parentesiscerrar = 5;
@@ -37,6 +38,7 @@ public class Simbolos {
   public static final int tfalse = 32;
   public static final int potencia = 14;
   public static final int id = 28;
+  public static final int ELSE = 38;
   public static final int corchetecerrar = 7;
   public static final int MenorQue = 18;
   public static final int DOSP = 26;
@@ -82,7 +84,9 @@ public class Simbolos {
   "nulo",
   "decimal",
   "imprimir",
-  "cadena"
+  "cadena",
+  "IF",
+  "ELSE"
   };
 }
 

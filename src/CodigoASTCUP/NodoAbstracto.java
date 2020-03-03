@@ -20,6 +20,8 @@ public abstract class NodoAbstracto {
     public String TipoDato;
     public ArrayList<NodoAbstracto> Hijos;
     public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
+    public ArrayList <NodoAbstracto> Expresiones2 = new ArrayList();
+    public ArrayList <NodoAbstracto> Expresiones3 = new ArrayList();
     public int EsVector = 0;
     public NodoAbstracto() {
     }
