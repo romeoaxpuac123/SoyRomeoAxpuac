@@ -46,19 +46,39 @@ public class SentenciaIF extends NodoAbstracto{
                     System.out.println("ejecutemos sentencias");
                     //String ValorExpresion2 = this.Hijos.get(1).Ejecutar(entorno, salida);
                     //String nombre = this.Hijos.get(1).Nombre;
+                    //Entorno Global = new Entorno();
+                    Entorno Temporal = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                     System.out.println("-><-" + this.Expresiones.size() + "<->");
                     for(int i = 0; i < this.Expresiones.size();i++){
-                        this.Expresiones.get(i).Ejecutar(entorno, salida);
+                        this.Expresiones.get(i).Ejecutar(Temporal, salida);
                     }
+                    //System.out.println("vamos a ver que pedo");
+                    //entorno.MostrarVectores();
+                    //System.out.println("libres");
+                    //Temporal.MostrarVectores();
+                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                    //System.out.println("vamos a ver que pedo2");
+                    //entorno.MostrarVectores();
                 }
                 break;
             case "false":
                 System.out.println("PUES NO ENTRO AL IF");
+                
                 if(this.Hijos.get(2)!= null){
                     System.out.println("-><-" + this.Expresiones2.size() + "<->");
+                    Entorno Temporal = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                     for(int i = 0; i < this.Expresiones2.size();i++){
-                        this.Expresiones2.get(i).Ejecutar(entorno, salida);
+                        this.Expresiones2.get(i).Ejecutar(Temporal, salida);
                     }
+                    //System.out.println("vamos a ver que pedo");
+                    //entorno.MostrarVectores();
+                    //System.out.println("libres");
+                    //Temporal.MostrarVectores();
+                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                    //System.out.println("vamos a ver que pedo2");
+                    //entorno.MostrarVectores();
                 }
                 break;
             default:

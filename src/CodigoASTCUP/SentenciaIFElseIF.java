@@ -39,12 +39,15 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                 }else{
                     System.out.println("ejecutemos sentencias");
+                    Entorno Temporal = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                     //String ValorExpresion2 = this.Hijos.get(1).Ejecutar(entorno, salida);
                     //String nombre = this.Hijos.get(1).Nombre;
                     System.out.println("-><-" + this.Expresiones2.size() + "<->");
                     for(int i = 0; i < this.Expresiones2.size();i++){
-                        this.Expresiones2.get(i).Ejecutar(entorno, salida);
+                        this.Expresiones2.get(i).Ejecutar(Temporal, salida);
                     }
+                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
                      return "FIN ELSE";
                 }
                 break;
@@ -56,10 +59,13 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                         
                          switch (Resultado.toLowerCase()) {
                             case "true":
+                                Entorno Temporal = new Entorno();
+                                entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                                 for(int x = 0; x < tamanioSentencia; x++){
-                                    String Resultadox = this.Expresiones.get(i).Expresiones.get(x).Ejecutar(entorno, salida);
+                                    String Resultadox = this.Expresiones.get(i).Expresiones.get(x).Ejecutar(Temporal, salida);
                                     bander = 1;
                                 }
+                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
                                 break;
                             case "false":
                             break;
@@ -77,10 +83,14 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                         //System.out.println("Resultado del if else" + i + "-->" + Resultado + "<>" + tamanioSentencia );
                     }
                    //System.out.println("VAMOS A HACER EL ELSE" + );
+                   Entorno Temporal = new Entorno();
+                       entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                    for(int i = 0 ; i < this.Expresiones3.size();i++){
-                        String Resultadox = this.Expresiones3.get(i).Ejecutar(entorno, salida);
+                       
+                        String Resultadox = this.Expresiones3.get(i).Ejecutar(Temporal, salida);
                         
                    }
+                   entorno = entorno.ModificandoEntornos(Temporal,entorno);
                    return "FIN ELSE";
                 
             default:

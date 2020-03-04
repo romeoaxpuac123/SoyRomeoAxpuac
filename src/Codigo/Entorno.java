@@ -136,6 +136,31 @@ public class Entorno {
             }
           }
     }
+    public Entorno  ModificandoEntornos(Entorno entorno1,Entorno entorno2){
+        Entorno entorno3 = new Entorno();
+        Enumeration e = entorno1.Elementos.keys();
+        Object clave;
+        while( e.hasMoreElements() ) {
+            clave = e.nextElement();
+            String Clave2 = (String) clave;
+            if(entorno2.Elementos.containsKey(Clave2)==true){
+                System.out.println("Este Vector: " + Clave2 + " Si se agrega al Global(3)");
+                entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
+            } 
+          }
+        return entorno3;
+    }
+    public void AgregarElementosANuevoEntorno(Entorno Global, Entorno nuevo){
+        Enumeration e = Global.Elementos.keys();
+        Object clave;
+        while( e.hasMoreElements() ) {
+            clave = e.nextElement();
+            String Clave2 = (String) clave;
+            Simbolo S = new Simbolo("1","1","1");
+            nuevo.Elementos.put(Clave2, Global.Elementos.get(Clave2));
+          }
+    }
+    
     
      public void MostrarVectoresLista(Entorno entorno,JTextArea salida){
        Enumeration e = Elementos.keys();
