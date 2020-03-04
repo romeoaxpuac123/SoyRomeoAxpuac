@@ -26,6 +26,7 @@ public class Continue extends NodoAbstracto{
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return "Continue";
+        this.TipoDato = "#Error";
+        return "continue";
     }
 }

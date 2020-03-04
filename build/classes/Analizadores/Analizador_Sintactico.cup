@@ -16,6 +16,7 @@ parser code
     public ArrayList <NodoAbstracto> Expresiones2 = new ArrayList();
     public ArrayList <NodoAbstracto> Expresiones3 = new ArrayList();
     public ArrayList <NodoAbstracto> Expresiones4 = new ArrayList();
+    public ArrayList <NodoAbstracto> ExpresionesWhile = new ArrayList();
     public String Lado1, Lado2 = "";
     public String Manejor_Error = "";
      public void syntax_error(Symbol s)
@@ -79,7 +80,7 @@ non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
 non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
 non terminal NodoAbstracto EXP,NUMERO,LISTASENTENCIAS2,LISTASENTENCIAS3 ;
 non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES,ELWHILE,ELDOWHILE, ELFOR;
-non terminal NodoAbstracto ELBREAK, ELCONTINUE;
+non terminal NodoAbstracto ELBREAK, ELCONTINUE, LISTASENTENCIASwhile;
 
 precedence right NOT;
 precedence left PREGUNTAC;
@@ -184,11 +185,13 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     ;
 
 ELBREAK::= BREAK FINAL{:
-
+             NodoAbstracto nuevo = new Break("Break");
+             RESULT= nuevo; 
           :};
 
 ELCONTINUE::= CONTINUE FINAL{:
-
+            NodoAbstracto nuevo = new Continue("Break");
+             RESULT= nuevo; 
         :};
 
 ELFOR::= FOR parentesisabrir EXP:exp1 IN EXP:exp2 parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar{:
@@ -219,7 +222,7 @@ ELDOWHILE ::= DO llaveabrir LISTASENTENCIAS:sentencias llavecerrar WHILE parente
             RESULT = nuevo;
 
 :};
-ELWHILE ::= WHILE parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar
+ELWHILE ::= WHILE parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIASwhile:sentencias llavecerrar
     {:
             NodoAbstracto nuevo = new While("WHILE");
             nuevo.Hijos.add(exp1);
@@ -227,12 +230,27 @@ ELWHILE ::= WHILE parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENT
             nuevo.Hijos.add(null);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
-            for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones.add(Expresiones.get(i));
+            for(int i = 0; i< ExpresionesWhile.size();i++){
+                           nuevo.Expresiones.add(ExpresionesWhile.get(i));
                         }
-            Expresiones.clear();
+            ExpresionesWhile.clear();
             RESULT = nuevo;
     :};          
+
+LISTASENTENCIASwhile::= LISTASENTENCIASwhile:nodsentencias SENTENCIA:nod{:
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                         ExpresionesWhile.add(nod);
+                       // Expresiones2.add(nod);
+                    :}
+                    |SENTENCIA:nod
+                    {:
+                        NodoAbstracto nuevo = new Nodo("SENTENCIA");
+                        nuevo.Hijos.add(nod);
+                        ExpresionesWhile.add(nod);
+                       // Expresiones2.add(nod);
+                        RESULT = nuevo;
+                    :};
 
 ELIF ::= IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar
         {:

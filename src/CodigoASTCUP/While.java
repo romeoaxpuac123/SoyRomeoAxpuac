@@ -39,10 +39,19 @@ public class While extends NodoAbstracto{
             }
              Entorno Temporal = new Entorno();
              entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+            System.out.println("asjflkjasdlkfjlasd-"+ this.Expresiones.size() );
             while("true".equals(ValorExpresion.toLowerCase())){
                 
-                for(int i = 0; i < this.Expresiones.size(); i++){
-                    this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                for(int q = 0; q < this.Expresiones.size(); q++){
+                     String Resultado = this.Expresiones.get(q).Ejecutar(Temporal, salida);
+                     if("break".equals(Resultado)){
+                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        return "break";
+                    }
+                    if("continue".equals(Resultado)){
+                       q = this.Expresiones.size()-1;
+                    }
+                    System.out.println("---------->" + Resultado);
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
                 System.out.println("amoramio" + ValorExpresion);

@@ -51,6 +51,15 @@ public class For extends NodoAbstracto{
                 Temporal.ModificarValor(NombreVariable1,ValorVariable2 , TipoVariable2);
                 for(int x = 0; x < this.Expresiones.size(); x++){
                         String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
+                         if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            System.out.println("NombreTemporal" + NombreTemporal);
+                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            return "FIN FOR";
+                        }
+                         if("continue".equals(Resultado)){
+                             x = this.Expresiones.size()-1;
+                        }
                 }
             }else if("id".equals(TipoVariable2)){
                 if(Temporal.ObtenerListaN(NombreVariable2)==0){
@@ -58,6 +67,15 @@ public class For extends NodoAbstracto{
                     Temporal.ModificarValor(NombreVariable1,ValorVariable2 , Temporal.ObtenerTipo(NombreVariable2));
                     for(int x = 0; x < this.Expresiones.size(); x++){
                             String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
+                         if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            System.out.println("NombreTemporal" + NombreTemporal);
+                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            return "FIN FOR";
+                        }
+                         if("continue".equals(Resultado)){
+                             x = this.Expresiones.size()-1;
+                        }
                     }                
                 }else{
                     System.out.println("ES VECTOR LARGO");
@@ -69,6 +87,15 @@ public class For extends NodoAbstracto{
                         Temporal.ModificarValor(NombreVariable1,ValorNuevo,TipoNuevo);
                         for(int x = 0; x < this.Expresiones.size(); x++){
                             String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
+                        if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            System.out.println("NombreTemporal" + NombreTemporal);
+                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            return "FIN FOR";
+                        }
+                         if("continue".equals(Resultado)){
+                             x = this.Expresiones.size()-1;
+                        }
                         } 
                     }
                 }
@@ -79,6 +106,15 @@ public class For extends NodoAbstracto{
                 Temporal.ModificarValor(NombreVariable1,ValorNuevo,TipoNuevo);
                 for(int x = 0; x < this.Expresiones.size(); x++){
                     String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
+                     if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            System.out.println("NombreTemporal" + NombreTemporal);
+                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            return "FIN FOR";
+                        }
+                         if("continue".equals(Resultado)){
+                             x = this.Expresiones.size()-1;
+                        }
                 } 
             }
             

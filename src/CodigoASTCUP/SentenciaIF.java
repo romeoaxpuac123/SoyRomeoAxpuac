@@ -51,7 +51,13 @@ public class SentenciaIF extends NodoAbstracto{
                     entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                     System.out.println("-><-" + this.Expresiones.size() + "<->");
                     for(int i = 0; i < this.Expresiones.size();i++){
-                        this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                        String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                        if("break".equals(Resultado)){
+                        return "break";
+                        }
+                        if("continue".equals(Resultado)){
+                            return "continue";
+                       }
                     }
                     //System.out.println("vamos a ver que pedo");
                     //entorno.MostrarVectores();
@@ -70,7 +76,16 @@ public class SentenciaIF extends NodoAbstracto{
                     Entorno Temporal = new Entorno();
                     entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                     for(int i = 0; i < this.Expresiones2.size();i++){
-                        this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                        String Resultado = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                        System.out.println("RESULTADOOOOOOOOOOOOOO_>" + Resultado);
+                        if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        return "break";
+                        }
+                        if("continue".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            return "continue";
+                       }
                     }
                     //System.out.println("vamos a ver que pedo");
                     //entorno.MostrarVectores();
@@ -80,6 +95,7 @@ public class SentenciaIF extends NodoAbstracto{
                     //System.out.println("vamos a ver que pedo2");
                     //entorno.MostrarVectores();
                 }
+                System.out.println("FIN DEL NO IF");
                 break;
             default:
                 salida.append("#ERROR: La Expresión del IF es incorrecta \n");

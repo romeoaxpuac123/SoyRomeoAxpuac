@@ -46,7 +46,15 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                     //String nombre = this.Hijos.get(1).Nombre;
                     System.out.println("-><-" + this.Expresiones2.size() + "<->");
                     for(int i = 0; i < this.Expresiones2.size();i++){
-                        this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                        String Resultado = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                        if("break".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        return "break";
+                        }
+                        if("continue".equals(Resultado)){
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            return "continue";
+                       }
                     }
                     entorno = entorno.ModificandoEntornos(Temporal,entorno);
                      return "FIN ELSE";
@@ -64,6 +72,14 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                                 entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                                 for(int x = 0; x < tamanioSentencia; x++){
                                     String Resultadox = this.Expresiones.get(i).Expresiones.get(x).Ejecutar(Temporal, salida);
+                                         if("break".equals(Resultadox)){
+                                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                            return "break";
+                                            }
+                                            if("continue".equals(Resultadox)){
+                                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                                return "continue";
+                                           }
                                     bander = 1;
                                 }
                                 entorno = entorno.ModificandoEntornos(Temporal,entorno);
@@ -89,6 +105,14 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                    for(int i = 0 ; i < this.Expresiones3.size();i++){
                        
                         String Resultadox = this.Expresiones3.get(i).Ejecutar(Temporal, salida);
+                        if("break".equals(Resultadox)){
+                           entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            return "break";
+                        }
+                         if("continue".equals(Resultadox)){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                              return "continue";
+                         }
                         
                    }
                    entorno = entorno.ModificandoEntornos(Temporal,entorno);

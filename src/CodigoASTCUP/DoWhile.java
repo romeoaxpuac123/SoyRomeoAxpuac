@@ -42,7 +42,14 @@ public class DoWhile extends NodoAbstracto{
             do{
                 
                 for(int i = 0; i < this.Expresiones.size(); i++){
-                    this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                    String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                    if("break".equals(Resultado)){
+                        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        return "break";
+                    }
+                    if("continue".equals(Resultado)){
+                       i = this.Expresiones.size()-1;
+                    }
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
                 System.out.println("amoramio" + ValorExpresion);
