@@ -37,6 +37,7 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                     salida.append("#ERROR: La Sentencia del IF es incorrecta \n");
                     TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del IF es incorrecta"  );
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    
                 }else{
                     System.out.println("ejecutemos sentencias");
                     Entorno Temporal = new Entorno();

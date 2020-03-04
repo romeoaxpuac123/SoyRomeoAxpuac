@@ -71,14 +71,14 @@ terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo;
 terminal String decimal;
 terminal String imprimir;
-terminal String cadena,IF,ELSE;
+terminal String cadena,IF,ELSE,WHILE;
 
 non terminal NodoAbstracto INICIO;
 non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
 non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
 non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
 non terminal NodoAbstracto EXP,NUMERO,LISTASENTENCIAS2,LISTASENTENCIAS3 ;
-non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES;
+non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES,ELWHILE;
 
 precedence right NOT;
 precedence left PREGUNTAC;
@@ -147,6 +147,9 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     |ELIFELSE:nod{:
                         RESULT = nod;
                     :}
+                    |ELWHILE:nod{:
+                        RESULT = nod;
+                    :}
                     | error puntoycoma {:
                          NodoAbstracto nuevo = new ERRORES("Error");
                          NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
@@ -169,7 +172,20 @@ SENTENCIA::=        DECLARARASIGNAR:nod
 
 
 
-              
+ELWHILE ::= WHILE parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar
+    {:
+            NodoAbstracto nuevo = new While("IF");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(sentencias);
+            nuevo.Hijos.add(null);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+            Expresiones.clear();
+            RESULT = nuevo;
+    :};          
 
 ELIF ::= IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar
         {:

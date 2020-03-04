@@ -39,6 +39,7 @@ public class Simbolos {
   public static final int potencia = 14;
   public static final int id = 28;
   public static final int ELSE = 38;
+  public static final int WHILE = 39;
   public static final int corchetecerrar = 7;
   public static final int MenorQue = 18;
   public static final int DOSP = 26;
@@ -86,7 +87,8 @@ public class Simbolos {
   "imprimir",
   "cadena",
   "IF",
-  "ELSE"
+  "ELSE",
+  "WHILE"
   };
 }
 
