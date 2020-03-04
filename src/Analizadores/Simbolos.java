@@ -47,6 +47,7 @@ public class Simbolos {
   public static final int div = 13;
   public static final int modulo = 15;
   public static final int decimal = 34;
+  public static final int DO = 40;
   public static final int cadena = 36;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -88,7 +89,8 @@ public class Simbolos {
   "cadena",
   "IF",
   "ELSE",
-  "WHILE"
+  "WHILE",
+  "DO"
   };
 }
 

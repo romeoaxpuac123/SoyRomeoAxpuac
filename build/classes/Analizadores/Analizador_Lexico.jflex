@@ -47,6 +47,8 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 
 <YYINITIAL> "while"      {   System.out.println("--->"+yytext()+" - WHILE");
                             return new Symbol(Simbolos.WHILE, yycolumn, yyline, yytext());}
+<YYINITIAL> "do"      {   System.out.println("--->"+yytext()+" - DO");
+                            return new Symbol(Simbolos.DO, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "print"     {   System.out.println("--->"+yytext()+" - Imprimir");
                             return new Symbol(Simbolos.imprimir, yycolumn, yyline, yytext());}
