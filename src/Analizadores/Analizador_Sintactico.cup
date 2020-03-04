@@ -71,14 +71,15 @@ terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo;
 terminal String decimal;
 terminal String imprimir;
-terminal String cadena,IF,ELSE,WHILE,DO;
+terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE;
 
 non terminal NodoAbstracto INICIO;
 non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
 non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
 non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
 non terminal NodoAbstracto EXP,NUMERO,LISTASENTENCIAS2,LISTASENTENCIAS3 ;
-non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES,ELWHILE,ELDOWHILE;
+non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES,ELWHILE,ELDOWHILE, ELFOR;
+non terminal NodoAbstracto ELBREAK, ELCONTINUE;
 
 precedence right NOT;
 precedence left PREGUNTAC;
@@ -153,6 +154,15 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     |ELDOWHILE:nod {:
                         RESULT = nod;
                     :}
+                    |ELFOR:nod{:
+                        RESULT = nod;
+                    :} 
+                    |ELBREAK:nod{:
+                        RESULT = nod;
+                    :}
+                    |ELCONTINUE:nod{:
+                        RESULT = nod;
+                    :}
                     | error puntoycoma {:
                          NodoAbstracto nuevo = new ERRORES("Error");
                          NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
@@ -173,9 +183,30 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                      :} 
                     ;
 
+ELBREAK::= BREAK FINAL{:
+
+          :};
+
+ELCONTINUE::= CONTINUE FINAL{:
+
+        :};
+
+ELFOR::= FOR parentesisabrir EXP:exp1 IN EXP:exp2 parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar{:
+            NodoAbstracto nuevo = new For("DoWhile");
+            nuevo.Hijos.add(exp1);
+            nuevo.Hijos.add(exp2);
+            nuevo.columna = exp1left;
+            nuevo.linea = exp1right;
+            for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+            Expresiones.clear();
+            RESULT = nuevo;
+    
+         :};
 
 ELDOWHILE ::= DO llaveabrir LISTASENTENCIAS:sentencias llavecerrar WHILE parentesisabrir EXP:exp1 parentesiscerrar FINAL{:
-     NodoAbstracto nuevo = new DoWhile("DoWhile");
+           NodoAbstracto nuevo = new DoWhile("DoWhile");
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(sentencias);
             nuevo.Hijos.add(null);

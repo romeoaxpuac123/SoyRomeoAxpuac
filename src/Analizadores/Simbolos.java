@@ -10,13 +10,16 @@ public class Simbolos {
   /* terminals */
   public static final int FuncionC = 27;
   public static final int imprimir = 35;
+  public static final int CONTINUE = 44;
   public static final int corcheteabrir = 6;
   public static final int nulo = 33;
   public static final int coma = 29;
   public static final int igual = 9;
   public static final int MayorIgualQue = 21;
+  public static final int FOR = 41;
   public static final int NOT = 24;
   public static final int AND = 22;
+  public static final int IN = 42;
   public static final int parentesisabrir = 4;
   public static final int OR = 23;
   public static final int igualdad = 16;
@@ -34,6 +37,7 @@ public class Simbolos {
   public static final int MenorIgualQue = 20;
   public static final int entero = 30;
   public static final int llavecerrar = 2;
+  public static final int BREAK = 43;
   public static final int por = 12;
   public static final int tfalse = 32;
   public static final int potencia = 14;
@@ -90,7 +94,11 @@ public class Simbolos {
   "IF",
   "ELSE",
   "WHILE",
-  "DO"
+  "DO",
+  "FOR",
+  "IN",
+  "BREAK",
+  "CONTINUE"
   };
 }
 
