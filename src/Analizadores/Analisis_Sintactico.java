@@ -644,8 +644,10 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
        // TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
      
     }
-
-
+    
+    public void AgregarElmentoALista(NodoAbstracto Nodo, NodoAbstracto Elemento){
+        Nodo.Expresiones.add(Elemento);
+    }
     public void semantic(String msg, Object obj) {}
 
 
@@ -982,10 +984,14 @@ class CUP$Analisis_Sintactico$actions {
 		int exp2left = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).left;
 		int exp2right = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).right;
 		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).value;
 		
             NodoAbstracto nuevo = new For("DoWhile");
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(exp2);
+            nuevo.Hijos.add(sentencias);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
             for(int i = 0; i< Expresiones.size();i++){
@@ -1173,14 +1179,6 @@ class CUP$Analisis_Sintactico$actions {
             nuevo.Hijos.add(sentencias2);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
-            for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones2.add(Expresiones.get(i));
-           }
-            Expresiones.clear();
-            for(int i = 0; i< Expresiones3.size();i++){
-                           nuevo.Expresiones.add(Expresiones3.get(i));
-                        }
-            Expresiones3.clear();
             RESULT = nuevo;
         
               CUP$Analisis_Sintactico$result = parser.getSymbolFactory().newSymbol("ELIF",16, ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.peek()), RESULT);
@@ -1200,31 +1198,18 @@ class CUP$Analisis_Sintactico$actions {
 		int sentencias2left = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).left;
 		int sentencias2right = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).right;
 		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).value;
+		int sentaleft = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).left;
+		int sentaright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).right;
+		NodoAbstracto senta = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).value;
 		
             NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(sentencias);
             nuevo.Hijos.add(sentencias2);
+            nuevo.Hijos.add(senta);
             nuevo.columna = exp1left;
-            nuevo.linea = exp1right;
-            for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones2.add(Expresiones.get(i));
-           }
-            Expresiones.clear();
-            for(int i = 0; i< Expresiones3.size();i++){
-                           nuevo.Expresiones.add(Expresiones3.get(i));
-                        }
-            Expresiones3.clear();
-            for(int i = 0; i< Expresiones4.size();i++){
-                           nuevo.Expresiones3.add(Expresiones4.get(i));
-                        }
-            Expresiones4.clear();
-
-            //agregar parte del else
-            
+            nuevo.linea = exp1right;            
             RESULT = nuevo;
-            
-            
         
               CUP$Analisis_Sintactico$result = parser.getSymbolFactory().newSymbol("ELIF",16, ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-11)), ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.peek()), RESULT);
             }
@@ -1234,6 +1219,9 @@ class CUP$Analisis_Sintactico$actions {
           case 29: // LISTAELSES ::= LISTAELSES ELSE IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS2 llavecerrar 
             {
               NodoAbstracto RESULT =null;
+		int noditoleft = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-8)).left;
+		int noditoright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-8)).right;
+		NodoAbstracto nodito = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-8)).value;
 		int exp1left = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).left;
 		int exp1right = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).right;
 		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-4)).value;
@@ -1241,17 +1229,11 @@ class CUP$Analisis_Sintactico$actions {
 		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).right;
 		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).value;
 		
-                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+                NodoAbstracto nuevo = new Nodo("ELSEIF1");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
-                nuevo.columna = exp1left;
-                nuevo.linea = exp1right;
-                for(int i = 0; i< Expresiones2.size();i++){
-                           nuevo.Expresiones.add(Expresiones2.get(i));
-                        }
-                Expresiones2.clear();
-                Expresiones3.add(nuevo);
-                RESULT = nuevo;
+                nodito.Hijos.add(nuevo);
+                RESULT = nodito;
               
               CUP$Analisis_Sintactico$result = parser.getSymbolFactory().newSymbol("LISTAELSES",19, ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.peek()), RESULT);
             }
@@ -1268,16 +1250,9 @@ class CUP$Analisis_Sintactico$actions {
 		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).right;
 		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-1)).value;
 		
-                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+                NodoAbstracto nuevo = new Nodo("ELSEIF2");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
-                nuevo.columna = exp1left;
-                nuevo.linea = exp1right;
-                Expresiones3.add(nuevo);
-                for(int i = 0; i< Expresiones2.size();i++){
-                           nuevo.Expresiones.add(Expresiones2.get(i));
-                        }
-                Expresiones2.clear();
                 RESULT = nuevo;
               
               CUP$Analisis_Sintactico$result = parser.getSymbolFactory().newSymbol("LISTAELSES",19, ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.elementAt(CUP$Analisis_Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.peek()), RESULT);

@@ -27,6 +27,12 @@ public class While extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
+            System.out.println("Total de sentencias" + this.Hijos.get(1).Hijos.size());
+            this.Expresiones.clear();
+            for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
+                this.Expresiones.add(this.Hijos.get(1).Hijos.get(i));
+            }
+            
             System.out.println("SE ESTA EJECUTANDO WILE");
             System.out.println("Total de WHILE: " + this.Expresiones.size());
             String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
@@ -57,6 +63,7 @@ public class While extends NodoAbstracto{
                 System.out.println("amoramio" + ValorExpresion);
             }
             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+            
             return "FIN WHILE";
     }
     

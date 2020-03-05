@@ -27,10 +27,32 @@ public class SentenciaIFElseIF extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
-        System.out.println("EJECUTANDO IF ELSE IF");
-        System.out.println("Total de else if: " + this.Expresiones.size());
+        
+        //la parte de if ya esta
+        this.Expresiones2.clear();
+        for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
+             this.Expresiones2.add(this.Hijos.get(1).Hijos.get(i));
+        }
+        // for(int i = 0;i< this.Expresiones.size();i++){
+        //    String resultado = this.Expresiones.get(i).Ejecutar(entorno, salida);
+       // }
+        // System.out.println("lista1->" + this.Expresiones2.size());
+         
+         
+         //la parte del else if
+         
+         //System.out.println("nombre nodo2->" + this.Hijos.get(2).Hijos.size());
+         this.Expresiones.add(this.Hijos.get(2));
+         //this.Expresiones.get(0).Hijos.add(this.Hijos.get(2).Hijos.get(1));
+         //System.out.println("lista2->" + this.Expresiones.size());
+         for(int i = 2; i<this.Hijos.get(2).Hijos.size();i++){
+             //System.out.println("iiii" + i);
+            this.Expresiones.add(this.Hijos.get(2).Hijos.get(i));
+         }
+         
+         //System.out.println("lista2->" + this.Expresiones.size());
+       
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
-        System.out.println("->"+ ValorExpresion);
         switch (ValorExpresion.toLowerCase()) {
             case "true":
                     if(this.Expresiones2.size() == 0){
@@ -61,63 +83,59 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                 }
                 break;
             case "false":
-                   int bander = 0;
-                   for(int i = 0 ; i < this.Expresiones.size();i++){
-                        String Resultado = this.Expresiones.get(i).Hijos.get(0).Ejecutar(entorno, salida);
-                        int tamanioSentencia = this.Expresiones.get(i).Expresiones.size();
-                        
-                         switch (Resultado.toLowerCase()) {
-                            case "true":
-                                Entorno Temporal = new Entorno();
-                                entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
-                                for(int x = 0; x < tamanioSentencia; x++){
-                                    String Resultadox = this.Expresiones.get(i).Expresiones.get(x).Ejecutar(Temporal, salida);
-                                         if("break".equals(Resultadox)){
-                                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                                            return "break";
-                                            }
-                                            if("continue".equals(Resultadox)){
-                                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                                                return "continue";
-                                           }
-                                    bander = 1;
-                                }
-                                entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                                break;
-                            case "false":
-                            break;
-                            default:
-                                salida.append("#ERROR: La Expresión del IF es incorrecta \n");
-                                TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "La Expresión del IF es incorrecta"  );
-                                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-                                System.out.println("ERROR");
-                                break;
-                         }
-                        if(bander == 1){
+                 System.out.println("Entro al else if");
+                 Entorno Temporal = new Entorno();
+                 int bandera = 0;
+                 entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+                for(int i = 0 ; i< this.Expresiones.size();i++){
+                    String Resultadox = this.Expresiones.get(i).Hijos.get(0).Ejecutar(Temporal, salida);
+                    System.out.println("sadfjaslkdjfklasd->" + Resultadox );
+                     switch (Resultadox.toLowerCase()) {
+                        case "true":
+                            for(int xx = 0; xx < this.Expresiones.get(i).Hijos.get(1).Hijos.size() ; xx ++){
+                                String VamosAVer = this.Expresiones.get(i).Hijos.get(1).Hijos.get(xx).Ejecutar(Temporal, salida);
+                                         if("break".equals(VamosAVer)){
+                                        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                        return "break";
+                                        }
+                                        if("continue".equals(VamosAVer)){
+                                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                            return "continue";
+                                       }
+                            
+                            }
+                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             return "FIN ELSE";
+                            
+                        default:
+                    } 
+                }
+                if(bandera == 0){
+                    //ejecutamos el else :D
+                    if(this.Hijos.get(3)!=null){
+                        this.Expresiones2.clear();
+                        for(int i = 0; i < this.Hijos.get(3).Hijos.size(); i++){
+                             this.Expresiones2.add(this.Hijos.get(3).Hijos.get(i));
                         }
-                                               
-                        //System.out.println("Resultado del if else" + i + "-->" + Resultado + "<>" + tamanioSentencia );
+                        //Entorno Temporal = new Entorno();
+                        entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+                        for(int i = 0; i < this.Expresiones2.size(); i ++){
+                            String Resuladito = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                             if("break".equals(Resuladito)){
+                                        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                        return "break";
+                             }
+                             if("continue".equals(Resuladito)){
+                                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                                            return "continue";
+                              }
+                        }
+                        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        return "FIN ELSE";
                     }
-                   //System.out.println("VAMOS A HACER EL ELSE" + );
-                   Entorno Temporal = new Entorno();
-                       entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
-                   for(int i = 0 ; i < this.Expresiones3.size();i++){
-                       
-                        String Resultadox = this.Expresiones3.get(i).Ejecutar(Temporal, salida);
-                        if("break".equals(Resultadox)){
-                           entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                            return "break";
-                        }
-                         if("continue".equals(Resultadox)){
-                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                              return "continue";
-                         }
-                        
-                   }
-                   entorno = entorno.ModificandoEntornos(Temporal,entorno);
-                   return "FIN ELSE";
-                
+                    System.out.println("ACA IRIA EL ELSE NADA MAS");
+                }
+                break;
             default:
                 salida.append("#ERROR: La Expresión del IF es incorrecta \n");
                 TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "La Expresión del IF es incorrecta"  );

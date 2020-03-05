@@ -16,10 +16,10 @@ public class BorradorProyecto1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       
         IDE Formulario = new IDE();
         Formulario.setVisible(true);
-        Formulario.show();
-        
+        Formulario.show();       
     }
     
 }

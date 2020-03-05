@@ -27,6 +27,12 @@ public class For extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
+        
+        this.Expresiones.clear();
+            for(int i = 0; i < this.Hijos.get(2).Hijos.size(); i++){
+                this.Expresiones.add(this.Hijos.get(2).Hijos.get(i));
+            }
+            
        String NombreTemporal = this.Hijos.get(0).Nombre;
        String ExpresionTemporal =this.Hijos.get(0).Ejecutar(entorno, salida);
        String TipoTemporal = entorno.ObtenerTipo(this.Hijos.get(0).Nombre); 

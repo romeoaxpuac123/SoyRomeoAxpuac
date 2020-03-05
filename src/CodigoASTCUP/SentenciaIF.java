@@ -27,6 +27,19 @@ public class SentenciaIF extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
+        
+        this.Expresiones.clear();
+            for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
+                this.Expresiones.add(this.Hijos.get(1).Hijos.get(i));
+            }
+        if(this.Hijos.get(2)!= null){
+            this.Expresiones2.clear();
+            for(int i = 0; i < this.Hijos.get(2).Hijos.size(); i++){
+                this.Expresiones2.add(this.Hijos.get(2).Hijos.get(i));
+            }
+        }
+        
+        
         System.out.println("Se esta ejecutando el if");
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
         System.out.println("->"+ ValorExpresion);

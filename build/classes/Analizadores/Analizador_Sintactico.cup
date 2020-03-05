@@ -53,8 +53,10 @@ parser code
        // TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
      
     }
-
-
+    
+    public void AgregarElmentoALista(NodoAbstracto Nodo, NodoAbstracto Elemento){
+        Nodo.Expresiones.add(Elemento);
+    }
     public void semantic(String msg, Object obj) {}
 :}
 
@@ -194,10 +196,11 @@ ELCONTINUE::= CONTINUE FINAL{:
              RESULT= nuevo; 
         :};
 
-ELFOR::= FOR parentesisabrir EXP:exp1 IN EXP:exp2 parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar{:
+ELFOR::= FOR parentesisabrir EXP:exp1 IN EXP:exp2 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar{:
             NodoAbstracto nuevo = new For("DoWhile");
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(exp2);
+            nuevo.Hijos.add(sentencias);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
             for(int i = 0; i< Expresiones.size();i++){
@@ -291,69 +294,32 @@ ELIF ::= IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS
             nuevo.Hijos.add(sentencias2);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
-            for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones2.add(Expresiones.get(i));
-           }
-            Expresiones.clear();
-            for(int i = 0; i< Expresiones3.size();i++){
-                           nuevo.Expresiones.add(Expresiones3.get(i));
-                        }
-            Expresiones3.clear();
             RESULT = nuevo;
         :}
-        |IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar LISTAELSES:sentencias2 ELSE llaveabrir LISTASENTENCIAS3 llavecerrar
+        |IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS:sentencias llavecerrar LISTAELSES:sentencias2 ELSE llaveabrir LISTASENTENCIAS3:senta llavecerrar
         {:
             NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(sentencias);
             nuevo.Hijos.add(sentencias2);
+            nuevo.Hijos.add(senta);
             nuevo.columna = exp1left;
-            nuevo.linea = exp1right;
-            for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones2.add(Expresiones.get(i));
-           }
-            Expresiones.clear();
-            for(int i = 0; i< Expresiones3.size();i++){
-                           nuevo.Expresiones.add(Expresiones3.get(i));
-                        }
-            Expresiones3.clear();
-            for(int i = 0; i< Expresiones4.size();i++){
-                           nuevo.Expresiones3.add(Expresiones4.get(i));
-                        }
-            Expresiones4.clear();
-
-            //agregar parte del else
-            
+            nuevo.linea = exp1right;            
             RESULT = nuevo;
-            
-            
         :};
 
 
-LISTAELSES::= LISTAELSES ELSE IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS2:sentencias llavecerrar{:
-                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+LISTAELSES::= LISTAELSES:nodito ELSE IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS2:sentencias llavecerrar{:
+                NodoAbstracto nuevo = new Nodo("ELSEIF1");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
-                nuevo.columna = exp1left;
-                nuevo.linea = exp1right;
-                for(int i = 0; i< Expresiones2.size();i++){
-                           nuevo.Expresiones.add(Expresiones2.get(i));
-                        }
-                Expresiones2.clear();
-                Expresiones3.add(nuevo);
-                RESULT = nuevo;
+                nodito.Hijos.add(nuevo);
+                RESULT = nodito;
               :}
               | ELSE IF parentesisabrir EXP:exp1 parentesiscerrar llaveabrir LISTASENTENCIAS2:sentencias llavecerrar{:
-                NodoAbstracto nuevo = new SentenciaIFElseIF("IFelseIF");
+                NodoAbstracto nuevo = new Nodo("ELSEIF2");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
-                nuevo.columna = exp1left;
-                nuevo.linea = exp1right;
-                Expresiones3.add(nuevo);
-                for(int i = 0; i< Expresiones2.size();i++){
-                           nuevo.Expresiones.add(Expresiones2.get(i));
-                        }
-                Expresiones2.clear();
                 RESULT = nuevo;
               :};
 
