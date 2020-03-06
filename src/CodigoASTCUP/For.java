@@ -60,7 +60,7 @@ public class For extends NodoAbstracto{
                          if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
-                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -76,7 +76,7 @@ public class For extends NodoAbstracto{
                          if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
-                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -96,7 +96,7 @@ public class For extends NodoAbstracto{
                         if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
-                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -115,7 +115,7 @@ public class For extends NodoAbstracto{
                      if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
-                            entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -133,7 +133,7 @@ public class For extends NodoAbstracto{
                
         entorno = entorno.ModificandoEntornos(Temporal,entorno);
         System.out.println("NombreTemporal" + NombreTemporal);
-        entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+        //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
        /*
        String Expresion = this.Hijos.get(0).Ejecutar(entorno, salida);
        String TipoExpresion = this.Hijos.get(0).TipoDato;

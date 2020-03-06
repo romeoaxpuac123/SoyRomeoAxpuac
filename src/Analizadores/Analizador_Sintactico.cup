@@ -74,7 +74,7 @@ terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo;
 terminal String decimal;
 terminal String imprimir;
-terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE;
+terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF;
 
 non terminal NodoAbstracto INICIO;
 non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
@@ -82,7 +82,7 @@ non terminal NodoAbstracto DECLARAR,ASIGNAR,DECLARARASIGNAR,IMPRIM,FINAL;
 non terminal NodoAbstracto OPERACIONES,DECLARARVECTORC, LISTAEXPRESIONES, MODVECTOR;
 non terminal NodoAbstracto EXP,NUMERO,LISTASENTENCIAS2,LISTASENTENCIAS3 ;
 non terminal NodoAbstracto ELIF,LISTASENTENCIAS,ELIFELSE,LISTAELSES,ELWHILE,ELDOWHILE, ELFOR;
-non terminal NodoAbstracto ELBREAK, ELCONTINUE, LISTASENTENCIASwhile;
+non terminal NodoAbstracto ELBREAK, ELCONTINUE, LISTASENTENCIASwhile, ELSWITCH,EXPRESIONESSWITCH;
 
 precedence right NOT;
 precedence left PREGUNTAC;
@@ -166,25 +166,57 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     |ELCONTINUE:nod{:
                         RESULT = nod;
                     :}
+                    |ELSWITCH:nod{:
+                        RESULT = nod;
+                    :}
                     | error puntoycoma {:
                          NodoAbstracto nuevo = new ERRORES("Error");
                          NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
                          nuevo.Cadena   = "#Error Semantico Encontrado ver reporte";
                          RESULT= nuevo; 
                      :} 
-                     | error  SENTENCIA{:
-                         NodoAbstracto nuevo = new ERRORES("Error");
-                         NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
-                         nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
-                         RESULT= nuevo; 
-                     :} 
-                      | error  llavecerrar{:
-                         NodoAbstracto nuevo = new ERRORES("Error");
-                         NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
-                         nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
-                         RESULT= nuevo; 
-                     :} 
+                     //| error  SENTENCIA{:
+                     //    NodoAbstracto nuevo = new ERRORES("Error");
+                     //    NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
+                     //    nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
+                     //    RESULT= nuevo; 
+                     //:} 
+                     // | error  llavecerrar{:
+                     //    NodoAbstracto nuevo = new ERRORES("Error");
+                     //    NodoAbstracto nuevoid = new Nodo("#Error En alguna mulada XD");
+                     //    nuevo.Cadena  = "#Error Semantico Encontrado ver reporte";
+                     //    RESULT= nuevo; 
+                    // :} 
                     ;
+
+ELSWITCH::= SWITCH parentesisabrir EXP:exp1 parentesiscerrar llaveabrir EXPRESIONESSWITCH:sentencias llavecerrar{:
+                NodoAbstracto nuevo = new Switch("SWITCH");
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(sentencias);
+                RESULT = nuevo;
+            :}
+            |SWITCH parentesisabrir EXP:exp1 parentesiscerrar llaveabrir EXPRESIONESSWITCH:sentencias DEF DOSP SENTENCIAS:sentdef llavecerrar{:
+                NodoAbstracto nuevo = new Switch("SWITCH");
+                nuevo.Hijos.add(exp1);
+                nuevo.Hijos.add(sentencias);
+                nuevo.Hijos.add(sentdef);
+                RESULT = nuevo;
+            
+            :};
+
+EXPRESIONESSWITCH::= EXPRESIONESSWITCH:nodsentencias CASE  EXP:exp1 DOSP SENTENCIAS:sentencias{:
+                        NodoAbstracto nuevo = new Nodo("CASE");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(sentencias);
+                        nodsentencias.Hijos.add(nuevo);
+                        RESULT = nodsentencias;
+                    :}          
+                    | CASE  EXP:exp1 DOSP SENTENCIAS:sentencias{:
+                        NodoAbstracto nuevo = new Nodo("CASE");
+                        nuevo.Hijos.add(exp1);
+                        nuevo.Hijos.add(sentencias);
+                        RESULT = nuevo;
+                    :} ;
 
 ELBREAK::= BREAK FINAL{:
              NodoAbstracto nuevo = new Break("Break");
@@ -440,7 +472,7 @@ DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
                     :};
 
 FINAL::= puntoycoma | ;
-IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar puntoycoma
+IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar FINAL
                     {:
                         NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
                         nuevo.Hijos.add(exp1);

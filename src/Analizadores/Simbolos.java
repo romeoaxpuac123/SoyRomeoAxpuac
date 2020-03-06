@@ -10,6 +10,7 @@ public class Simbolos {
   /* terminals */
   public static final int FuncionC = 27;
   public static final int imprimir = 35;
+  public static final int CASE = 46;
   public static final int CONTINUE = 44;
   public static final int corcheteabrir = 6;
   public static final int nulo = 33;
@@ -39,6 +40,7 @@ public class Simbolos {
   public static final int llavecerrar = 2;
   public static final int BREAK = 43;
   public static final int por = 12;
+  public static final int SWITCH = 45;
   public static final int tfalse = 32;
   public static final int potencia = 14;
   public static final int id = 28;
@@ -48,6 +50,7 @@ public class Simbolos {
   public static final int MenorQue = 18;
   public static final int DOSP = 26;
   public static final int Noigualdad = 17;
+  public static final int DEF = 47;
   public static final int div = 13;
   public static final int modulo = 15;
   public static final int decimal = 34;
@@ -98,7 +101,10 @@ public class Simbolos {
   "FOR",
   "IN",
   "BREAK",
-  "CONTINUE"
+  "CONTINUE",
+  "SWITCH",
+  "CASE",
+  "DEF"
   };
 }
 

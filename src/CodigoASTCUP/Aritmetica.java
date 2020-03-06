@@ -342,6 +342,8 @@ public class Aritmetica extends NodoAbstracto{
                     System.out.println("VectorAritmetica:" + Vector1 + "Tipo->" + TipoVector + "Valor->" 
                                         + "---VectorAritmetica:" + Vector2 + "Tipo->" + TipoVector2 + "Valor->");
                   if(entorno.ObtenerListaN(Vector1) ==0 && entorno.ObtenerListaN(Vector2) !=0){
+                      return "#Error";
+                      /*
                       //Vector1 tiene solo un lado y vector 2 muchos lados
                     ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
@@ -461,9 +463,11 @@ public class Aritmetica extends NodoAbstracto{
                     }
                     entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
                     return "RomeoAxpuac";
-                   
+                   */
                   }else if(entorno.ObtenerListaN(Vector1) !=0 && entorno.ObtenerListaN(Vector2) ==0){
                       //Vector1 tiene muchos lados y vector dos solo 1
+                      return "#Error";
+                      /*
                     ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
                     boolean ExisteVectorx =   entorno.ExisteVector("VectorDragonBallBeatles"); 
@@ -582,6 +586,7 @@ public class Aritmetica extends NodoAbstracto{
                     }
                     entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
                     return "RomeoAxpuac";
+                    */
                   }else{
                       //NINGUNO DE LOS DOS VECTORES ES DE TAMAÑO 1 :(
                         ArrayList <NodoAbstracto> ExpresionesRomeo1 = new ArrayList();
@@ -770,6 +775,8 @@ public class Aritmetica extends NodoAbstracto{
                                 return "RomeoAxpuac";
                                 }else if(TamanioVector1 > TamanioVector2){
                                     //vector1 mayor
+                                    return "#Error";
+                                    /*
                                     System.out.println("VECTOR1 ES MAYORx");
                                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
                                     System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD" + TamanioVector1);
@@ -825,9 +832,11 @@ public class Aritmetica extends NodoAbstracto{
                                         this.Nombre = "VectorDragonBallBeatles";
                                         entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
                                         return "RomeoAxpuac";
-                                    
+                                    */
                                 }else if(TamanioVector1 < TamanioVector2){
                                     //vector 2 es mayor
+                                    return "#Error";
+                                    /*
                                     System.out.println("VECTOR2 ES MAYOR");
                                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
                                     System.out.println("LOS VECTORES SON IGUALES PARA OPERAR XD" + TamanioVector1);
@@ -883,7 +892,7 @@ public class Aritmetica extends NodoAbstracto{
                                         this.Nombre = "VectorDragonBallBeatles";
                                         entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
                                         return "RomeoAxpuac";
-                                    
+                                    */
                                 }
                                 
                                 

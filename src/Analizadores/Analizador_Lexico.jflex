@@ -63,6 +63,16 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "continue"      {   System.out.println("--->"+yytext()+" - CONTINUE");
                             return new Symbol(Simbolos.CONTINUE, yycolumn, yyline, yytext());}
 
+<YYINITIAL> "switch"      {   System.out.println("--->"+yytext()+" - SWITCH");
+                            return new Symbol(Simbolos.SWITCH, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "case"      {   System.out.println("--->"+yytext()+" - CASE");
+                            return new Symbol(Simbolos.CASE, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "default"      {   System.out.println("--->"+yytext()+" - DEF");
+                            return new Symbol(Simbolos.DEF, yycolumn, yyline, yytext());}
+
+
 
 <YYINITIAL> "print"     {   System.out.println("--->"+yytext()+" - Imprimir");
                             return new Symbol(Simbolos.imprimir, yycolumn, yyline, yytext());}
