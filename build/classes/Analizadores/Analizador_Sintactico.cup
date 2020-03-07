@@ -135,16 +135,16 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                         //System.out.println("ID LINEA : SENTENCIA IMPRIMIR" + nodleft + " Columna " + nodright);
                         RESULT=nod;
                     :}
-                    |DECLARARVECTORC:nod
-                    {:
-                        Manejor_Error = "SENTENCIA INCORRECTA";
-                        RESULT=nod;
-                    :}
-                    | MODVECTOR:nod
-                    {:
-                      Manejor_Error = "SENTENCIA INCORRECTA";
-                      RESULT=nod;
-                    :}
+                    //|DECLARARVECTORC:nod
+                    //{:
+                    //    Manejor_Error = "SENTENCIA INCORRECTA";
+                     //   RESULT=nod;
+                    //:}
+                    //| MODVECTOR:nod
+                    //{:
+                    //  Manejor_Error = "SENTENCIA INCORRECTA";
+                    //  RESULT=nod;
+                    //:}
                     |ELIF:nod{:
                         RESULT = nod;
                     :}
@@ -445,17 +445,22 @@ DECLARARVECTORC::= id:valor igual FuncionC  LISTAEXPRESIONES:Lista parentesiscer
 
 LISTAEXPRESIONES::= LISTAEXPRESIONES:nodsentencias coma EXP:nod
                     {:
-                        NodoAbstracto nuevo = new Nodo("LISTAEXPRESIONES");
+                        NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nodsentencias);
                         nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
+                        //nodsentencias.Hijos.add(nod);
+                        //RESULT = nodsentencias;
                         RESULT = nuevo;
                     :}
                     |EXP:nod{:
-                        NodoAbstracto nuevo = new Nodo("LISTAEXPRESIONES");
+                        NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
                         RESULT = nuevo;
+                        //NodoAbstracto nuevo = new Nodo("EXP");
+                        //nuevo.Hijos.add(nod);
+                        //RESULT = nuevo;
                     :};
 
 DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
@@ -464,10 +469,12 @@ DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
                         NodoAbstracto nuevoid = new Nodo(valor);
                         nuevo.Hijos.add(nuevoid);
                         nuevo.Hijos.add(exp1);
-                        Manejor_Error = "Error al crear vector" + valor;
-                        //System.out.println("ID LINEA : SENTENCIA IMPRIMIR" + nodleft + " Columna " + nodright);
                         nuevo.columna = exp1left;
                         nuevo.linea = exp1right;
+                         for(int i = 0; i< Expresiones.size();i++){
+                           nuevo.Expresiones.add(Expresiones.get(i));
+                        }
+                        Expresiones.clear();
                         RESULT = nuevo;
                     :};
 
@@ -485,7 +492,16 @@ IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar FINAL
 
 
 
-EXP::=              EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
+EXP::=          FuncionC:valo4 LISTAEXPRESIONES:listaValores parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("FuncionC");
+                        NodoAbstracto nuevo2 = new Nodo("c(");
+                        nuevo.Hijos.add(nuevo2);
+                        nuevo.Hijos.add(listaValores);
+                        nuevo.TipoDato = "FuncionC";
+                        RESULT = nuevo;
+
+                :}    
+                |EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevo = new Ternario("EXP");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(exp2);  
