@@ -1571,6 +1571,7 @@ class CUP$Analisis_Sintactico$actions {
                         nuevo.Hijos.add(nodsentencias);
                         nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
+                        Expresiones2.add(nod);
                         //nodsentencias.Hijos.add(nod);
                         //RESULT = nodsentencias;
                         RESULT = nuevo;
@@ -1590,6 +1591,7 @@ class CUP$Analisis_Sintactico$actions {
                         NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
+                        Expresiones2.add(nod);
                         RESULT = nuevo;
                         //NodoAbstracto nuevo = new Nodo("EXP");
                         //nuevo.Hijos.add(nod);
@@ -1679,6 +1681,10 @@ class CUP$Analisis_Sintactico$actions {
                         nuevo.Hijos.add(nuevo2);
                         nuevo.Hijos.add(listaValores);
                         nuevo.TipoDato = "FuncionC";
+                        for(int i = 0; i< Expresiones2.size();i++){
+                           nuevo.Expresiones2.add(Expresiones2.get(i));
+                        }
+                        Expresiones2.clear();
                         RESULT = nuevo;
 
                 

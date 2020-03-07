@@ -29,7 +29,13 @@ public class Imprimir extends NodoAbstracto{
     public String Ejecutar(Entorno entorno,JTextArea salida) {
         
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
-        System.err.println("Se esta ejecutnado imprimir \n" + val);
+        System.out.println("----------->Se esta ejecutnado imprimir \n" + val);
+        if("RomeoAxpuac".equals(val)){
+            //String hola = "[";
+            this.Expresiones = entorno.ObtenerLista("VectorDragonBallBeatles");
+            System.out.println("asdf->" + entorno.ObtenerLista("VectorDragonBallBeatles").size());
+            
+        }
         if (!val.equalsIgnoreCase("#Error")){
             salida.append(val+"\n");
         }else{

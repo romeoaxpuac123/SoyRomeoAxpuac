@@ -168,7 +168,9 @@ public class Entorno {
         while( e.hasMoreElements() ) {
             clave = e.nextElement();
             String Clave2 = (String) clave;
-            if(ObtenerListaN(Clave2) ==1 && !"VectorDragonBallBeatles".equals(Clave2)){
+            //!"VectorDragonBallBeatles".equals(Clave2)
+            if(ObtenerListaN(Clave2) ==1 && !"VectorDragonBallBeatles".equals(Clave2)
+               && !"VectorC2DeRomeo".equals(Clave2) && !"VectorC1DeRomeo".equals(Clave2)     ){ //
             ArrayList <NodoAbstracto> Lista =  ObtenerLista(clave.toString());
             String Valores = "";
             for(int i = 0; i < Lista.size();i++){

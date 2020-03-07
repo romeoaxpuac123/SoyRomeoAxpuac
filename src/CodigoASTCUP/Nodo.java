@@ -47,7 +47,7 @@ public class Nodo extends NodoAbstracto{
         if(this.Nombre.contains("#Error")){
              sali = this.Hijos.get(0).Nombre;
         }
-      // System.out.println("nombre...........>" + this.Nombre);
+    //  System.out.println("nombre...........>" + this.Nombre);
         switch(this.Nombre){
             case "Entero":
                 sali = this.Hijos.get(0).Nombre;
@@ -61,7 +61,10 @@ public class Nodo extends NodoAbstracto{
                 sali = this.Hijos.get(0).Nombre;
                 break;
             case "id":
+                
                 sali = entorno.ObtenerValor(this.Hijos.get(0).Nombre);
+                
+                
                 if("".equals(sali)){
                     sali = entorno.ObtenerValor(this.Nombre);
                 }
@@ -97,6 +100,17 @@ public class Nodo extends NodoAbstracto{
                 
                 break;
             default:
+                if(entorno.ObtenerListaN(this.Nombre)==1){
+                    String hola = "[";
+                    this.Expresiones = entorno.ObtenerLista(this.Nombre);
+                    for(int i = 0; i < this.Expresiones.size();i++){
+                        hola = hola +this.Expresiones.get(i).Ejecutar(entorno, salida) + ",";
+                    }
+                    hola = hola.substring(0, hola.length()-1) + "]";
+                    sali = hola;
+                    this.Expresiones.clear();
+                    return sali;
+                }
                 sali = entorno.ObtenerValor(this.Nombre);
         }
         return sali;

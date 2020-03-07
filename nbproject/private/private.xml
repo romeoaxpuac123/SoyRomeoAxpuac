@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/SentenciaIFElseIF.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/Analizadores/Analisis_Sintactico.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/Switch.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/While.java</file>
-            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/Analizadores/Analizador_Sintactico.cup</file>
+            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/Codigo/Entorno.java</file>
+            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/Imprimir.java</file>
+            <file>file:/C:/Users/Bayyron/Desktop/BorradorProyecto1/src/CodigoASTCUP/DeclararAsignar.java</file>
         </group>
     </open-files>
 </project-private>

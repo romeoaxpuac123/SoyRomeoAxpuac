@@ -36,8 +36,130 @@ public class Aritmetica extends NodoAbstracto{
         
         String Tipo1 = this.Hijos.get(0).TipoDato;
         String Tipo2 = this.Hijos.get(2).TipoDato;
+        System.out.println("hijos->" + this.Hijos.get(0).Hijos.size());
+        if("FuncionC".equals(Tipo1)){
+            System.out.println("dragon ball" + this.Hijos.get(0).Nombre);
+            int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
+             for(int i = 0; i < this.Hijos.get(0).Expresiones2.size();i++){
+                 
+                 String Resultado = this.Hijos.get(0).Expresiones2.get(i).Ejecutar(entorno, salida);
+                 String TipoDatox = this.Hijos.get(0).Expresiones2.get(i).TipoDato;
+                 System.out.println("Valor->"+ Resultado + "<->Tipo->" + TipoDatox);
+               if("id".equals(this.Hijos.get(0).Expresiones2.get(i).TipoDato)){
+                  Resultado = entorno.ObtenerValor(this.Hijos.get(0).Expresiones2.get(i).Nombre);
+                  TipoDatox = entorno.ObtenerTipo(this.Hijos.get(0).Expresiones2.get(i).Nombre);
+              }
+              
+              if(!Resultado.equals("#Error")){
+                   System.out.println("aheuvo---->" + Resultado);
+                   //VAMOS A BUSCAR LA PRIORIDAD
+                   
+                   switch (TipoDatox){
+                        case "Lista":
+                            valor1 = 1;
+                            break;
+                        case "cadena":
+                            valor2 = 1;
+                            break;
+                        case "entero":
+                            valor4 = 1;
+                            break;
+                        case "decimal":
+                            valor3 = 1;
+                            break;
+                        case "booleano":
+                            valor5 = 1;
+                            break;
+                           
+                        }
+                        }
+
+                 }
+                    String Tipo1y = "";
+                    if(valor1 == 1){
+                        Tipo1y = "Lista";
+                    }else if(valor2 == 1){
+                        Tipo1y = "cadena";
+                    }
+                    else if(valor3 == 1){
+                        Tipo1y = "decimal";
+                    }
+                    else if(valor4 == 1){
+                        Tipo1y = "entero";
+                    }
+                    else if(valor5 == 1){
+                        Tipo1y = "booleano";
+                    }
+            System.out.println("EL TIPO DEL VECTOR SERA:" + Tipo1y );
+            entorno.Agregar2("VectorC1DeRomeo", this.Hijos.get(0).Expresiones2,  Tipo1y, "se me olvido");
+            Tipo1 = "id";
+            this.Hijos.get(0).Nombre = "VectorC1DeRomeo";
+            System.out.println("Dragon BAll" + this.Hijos.get(0).Expresiones2.size());    
+        }
         
-       // System.out.println("TIPOS:" + Tipo1 + "-" + Tipo2);
+        if("FuncionC".equals(Tipo2)){
+            System.out.println("dragon ball" + this.Hijos.get(2).Nombre);
+            int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
+             for(int i = 0; i < this.Hijos.get(2).Expresiones2.size();i++){
+                 
+                 String Resultado = this.Hijos.get(2).Expresiones2.get(i).Ejecutar(entorno, salida);
+                 String TipoDatox = this.Hijos.get(2).Expresiones2.get(i).TipoDato;
+                 System.out.println("Valor->"+ Resultado + "<->Tipo->" + TipoDatox);
+               if("id".equals(this.Hijos.get(2).Expresiones2.get(i).TipoDato)){
+                  Resultado = entorno.ObtenerValor(this.Hijos.get(2).Expresiones2.get(i).Nombre);
+                  TipoDatox = entorno.ObtenerTipo(this.Hijos.get(2).Expresiones2.get(i).Nombre);
+              }
+              
+              if(!Resultado.equals("#Error")){
+                   System.out.println("aheuvo---->" + Resultado);
+                   //VAMOS A BUSCAR LA PRIORIDAD
+                   
+                   switch (TipoDatox){
+                        case "Lista":
+                            valor1 = 1;
+                            break;
+                        case "cadena":
+                            valor2 = 1;
+                            break;
+                        case "entero":
+                            valor4 = 1;
+                            break;
+                        case "decimal":
+                            valor3 = 1;
+                            break;
+                        case "booleano":
+                            valor5 = 1;
+                            break;
+                           
+                        }
+                        }
+
+                 }
+                    String Tipo1y = "";
+                    if(valor1 == 1){
+                        Tipo1y = "Lista";
+                    }else if(valor2 == 1){
+                        Tipo1y = "cadena";
+                    }
+                    else if(valor3 == 1){
+                        Tipo1y = "decimal";
+                    }
+                    else if(valor4 == 1){
+                        Tipo1y = "entero";
+                    }
+                    else if(valor5 == 1){
+                        Tipo1y = "booleano";
+                    }
+            System.out.println("EL TIPO DEL VECTOR SERA:" + Tipo1y );
+            entorno.Agregar2("VectorC2DeRomeo", this.Hijos.get(2).Expresiones2,  Tipo1y, "se me olvido");
+            Tipo2 = "id";
+            this.Hijos.get(2).Nombre = "VectorC2DeRomeo";
+            System.out.println("Dragon BAll" + this.Hijos.get(2).Expresiones2.size());    
+        }
+        
+        
+        
+        System.out.println("TIPOS:" + Tipo1 + "-" + Tipo2);
         if("id".equals(Tipo1) && !"id".equals(Tipo2)){
             String Vector = this.Hijos.get(0).Nombre;
             //System.out.println("VectorAritmetica:" + Vector);
@@ -165,6 +287,7 @@ public class Aritmetica extends NodoAbstracto{
                         
                     }
                     entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+                    
                     return "RomeoAxpuac";
                 }
             }else{
@@ -304,6 +427,7 @@ public class Aritmetica extends NodoAbstracto{
                         
                     }
                     entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+               
                     return "RomeoAxpuac";
                     
                 }
@@ -772,6 +896,7 @@ public class Aritmetica extends NodoAbstracto{
                                 this.TipoDato = "id";
                                 this.Nombre = "VectorDragonBallBeatles";
                                 entorno.ModificarValorLista("VectorDragonBallBeatles", ExpresionesLola,Tipo1y, "prit");
+                                
                                 return "RomeoAxpuac";
                                 }else if(TamanioVector1 > TamanioVector2){
                                     //vector1 mayor
