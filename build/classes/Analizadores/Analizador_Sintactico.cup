@@ -74,7 +74,7 @@ terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo;
 terminal String decimal;
 terminal String imprimir;
-terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF;
+terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
 
 non terminal NodoAbstracto INICIO;
 non terminal NodoAbstracto SENTENCIAS,SENTENCIA;
@@ -445,24 +445,26 @@ DECLARARVECTORC::= id:valor igual FuncionC  LISTAEXPRESIONES:Lista parentesiscer
 
 LISTAEXPRESIONES::= LISTAEXPRESIONES:nodsentencias coma EXP:nod
                     {:
-                        NodoAbstracto nuevo = new Nodo("EXP");
-                        nuevo.Hijos.add(nodsentencias);
-                        nuevo.Hijos.add(nod);
+                       // NodoAbstracto nuevo = new Nodo("EXP");
+                       // nuevo.Hijos.add(nodsentencias);
+                       // nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
                         Expresiones2.add(nod);
-                        //nodsentencias.Hijos.add(nod);
-                        //RESULT = nodsentencias;
-                        RESULT = nuevo;
+                        Expresiones3.add(nod);
+                        nodsentencias.Hijos.add(nod);
+                        RESULT = nodsentencias;
+                        //RESULT = nuevo;
                     :}
                     |EXP:nod{:
-                        NodoAbstracto nuevo = new Nodo("EXP");
-                        nuevo.Hijos.add(nod);
-                        Expresiones.add(nod);
-                        Expresiones2.add(nod);
-                        RESULT = nuevo;
                         //NodoAbstracto nuevo = new Nodo("EXP");
                         //nuevo.Hijos.add(nod);
+                        Expresiones.add(nod);
+                        Expresiones2.add(nod);
+                        Expresiones3.add(nod);
                         //RESULT = nuevo;
+                        NodoAbstracto nuevo = new Nodo("EXP");
+                        nuevo.Hijos.add(nod);
+                        RESULT = nuevo;
                     :};
 
 DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
@@ -477,6 +479,10 @@ DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
                            nuevo.Expresiones.add(Expresiones.get(i));
                         }
                         Expresiones.clear();
+                        for(int i = 0; i< Expresiones3.size();i++){
+                           nuevo.Expresiones2.add(Expresiones3.get(i));
+                        }
+                        Expresiones3.clear();
                         RESULT = nuevo;
                     :};
 
@@ -494,7 +500,17 @@ IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar FINAL
 
 
 
-EXP::=          FuncionC:valo4 LISTAEXPRESIONES:listaValores parentesiscerrar{:
+EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Lista");
+                        NodoAbstracto nuevo2 = new Nodo("list(");
+                        nuevo.Hijos.add(nuevo2);
+                        nuevo.Hijos.add(listaValores);
+                        nuevo.TipoDato = "Lista";
+                        
+                        RESULT = nuevo;
+
+                :}    
+                 |FuncionC:valo4 LISTAEXPRESIONES:listaValores parentesiscerrar{:
                         NodoAbstracto nuevo = new Nodo("FuncionC");
                         NodoAbstracto nuevo2 = new Nodo("c(");
                         nuevo.Hijos.add(nuevo2);

@@ -39,6 +39,9 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
 
+<YYINITIAL> "list"      {   System.out.println("--->"+yytext()+" - LISTA");
+                            return new Symbol(Simbolos.LISTA, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "if"        {   System.out.println("--->"+yytext()+" - IF");
                             return new Symbol(Simbolos.IF, yycolumn, yyline, yytext());}
 

@@ -34,6 +34,9 @@ public class Simbolo {
         this.Valor = "";
     }
      
+    public String Borrador(){
+        return this.Borrador;
+    }
     public int ObtenerLista(){
         return this.lista;
     } 

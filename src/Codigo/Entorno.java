@@ -46,6 +46,18 @@ public class Entorno {
         }
     }
     
+    public boolean AgregarLista(String id, ArrayList <NodoAbstracto> Expresiones, String Tipo,String Borrador){
+        if (!Elementos.containsKey(id)) {
+            Simbolo sim = new Simbolo(id, Expresiones, Tipo,Borrador);
+            Elementos.put(id, sim);
+            System.out.println("La variables se agregó -> "+id);
+            return true;
+        }else{
+            System.out.println("La variables ya existe -> "+id);
+            return false;
+        }
+    }
+    
     public boolean ExisteVector(String id){
          return(Elementos.containsKey(id));
           
@@ -58,6 +70,13 @@ public class Entorno {
         }
     }
     
+    public String Borrador(String id){
+        if (Elementos.containsKey(id)) {
+            return Elementos.get(id).Borrador();
+        } else{
+            return "#Error";
+        }
+    }
     public String ObtenerTipo(String id){
         if (Elementos.containsKey(id)) {
             return Elementos.get(id).ObtenerTipo();
@@ -175,7 +194,13 @@ public class Entorno {
             String Valores = "";
             for(int i = 0; i < Lista.size();i++){
                 String val1 = Lista.get(i).Ejecutar(entorno, salida);
-               // System.out.println("hoaaaaaaaaaa->" + Lista.get(i).TipoDato + "->" +Lista.get(i).Nombre );
+                if(val1.contains("#Error")){
+                    val1 = Lista.get(i).Hijos.get(0).Nombre;
+                    Valores = Valores + val1 + ",";
+                    continue;
+                    
+                }
+               //System.out.println("hoaaaaaaaaaa->" + Lista.get(i).TipoDato + "->" +Lista.get(i).Nombre );
                 if("id".equals(Lista.get(i).TipoDato)){
                     Valores = Valores + entorno.ObtenerValor(Lista.get(i).Nombre) + ",";
                 }else{
@@ -183,7 +208,8 @@ public class Entorno {
                 }
               
             }
-            System.out.println( "Vector : " + clave + " Valor:" + Valores + " Tipo:" + ObtenerTipo(Clave2));
+            System.out.println( "Vector : " + clave + " Valor:" + Valores + " Tipo:" + ObtenerTipo(Clave2) + "<-Bo->" + Borrador(Clave2) +
+                    "<-Total elementos->" + ObtenerLista(Clave2).size() );
             }
           }
     }

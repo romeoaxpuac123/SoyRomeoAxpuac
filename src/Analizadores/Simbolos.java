@@ -28,6 +28,7 @@ public class Simbolos {
   public static final int PREGUNTAC = 25;
   public static final int ttrue = 31;
   public static final int IF = 37;
+  public static final int LISTA = 48;
   public static final int menos = 11;
   public static final int llaveabrir = 3;
   public static final int parentesiscerrar = 5;
@@ -104,7 +105,8 @@ public class Simbolos {
   "CONTINUE",
   "SWITCH",
   "CASE",
-  "DEF"
+  "DEF",
+  "LISTA"
   };
 }
 
