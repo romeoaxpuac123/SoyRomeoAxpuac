@@ -71,7 +71,7 @@ terminal puntoycoma;
 terminal igual,mas,menos,por,div,potencia,modulo,igualdad,Noigualdad,MenorQue,MayorQue;
 terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
 terminal String id,coma;
-terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength;
+terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength,remove,tolowercase,touppercase,trunk,round;
 terminal String decimal;
 terminal String imprimir;
 terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
@@ -795,6 +795,37 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         :}
 |stringlength parentesisabrir EXP:nuevovalor parentesiscerrar{:
                         NodoAbstracto nuevo = new Nodo("StringLength");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+                        RESULT = nuevo;
+                        :}
+|remove parentesisabrir EXP:nuevovalor coma EXP:exp2 parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Remove");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+                        :}
+|tolowercase parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("ToLowerCase");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+                        :}
+|touppercase parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("ToUpperCase");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+                        :}
+|trunk parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Trunk");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+                        RESULT = nuevo;
+                        :}
+|round parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Round");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;

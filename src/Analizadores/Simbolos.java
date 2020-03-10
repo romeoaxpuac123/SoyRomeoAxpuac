@@ -9,19 +9,20 @@ package Analizadores;
 public class Simbolos {
   /* terminals */
   public static final int FuncionC = 27;
-  public static final int imprimir = 38;
-  public static final int CASE = 49;
-  public static final int CONTINUE = 47;
+  public static final int imprimir = 43;
+  public static final int CASE = 54;
+  public static final int CONTINUE = 52;
   public static final int corcheteabrir = 6;
   public static final int nulo = 33;
   public static final int coma = 29;
   public static final int igual = 9;
   public static final int MayorIgualQue = 21;
-  public static final int FOR = 44;
+  public static final int FOR = 49;
   public static final int stringlength = 36;
   public static final int NOT = 24;
   public static final int AND = 22;
-  public static final int IN = 45;
+  public static final int touppercase = 39;
+  public static final int IN = 50;
   public static final int parentesisabrir = 4;
   public static final int OR = 23;
   public static final int igualdad = 16;
@@ -29,37 +30,41 @@ public class Simbolos {
   public static final int puntoycoma = 8;
   public static final int PREGUNTAC = 25;
   public static final int ttrue = 31;
-  public static final int IF = 40;
-  public static final int LISTA = 51;
+  public static final int IF = 45;
+  public static final int tolowercase = 38;
+  public static final int LISTA = 56;
   public static final int menos = 11;
+  public static final int trunk = 40;
   public static final int llaveabrir = 3;
   public static final int parentesiscerrar = 5;
   public static final int EOF = 0;
+  public static final int remove = 37;
   public static final int mas = 10;
   public static final int MayorQue = 19;
   public static final int error = 1;
   public static final int MenorIgualQue = 20;
   public static final int entero = 30;
   public static final int llavecerrar = 2;
-  public static final int BREAK = 46;
+  public static final int BREAK = 51;
   public static final int por = 12;
-  public static final int SWITCH = 48;
+  public static final int SWITCH = 53;
   public static final int tfalse = 32;
   public static final int potencia = 14;
   public static final int id = 28;
-  public static final int ELSE = 41;
+  public static final int ELSE = 46;
   public static final int typeof = 34;
-  public static final int WHILE = 42;
+  public static final int WHILE = 47;
   public static final int corchetecerrar = 7;
   public static final int MenorQue = 18;
   public static final int DOSP = 26;
   public static final int Noigualdad = 17;
-  public static final int DEF = 50;
+  public static final int DEF = 55;
+  public static final int round = 41;
   public static final int div = 13;
-  public static final int decimal = 37;
+  public static final int decimal = 42;
   public static final int modulo = 15;
-  public static final int DO = 43;
-  public static final int cadena = 39;
+  public static final int DO = 48;
+  public static final int cadena = 44;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -98,6 +103,11 @@ public class Simbolos {
   "typeof",
   "length",
   "stringlength",
+  "remove",
+  "tolowercase",
+  "touppercase",
+  "trunk",
+  "round",
   "decimal",
   "imprimir",
   "cadena",

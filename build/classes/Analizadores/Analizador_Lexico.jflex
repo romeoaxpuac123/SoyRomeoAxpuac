@@ -39,6 +39,21 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
 
+<YYINITIAL> "round"     {   System.out.println("--->"+yytext()+" - round");
+                            return new Symbol(Simbolos.round, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "trunk"     {   System.out.println("--->"+yytext()+" - trunk");
+                            return new Symbol(Simbolos.trunk, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "touppercase"    {   System.out.println("--->"+yytext()+" - touppercase");
+                            return new Symbol(Simbolos.touppercase, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "tolowercase"    {   System.out.println("--->"+yytext()+" - tolowercase");
+                            return new Symbol(Simbolos.tolowercase, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "remove"    {   System.out.println("--->"+yytext()+" - remove");
+                            return new Symbol(Simbolos.remove, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "stringlength"     {   System.out.println("--->"+yytext()+" - stringlength");
                             return new Symbol(Simbolos.stringlength, yycolumn, yyline, yytext());}
 
