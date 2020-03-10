@@ -31,11 +31,17 @@ public class Aritmetica extends NodoAbstracto{
         int total = 0;
         double totald = 0;
         String totalc = "";
-        String val1 = this.Hijos.get(0).Ejecutar(entorno, salida);
-        String val2 = this.Hijos.get(2).Ejecutar(entorno, salida);
+        String val1 = "10";//this.Hijos.get(0).Ejecutar(entorno, salida);
+        String val2 = "20";//this.Hijos.get(2).Ejecutar(entorno, salida);
         
         String Tipo1 = this.Hijos.get(0).TipoDato;
         String Tipo2 = this.Hijos.get(2).TipoDato;
+        if(Tipo1.contains("id")== false){
+        val1 = this.Hijos.get(0).Ejecutar(entorno, salida);
+        }if(Tipo2.contains("id")== false){
+              val2 = this.Hijos.get(2).Ejecutar(entorno, salida);
+        }
+        
         System.out.println("hijos->" + this.Hijos.get(0).Hijos.size());
         if("FuncionC".equals(Tipo1)){
             System.out.println("dragon ball" + this.Hijos.get(0).Nombre);
@@ -163,6 +169,7 @@ public class Aritmetica extends NodoAbstracto{
         if("id".equals(Tipo1) && !"id".equals(Tipo2)){
             String Vector = this.Hijos.get(0).Nombre;
             //System.out.println("VectorAritmetica:" + Vector);
+                    
             boolean ExisteVector =  entorno.ExisteVector(Vector); 
             if(ExisteVector == true){
                 //aca la suma del vector 
@@ -181,6 +188,7 @@ public class Aritmetica extends NodoAbstracto{
                     }else{
                         entorno.ModificarValorLista("VectorDragonBallBeatles", entorno.ObtenerLista(Vector), entorno.ObtenerTipo(Vector), "ss");
                     }
+                    
                     ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");
                     //veamos el verdadero tipo del vector XD
                     int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;

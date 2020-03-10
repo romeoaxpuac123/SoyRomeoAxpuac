@@ -49,6 +49,65 @@ public class Nodo extends NodoAbstracto{
         }
     //  System.out.println("nombre...........>" + this.Nombre);
         switch(this.Nombre){
+            case "TypeOF":
+                Entorno Temporal = new Entorno();
+                entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+                String Tipo = this.Hijos.get(0).TipoDato;
+                if(Tipo.contains("id")){
+                    Tipo = Temporal.ObtenerTipo(this.Hijos.get(0).Nombre);
+                }
+                if(Tipo.contains("entero")){
+                    Tipo = "Integer";
+                }else  if(Tipo.contains("decimal")){
+                    Tipo = "Numeric";
+                }
+                else if(Tipo.contains("booleano")){
+                    Tipo = "Boolean";
+                }else  if(Tipo.contains("cadena")){
+                    Tipo = "String";
+                }else  if(Tipo.contains("Lista")){
+                    Tipo = "List";
+                }
+                
+                //System.out.println("el valor es->" + Valor);
+                sali= Tipo;
+            break;
+            case "Length":
+                Entorno Tempora2l = new Entorno();
+                entorno.AgregarElementosANuevoEntorno(entorno,Tempora2l);
+                String TipoL = this.Hijos.get(0).TipoDato;
+                if(!TipoL.contains("id")){
+                    salida.append("#ERROR: la función Length usa un parametro incorrecto");
+                    TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función Length usa un parametro incorrecto" );
+                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    return "#Error";
+                }
+                int tamanio = Tempora2l.ObtenerLista(this.Hijos.get(0).Nombre).size();
+                sali = tamanio + "";
+                break;
+            case "StringLength":
+                Entorno Temporalx = new Entorno();
+                entorno.AgregarElementosANuevoEntorno(entorno,Temporalx);
+                String TipoLx = this.Hijos.get(0).TipoDato;
+                String Valor = this.Hijos.get(0).Ejecutar(Temporalx, salida);
+                if(TipoLx.contains("cadena")){
+                    sali = Valor.length() + "";
+                }else if (TipoLx.contains("id")){
+                    if(Temporalx.ObtenerListaN(this.Hijos.get(0).Nombre) ==0 && Temporalx.ObtenerTipo(this.Hijos.get(0).Nombre).contains("cadena")){
+                        Valor = Temporalx.ObtenerValor(this.Hijos.get(0).Nombre).length() + "";
+                        sali = Valor;
+                    }else{
+                        salida.append("#ERROR: la función Length usa un parametro incorrecto");
+                        TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función Length usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    }
+                }else{
+                        salida.append("#ERROR: la función String Length usa un parametro incorrecto");
+                        TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función String Length usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                }
+                
+                break;
             case "Entero":
                 sali = this.Hijos.get(0).Nombre;
                 break;

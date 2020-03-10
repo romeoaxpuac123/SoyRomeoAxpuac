@@ -39,6 +39,15 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
 
+<YYINITIAL> "stringlength"     {   System.out.println("--->"+yytext()+" - stringlength");
+                            return new Symbol(Simbolos.stringlength, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "length"     {   System.out.println("--->"+yytext()+" - length");
+                            return new Symbol(Simbolos.length, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "typeof"      {   System.out.println("--->"+yytext()+" - typeof");
+                            return new Symbol(Simbolos.typeof, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "list"      {   System.out.println("--->"+yytext()+" - LISTA");
                             return new Symbol(Simbolos.LISTA, yycolumn, yyline, yytext());}
 

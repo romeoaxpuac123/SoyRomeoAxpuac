@@ -71,7 +71,7 @@ terminal puntoycoma;
 terminal igual,mas,menos,por,div,potencia,modulo,igualdad,Noigualdad,MenorQue,MayorQue;
 terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
 terminal String id,coma;
-terminal String entero,ttrue,tfalse,nulo;
+terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength;
 terminal String decimal;
 terminal String imprimir;
 terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
@@ -780,6 +780,25 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
+  |typeof parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("TypeOF");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+
+                    :}
+|length parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Length");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+                        RESULT = nuevo;
+                        :}
+|stringlength parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("StringLength");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+                        RESULT = nuevo;
+                        :}
                     ;
 
 NUMERO::=           entero:valor        
