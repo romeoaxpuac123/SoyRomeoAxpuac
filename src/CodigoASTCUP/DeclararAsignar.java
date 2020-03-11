@@ -380,12 +380,16 @@ public class DeclararAsignar extends NodoAbstracto{
           TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES2);
           return "ERROR AL DECLRAR VECTOR";
       }
+      
+        System.out.println("BUENO TOCA ESTA MAMADA:");
       boolean ExisteVector =  entorno.ExisteVector(Identificador); 
       
         if(!ExisteVector == true){
             entorno.Agregar(Identificador, Tipo1, val1);
         }else{
-            entorno.ModificarValor(Identificador, val1, Tipo1);
+            entorno.EliminarVector(Identificador);
+            entorno.Agregar(Identificador, Tipo1, val1);
+            //entorno.ModificarValor(Identificador, val1, Tipo1);
         }
         
         entorno.MostrarVectores();

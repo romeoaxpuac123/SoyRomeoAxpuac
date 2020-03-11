@@ -851,6 +851,13 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         nuevo.Hijos.add(null);
                         RESULT = nuevo;
                     :}
+|median parentesisabrir EXP:nuevovalor coma EXP: exp3 parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Median");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "median";
+                        nuevo.Hijos.add(exp3);
+                        RESULT = nuevo;
+                    :}
 |mode parentesisabrir EXP:nuevovalor parentesiscerrar{:
                         NodoAbstracto nuevo = new Nodo("Mode");
                         nuevo.Hijos.add(nuevovalor);

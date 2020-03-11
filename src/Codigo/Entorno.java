@@ -62,6 +62,11 @@ public class Entorno {
          return(Elementos.containsKey(id));
           
     }
+    public void EliminarVector(String id){
+        System.out.println("vamos a eliminar id"+ id);
+        Elementos.remove(id);
+    }
+    
     public String ObtenerValor(String id){
         if (Elementos.containsKey(id)) {
             return Elementos.get(id).ObtenerValor();

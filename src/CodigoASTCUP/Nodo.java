@@ -9,6 +9,8 @@ import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import Analizadores.TError;
 import Codigo.Entorno;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JTextArea;
 
 /**
@@ -364,6 +366,163 @@ public class Nodo extends NodoAbstracto{
                                         sali = "0.0";
                                     }
                                     
+                                }
+                            }
+                        }else{
+                            salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                            TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            return "#Error";
+                        }
+                    }else{
+                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        return "#Error";
+                    }
+                 break;
+             case "Median":
+                    Entorno TemporalMedian = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,TemporalMedian);
+                    String TipoMedian = this.Hijos.get(0).TipoDato;
+                    String TipoMedian2 = TemporalMedian.ObtenerTipo(this.Hijos.get(0).Nombre);
+                    System.out.println("NOMBRE MEDIAN->" + TipoMedian + "<-TIPO DEL VECOTR->" + TipoMedian2);
+                    if(TipoMedian.contains("id")){
+                        if(TipoMedian2.contains("entero") || TipoMedian2.contains("decimal")){
+                            System.out.println("VAMOS A VERIFICAR SI ES UNO O VARIOS");
+                            if(this.Hijos.get(1)== null){
+                                
+                                //trabajamos la media sin limites;
+                                int EsLista = TemporalMedian.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMedian.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    int numElementos = DatosASumar.size();
+                                    double arrayListInt [] = new double[numElementos];
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        arrayListInt[ix]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida));
+                                    }
+                                    for(int sk = 0; sk < arrayListInt.length; sk++){
+                                        System.out.println("CALCULANDO LA MEDIANA DE ->" + arrayListInt[sk]);
+                                    }                        
+                                    Arrays.sort(arrayListInt);
+                                    double mediana;
+                                   
+                                    if(numElementos % 2 == 0){
+                                       double sumaMedios = arrayListInt[numElementos/2] + arrayListInt[numElementos/2 - 1]; 
+                                        mediana = (double)sumaMedios / 2; 
+                                    } else {
+                                        mediana = arrayListInt[numElementos/2];
+                                    }
+                                    
+                                    sali = String.valueOf(mediana);
+                                }else{
+                                    String ResultadoMedia = TemporalMedian.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    sali = String.valueOf(result);
+                                    System.out.println("FIN MEDIANA SIN LIMITE" + sali);
+                                }
+                            }else{
+                                //trabajamos la media con una limites
+                                System.out.println("ESAMOS ENTRNADO AL LIMITE");
+                                int EsLista = TemporalMedian.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                String ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMedian, salida);
+                                String TipoNodo2 = this.Hijos.get(1).TipoDato;
+                                if(TipoNodo2.contains("id")){
+                                     System.out.println("VAMOS A VER EL TIPOsss->" + TipoNodo2);
+                                    String TipoVector = TemporalMedian.ObtenerTipo(this.Hijos.get(1).Nombre);
+                                    int LargoVector = TemporalMedian.ObtenerListaN(this.Hijos.get(1).Nombre);
+                                    if((TipoVector.contains("entero")|| TipoVector.contains("decimal"))
+                                            && LargoVector == 1){
+                                        ValorNodo2 = TemporalMedian.ObtenerValor(this.Hijos.get(1).Nombre);
+                                    }else{
+                                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                }else {
+                                    System.out.println("VAMOS A VER EL TIPOzzz->" + TipoNodo2);
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMedian, salida);
+                                }
+                                System.out.println("VAMOS A VER EL TIPOpp->" + TipoNodo2);
+                                if (TipoNodo2.contains("entero")|| TipoNodo2.contains("decimal")){
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMedian, salida);
+                                }
+                                else{
+                                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                }
+                                System.out.println("tipo nodo2->" + TipoNodo2);
+                                double limite = Double.parseDouble(ValorNodo2);
+                                System.out.println("EL LIMITE ES--------->" + limite);
+                                //trabajamos la media sin limites;
+                                EsLista = TemporalMedian.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMedian.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    int numElementos = DatosASumar.size();
+                                    //double arrayListInt [] = new double[numElementos];
+                                    
+                                    int tamaniox = 0;
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        if(Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida)) >limite){
+                                            //arrayListInt[ix]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida));
+                                            tamaniox++;
+                                        }
+                                        
+                                    }
+                                    System.out.println("pasan el valor ES--------->" + tamaniox);
+                                    double arrayListInt [] = new double[tamaniox];
+                                    int tamanioxx = 0;
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        if(Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida)) > limite){
+                                            arrayListInt[tamanioxx]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida));
+                                            tamanioxx++;
+                                        }
+                                        
+                                    }
+                                    System.out.println("pasan el del vector ES--------->" + arrayListInt.length);
+                                    
+                                      if(arrayListInt.length == 0){
+                                        salida.append("#ERROR: la función median usa un parametro incorrecto, el limite es mayor que todos los elementos" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función median usa un parametro incorrecto, el limite es mayor que todos los elementos" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                    
+                                    Arrays.sort(arrayListInt);
+                                    for(int sk = 0; sk < arrayListInt.length; sk++){
+                                        System.out.println("CALCULANDO LA MEDIANA DE ->" + arrayListInt[sk]);
+                                    }   
+                                    double mediana;
+                                   
+                                    if(tamanioxx % 2 == 0){
+                                        System.out.println("afrutunados" + arrayListInt[tamanioxx/2] + "<->" + arrayListInt[tamanioxx/2 - 1]);
+                                       double sumaMedios = arrayListInt[tamanioxx/2] + arrayListInt[tamanioxx/2 - 1]; 
+                                        mediana = (double)sumaMedios / 2; 
+                                    } else {
+                                            System.out.println("no aformtuans");
+                                        mediana = arrayListInt[tamanioxx/2];
+                                    }
+                                    
+                                    sali = String.valueOf(mediana);
+                                }else{
+                                    String ResultadoMedia = TemporalMedian.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    if(result>limite){
+                                        sali = String.valueOf(result);
+                                    }else{
+                                        sali = "0.0";
+                                    }
+                                    
+                                    System.out.println("FIN MEDIANA SIN LIMITE" + sali);
                                 }
                             }
                         }else{
