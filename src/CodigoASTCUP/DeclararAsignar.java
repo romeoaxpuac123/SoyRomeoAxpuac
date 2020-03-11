@@ -125,9 +125,13 @@ public class DeclararAsignar extends NodoAbstracto{
       
       //DECLARAR VECTORES :D
       if("FuncionC".equals(this.Hijos.get(1).TipoDato)){
+          
+       
+          
             this.Expresiones.clear();
       this.Expresiones2.clear();
       this.Expresiones3.clear();
+      
       for(int x = 0; x < this.Hijos.get(1).Hijos.get(1).Hijos.size();x++){
           this.Expresiones.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x));
          
@@ -337,6 +341,7 @@ public class DeclararAsignar extends NodoAbstracto{
          entorno.MostrarVectores();
          entorno.MostrarVectoresLista(entorno,salida);
           return "FIN C";
+          
       }
       
       

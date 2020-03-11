@@ -38,6 +38,15 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_UNILINEA}        {   System.out.println("--->Comentario 1 línea");} 
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
+<YYINITIAL> "mean"     {   System.out.println("--->"+yytext()+" - mean");
+                            return new Symbol(Simbolos.mean, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "median"     {   System.out.println("--->"+yytext()+" - median");
+                            return new Symbol(Simbolos.median, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "mode"     {   System.out.println("--->"+yytext()+" - mode");
+                            return new Symbol(Simbolos.mode, yycolumn, yyline, yytext());}
+
 
 <YYINITIAL> "round"     {   System.out.println("--->"+yytext()+" - round");
                             return new Symbol(Simbolos.round, yycolumn, yyline, yytext());}

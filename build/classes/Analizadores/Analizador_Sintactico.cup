@@ -72,7 +72,7 @@ terminal igual,mas,menos,por,div,potencia,modulo,igualdad,Noigualdad,MenorQue,Ma
 terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
 terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength,remove,tolowercase,touppercase,trunk,round;
-terminal String decimal;
+terminal String decimal,mean,median,mode;
 terminal String imprimir;
 terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
 
@@ -475,14 +475,14 @@ DECLARARASIGNAR::=  id:valor igual EXP:exp1 FINAL
                         nuevo.Hijos.add(exp1);
                         nuevo.columna = exp1left;
                         nuevo.linea = exp1right;
-                         for(int i = 0; i< Expresiones.size();i++){
-                           nuevo.Expresiones.add(Expresiones.get(i));
-                        }
-                        Expresiones.clear();
-                        for(int i = 0; i< Expresiones3.size();i++){
-                           nuevo.Expresiones2.add(Expresiones3.get(i));
-                        }
-                        Expresiones3.clear();
+                        // for(int i = 0; i< Expresiones.size();i++){
+                        //   nuevo.Expresiones.add(Expresiones.get(i));
+                       // }
+                       // Expresiones.clear();
+                       // for(int i = 0; i< Expresiones3.size();i++){
+                       //    nuevo.Expresiones2.add(Expresiones3.get(i));
+                       // }
+                       // Expresiones3.clear();
                         RESULT = nuevo;
                     :};
 
@@ -516,10 +516,10 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         nuevo.Hijos.add(nuevo2);
                         nuevo.Hijos.add(listaValores);
                         nuevo.TipoDato = "FuncionC";
-                        for(int i = 0; i< Expresiones2.size();i++){
-                           nuevo.Expresiones2.add(Expresiones2.get(i));
-                        }
-                        Expresiones2.clear();
+                        //for(int i = 0; i< Expresiones2.size();i++){
+                        //   nuevo.Expresiones2.add(Expresiones2.get(i));
+                       // }
+                       // Expresiones2.clear();
                         RESULT = nuevo;
 
                 :}    
@@ -829,7 +829,35 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
-                        :}
+                        :} 
+|mean parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Mean");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(null);
+                        nuevo.TipoDato = "decimal";
+                        RESULT = nuevo;
+                    :}
+|mean parentesisabrir EXP:nuevovalor coma EXP:limite parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Mean");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(limite);
+                        nuevo.TipoDato = "decimal";
+                        RESULT = nuevo;
+                    :}
+|median parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Median");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "median";
+                        nuevo.Hijos.add(null);
+                        RESULT = nuevo;
+                    :}
+|mode parentesisabrir EXP:nuevovalor parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Mode");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(null);
+                        nuevo.TipoDato = "mode";
+                        RESULT = nuevo;
+                    :}
                     ;
 
 NUMERO::=           entero:valor        

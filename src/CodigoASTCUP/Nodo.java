@@ -270,6 +270,115 @@ public class Nodo extends NodoAbstracto{
                 }
                 System.out.println("HACIENDO CONVERSACION fin"  );
                 break;
+             case "Mean":
+                  Entorno TemporalMean = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,TemporalMean);
+                    String TipoMean = this.Hijos.get(0).TipoDato;
+                    String TipoMean2 = TemporalMean.ObtenerTipo(this.Hijos.get(0).Nombre);
+                    System.out.println("NOMBRE MEAN->" + TipoMean + "<-TIPO DEL VECOTR->" + TipoMean2);
+                    if(TipoMean.contains("id")){
+                        if(TipoMean2.contains("entero") || TipoMean2.contains("decimal")){
+                            System.out.println("VAMOS A VERIFICAR SI ES UNO O VARIOS");
+                            if(this.Hijos.get(1)== null){
+                                //trabajamos la media sin limites;
+                                int EsLista = TemporalMean.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMean.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    for (int i = 0; i < DatosASumar.size(); i ++){
+                                        result = result + Double.parseDouble(DatosASumar.get(i).Ejecutar(TemporalMean, salida));
+                                    }
+                                    result = result / DatosASumar.size();
+                                    sali = String.valueOf(result);
+                                }else{
+                                    String ResultadoMedia = TemporalMean.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    sali = String.valueOf(result);
+                                }
+                            }else{
+                                //trabajamos la media con una limites
+                                System.out.println("ESAMOS ENTRNADO AL LIMITE");
+                                int EsLista = TemporalMean.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                String ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMean, salida);
+                                String TipoNodo2 = this.Hijos.get(1).TipoDato;
+                                if(TipoNodo2.contains("id")){
+                                     System.out.println("VAMOS A VER EL TIPOsss->" + TipoNodo2);
+                                    String TipoVector = TemporalMean.ObtenerTipo(this.Hijos.get(1).Nombre);
+                                    int LargoVector = TemporalMean.ObtenerListaN(this.Hijos.get(1).Nombre);
+                                    if((TipoVector.contains("entero")|| TipoVector.contains("decimal"))
+                                            && LargoVector == 1){
+                                        ValorNodo2 = TemporalMean.ObtenerValor(this.Hijos.get(1).Nombre);
+                                    }else{
+                                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                }else {
+                                    System.out.println("VAMOS A VER EL TIPOzzz->" + TipoNodo2);
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMean, salida);
+                                }
+                                System.out.println("VAMOS A VER EL TIPOpp->" + TipoNodo2);
+                                if (TipoNodo2.contains("entero")|| TipoNodo2.contains("decimal")){
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMean, salida);
+                                }
+                                else{
+                                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                }
+                                System.out.println("tipo nodo2->" + TipoNodo2);
+                                double limite = Double.parseDouble(ValorNodo2);
+                                System.out.println("EL LIMITE ES--------->" + limite);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMean.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    int totalfors = 0;
+                                    for (int i = 0; i < DatosASumar.size(); i ++){
+                                        if(Double.parseDouble(DatosASumar.get(i).Ejecutar(TemporalMean, salida))>limite){
+                                             result = result + Double.parseDouble(DatosASumar.get(i).Ejecutar(TemporalMean, salida));
+                                             totalfors ++;
+                                        }
+                                       
+                                    }
+                                     if(result == 0){
+                                        salida.append("#ERROR: la función mean usa un parametro incorrecto, el limite es mayor que todos los elementos" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto, el limite es mayor que todos los elementos" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                    result = result / totalfors ;
+                                   
+                                    sali = String.valueOf(result);
+                                }else{
+                                    String ResultadoMedia = TemporalMean.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    if(result > limite){
+                                        sali = String.valueOf(result);
+                                    }else{
+                                        sali = "0.0";
+                                    }
+                                    
+                                }
+                            }
+                        }else{
+                            salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                            TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            return "#Error";
+                        }
+                    }else{
+                        salida.append("#ERROR: la función mean usa un parametro incorrecto" + "\n");
+                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mean usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        return "#Error";
+                    }
+                 break;
             case "Entero":
                 sali = this.Hijos.get(0).Nombre;
                 break;
@@ -321,18 +430,7 @@ public class Nodo extends NodoAbstracto{
                 
                 break;
             default:
-                if(entorno.ObtenerListaN(this.Nombre)==1){
-                    String hola = "[";
-                    this.Expresiones = entorno.ObtenerLista(this.Nombre);
-                    for(int i = 0; i < this.Expresiones.size();i++){
-                        hola = hola +this.Expresiones.get(i).Ejecutar(entorno, salida) + ",";
-                    }
-                    hola = hola.substring(0, hola.length()-1) + "]";
-                    sali = hola;
-                    this.Expresiones.clear();
-                    return sali;
-                }
-                sali = entorno.ObtenerValor(this.Nombre);
+                sali =this.Nombre;
         }
         return sali;
     }
