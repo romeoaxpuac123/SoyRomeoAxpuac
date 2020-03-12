@@ -38,6 +38,12 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_UNILINEA}        {   System.out.println("--->Comentario 1 línea");} 
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
+<YYINITIAL> "barplot"     {   System.out.println("--->"+yytext()+" - barplot");
+                            return new Symbol(Simbolos.barplot, yycolumn, yyline, yytext());}
+
+<YYINITIAL> "pie"     {   System.out.println("--->"+yytext()+" - pie");
+                            return new Symbol(Simbolos.pie, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "mean"     {   System.out.println("--->"+yytext()+" - mean");
                             return new Symbol(Simbolos.mean, yycolumn, yyline, yytext());}
 
