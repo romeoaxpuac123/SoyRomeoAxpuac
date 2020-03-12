@@ -865,6 +865,13 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         nuevo.TipoDato = "mode";
                         RESULT = nuevo;
                     :}
+|mode parentesisabrir EXP:nuevovalor coma EXP:exp2 parentesiscerrar{:
+                        NodoAbstracto nuevo = new Nodo("Mode");
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(exp2);
+                        nuevo.TipoDato = "mode";
+                        RESULT = nuevo;
+                    :}
                     ;
 
 NUMERO::=           entero:valor        

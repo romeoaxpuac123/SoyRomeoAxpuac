@@ -538,6 +538,177 @@ public class Nodo extends NodoAbstracto{
                         return "#Error";
                     }
                  break;
+             case "Mode":
+                    Entorno TemporalMode = new Entorno();
+                    entorno.AgregarElementosANuevoEntorno(entorno,TemporalMode);
+                    String TipoMode = this.Hijos.get(0).TipoDato;
+                    String TipoMode2 = TemporalMode.ObtenerTipo(this.Hijos.get(0).Nombre);
+                    System.out.println("NOMBRE MEDIAN->" + TipoMode + "<-TIPO DEL VECOTR->" + TipoMode2);
+                    if(TipoMode.contains("id")){
+                        if(TipoMode2.contains("entero") || TipoMode2.contains("decimal")){
+                            System.out.println("VAMOS A VERIFICAR SI ES UNO O VARIOS");
+                            if(this.Hijos.get(1)== null){
+                                
+                                //trabajamos la media sin limites;
+                                int EsLista = TemporalMode.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMode.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    int numElementos = DatosASumar.size();
+                                    double arrayListInt [] = new double[numElementos];
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        arrayListInt[ix]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMode, salida));
+                                    }
+                                   double moda = 0;
+                                   double maximoNumRepeticiones = 0;
+                                    for(int i=0; i< arrayListInt.length; i++)
+    {
+                                        int numRepeticiones= 0;
+                                        for(int j=0; j< arrayListInt.length; j++)
+                                        {
+                                            if( arrayListInt[i]== arrayListInt[j])
+                                            {
+                                                numRepeticiones++;
+                                            }   //fin if
+                                            if(numRepeticiones>maximoNumRepeticiones)
+                                            {
+                                                moda =  arrayListInt[i];
+                                                maximoNumRepeticiones= numRepeticiones;
+                                            }   //fin if
+                                        }
+    }
+                                    
+                                    sali = String.valueOf(moda);
+                                }else{
+                                    String ResultadoMedia = TemporalMode.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    sali = String.valueOf(result);
+                                    System.out.println("FIN MEDIANA SIN LIMITE" + sali);
+                                }
+                            }else{
+                                //trabajamos la media con una limites
+                                System.out.println("ESAMOS ENTRNADO AL LIMITE");
+                                int EsLista = TemporalMode.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                String ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMode, salida);
+                                String TipoNodo2 = this.Hijos.get(1).TipoDato;
+                                if(TipoNodo2.contains("id")){
+                                     System.out.println("VAMOS A VER EL TIPOsss->" + TipoNodo2);
+                                    String TipoVector = TemporalMode.ObtenerTipo(this.Hijos.get(1).Nombre);
+                                    int LargoVector = TemporalMode.ObtenerListaN(this.Hijos.get(1).Nombre);
+                                    if((TipoVector.contains("entero")|| TipoVector.contains("decimal"))
+                                            && LargoVector == 1){
+                                        ValorNodo2 = TemporalMode.ObtenerValor(this.Hijos.get(1).Nombre);
+                                    }else{
+                                        salida.append("#ERROR: la función mode usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mode usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                }else {
+                                    System.out.println("VAMOS A VER EL TIPOzzz->" + TipoNodo2);
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMode, salida);
+                                }
+                                System.out.println("VAMOS A VER EL TIPOpp->" + TipoNodo2);
+                                if (TipoNodo2.contains("entero")|| TipoNodo2.contains("decimal")){
+                                    ValorNodo2 = this.Hijos.get(1).Ejecutar(TemporalMode, salida);
+                                }
+                                else{
+                                        salida.append("#ERROR: la función mode usa un parametro incorrecto" + "\n");
+                                        TError ERRORES = new TError("mode",this.linea,this.columna,"Semantico", "#ERROR: la función mode usa un parametro incorrecto" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                }
+                                System.out.println("tipo nodo2->" + TipoNodo2);
+                                double limite = Double.parseDouble(ValorNodo2);
+                                System.out.println("EL LIMITE ES--------->" + limite);
+                                //trabajamos la media sin limites;
+                                EsLista = TemporalMode.ObtenerListaN(this.Hijos.get(0).Nombre);
+                                if(EsLista == 1 ){
+                                    //obtenemos la lista
+                                    ArrayList <NodoAbstracto> DatosASumar = new ArrayList();
+                                    DatosASumar = TemporalMode.ObtenerLista(this.Hijos.get(0).Nombre);
+                                    double result = 0;
+                                    int numElementos = DatosASumar.size();
+                                    //double arrayListInt [] = new double[numElementos];
+                                    
+                                    int tamaniox = 0;
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        if(Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMode, salida)) >limite){
+                                            //arrayListInt[ix]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMedian, salida));
+                                            tamaniox++;
+                                        }
+                                        
+                                    }
+                                    System.out.println("pasan el valor ES--------->" + tamaniox);
+                                    double arrayListInt [] = new double[tamaniox];
+                                    int tamanioxx = 0;
+                                    for(int ix = 0; ix < DatosASumar.size();ix++){
+                                        if(Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMode, salida)) > limite){
+                                            arrayListInt[tamanioxx]  = Double.parseDouble(DatosASumar.get(ix).Ejecutar(TemporalMode, salida));
+                                            tamanioxx++;
+                                        }
+                                        
+                                    }
+                                    System.out.println("pasan el del vector ES--------->" + arrayListInt.length);
+                                    
+                                      if(arrayListInt.length == 0){
+                                        salida.append("#ERROR: la función mode usa un parametro incorrecto, el limite es mayor que todos los elementos" + "\n");
+                                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mode usa un parametro incorrecto, el limite es mayor que todos los elementos" );
+                                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                        return "#Error";
+                                    }
+                                    
+                                    //Arrays.sort(arrayListInt);
+                                    for(int sk = 0; sk < arrayListInt.length; sk++){
+                                        System.out.println("CALCULANDO LA moda de DE ->" + arrayListInt[sk]);
+                                    }   
+                                    double moda = 0;
+                                    double maximoNumRepeticiones = 0;
+                                  for(int i=0; i<arrayListInt.length; i++)
+    {
+                                        int numRepeticiones= 0;
+                                        for(int j=0; j<arrayListInt.length; j++)
+                                        {
+                                            if(arrayListInt[i]==arrayListInt[j])
+                                            {
+                                                numRepeticiones++;
+                                            }   //fin if
+                                            if(numRepeticiones>maximoNumRepeticiones)
+                                            {
+                                                moda= arrayListInt[i];
+                                                maximoNumRepeticiones= numRepeticiones;
+                                            }   //fin if
+                                        }
+    }
+                                    
+                                    sali = String.valueOf(moda);
+                                }else{
+                                    String ResultadoMedia = TemporalMode.ObtenerValor(this.Hijos.get(0).Nombre);
+                                    double result = Double.parseDouble(ResultadoMedia);
+                                    if(result>limite){
+                                        sali = String.valueOf(result);
+                                    }else{
+                                        sali = "0.0";
+                                    }
+                                    
+                                    System.out.println("FIN MEDIANA SIN LIMITE" + sali);
+                                }
+                            }
+                        }else{
+                            salida.append("#ERROR: la función mode usa un parametro incorrecto" + "\n");
+                            TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mode usa un parametro incorrecto" );
+                            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            return "#Error";
+                        }
+                    }else{
+                        salida.append("#ERROR: la función mode usa un parametro incorrecto" + "\n");
+                        TError ERRORES = new TError("mean",this.linea,this.columna,"Semantico", "#ERROR: la función mode usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        return "#Error";
+                    }
+                  break;
             case "Entero":
                 sali = this.Hijos.get(0).Nombre;
                 break;
