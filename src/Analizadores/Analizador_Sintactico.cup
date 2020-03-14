@@ -73,7 +73,7 @@ terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
 terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength,remove,tolowercase,touppercase,trunk,round;
 terminal String decimal,mean,median,mode;
-terminal String imprimir,pie,barplot,hist;
+terminal String imprimir,pie,barplot,hist,plot;
 terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
 
 non terminal NodoAbstracto INICIO;
@@ -235,6 +235,22 @@ GRAFICAS::= pie parentesisabrir  id:valores coma id:vector coma id:titulo parent
                 nuevo.linea = nombreright;
                 RESULT = nuevo;   
             :}
+|plot parentesisabrir  id:nombre coma cadena:par1 coma cadena:par2 coma cadena:par3 coma cadena:par4 parentesiscerrar FINAL{:
+        NodoAbstracto nuevo = new plot("PLOT");
+                NodoAbstracto Datos = new Nodo(nombre);
+                NodoAbstracto Vector = new Nodo(par1);
+                NodoAbstracto Titulo = new Nodo(par2) ;
+                NodoAbstracto Vector2 = new Nodo(par3);
+                NodoAbstracto Titulo2 = new Nodo(par4);
+                nuevo.Hijos.add(Datos);
+                nuevo.Hijos.add(Vector);
+                nuevo.Hijos.add(Titulo);
+                nuevo.Hijos.add(Vector2);
+                nuevo.Hijos.add(Titulo2);
+                nuevo.columna = nombreleft;
+                nuevo.linea = nombreright;
+                RESULT = nuevo;   
+:}
     ; 
 
 

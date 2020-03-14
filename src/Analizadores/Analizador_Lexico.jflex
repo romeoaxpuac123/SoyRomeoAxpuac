@@ -38,6 +38,9 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_UNILINEA}        {   System.out.println("--->Comentario 1 línea");} 
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
+<YYINITIAL> "plot"     {   System.out.println("--->"+yytext()+" - plot");
+                            return new Symbol(Simbolos.plot, yycolumn, yyline, yytext());}
+
 <YYINITIAL> "hist"     {   System.out.println("--->"+yytext()+" - hist");
                             return new Symbol(Simbolos.hist, yycolumn, yyline, yytext());}
 
