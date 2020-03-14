@@ -73,7 +73,7 @@ terminal MenorIgualQue, MayorIgualQue, AND,OR, NOT,PREGUNTAC,DOSP,FuncionC;
 terminal String id,coma;
 terminal String entero,ttrue,tfalse,nulo,typeof,length,stringlength,remove,tolowercase,touppercase,trunk,round;
 terminal String decimal,mean,median,mode;
-terminal String imprimir,pie,barplot;
+terminal String imprimir,pie,barplot,hist;
 terminal String cadena,IF,ELSE,WHILE,DO,FOR,IN,BREAK,CONTINUE,SWITCH,CASE,DEF,LISTA;
 
 non terminal NodoAbstracto INICIO;
@@ -206,6 +206,7 @@ GRAFICAS::= pie parentesisabrir  id:valores coma id:vector coma id:titulo parent
                 RESULT = nuevo;            
 
         :}
+   
     |barplot parentesisabrir  id:nombre coma id:vector coma id:titulo coma id: cuatro coma id:cinco parentesiscerrar FINAL{:
          NodoAbstracto nuevo = new barras("BARRAS");
                 NodoAbstracto Datos = new Nodo(nombre);
@@ -221,7 +222,20 @@ GRAFICAS::= pie parentesisabrir  id:valores coma id:vector coma id:titulo parent
                 nuevo.columna = nombreleft;
                 nuevo.linea = nombreright;
                 RESULT = nuevo;    
-    :}; 
+    :}
+     |hist parentesisabrir  id:nombre coma id:vector coma id:titulo parentesiscerrar FINAL{:
+                NodoAbstracto nuevo = new histograma("HISTOGRAMA");
+                NodoAbstracto Datos = new Nodo(nombre);
+                NodoAbstracto Vector = new Nodo(vector);
+                NodoAbstracto Titulo = new Nodo(titulo);
+                nuevo.Hijos.add(Datos);
+                nuevo.Hijos.add(Vector);
+                nuevo.Hijos.add(Titulo);
+                nuevo.columna = nombreleft;
+                nuevo.linea = nombreright;
+                RESULT = nuevo;   
+            :}
+    ; 
 
 
 ELSWITCH::= SWITCH parentesisabrir EXP:exp1 parentesiscerrar llaveabrir EXPRESIONESSWITCH:sentencias llavecerrar{:
