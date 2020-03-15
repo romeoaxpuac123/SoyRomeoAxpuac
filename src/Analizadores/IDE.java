@@ -43,6 +43,9 @@ public class IDE extends javax.swing.JFrame {
      */
     public int TotalPestañas = 1;
     public static LinkedList<TError> TABLA_DE_ERRORES_SINTACTICOS = new LinkedList<TError>();
+    public static LinkedList<ReporteTS> TABLA_ReporteTS = new LinkedList<ReporteTS>();
+    public static String ElTipoDeAmbitoRomeo = "Global";
+    public static int NumeroEntornosRomeo = 0;
     JFileChooser seleccionar1 = new JFileChooser();
     File Archivo; FileInputStream entrada; FileOutputStream salida;
     File Archivo1; 
@@ -316,6 +319,11 @@ public class IDE extends javax.swing.JFrame {
         jButton4.setText("Grafica DES");
 
         jButton5.setText("Tabla de Simbolos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Reporte Errores");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -461,6 +469,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton18.setText("Tabla de Simbolos");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton19.setText("Graficas");
 
@@ -580,6 +593,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton28.setText("Tabla de Simbolos");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         jButton29.setText("Graficas");
 
@@ -699,6 +717,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton38.setText("Tabla de Simbolos");
+        jButton38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton38ActionPerformed(evt);
+            }
+        });
 
         jButton39.setText("Graficas");
 
@@ -818,6 +841,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton48.setText("Tabla de Simbolos");
+        jButton48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton48ActionPerformed(evt);
+            }
+        });
 
         jButton49.setText("Graficas");
 
@@ -937,6 +965,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton58.setText("Tabla de Simbolos");
+        jButton58.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton58ActionPerformed(evt);
+            }
+        });
 
         jButton59.setText("Graficas");
 
@@ -1056,6 +1089,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton68.setText("Tabla de Simbolos");
+        jButton68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton68ActionPerformed(evt);
+            }
+        });
 
         jButton69.setText("Graficas");
 
@@ -1177,6 +1215,11 @@ public class IDE extends javax.swing.JFrame {
         jButton98.setText("Graficas");
 
         jButton99.setText("Tabla de Simbolos");
+        jButton99.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton99ActionPerformed(evt);
+            }
+        });
 
         jButton100.setText("Reporte Errores");
         jButton100.addActionListener(new java.awt.event.ActionListener() {
@@ -1296,6 +1339,11 @@ public class IDE extends javax.swing.JFrame {
         jButton108.setText("Graficas");
 
         jButton109.setText("Tabla de Simbolos");
+        jButton109.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton109ActionPerformed(evt);
+            }
+        });
 
         jButton110.setText("Reporte Errores");
         jButton110.addActionListener(new java.awt.event.ActionListener() {
@@ -1415,6 +1463,11 @@ public class IDE extends javax.swing.JFrame {
         jButton118.setText("Graficas");
 
         jButton119.setText("Tabla de Simbolos");
+        jButton119.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton119ActionPerformed(evt);
+            }
+        });
 
         jButton120.setText("Reporte Errores");
         jButton120.addActionListener(new java.awt.event.ActionListener() {
@@ -1539,6 +1592,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton129.setText("Tabla de Simbolos");
+        jButton129.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton129ActionPerformed(evt);
+            }
+        });
 
         jButton130.setText("Reporte Errores");
         jButton130.addActionListener(new java.awt.event.ActionListener() {
@@ -1966,6 +2024,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
+        
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2086,7 +2147,73 @@ public class IDE extends javax.swing.JFrame {
         TABLA_DE_ERRORES_SINTACTICOS.clear();
         
     }//GEN-LAST:event_jButton6ActionPerformed
+    public void CrearReporteTS(){
+        String cad = "REPORTE TABLA DE SIMBOLOS";
+       
+        FileWriter filewriter = null;
+        PrintWriter printw = null;
+       
+       try{
+        filewriter = new FileWriter("Reporte_TS.html");//declarar el archivo
+        printw = new PrintWriter(filewriter);//declarar un impresor
 
+        printw.println("<html>");
+        printw.println("<head><title>by Romeo Axpuac</title></head>");    
+        //si queremos escribir una comilla " en el
+        //archivo uzamos la diagonal invertida \"
+        printw.println("<body bgcolor=\"#99CC99\">");
+
+        //si quisieramos escribir una cadena que vide de una lista o
+        //de una variable lo concatenamos
+        printw.println("<center><h1><font color=\"navy\">"+cad+"</font></h1></center>");
+        printw.println("<center><h4><font color=\"purple\">Organizacion de Lenguajes y Compiladores 2</font></h4></center>");
+        printw.println("<center><table><tr>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Numero</strong></td>\n" +
+                        "  <td WIDTH=\"180\" HEIGHT=\"50\"><strong>Lexema</strong></td>\n" +
+                        "  <td WIDTH=\"180\" HEIGHT=\"50\"><strong>Tipo</strong></td>\n" +
+                        "  <td WIDTH=\"140\" HEIGHT=\"50\"><strong>Entorno</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Fila</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>Columna</strong></td>\n" +
+                        "</tr>\n");
+        // creando contendo de la tabla
+        for(int i = 0;i< TABLA_ReporteTS.size(); i++){
+            String Error = TABLA_ReporteTS.get(i).lexema;
+            String Tipo = TABLA_ReporteTS.get(i).tipo;
+            int columna = TABLA_ReporteTS.get(i).columna;
+            int fila = TABLA_ReporteTS.get(i).linea +1;
+            String Descripcion = TABLA_ReporteTS.get(i).entorno;
+            printw.println("<tr>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+(i+1)+"</strong></td>\n" +
+                         "  <td WIDTH=\"180\" HEIGHT=\"50\"><strong>"+Error+"</strong></td>\n" +
+                        "  <td WIDTH=\"180\" HEIGHT=\"50\"><strong>"+Tipo+"</strong></td>\n" +
+                        "  <td WIDTH=\"140\" HEIGHT=\"50\"><strong>"+Descripcion+"</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+fila+"</strong></td>\n" +
+                        "  <td WIDTH=\"80\" HEIGHT=\"50\"><strong>"+columna+"</strong></td>\n" +
+                        "</tr>\n");
+
+            //System.out.println(i+1 + " | " +Tipo + " |" + Descripcion + " " + " | "  + columna + " | " + fila );
+            //CrearReporteErrores();
+        }
+        
+        
+        printw.println("</table></center>\n");
+        //podemos añadir imagenes con codigo html
+        //printw.println("<center><img src=\"img/www.losiej.blogspot.com.png\" width=\"200\" height=\"150\"></center>");
+
+        printw.println("</body>");
+        printw.println("</html>");
+
+        //no devemos olvidar cerrar el archivo para que su lectura sea correcta
+        printw.close();//cerramos el archivo
+
+        System.out.println("Generado exitosamente");//si todo sale bien mostramos un mensaje de guardado exitoso
+        this.autoAbrir("Reporte_TS.html");
+       }catch(Exception e){
+
+       }
+    }
+    
+    
     public void CrearReporteErrores(){
         String cad = "REPORTE DE ERRORES";
        
@@ -2167,7 +2294,9 @@ public class IDE extends javax.swing.JFrame {
     }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        TABLA_DE_ERRORES_SINTACTICOS.clear();
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2207,6 +2336,8 @@ public class IDE extends javax.swing.JFrame {
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2245,7 +2376,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         // TODO add your handling code here:
-        TABLA_DE_ERRORES_SINTACTICOS.clear();
+       TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2284,6 +2417,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2322,6 +2458,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
          BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2361,6 +2500,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2399,6 +2541,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton92ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2437,6 +2582,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton102ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
            BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2475,6 +2623,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton112ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -2513,6 +2664,9 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton122ActionPerformed
         // TODO add your handling code here:
+         TABLA_DE_ERRORES_SINTACTICOS.clear();
+        NumeroEntornosRomeo = 0;
+        TABLA_ReporteTS.clear();
                 BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("3d.txt"));
@@ -3056,6 +3210,169 @@ public class IDE extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cambios guardados en " + Archivo10);
         }
     }//GEN-LAST:event_jButton127ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+   for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton38ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton38ActionPerformed
+
+    private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton48ActionPerformed
+
+    private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton58ActionPerformed
+
+    private void jButton68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton68ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton68ActionPerformed
+
+    private void jButton99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton99ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton99ActionPerformed
+
+    private void jButton109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton109ActionPerformed
+        // TODO add your handling code here:
+            for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton109ActionPerformed
+
+    private void jButton119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton119ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton119ActionPerformed
+
+    private void jButton129ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton129ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < TABLA_ReporteTS.size(); i++){
+            System.out.println("NOMBRE SIMBOLO: " + TABLA_ReporteTS.get(i).Lexema());
+            System.out.println("TIPO SIMBOLO:" + TABLA_ReporteTS.get(i).tipo());
+            System.out.println("ENTORNO: " + TABLA_ReporteTS.get(i).entorno);
+            System.out.println("FILA: " + TABLA_ReporteTS.get(i).linea);
+            System.out.println("COLUMNA: " + TABLA_ReporteTS.get(i).columna);
+             System.out.println("------------------------");
+        
+        }
+         CrearReporteTS();
+         TABLA_ReporteTS.clear();
+    }//GEN-LAST:event_jButton129ActionPerformed
 
      public void Analizar(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));

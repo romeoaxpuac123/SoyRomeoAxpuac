@@ -6,6 +6,8 @@
 package CodigoASTCUP;
 
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import Analizadores.TError;
 import Codigo.Entorno;
 import javax.swing.JTextArea;
@@ -42,6 +44,9 @@ public class For extends NodoAbstracto{
        System.out.println("Variable 1: " + TipoVariable1);
        Entorno Temporal = new Entorno();
        entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+        ElTipoDeAmbitoRomeo = "Local: FOR";
+        NumeroEntornosRomeo++;
+        
         //trabajemos los valores de la expresion 1
         if("id".equals(TipoVariable1)){
             String NombreVariable1 = this.Hijos.get(0).Nombre;
@@ -61,6 +66,9 @@ public class For extends NodoAbstracto{
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -77,6 +85,9 @@ public class For extends NodoAbstracto{
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -97,6 +108,9 @@ public class For extends NodoAbstracto{
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -116,6 +130,9 @@ public class For extends NodoAbstracto{
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "FIN FOR";
                         }
                          if("continue".equals(Resultado)){
@@ -128,6 +145,9 @@ public class For extends NodoAbstracto{
             salida.append("#ERROR: La expresion1 debe ser un vector + \n");
             TError ERRORES = new TError("FOR",this.linea,this.columna,"Semantico", "#ERROR: La expresion1 debe ser un vector");
             TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
             return "#ERROR: La expresion1 debe ser un vector";
         }
                
@@ -182,6 +202,9 @@ public class For extends NodoAbstracto{
        }
        
        */
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
        return "FINFOR";
     }
     

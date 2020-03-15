@@ -6,7 +6,10 @@
 package CodigoASTCUP;
 
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import Analizadores.TError;
+import Analizadores.ReporteTS;
 import Codigo.Entorno;
 import javax.swing.JTextArea;
 
@@ -39,16 +42,23 @@ public class DoWhile extends NodoAbstracto{
                     salida.append("#ERROR: La Sentencia del While es incorrecta \n");
                     TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del IF es incorrecta"  );
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                     return "#error en while";
             }
              Entorno Temporal = new Entorno();
              entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
             do{
-                
+                ElTipoDeAmbitoRomeo = "Local: DoWhile";
+                NumeroEntornosRomeo++;
                 for(int i = 0; i < this.Expresiones.size(); i++){
                     String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
                     if("break".equals(Resultado)){
                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                     }
                     if("continue".equals(Resultado)){
@@ -58,6 +68,9 @@ public class DoWhile extends NodoAbstracto{
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
                 System.out.println("amoramio" + ValorExpresion);
             }while("true".equals(ValorExpresion.toLowerCase()));
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
             entorno = entorno.ModificandoEntornos(Temporal,entorno);
         return "FIN DO WHILE";
     }

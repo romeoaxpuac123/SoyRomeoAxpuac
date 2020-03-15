@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import Analizadores.TError;
 import Codigo.Entorno;
@@ -27,7 +29,8 @@ public class SentenciaIFElseIF extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
-        
+        ElTipoDeAmbitoRomeo = "Local: IF";
+             NumeroEntornosRomeo++;
         //la parte de if ya esta
         this.Expresiones2.clear();
         for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
@@ -71,14 +74,23 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                         String Resultado = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
                         if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                         }
                         if("continue".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
                        }
                     }
                     entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                      return "FIN ELSE";
                 }
                 break;
@@ -96,15 +108,24 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                                 String VamosAVer = this.Expresiones.get(i).Hijos.get(1).Hijos.get(xx).Ejecutar(Temporal, salida);
                                          if("break".equals(VamosAVer)){
                                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                                         return "break";
                                         }
                                         if("continue".equals(VamosAVer)){
                                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                                             return "continue";
                                        }
                             
                             }
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "FIN ELSE";
                             
                         default:
@@ -123,14 +144,23 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                             String Resuladito = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
                              if("break".equals(Resuladito)){
                                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                                         return "break";
                              }
                              if("continue".equals(Resuladito)){
                                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                                             return "continue";
                               }
                         }
                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "FIN ELSE";
                     }
                     System.out.println("ACA IRIA EL ELSE NADA MAS");
@@ -144,7 +174,9 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                 break;
         }
         
-     
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
         return "FIN ELSEIF";
     }
 

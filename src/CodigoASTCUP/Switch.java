@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import Codigo.Entorno;
 import javax.swing.JTextArea;
 
@@ -29,6 +31,8 @@ public class Switch extends NodoAbstracto{
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
         System.out.println("El valor a evaluar->" + ValorExpresion);
         //Sacando el total de CASES
+          ElTipoDeAmbitoRomeo = "Local: SWITCH";
+               NumeroEntornosRomeo++;
         System.out.println("Total de Cases" + this.Hijos.get(1).Hijos.size());
          this.Expresiones.add(this.Hijos.get(1));
          for(int i = 2; i<this.Hijos.get(1).Hijos.size();i++){
@@ -65,12 +69,17 @@ public class Switch extends NodoAbstracto{
                 String Resultado = this.Hijos.get(2).Hijos.get(i).Ejecutar(Temporal, salida);
                 if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                         }
             }
          }
          entorno = entorno.ModificandoEntornos(Temporal,entorno);
-         
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
         return "FIN SWITHC";
     }
     

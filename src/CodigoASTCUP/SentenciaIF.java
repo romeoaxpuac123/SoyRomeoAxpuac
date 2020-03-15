@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import Analizadores.TError;
 import Codigo.Entorno;
@@ -27,7 +29,8 @@ public class SentenciaIF extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
-        
+        ElTipoDeAmbitoRomeo = "Local: IF";
+        NumeroEntornosRomeo++;
         this.Expresiones.clear();
             for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
                 this.Expresiones.add(this.Hijos.get(1).Hijos.get(i));
@@ -55,6 +58,10 @@ public class SentenciaIF extends NodoAbstracto{
                     salida.append("#ERROR: La Sentencia del IF es incorrecta \n");
                     TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del IF es incorrecta"  );
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    NumeroEntornosRomeo--;
+                    if(NumeroEntornosRomeo==0)
+                    ElTipoDeAmbitoRomeo = "Global";
+                            return "ERROR";
                 }else{
                     System.out.println("ejecutemos sentencias");
                     //String ValorExpresion2 = this.Hijos.get(1).Ejecutar(entorno, salida);
@@ -66,9 +73,15 @@ public class SentenciaIF extends NodoAbstracto{
                     for(int i = 0; i < this.Expresiones.size();i++){
                         String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
                         if("break".equals(Resultado)){
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                         }
                         if("continue".equals(Resultado)){
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
                        }
                     }
@@ -93,10 +106,16 @@ public class SentenciaIF extends NodoAbstracto{
                         System.out.println("RESULTADOOOOOOOOOOOOOO_>" + Resultado);
                         if("break".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                         }
                         if("continue".equals(Resultado)){
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
                        }
                     }
@@ -118,6 +137,9 @@ public class SentenciaIF extends NodoAbstracto{
                 break;
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
         return "Fin IF";
     }
     

@@ -234,6 +234,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
@@ -431,6 +434,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton19">
               <Properties>
@@ -601,6 +607,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton28ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton29">
               <Properties>
@@ -771,6 +780,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton38ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton39">
               <Properties>
@@ -941,6 +953,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton48ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton49">
               <Properties>
@@ -1111,6 +1126,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton58ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton59">
               <Properties>
@@ -1281,6 +1299,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton68ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton69">
               <Properties>
@@ -1456,6 +1477,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton99ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton100">
               <Properties>
@@ -1626,6 +1650,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton109ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton110">
               <Properties>
@@ -1796,6 +1823,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton119ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton120">
               <Properties>
@@ -1969,6 +1999,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tabla de Simbolos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton129ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton130">
               <Properties>

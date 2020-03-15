@@ -5,7 +5,10 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
+import static Analizadores.IDE.TABLA_ReporteTS;
+import Analizadores.ReporteTS;
 import Analizadores.TError;
 import Codigo.Entorno;
 import java.util.ArrayList;
@@ -109,12 +112,15 @@ public class DeclararAsignar extends NodoAbstracto{
            boolean ExisteVector =  entorno.ExisteVector(Identificador); 
            if(ExisteVector == false){
                entorno.Agregar2(NombreLista, this.Expresiones3, "Lista", "ListaArit");
+               
            }else{
                entorno.ModificarValorLista(NombreLista, this.Expresiones3, "Lista", "ListaArit");
            }
       
       entorno.MostrarVectores();
       entorno.MostrarVectoresLista(entorno,salida);
+      ReporteTS SIMBOLO = new ReporteTS(NombreLista,this.linea,this.columna,"Lista",ElTipoDeAmbitoRomeo);
+      TABLA_ReporteTS .add(SIMBOLO);
       System.out.println("FIN");
         return "FIN DECLISTA";
       }
@@ -194,6 +200,8 @@ public class DeclararAsignar extends NodoAbstracto{
                 }
                  entorno.MostrarVectores();
                 entorno.MostrarVectoresLista(entorno,salida);
+                 ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Lista",ElTipoDeAmbitoRomeo);
+                TABLA_ReporteTS .add(SIMBOLO);
                 System.out.println("aaaaa");
                 return "AA";
           }
@@ -340,6 +348,8 @@ public class DeclararAsignar extends NodoAbstracto{
           
          entorno.MostrarVectores();
          entorno.MostrarVectoresLista(entorno,salida);
+          ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ Tipo1y,ElTipoDeAmbitoRomeo);
+          TABLA_ReporteTS .add(SIMBOLO);
           return "FIN C";
           
       }
@@ -394,6 +404,8 @@ public class DeclararAsignar extends NodoAbstracto{
         
         entorno.MostrarVectores();
          entorno.MostrarVectoresLista(entorno,salida);
+         ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ Tipo1,ElTipoDeAmbitoRomeo);
+          TABLA_ReporteTS .add(SIMBOLO);
         System.out.println("---------");
       return "FIN DECLARAR ASGINAR";
     }
