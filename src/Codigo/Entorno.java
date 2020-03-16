@@ -57,6 +57,18 @@ public class Entorno {
             return false;
         }
     }
+       public ArrayList <NodoAbstracto> ListaParetros(String ID){
+            if (Elementos.containsKey(ID)) {
+                return Elementos.get(ID).RetornarParametros();
+            }
+            return null;
+       }
+       public ArrayList <NodoAbstracto> ListaSentenciasFuncion(String ID){
+           if (Elementos.containsKey(ID)) {
+                return Elementos.get(ID).RetornarLista();
+            }
+           return null;
+       }
     
     public boolean AgregarLista(String id, ArrayList <NodoAbstracto> Expresiones, String Tipo,String Borrador){
         if (!Elementos.containsKey(id)) {

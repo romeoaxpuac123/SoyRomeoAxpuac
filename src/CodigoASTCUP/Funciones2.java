@@ -51,7 +51,7 @@ public class Funciones2 extends NodoAbstracto{
         salida.setText("");
         
         this.Expresiones.clear();
-        this.Expresiones.add(this.Hijos.get(1));
+        //this.Expresiones.add(this.Hijos.get(1));
         
         for(int i = 0; i < TotalParametros; i ++){
         
@@ -101,7 +101,7 @@ public class Funciones2 extends NodoAbstracto{
         entorno.MostrarVectoresFuncion(entorno, salida);
         ElTipoDeAmbitoRomeo = "Global";
          ReporteTS SIMBOLO = new ReporteTS(NombreFuncion,this.linea,this.columna,"Funcion Con Parametros",ElTipoDeAmbitoRomeo);
-        TABLA_ReporteTS .add(SIMBOLO);
+        TABLA_ReporteTS.add(SIMBOLO);
         salida.setText("");
         salida.append(Texto);
 

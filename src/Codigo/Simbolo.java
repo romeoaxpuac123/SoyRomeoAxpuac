@@ -80,4 +80,8 @@ public class Simbolo {
     public ArrayList <NodoAbstracto> RetornarLista(){
         return this.Expresiones;
     }
+    
+    public ArrayList <NodoAbstracto> RetornarParametros(){
+        return this.Parametros;
+    }
 }

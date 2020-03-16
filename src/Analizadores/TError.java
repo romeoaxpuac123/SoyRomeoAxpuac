@@ -14,7 +14,7 @@ public class TError {
     int linea, columna;
     
     public  TError(String lexema, int linea, int columna, String tipo, String descripcion){
-        System.out.println("SE AGREGO NUEVO ERROR->" + lexema);
+        System.out.println("SE AGREGO NUEVO ERROR->" + lexema + "<->" +descripcion);
         this.lexema = lexema;
         this. linea = linea;
         this.columna = columna;

@@ -41,7 +41,8 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "function"     {   System.out.println("--->"+yytext()+" - function");
                             return new Symbol(Simbolos.function, yycolumn, yyline, yytext());}
 
-
+<YYINITIAL> "return"     {   System.out.println("--->"+yytext()+" - returno");
+                            return new Symbol(Simbolos.returno, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "plot"     {   System.out.println("--->"+yytext()+" - plot");
                             return new Symbol(Simbolos.plot, yycolumn, yyline, yytext());}
@@ -131,7 +132,7 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "print"     {   System.out.println("--->"+yytext()+" - Imprimir");
                             return new Symbol(Simbolos.imprimir, yycolumn, yyline, yytext());}
 
-<YYINITIAL> "c("         {   System.out.println("--->"+yytext()+" - FuncionC");
+<YYINITIAL> "c"         {   System.out.println("--->"+yytext()+" - FuncionC");
                             return new Symbol(Simbolos.FuncionC, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "true"      {   System.out.println("--->"+yytext()+" - true");
