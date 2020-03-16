@@ -46,6 +46,18 @@ public class Entorno {
         }
     }
     
+       public boolean AgregarFuncion(String id, ArrayList <NodoAbstracto> Parametros, ArrayList <NodoAbstracto> Expresiones, String Tipo,String Borrador){
+        if (!Elementos.containsKey(id)) {
+            Simbolo sim = new Simbolo(id,Parametros, Expresiones, Tipo,Borrador);
+            Elementos.put(id, sim);
+            System.out.println("La funcion se agregó -> "+id);
+            return true;
+        }else{
+            System.out.println("La funcion ya existe -> "+id);
+            return false;
+        }
+    }
+    
     public boolean AgregarLista(String id, ArrayList <NodoAbstracto> Expresiones, String Tipo,String Borrador){
         if (!Elementos.containsKey(id)) {
             Simbolo sim = new Simbolo(id, Expresiones, Tipo,Borrador);
@@ -123,7 +135,7 @@ public class Entorno {
         while( e.hasMoreElements() ) {
             clave = e.nextElement();
             String Clave2 = (String) clave;
-            if(ObtenerListaN(Clave2) ==0){
+            if(ObtenerListaN(Clave2) ==0 && !"Funcion".equals(ObtenerTipo(Clave2))){
             System.out.println( "Vector : " + clave + " Valor:" + ObtenerValor(Clave2) + " Tipo:" + ObtenerTipo(Clave2));
         }
         }
@@ -194,7 +206,7 @@ public class Entorno {
             String Clave2 = (String) clave;
             //!"VectorDragonBallBeatles".equals(Clave2)
             if(ObtenerListaN(Clave2) ==1 && !"VectorDragonBallBeatles".equals(Clave2)
-               && !"VectorC2DeRomeo".equals(Clave2) && !"VectorC1DeRomeo".equals(Clave2)     ){ //
+               && !"VectorC2DeRomeo".equals(Clave2) && !"VectorC1DeRomeo".equals(Clave2)   && !"Funcion".equals(ObtenerTipo(Clave2))  ){ //
             ArrayList <NodoAbstracto> Lista =  ObtenerLista(clave.toString());
             String Valores = "";
             for(int i = 0; i < Lista.size();i++){
@@ -218,4 +230,23 @@ public class Entorno {
             }
           }
     }
+     
+     
+     
+       public void MostrarVectoresFuncion(Entorno entorno,JTextArea salida){
+       Enumeration e = Elementos.keys();
+        Object clave;
+        while( e.hasMoreElements() ) {
+            clave = e.nextElement();
+            String Clave2 = (String) clave;
+            //!"VectorDragonBallBeatles".equals(Clave2)
+            if(ObtenerTipo(Clave2).contains("Funcion")){ //
+            ArrayList <NodoAbstracto> Lista =  ObtenerLista(clave.toString());
+          
+            System.out.println( "Vector : " + clave +  " Tipo:" + ObtenerTipo(Clave2) + "<-Bo->" + Borrador(Clave2) +
+                    "<-Total elementos->" + ObtenerLista(Clave2).size() );
+            }
+          }
+    }
+     
 }

@@ -18,6 +18,7 @@ public class Simbolo {
     String Borrador ="";
     String Tipo;
     int lista = 0;
+    public ArrayList <NodoAbstracto> Parametros = new ArrayList();
     public ArrayList <NodoAbstracto> Expresiones = new ArrayList();
     public Simbolo(String Id, String Valor, String Tipo) {
         this.Id = Id;
@@ -33,6 +34,16 @@ public class Simbolo {
         this.Borrador = Borrador;
         this.Valor = "";
     }
+     
+      public Simbolo(String Id, ArrayList <NodoAbstracto> Parametros,ArrayList <NodoAbstracto> Expresiones, String Tipo, String Borrador) {
+        this.Id = Id;
+        this.Parametros = Parametros;
+        this.Expresiones = Expresiones;
+        this.Tipo = Tipo;
+        this.lista = 1;
+        this.Borrador = Borrador;
+        this.Valor = "";
+    } 
      
     public String Borrador(){
         return this.Borrador;

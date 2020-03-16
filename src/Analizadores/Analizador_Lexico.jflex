@@ -38,6 +38,11 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 {COMENT_UNILINEA}        {   System.out.println("--->Comentario 1 línea");} 
 {COMENT_MULTILINEA}      {   System.out.println("--->Comentario multilínea");} 
 
+<YYINITIAL> "function"     {   System.out.println("--->"+yytext()+" - function");
+                            return new Symbol(Simbolos.function, yycolumn, yyline, yytext());}
+
+
+
 <YYINITIAL> "plot"     {   System.out.println("--->"+yytext()+" - plot");
                             return new Symbol(Simbolos.plot, yycolumn, yyline, yytext());}
 
@@ -120,7 +125,8 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "default"      {   System.out.println("--->"+yytext()+" - DEF");
                             return new Symbol(Simbolos.DEF, yycolumn, yyline, yytext());}
 
-
+<YYINITIAL> "=("      {   System.out.println("--->"+yytext()+" - DESDESPERADO");
+                            return new Symbol(Simbolos.DESDESPERADO, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "print"     {   System.out.println("--->"+yytext()+" - Imprimir");
                             return new Symbol(Simbolos.imprimir, yycolumn, yyline, yytext());}
@@ -195,10 +201,10 @@ COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 <YYINITIAL> "}"         {   System.out.println("--->"+yytext()+" - llave cerrar");
                             return new Symbol(Simbolos.llavecerrar, yycolumn, yyline, yytext());}
 
-<YYINITIAL> "("         {   System.out.println("--->"+yytext()+" - llave abrir");
+<YYINITIAL> "("         {   System.out.println("--->"+yytext()+" - par abrir");
                             return new Symbol(Simbolos.parentesisabrir, yycolumn, yyline, yytext());}
 
-<YYINITIAL> ")"         {   System.out.println("--->"+yytext()+" - llave cerrar");
+<YYINITIAL> ")"         {   System.out.println("--->"+yytext()+" - par cerrar");
                             return new Symbol(Simbolos.parentesiscerrar, yycolumn, yyline, yytext());}
 
 <YYINITIAL> "["         {   System.out.println("--->"+yytext()+" - Corchete abrir");
