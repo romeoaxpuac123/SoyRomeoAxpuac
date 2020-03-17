@@ -94,7 +94,11 @@ public class MostrarFuncion2 extends NodoAbstracto{
                         return "#ERROR EN FUNCIONES LLAMDA";
                     }
                     if(Resultado.toUpperCase().contains("ESTOESUNRETORNOROMEO")){
-                        break;
+                       this.TipoDato = ListaSentencias.get(i).TipoDato;
+                        Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
+                        System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);
+                        return Resultado;
+                        //break;
                     }
           }
       }

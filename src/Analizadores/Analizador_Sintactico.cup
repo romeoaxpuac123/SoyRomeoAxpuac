@@ -86,6 +86,7 @@ non terminal NodoAbstracto ELBREAK, ELCONTINUE, LISTASENTENCIASwhile, ELSWITCH,E
 non terminal NodoAbstracto GRAFICAS,DECFUNCIONES,LISTAPARAMETROS, LLAMARFUNCIONES, RETORNOS, LLAMARFUNCIONES2;
 
 precedence right NOT;
+precedence left parentesisabrir;
 precedence left PREGUNTAC;
 precedence left AND,OR;
 precedence left igualdad,Noigualdad;
@@ -660,7 +661,6 @@ IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar FINAL
                     {:
                         NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
                         nuevo.Hijos.add(exp1);
-                         Manejor_Error = "Error al imprimir";
                         nuevo.columna = exp1left;
                         nuevo.linea = exp1right;
                         RESULT = nuevo;
@@ -669,7 +669,26 @@ IMPRIM::=           imprimir parentesisabrir EXP:exp1 parentesiscerrar FINAL
 
 
 
-EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores parentesiscerrar{:
+EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesiscerrar{:
+                        NodoAbstracto nod= new MostrarFuncion2("Llamado1");
+                        NodoAbstracto nuevoid = new Nodo(nombre);
+                        nod.Hijos.add(nuevoid);
+                        nod.Hijos.add(parametros);
+                        nod.columna = nombreleft;
+                        nod.linea = nombreright;
+                        RESULT = nod;
+                    :}
+    
+                |    id:nombre parentesisabrir parentesiscerrar{:
+                        NodoAbstracto nod= new MostrarFuncion1("Llamado1");
+                        NodoAbstracto nuevoid = new Nodo(nombre);
+                        nod.Hijos.add(nuevoid);
+                        nod.columna = nombreleft;
+                        nod.linea = nombreright;
+                        RESULT = nod;
+
+                    :}
+                   |LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores parentesiscerrar{:
                         NodoAbstracto nuevo = new Nodo("Lista");
                         NodoAbstracto nuevo2 = new Nodo("list(");
                         nuevo.Hijos.add(nuevo2);
@@ -692,7 +711,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         RESULT = nuevo;
 
                 :}    
-                |EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
+ |EXP:exp1 PREGUNTAC EXP:exp2 DOSP EXP:exp3{:
                         NodoAbstracto nuevo = new Ternario("EXP");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(exp2);  
@@ -700,7 +719,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                          Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
-                    |NOT EXP:exp1{:
+  |NOT EXP:exp1{:
                         NodoAbstracto nuevo = new NOT("EXP");
                         NodoAbstracto nuevooperador = new Nodo("!");
                         nuevo.Hijos.add(nuevooperador);
@@ -710,7 +729,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         RESULT = nuevo;
 
                     :}
-                    |menos EXP:exp1{:
+    |menos EXP:exp1{:
                         NodoAbstracto nuevo = new Negativo("EXP");
                         NodoAbstracto nuevooperador = new Nodo("-");
                         nuevo.Hijos.add(nuevooperador);
@@ -719,7 +738,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     :}
-                    |EXP:exp1 mas EXP:exp2
+    |EXP:exp1 mas EXP:exp2
                     {:
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("+");
@@ -730,7 +749,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         RESULT = nuevo;
                         
                     :}
-                    |EXP:exp1 menos EXP:exp2
+  |EXP:exp1 menos EXP:exp2
                     {:
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("-");
@@ -740,7 +759,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         Manejor_Error = "Error en expresion";                    
                         RESULT = nuevo;
                     :}
-                    |EXP:exp1 por EXP:exp2
+  |EXP:exp1 por EXP:exp2
                     {:
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("*");
@@ -752,8 +771,7 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                     :}
                   
                         
-
-                    |EXP:exp1 div EXP:exp2
+ |EXP:exp1 div EXP:exp2
                     {:
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("/");

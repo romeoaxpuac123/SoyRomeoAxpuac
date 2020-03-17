@@ -35,6 +35,8 @@ public class Retorno extends NodoAbstracto{
                         TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
             return "#ERROR EN RETORNO";
         }        
+        this.TipoDato = this.Hijos.get(0).TipoDato;
+        System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);
         return "ESTOESUNRETORNOROMEO" +Resultado;
     
         
