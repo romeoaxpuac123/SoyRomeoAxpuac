@@ -5,6 +5,7 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import Analizadores.TError;
 import Codigo.Entorno;
@@ -34,12 +35,13 @@ public class MostrarFuncion1 extends NodoAbstracto{
             System.out.println("vamos a correr la funcion sin parametros" + ElNombre);
             ArrayList <NodoAbstracto> ListaParetros = entorno.ListaParetros(ElNombre);
             ArrayList <NodoAbstracto> ListaSentencias = entorno.ListaSentenciasFuncion(ElNombre);
+            ElTipoDeAmbitoRomeo = "FUNCION";
             if(ListaParetros == null){
                 for(int i = 0; i< ListaSentencias.size(); i++){
                     String Resultado = ListaSentencias.get(i).Ejecutar(entorno, salida);
                     if(Resultado.toUpperCase().contains("#ERROR")){
                         //vamos a ver que pedo con los errores 
-                         salida.append("ERROR NO EXISTE UN ERROR EN FUNCION " + ElNombre);
+                         salida.append("ERROR  EXISTE UN ERROR EN FUNCION " + ElNombre);
                         TError ERRORES = new TError(ElNombre,this.linea,this.columna,"Semantico","ERROR NO EXISTE EL VECTOR " + "ERROR NO EXISTE UN ERROR EN FUNCION " + ElNombre );
                         TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                         return "#ERROR EN FUNCIONES LLAMDA";
@@ -64,7 +66,7 @@ public class MostrarFuncion1 extends NodoAbstracto{
         }
         
         
-    
+    ElTipoDeAmbitoRomeo = "GLOBAL";
         return "MOSTRAR FUNCION1";
     }
 

@@ -723,7 +723,7 @@ public class Nodo extends NodoAbstracto{
             case "id":
                 
                 sali = entorno.ObtenerValor(this.Hijos.get(0).Nombre);
-                
+                System.out.println("thory.....<<<<<<<<<<<<<<<<<<<<<>" + sali);
                 
                 if("".equals(sali)){
                     sali = entorno.ObtenerValor(this.Nombre);

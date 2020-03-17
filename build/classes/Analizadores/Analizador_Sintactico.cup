@@ -244,7 +244,7 @@ LISTAPARAMETROS::= LISTAPARAMETROS:nodsentencias coma EXP:nod{:
                         RESULT = nuevo;
                     :}
                 |DECLARARASIGNAR:nod{:
-                        NodoAbstracto nuevo = new Nodo("DECLARARASIGNAR");
+                        NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     :};
@@ -888,15 +888,15 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         RESULT = nod;
                     :}
         |id:valor
-        //            {:
-        //                NodoAbstracto nuevo = new Nodo("id");
-        //                NodoAbstracto nuevovalor = new Nodo(valor);
-        //                nuevo.Hijos.add(nuevovalor);
-        //                nuevo.TipoDato = "id";
-        //                nuevo.Nombre = valor;
-        //                Manejor_Error = "Error en expresion";
-        //                RESULT = nuevo;
-         //           :}
+                    {:
+                        NodoAbstracto nuevo = new Nodo("id");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "id";
+                        nuevo.Nombre = valor;
+                        Manejor_Error = "Error en expresion";
+                        RESULT = nuevo;
+                   :}
         |nulo:valor
                     {:
                         NodoAbstracto nuevo = new Nodo("Cadena");
@@ -968,6 +968,12 @@ EXP::=           LISTA:valo4 parentesisabrir LISTAEXPRESIONES:listaValores paren
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                         :}
+|DEF{:
+                        NodoAbstracto nuevo = new Nodo("DEFAULT");
+                       // nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        RESULT = nuevo;
+:}
 |remove parentesisabrir EXP:nuevovalor coma EXP:exp2 parentesiscerrar{:
                         NodoAbstracto nuevo = new Nodo("Remove");
                         nuevo.Hijos.add(nuevovalor);
