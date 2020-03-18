@@ -56,6 +56,13 @@ public class Switch extends NodoAbstracto{
                      bandera = 1;
                      break;
                      }
+                        if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
                  }
                  if (bandera == 1){
                      break;
@@ -74,6 +81,13 @@ public class Switch extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                         return "break";
                         }
+                           if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
             }
          }
          entorno = entorno.ModificandoEntornos(Temporal,entorno);

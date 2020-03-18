@@ -67,12 +67,30 @@ public class Funciones2 extends NodoAbstracto{
         System.out.println("FUNCION:->" + NombreFuncion + "<PARAMETROAS->" + TotalParametros + "<-SENTENCIAS->" + TotalSentencias);
         //VAMOS A PROBAR LAS EXPRESIONES
         ElTipoDeAmbitoRomeo = "Funcion";
+        //AÑADIENDO LOS PARAMETROS
+         /* 
+        for(int i = 0; i < this.Expresiones.size();i++){
+            String Parametro = this.Expresiones.get(i).Ejecutar(entorno, salida);
+            String TipoParametro = this.Expresiones.get(i).TipoDato;
+            System.out.println("-->RESULTADO PARAMETRO->" + Parametro + "<-> SU TIPO ES->" + TipoParametro );
+            if(TipoParametro.contains("id")){
+               // Temporal.Agregar(Parametro, "decimal", "0");
+            }
+            
+        }
+        
+        
+        //--------------->
+        System.out.println("------------------------------> AÑADIENDO PREVIAMENTE LA FUNCION");
+        Temporal.AgregarFuncion(NombreFuncion,  this.Expresiones, this.Hijos.get(2).Hijos, "Funcion", "");
         for(int i = 0; i < TotalSentencias; i ++){
          String Resultado = this.Hijos.get(2).Hijos.get(i).Ejecutar(Temporal, salida);
         ElTipoDeAmbitoRomeo = "Funcion";
             System.out.println("RESULTADO:" + Resultado);
+            
           salida.setText("");
-            if(Resultado.toUpperCase().contains("ERROR") || Resultado.contains("FINFUNCIONES")){
+          if(Resultado.toUpperCase().contains("ERROR") ){
+                    //|| Resultado.contains("FINFUNCIONES")
                     salida.setText("");
                     Texto = Texto + "#ERROR: En sentencias de Funciones \n";
                     //salida.append("#ERROR: En sentencias de Funciones \n");
@@ -86,6 +104,7 @@ public class Funciones2 extends NodoAbstracto{
             
         }
         //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+*/
         for(int i = 0; i < TotalSentencias; i ++){
              salida.setText("");
             this.Expresiones2.add(this.Hijos.get(2).Hijos.get(i));
@@ -93,6 +112,7 @@ public class Funciones2 extends NodoAbstracto{
         }
         
          salida.append(Texto);
+
         System.out.println("agregaremos la funcion entonces----------------------------------------");
         entorno.AgregarFuncion(NombreFuncion,  this.Expresiones, this.Expresiones2, "Funcion", "");
        

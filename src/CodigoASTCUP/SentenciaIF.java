@@ -72,6 +72,7 @@ public class SentenciaIF extends NodoAbstracto{
                     System.out.println("-><-" + this.Expresiones.size() + "<->");
                     for(int i = 0; i < this.Expresiones.size();i++){
                         String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
+                        System.out.println("gracias por ser mi amiga->" + Resultado); 
                         if("break".equals(Resultado)){
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
@@ -84,6 +85,14 @@ public class SentenciaIF extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
                        }
+                        if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                            this.TipoDato = this.Expresiones.get(i).TipoDato;
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
+                       
                     }
                     //System.out.println("vamos a ver que pedo");
                     //entorno.MostrarVectores();
@@ -117,6 +126,13 @@ public class SentenciaIF extends NodoAbstracto{
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
+                       }
+                        if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            this.TipoDato = this.Expresiones2.get(i).TipoDato;
+                            return Resultado;
                        }
                     }
                     //System.out.println("vamos a ver que pedo");

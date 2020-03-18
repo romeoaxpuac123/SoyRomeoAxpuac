@@ -86,6 +86,13 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                             return "continue";
                        }
+                         if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
                     }
                     entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             NumeroEntornosRomeo--;
@@ -120,6 +127,13 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                                             return "continue";
                                        }
+                                           if(VamosAVer.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return VamosAVer;
+                       }
                             
                             }
                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
@@ -156,6 +170,13 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                                             return "continue";
                               }
+                            if(Resuladito.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resuladito;
+                       }
                         }
                         entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             NumeroEntornosRomeo--;

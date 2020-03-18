@@ -5,6 +5,8 @@
  */
 package CodigoASTCUP;
 
+import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
+import static Analizadores.IDE.NumeroEntornosRomeo;
 import static Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 import Analizadores.TError;
 import Codigo.Entorno;
@@ -32,7 +34,7 @@ public class While extends NodoAbstracto{
             for(int i = 0; i < this.Hijos.get(1).Hijos.size(); i++){
                 this.Expresiones.add(this.Hijos.get(1).Hijos.get(i));
             }
-            
+            ElTipoDeAmbitoRomeo = "WHILE";
             System.out.println("SE ESTA EJECUTANDO WILE");
             System.out.println("Total de WHILE: " + this.Expresiones.size());
             String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
@@ -57,13 +59,20 @@ public class While extends NodoAbstracto{
                     if("continue".equals(Resultado)){
                        q = this.Expresiones.size()-1;
                     }
+                       if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
                     System.out.println("---------->" + Resultado);
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
                 System.out.println("amoramio" + ValorExpresion);
             }
             entorno = entorno.ModificandoEntornos(Temporal,entorno);
-            
+            ElTipoDeAmbitoRomeo = "Global";
             return "FIN WHILE";
     }
     

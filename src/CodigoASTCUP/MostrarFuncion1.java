@@ -39,14 +39,16 @@ public class MostrarFuncion1 extends NodoAbstracto{
             if(ListaParetros == null){
                 for(int i = 0; i< ListaSentencias.size(); i++){
                     String Resultado = ListaSentencias.get(i).Ejecutar(entorno, salida);
+                    int xp = ListaSentencias.get(i).id;
                     if(Resultado.toUpperCase().contains("#ERROR")){
                         //vamos a ver que pedo con los errores 
-                         salida.append("ERROR  EXISTE UN ERROR EN FUNCION " + ElNombre);
+                         salida.append("ERROR  EXISTE UN ERROR EN FUNCION " + ElNombre + "\n");
                         TError ERRORES = new TError(ElNombre,this.linea,this.columna,"Semantico","ERROR NO EXISTE EL VECTOR " + "ERROR NO EXISTE UN ERROR EN FUNCION " + ElNombre );
                         TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                         return "#ERROR EN FUNCIONES LLAMDA";
                     }
-                    if(Resultado.toUpperCase().contains("ESTOESUNRETORNOROMEO")){
+                   // if(Resultado.toUpperCase().contains("ESTOESUNRETORNOROMEO")){
+                       if(xp == 1212){
                         this.TipoDato = ListaSentencias.get(i).TipoDato;
                         Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
                         System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);

@@ -64,6 +64,13 @@ public class DoWhile extends NodoAbstracto{
                     if("continue".equals(Resultado)){
                        i = this.Expresiones.size()-1;
                     }
+                    if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return Resultado;
+                       }
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
                 System.out.println("amoramio" + ValorExpresion);

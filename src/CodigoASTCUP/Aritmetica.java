@@ -172,9 +172,12 @@ public class Aritmetica extends NodoAbstracto{
                 if(entorno.ObtenerListaN(Vector) ==0){
                     String TipoVector = entorno.ObtenerTipo(Vector);
                     String ValorVector = entorno.ObtenerValor(Vector);
-                    System.out.println("VectorAritmetica:" + Vector + "Tipo->" + TipoVector + "Valor->" + ValorVector);
+                    System.out.println("VectorAritmeticaX:" + Vector + "Tipo->" + TipoVector + "Valor->" + ValorVector);
+                   
                     Tipo1 = TipoVector;
                     val1 = ValorVector;
+                     System.out.println("Eltipo2->" + Tipo2 + "<ElValor2>" + val2);
+                      System.out.println("Eltipo1->" + Tipo1 + "<ElValor2>" + val1);
                 }else{                                
                     ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
                     ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
