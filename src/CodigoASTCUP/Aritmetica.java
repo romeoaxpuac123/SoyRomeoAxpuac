@@ -37,7 +37,12 @@ public class Aritmetica extends NodoAbstracto{
         String Tipo1 = this.Hijos.get(0).TipoDato;
         String Tipo2 = this.Hijos.get(2).TipoDato;
        
-        
+        if(Tipo1.contains("entero") && val1.length()>5){
+            Tipo1 = "decimal";
+        }
+        if(Tipo2.contains("entero") && val2.length()>5){
+            Tipo2 = "decimal";
+        }
         //System.out.println("hijosaaa->" + this.Hijos.get(0).Hijos.size());
         if("FuncionC".equals(Tipo1)){
             System.out.println("dragon ball" + this.Hijos.get(0).Nombre);
@@ -1077,6 +1082,7 @@ public class Aritmetica extends NodoAbstracto{
                  //   System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  this.TipoDato = "booleano";  
                     if(valor1 == valor2){
                         return "true";
                     }else{
@@ -1084,30 +1090,35 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    this.TipoDato = "booleano";  
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    this.TipoDato = "booleano";  
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                  case ">=":
+                     this.TipoDato = "booleano";  
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    this.TipoDato = "booleano";  
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1158,6 +1169,7 @@ public class Aritmetica extends NodoAbstracto{
                     System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  this.TipoDato = "booleano";  
                     if(valor1 == valor2){
                         return "true";
                     }else{
@@ -1165,30 +1177,36 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    this.TipoDato = "booleano";  
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    this.TipoDato = "booleano";  
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
+                    
                     case ">=":
+                        this.TipoDato = "booleano";  
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    this.TipoDato = "booleano";  
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1224,6 +1242,7 @@ public class Aritmetica extends NodoAbstracto{
                case "%%":
                     return "#Error";
                case "==":
+                   this.TipoDato = "booleano";  
                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                        if(valor1.equals(valor2)){
                         return "true";
@@ -1236,6 +1255,7 @@ public class Aritmetica extends NodoAbstracto{
                    
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(!valor1.equals(valor2)){
                             return "true";
@@ -1247,6 +1267,7 @@ public class Aritmetica extends NodoAbstracto{
                     }
                     
                 case ">":
+                    this.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) > 0){
@@ -1258,6 +1279,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) < 0){
                             return "true";
@@ -1270,6 +1292,7 @@ public class Aritmetica extends NodoAbstracto{
                     
                     
              case ">=":
+                 this.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) >= 0){
@@ -1281,6 +1304,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<=":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) <= 0){
                             return "true";
@@ -1335,6 +1359,7 @@ public class Aritmetica extends NodoAbstracto{
                     System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  this.TipoDato = "booleano";  
                     if(valor1 == valor2){
                         return "true";
                     }else{
@@ -1342,30 +1367,35 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    this.TipoDato = "booleano";  
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    this.TipoDato = "booleano";  
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
              case ">=":
+                 this.TipoDato = "booleano";  
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    this.TipoDato = "booleano";  
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1404,6 +1434,7 @@ public class Aritmetica extends NodoAbstracto{
                     return "#Error";
                 default:
             case "==":
+                this.TipoDato = "booleano";  
                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                        if(valor1.equals(valor2)){
                         return "true";
@@ -1416,6 +1447,7 @@ public class Aritmetica extends NodoAbstracto{
                    
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(!valor1.equals(valor2)){
                             return "true";
@@ -1426,6 +1458,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case ">":
+                    this.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) > 0){
@@ -1437,6 +1470,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) < 0){
                             return "true";
@@ -1447,6 +1481,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case ">=":
+                    this.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) >= 0){
@@ -1458,6 +1493,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<=":
+                    this.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) <= 0){
                             return "true";
@@ -1562,7 +1598,7 @@ public class Aritmetica extends NodoAbstracto{
          else if("booleano".equals(Tipo1) && ("booleano".equals(Tipo2))){ 
             String valor1 = val1;
             String valor2 =  val2;
-            this.TipoDato = "booleano";
+            this.TipoDato = "#Error";
             switch(this.Hijos.get(1).Nombre){
                 case "+":
                     return "#Error";
@@ -1578,6 +1614,7 @@ public class Aritmetica extends NodoAbstracto{
                     return "#Error";
                 default:
                case "==":
+                   this.TipoDato = "booleano";  
                     if(valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -1585,6 +1622,7 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                    this.TipoDato = "booleano";  
                      if(!valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -1599,12 +1637,14 @@ public class Aritmetica extends NodoAbstracto{
                 case "<=":
                     return "#Error";
               case "&&":
+                  this.TipoDato = "booleano";  
                     if(valor1.equals(valor2)){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "||":
+                    this.TipoDato = "booleano";  
                      if(!valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -1655,7 +1695,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     total =  (int) Math.pow(valor1,valor2);
-                    this.TipoDato = "decimal";
+                    Nodo.TipoDato = "entero";
                  //   System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1663,37 +1703,44 @@ public class Aritmetica extends NodoAbstracto{
                  //   System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  Nodo.TipoDato = "booleano";  
                     if(valor1 == valor2){
+                          
                         return "true";
                     }else{
                         return "false";
                     }
                   
                 case "!=":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                  case ">=":
+                     Nodo.TipoDato = "booleano";  
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1737,13 +1784,14 @@ public class Aritmetica extends NodoAbstracto{
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
                     System.out.println("Paso por una potencia");
-                    this.TipoDato = "decimal";
+                    Nodo.TipoDato = "decimal";
                     break;
               case "%%":
                     totald =  valor1  % valor2;
                     System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  Nodo.TipoDato = "booleano";  
                     if(valor1 == valor2){
                         return "true";
                     }else{
@@ -1751,30 +1799,35 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                   Nodo.TipoDato = "booleano"; 
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    Nodo.TipoDato = "booleano";   
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                     case ">=":
+                        Nodo.TipoDato = "booleano"; 
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1810,6 +1863,7 @@ public class Aritmetica extends NodoAbstracto{
                case "%%":
                     return "#Error";
                case "==":
+                   Nodo.TipoDato = "booleano"; 
                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                        if(valor1.equals(valor2)){
                         return "true";
@@ -1822,6 +1876,7 @@ public class Aritmetica extends NodoAbstracto{
                    
                   
                 case "!=":
+                    Nodo.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(!valor1.equals(valor2)){
                             return "true";
@@ -1833,6 +1888,7 @@ public class Aritmetica extends NodoAbstracto{
                     }
                     
                 case ">":
+                   Nodo.TipoDato = "booleano"; 
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) > 0){
@@ -1844,6 +1900,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<":
+                    Nodo.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) < 0){
                             return "true";
@@ -1856,6 +1913,7 @@ public class Aritmetica extends NodoAbstracto{
                     
                     
              case ">=":
+                Nodo.TipoDato = "booleano"; 
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) >= 0){
@@ -1867,6 +1925,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<=":
+                Nodo.TipoDato = "booleano";   
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) <= 0){
                             return "true";
@@ -1913,7 +1972,7 @@ public class Aritmetica extends NodoAbstracto{
                     break;
               case "^":
                     totald =  (double) Math.pow(valor1,valor2);
-                    this.TipoDato = "decimal";
+                    Nodo.TipoDato = "decimal";
                     System.out.println("Paso por una potencia");
                     break;
               case "%%":
@@ -1921,6 +1980,7 @@ public class Aritmetica extends NodoAbstracto{
                     System.out.println("Paso por una potencia");
                     break;
               case "==":
+                  Nodo.TipoDato = "booleano";  
                     if(valor1 == valor2){
                         return "true";
                     }else{
@@ -1928,30 +1988,35 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                    Nodo.TipoDato = "booleano";  
                     if(valor1 != valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case ">":
+                    Nodo.TipoDato = "booleano";  
                     if(valor1 > valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<":
+                    Nodo.TipoDato = "booleano"; 
                     if(valor1 < valor2){
                         return "true";
                     }else{
                         return "false";
                     }
              case ">=":
+                 Nodo.TipoDato = "booleano"; 
                     if(valor1 >= valor2){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "<=":
+                    Nodo.TipoDato = "booleano";  
                     if(valor1 <= valor2){
                         return "true";
                     }else{
@@ -1990,6 +2055,7 @@ public class Aritmetica extends NodoAbstracto{
                     return "#Error";
                 default:
             case "==":
+                Nodo.TipoDato = "booleano";  
                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                        if(valor1.equals(valor2)){
                         return "true";
@@ -2002,6 +2068,7 @@ public class Aritmetica extends NodoAbstracto{
                    
                   
                 case "!=":
+                    Nodo.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(!valor1.equals(valor2)){
                             return "true";
@@ -2012,6 +2079,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case ">":
+                    Nodo.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) > 0){
@@ -2023,6 +2091,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<":
+                    Nodo.TipoDato = "booleano";  
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) < 0){
                             return "true";
@@ -2033,6 +2102,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case ">=":
+                    Nodo.TipoDato = "booleano";  
                     System.out.println("ENTRO");
                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) >= 0){
@@ -2044,6 +2114,7 @@ public class Aritmetica extends NodoAbstracto{
                         return "#Error";
                     }
                 case "<=":
+                  Nodo.TipoDato = "booleano";   
                     if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
                         if(valor1.compareTo(valor2) <= 0){
                             return "true";
@@ -2148,7 +2219,7 @@ public class Aritmetica extends NodoAbstracto{
          else if("booleano".equals(Tipo1) && ("booleano".equals(Tipo2))){ 
             String valor1 = val1;
             String valor2 =  val2;
-            Nodo.TipoDato = "booleano";
+            //
             switch(this.Hijos.get(1).Nombre){
                 case "+":
                     return "#Error";
@@ -2164,6 +2235,7 @@ public class Aritmetica extends NodoAbstracto{
                     return "#Error";
                 default:
                case "==":
+                  Nodo.TipoDato = "booleano"; 
                     if(valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -2171,6 +2243,7 @@ public class Aritmetica extends NodoAbstracto{
                     }
                   
                 case "!=":
+                   Nodo.TipoDato = "booleano";
                      if(!valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -2185,12 +2258,14 @@ public class Aritmetica extends NodoAbstracto{
                 case "<=":
                     return "#Error";
               case "&&":
+                  Nodo.TipoDato = "booleano";
                     if(valor1.equals(valor2)){
                         return "true";
                     }else{
                         return "false";
                     }
                 case "||":
+                    Nodo.TipoDato = "booleano"; 
                      if(!valor1.equals(valor2)){
                         return "true";
                     }else{
@@ -2199,6 +2274,7 @@ public class Aritmetica extends NodoAbstracto{
         
         }
         }
+        this.TipoDato = "#Error";
         return "#Error";
     }
     

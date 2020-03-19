@@ -17,7 +17,8 @@ import javax.swing.JTextArea;
  * @author Bayyron
  */
 public class MostrarFuncion1 extends NodoAbstracto{
-
+    public static String Resultadox;
+    public static String TipoPPPP;
     public MostrarFuncion1(String Nombre) {
         super(Nombre);
     }
@@ -31,14 +32,16 @@ public class MostrarFuncion1 extends NodoAbstracto{
     public String Ejecutar(Entorno entorno, JTextArea salida) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String ElNombre = this.Hijos.get(0).Nombre;
-        if(entorno.ExisteVector(ElNombre)==true){
+        Entorno Temporal = new Entorno();
+        entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+        if(Temporal.ExisteVector(ElNombre)==true){
             System.out.println("vamos a correr la funcion sin parametros" + ElNombre);
-            ArrayList <NodoAbstracto> ListaParetros = entorno.ListaParetros(ElNombre);
-            ArrayList <NodoAbstracto> ListaSentencias = entorno.ListaSentenciasFuncion(ElNombre);
+            ArrayList <NodoAbstracto> ListaParetros = Temporal.ListaParetros(ElNombre);
+            ArrayList <NodoAbstracto> ListaSentencias = Temporal.ListaSentenciasFuncion(ElNombre);
             ElTipoDeAmbitoRomeo = "FUNCION";
             if(ListaParetros == null){
                 for(int i = 0; i< ListaSentencias.size(); i++){
-                    String Resultado = ListaSentencias.get(i).Ejecutar(entorno, salida);
+                    String Resultado = ListaSentencias.get(i).Ejecutar(Temporal, salida);
                     int xp = ListaSentencias.get(i).id;
                     if(Resultado.toUpperCase().contains("#ERROR")){
                         //vamos a ver que pedo con los errores 
@@ -47,15 +50,26 @@ public class MostrarFuncion1 extends NodoAbstracto{
                         TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                         return "#ERROR EN FUNCIONES LLAMDA";
                     }
-                   // if(Resultado.toUpperCase().contains("ESTOESUNRETORNOROMEO")){
-                       if(xp == 1212){
+                    if(Resultado.toUpperCase().contains("ESTOESUNRETORNOROMEO")){
+                      
                         this.TipoDato = ListaSentencias.get(i).TipoDato;
                         Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
-                        System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);
+                        
+                        System.out.println("Valor a RetornarMF2->" + Resultado + "Tipo->" + this.TipoDato);
+                        Temporal.MostrarVectores();
+                        Temporal.MostrarVectoresLista(entorno, salida);
+                         System.out.println("--");
+                       
+                         Resultadox = Resultado;
+                         TipoPPPP = this.TipoDato;
+                       
                         return Resultado;
+                        
+                        
                         
                         //break;
                     }
+                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
                 }
             
             }else{
@@ -74,7 +88,7 @@ public class MostrarFuncion1 extends NodoAbstracto{
         
         
     ElTipoDeAmbitoRomeo = "GLOBAL";
-        return "MOSTRAR FUNCION1";
+        return Resultadox;
     }
 
     

@@ -48,6 +48,8 @@ public class Funciones1 extends NodoAbstracto{
          String Texto = salida.getText();
          salida.setText("");
          ElTipoDeAmbitoRomeo = "Funcion";
+         
+         /*
         for(int i = 0; i < TotalSentencias; i ++){
          String Resultado = this.Hijos.get(1).Hijos.get(i).Ejecutar(Temporal, salida);
             ElTipoDeAmbitoRomeo = "Funcion";
@@ -66,7 +68,7 @@ public class Funciones1 extends NodoAbstracto{
             }
             
         }
-     
+     */
        
         System.out.println("Vamos a declarar la funcion NombreFuncion:" + NombreFuncion
         + "TOTAL SENTENCIAS" + TotalSentencias);

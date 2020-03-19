@@ -81,8 +81,224 @@ public class IDE extends javax.swing.JFrame {
         jTabbedPane1.remove(jPanel37);
         jTabbedPane1.remove(jPanel38);
         jTabbedPane1.remove(jPanel39);
-        int currentCaretPosition = jTextArea1.getCaretPosition ();
-      
+        //int currentCaretPosition = jTextArea1.getCaretPosition ();
+       jTextArea1.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+       //pestaña 2
+       jTextArea3.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+       //pestaña 3
+       
+        jTextArea4.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+         //pestaña 4
+       
+        jTextArea5.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        //pestaña 5
+       
+        jTextArea6.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+        //pestaña 6
+       
+        jTextArea7.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+        //pestaña 7
+       
+        jTextArea8.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+        
+         //pestaña 8
+       
+        jTextArea11.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+         //pestaña 9
+       
+        jTextArea12.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+        
+         //pestaña 10
+       
+        jTextArea13.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+         //pestaña 11
+       
+        jTextArea14.addCaretListener(new CaretListener() {           
+   
+                public void caretUpdate(CaretEvent e) { 
+                    JTextArea editArea = (JTextArea)e.getSource();
+                    int linea = 1;
+                    int columna = 1; 
+                    try {
+                      int caretpos = editArea.getCaretPosition();
+                      linea= editArea.getLineOfOffset(caretpos);
+                      columna = caretpos - editArea.getLineStartOffset(linea);
+                      linea += 1;
+                    } catch(Exception ex) { }
+                    ///System.out.println("linea->" + linea + "Columa->" + columna);
+                    jLabel2.setText("linea: " + linea + "   Columa:    " + columna);
+                }
+                 
+       });
+        
+        
+        
         
     }
 
@@ -277,10 +493,7 @@ public class IDE extends javax.swing.JFrame {
         jPanel38 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 255));
@@ -1966,17 +2179,8 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Linea");
-
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("jLabel2");
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Columna");
-
-        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1984,36 +2188,25 @@ public class IDE extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(304, 304, 304)
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)))
+                        .addGap(321, 321, 321)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2039,11 +2232,15 @@ public class IDE extends javax.swing.JFrame {
        
         
         jTextArea2.setText("");
-       // RepasoCompi2 Hola = new RepasoCompi2();
+        // RepasoCompi2 Hola = new RepasoCompi2();
+       
+       
+        
+        
+        
         Analizar(jTextArea1.getText(), jTextArea2);
         
-        
-        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -2135,6 +2332,7 @@ public class IDE extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
        System.out.println("REPORTE DE ERROES:");
+       
         for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
             String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
             String Tipo = TABLA_DE_ERRORES_SINTACTICOS.get(i).tipo;
@@ -3575,10 +3773,7 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JButton jButton97;
     private javax.swing.JButton jButton98;
     private javax.swing.JButton jButton99;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;

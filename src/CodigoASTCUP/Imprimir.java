@@ -30,6 +30,11 @@ public class Imprimir extends NodoAbstracto{
         
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
         System.out.println("----------->Se esta ejecutnado imprimir \n" + val);
+        val = val.replace("\\\"", "\"");
+        val = val.replace("\\n", "\n");
+        val = val.replace("\\r", "\r");
+        val = val.replace("\\t", "\t");
+         val = val.replace("\\\\", "\\");
         
         
         if("RomeoAxpuac".equals(val)){

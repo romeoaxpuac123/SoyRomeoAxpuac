@@ -91,9 +91,12 @@ precedence left PREGUNTAC;
 precedence left AND,OR;
 precedence left igualdad,Noigualdad;
 precedence left MenorQue,MayorQue,MenorIgualQue, MayorIgualQue;
-precedence left potencia;
+
 precedence left mas,menos;
 precedence left por,div,modulo;
+precedence left potencia;
+
+
 
 
 
@@ -940,7 +943,9 @@ EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesi
                     :}
         |cadena:valor
                     {:
-                        valor =  valor.replaceAll("\"", "");
+                        //valor =  valor.replaceAll("\\\"", "\\@");
+                        valor = valor.substring(1, valor.length()-1);
+                        //valor =  valor.replaceAll("\"", "");
                         NodoAbstracto nuevo = new Nodo("Cadena");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);

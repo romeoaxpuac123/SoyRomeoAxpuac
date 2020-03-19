@@ -336,7 +336,7 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
     "\064\uffac\065\uffac\071\uffac\073\uffac\074\uffac\075\uffac\076" +
     "\uffac\077\uffac\100\uffac\101\uffac\102\uffac\103\uffac\001\002" +
     "\000\122\002\uffb9\003\uffb9\004\uffb9\007\uffb9\011\uffb9\012" +
-    "\uffb9\014\uffb9\015\uffb9\016\113\017\104\020\uffb9\021\111" +
+    "\uffb9\014\uffb9\015\uffb9\016\113\017\104\020\103\021\111" +
     "\022\uffb9\023\uffb9\024\uffb9\025\uffb9\026\uffb9\027\uffb9\030" +
     "\uffb9\031\uffb9\033\uffb9\034\uffb9\036\uffb9\037\uffb9\040\uffb9" +
     "\061\uffb9\062\uffb9\063\uffb9\064\uffb9\065\uffb9\071\uffb9\073" +
@@ -349,7 +349,7 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
     "\uffaf\065\uffaf\071\uffaf\073\uffaf\074\uffaf\075\uffaf\076\uffaf" +
     "\077\uffaf\100\uffaf\101\uffaf\102\uffaf\103\uffaf\001\002\000" +
     "\122\002\uffb7\003\uffb7\004\uffb7\007\uffb7\011\uffb7\012\uffb7" +
-    "\014\uffb7\015\uffb7\016\uffb7\017\uffb7\020\uffb7\021\uffb7\022" +
+    "\014\uffb7\015\uffb7\016\uffb7\017\uffb7\020\103\021\uffb7\022" +
     "\uffb7\023\uffb7\024\uffb7\025\uffb7\026\uffb7\027\uffb7\030\uffb7" +
     "\031\uffb7\033\uffb7\034\uffb7\036\uffb7\037\uffb7\040\uffb7\061" +
     "\uffb7\062\uffb7\063\uffb7\064\uffb7\065\uffb7\071\uffb7\073\uffb7" +
@@ -362,14 +362,14 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
     "\065\uffb0\071\uffb0\073\uffb0\074\uffb0\075\uffb0\076\uffb0\077" +
     "\uffb0\100\uffb0\101\uffb0\102\uffb0\103\uffb0\001\002\000\122" +
     "\002\uffb5\003\uffb5\004\uffb5\007\uffb5\011\uffb5\012\uffb5\014" +
-    "\uffb5\015\uffb5\016\uffb5\017\uffb5\020\uffb5\021\uffb5\022\uffb5" +
+    "\uffb5\015\uffb5\016\uffb5\017\uffb5\020\103\021\uffb5\022\uffb5" +
     "\023\uffb5\024\uffb5\025\uffb5\026\uffb5\027\uffb5\030\uffb5\031" +
     "\uffb5\033\uffb5\034\uffb5\036\uffb5\037\uffb5\040\uffb5\061\uffb5" +
     "\062\uffb5\063\uffb5\064\uffb5\065\uffb5\071\uffb5\073\uffb5\074" +
     "\uffb5\075\uffb5\076\uffb5\077\uffb5\100\uffb5\101\uffb5\102\uffb5" +
     "\103\uffb5\001\002\000\122\002\uffb8\003\uffb8\004\uffb8\007" +
     "\uffb8\011\uffb8\012\uffb8\014\uffb8\015\uffb8\016\113\017\104" +
-    "\020\uffb8\021\111\022\uffb8\023\uffb8\024\uffb8\025\uffb8\026" +
+    "\020\103\021\111\022\uffb8\023\uffb8\024\uffb8\025\uffb8\026" +
     "\uffb8\027\uffb8\030\uffb8\031\uffb8\033\uffb8\034\uffb8\036\uffb8" +
     "\037\uffb8\040\uffb8\061\uffb8\062\uffb8\063\uffb8\064\uffb8\065" +
     "\uffb8\071\uffb8\073\uffb8\074\uffb8\075\uffb8\076\uffb8\077\uffb8" +
@@ -397,14 +397,14 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
     "\uffae\065\uffae\071\uffae\073\uffae\074\uffae\075\uffae\076\uffae" +
     "\077\uffae\100\uffae\101\uffae\102\uffae\103\uffae\001\002\000" +
     "\122\002\uffb6\003\uffb6\004\uffb6\007\uffb6\011\uffb6\012\uffb6" +
-    "\014\uffb6\015\uffb6\016\uffb6\017\uffb6\020\uffb6\021\uffb6\022" +
+    "\014\uffb6\015\uffb6\016\uffb6\017\uffb6\020\103\021\uffb6\022" +
     "\uffb6\023\uffb6\024\uffb6\025\uffb6\026\uffb6\027\uffb6\030\uffb6" +
     "\031\uffb6\033\uffb6\034\uffb6\036\uffb6\037\uffb6\040\uffb6\061" +
     "\uffb6\062\uffb6\063\uffb6\064\uffb6\065\uffb6\071\uffb6\073\uffb6" +
     "\074\uffb6\075\uffb6\076\uffb6\077\uffb6\100\uffb6\101\uffb6\102" +
     "\uffb6\103\uffb6\001\002\000\122\002\uffb4\003\uffb4\004\uffb4" +
-    "\007\uffb4\011\uffb4\012\uffb4\014\115\015\110\016\113\017" +
-    "\104\020\uffb4\021\111\022\uffb4\023\uffb4\024\uffb4\025\uffb4" +
+    "\007\uffb4\011\uffb4\012\uffb4\014\uffb4\015\uffb4\016\uffb4\017" +
+    "\uffb4\020\uffb4\021\uffb4\022\uffb4\023\uffb4\024\uffb4\025\uffb4" +
     "\026\uffb4\027\uffb4\030\uffb4\031\uffb4\033\uffb4\034\uffb4\036" +
     "\uffb4\037\uffb4\040\uffb4\061\uffb4\062\uffb4\063\uffb4\064\uffb4" +
     "\065\uffb4\071\uffb4\073\uffb4\074\uffb4\075\uffb4\076\uffb4\077" +
@@ -600,7 +600,7 @@ public class Analisis_Sintactico extends java_cup.runtime.lr_parser {
     "\071\uff95\073\uff95\074\uff95\075\uff95\076\uff95\077\uff95\100" +
     "\uff95\101\uff95\102\uff95\103\uff95\001\002\000\122\002\uffba" +
     "\003\uffba\004\uffba\007\uffba\011\uffba\012\uffba\014\uffba\015" +
-    "\uffba\016\113\017\104\020\uffba\021\111\022\uffba\023\uffba" +
+    "\uffba\016\113\017\104\020\103\021\111\022\uffba\023\uffba" +
     "\024\uffba\025\uffba\026\uffba\027\uffba\030\uffba\031\uffba\033" +
     "\uffba\034\uffba\036\uffba\037\uffba\040\uffba\061\uffba\062\uffba" +
     "\063\uffba\064\uffba\065\uffba\071\uffba\073\uffba\074\uffba\075" +
@@ -3293,7 +3293,9 @@ class CUP$Analisis_Sintactico$actions {
 		int valorright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico$stack.peek()).right;
 		String valor = (String)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.peek()).value;
 		
-                        valor =  valor.replaceAll("\"", "");
+                        //valor =  valor.replaceAll("\\\"", "\\@");
+                        valor = valor.substring(1, valor.length()-1);
+                        //valor =  valor.replaceAll("\"", "");
                         NodoAbstracto nuevo = new Nodo("Cadena");
                         NodoAbstracto nuevovalor = new Nodo(valor);
                         nuevo.Hijos.add(nuevovalor);
