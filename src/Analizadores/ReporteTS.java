@@ -15,7 +15,7 @@ public class ReporteTS {
     
     
     public  ReporteTS(String lexema, int linea, int columna, String tipo, String Entorno){
-        System.out.println("SE AGREGO NUEVO ERROR->" + lexema);
+        System.out.println("SE AGREGO NUEVO simbolo->" + lexema);
         this.lexema = lexema;
         this. linea = linea;
         this.columna = columna;
