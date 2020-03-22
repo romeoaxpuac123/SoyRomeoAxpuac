@@ -230,7 +230,38 @@ public class SentenciaIF extends NodoAbstracto{
                         }
                         if("continue".equals(Resultado)){
   //->                          entorno = entorno.ModificandoEntornos(entorno,entorno); //->
-                                ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
+                            NumeroEntornosRomeo--;
+                                if(NumeroEntornosRomeo==0)
+                                ElTipoDeAmbitoRomeo = "Global";
+                            return "continue";
+                       }
+                        if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                              ArrayList<String> ejemploLista = new ArrayList<String>(); 
                             ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
@@ -255,12 +286,9 @@ public class SentenciaIF extends NodoAbstracto{
                             System.out.println("terminamos el if--->");
                             entorno.MostrarVectores();
                             System.out.println("<-->");
-                            NumeroEntornosRomeo--;
-                                if(NumeroEntornosRomeo==0)
-                                ElTipoDeAmbitoRomeo = "Global";
-                            return "continue";
-                       }
-                        if(Resultado.contains("ESTOESUNRETORNOROMEO")){
+                            
+                            
+                            
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";

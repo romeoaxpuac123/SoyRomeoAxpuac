@@ -11,6 +11,7 @@ import static Analizadores.IDE.NumeroEntornosRomeo;
 import Analizadores.TError;
 import Analizadores.ReporteTS;
 import Codigo.Entorno;
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 
 /**
@@ -55,7 +56,32 @@ public class DoWhile extends NodoAbstracto{
                 for(int i = 0; i < this.Expresiones.size(); i++){
                     String Resultado = this.Expresiones.get(i).Ejecutar(Temporal, salida);
                     if("break".equals(Resultado)){
-                        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                        //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                             ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";
@@ -65,7 +91,32 @@ public class DoWhile extends NodoAbstracto{
                        i = this.Expresiones.size()-1;
                     }
                     if(Resultado.contains("ESTOESUNRETORNOROMEO")){
-                             entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                          //   entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                           ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";
@@ -78,7 +129,32 @@ public class DoWhile extends NodoAbstracto{
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";
-            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+           // entorno = entorno.ModificandoEntornos(Temporal,entorno);
+            ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
         return "FIN DO WHILE";
     }
 }
