@@ -78,13 +78,45 @@ public class Aritmetica extends NodoAbstracto{
                              
                          }
                      }else{
-                    this.Hijos.get(0).Expresiones2.add(this.Hijos.get(0).Hijos.get(1).Hijos.get(xx));
+                       
+                         this.Hijos.get(0).Expresiones2.add(this.Hijos.get(0).Hijos.get(1).Hijos.get(xx));
                     
                      }
                 }
             }
             System.out.println("FINDG");
             int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
+            ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+            for(int i = 0; i < this.Hijos.get(0).Expresiones2.size();i++){
+                String ElVectorX = this.Hijos.get(0).Expresiones2.get(i).Nombre;
+                if("id".equals(this.Hijos.get(0).Expresiones2.get(i).TipoDato)){
+                    System.out.println("ACA VIENE UN VECTOR Y DEMOS SUSTRAER SUS DATOS");
+                    if(entorno.ExisteVector(ElVectorX)){
+                        if(entorno.ObtenerListaN(ElVectorX)==0){
+                            NodoAbstracto nuevo = new Nodo("Cadena");
+                            NodoAbstracto nuevovalor = new Nodo(entorno.ObtenerValor(ElVectorX));
+                            nuevo.Hijos.add(nuevovalor);
+                            nuevo.TipoDato = entorno.ObtenerValor(ElVectorX);
+                            Expresionesx.add(nuevo);
+                        }else{
+                         ArrayList <NodoAbstracto> Expresionesy = new ArrayList();
+                         Expresionesy = entorno.ObtenerLista(ElVectorX);
+                         for(int yy = 0; yy < Expresionesy.size(); yy++){
+                             Expresionesx.add(Expresionesy.get(yy));
+                         }
+                        }
+                        continue;
+                    }else{
+                        //ERROR DE QUE NOE XISTE EL VECTOR
+                    }
+                    
+                }else{
+                    Expresionesx.add(this.Hijos.get(0).Expresiones2.get(i));
+                }
+            }
+            this.Hijos.get(0).Expresiones2.clear();
+            this.Hijos.get(0).Expresiones2 = Expresionesx;
+            
              for(int i = 0; i < this.Hijos.get(0).Expresiones2.size();i++){
                  
                  String Resultado = this.Hijos.get(0).Expresiones2.get(i).Ejecutar(entorno, salida);
@@ -170,72 +202,19 @@ public class Aritmetica extends NodoAbstracto{
             this.Hijos.get(0).Expresiones2 = this.Expresiones3;
             
           System.out.println("EL TIPO DEL VECTOR1 SERA:" + Tipo1y );
-            entorno.Agregar2("VectorC1DeRomeo", this.Hijos.get(0).Expresiones2,  Tipo1y, "se me olvido");
+            if(entorno.ExisteVector("VectorC1DeRomeo")==false){
+                  entorno.Agregar2("VectorC1DeRomeo", this.Hijos.get(0).Expresiones2,  Tipo1y, "se me olvido");
+            }else{
+                  entorno.ModificarValorLista("VectorC1DeRomeo", this.Hijos.get(0).Expresiones2,  Tipo1y, "se me olvido");
+            }
+          
             Tipo1 = "id";
             this.Hijos.get(0).Nombre = "VectorC1DeRomeo";
             System.out.println("Dragon BAll->SDFDA->" + this.Hijos.get(0).Expresiones2.size());   
         }
         /*
-        if("FuncionC".equals(Tipo1)){
-            System.out.println("el lado 1 es de tipo funcioc");
-            System.out.println("dragon ball->" + this.Hijos.get(0).Nombre);
-           
-            int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
-             for(int i = 0; i < this.Hijos.get(0).Expresiones2.size();i++){
-                 
-                 String Resultado = this.Hijos.get(0).Expresiones2.get(i).Ejecutar(entorno, salida);
-                 String TipoDatox = this.Hijos.get(0).Expresiones2.get(i).TipoDato;
-                 System.out.println("Valor->"+ Resultado + "<->Tipo->" + TipoDatox);
-               if("id".equals(this.Hijos.get(0).Expresiones2.get(i).TipoDato)){
-                  Resultado = entorno.ObtenerValor(this.Hijos.get(0).Expresiones2.get(i).Nombre);
-                  TipoDatox = entorno.ObtenerTipo(this.Hijos.get(0).Expresiones2.get(i).Nombre);
-              }
-              
-              if(!Resultado.equals("#Error")){
-                   System.out.println("aheuvo---->" + Resultado);
-                   //VAMOS A BUSCAR LA PRIORIDAD
-                   
-                   switch (TipoDatox){
-                        case "Lista":
-                            valor1 = 1;
-                            break;
-                        case "cadena":
-                            valor2 = 1;
-                            break;
-                        case "entero":
-                            valor4 = 1;
-                            break;
-                        case "decimal":
-                            valor3 = 1;
-                            break;
-                        case "booleano":
-                            valor5 = 1;
-                            break;
-                           
-                        }
-                        }
-
-                 }
-                    String Tipo1y = "";
-                    if(valor1 == 1){
-                        Tipo1y = "Lista";
-                    }else if(valor2 == 1){
-                        Tipo1y = "cadena";
-                    }
-                    else if(valor3 == 1){
-                        Tipo1y = "decimal";
-                    }
-                    else if(valor4 == 1){
-                        Tipo1y = "entero";
-                    }
-                    else if(valor5 == 1){
-                        Tipo1y = "booleano";
-                    }
-            System.out.println("EL TIPO DEL VECTOR SERA:" + Tipo1y );
-            entorno.Agregar2("VectorC1DeRomeo", this.Hijos.get(0).Expresiones2,  Tipo1y, "se me olvido");
-            Tipo1 = "id";
-            this.Hijos.get(0).Nombre = "VectorC1DeRomeo";
-            System.out.println("Dragon BAll" + this.Hijos.get(0).Expresiones2.size());    
+       
+            
         }
         */
         if("FuncionC".equals(Tipo2)){
@@ -277,6 +256,38 @@ public class Aritmetica extends NodoAbstracto{
                 }
             }
             System.out.println("FINDG");
+            ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+            for(int i = 0; i < this.Hijos.get(2).Expresiones2.size();i++){
+                String ElVectorX = this.Hijos.get(2).Expresiones2.get(i).Nombre;
+                if("id".equals(this.Hijos.get(2).Expresiones2.get(i).TipoDato)){
+                    System.out.println("ACA VIENE UN VECTOR Y DEMOS SUSTRAER SUS DATOS");
+                    if(entorno.ExisteVector(ElVectorX)){
+                        if(entorno.ObtenerListaN(ElVectorX)==0){
+                            NodoAbstracto nuevo = new Nodo("Cadena");
+                            NodoAbstracto nuevovalor = new Nodo(entorno.ObtenerValor(ElVectorX));
+                            nuevo.Hijos.add(nuevovalor);
+                            nuevo.TipoDato = entorno.ObtenerValor(ElVectorX);
+                            Expresionesx.add(nuevo);
+                        }else{
+                         ArrayList <NodoAbstracto> Expresionesy = new ArrayList();
+                         Expresionesy = entorno.ObtenerLista(ElVectorX);
+                         for(int yy = 0; yy < Expresionesy.size(); yy++){
+                             Expresionesx.add(Expresionesy.get(yy));
+                         }
+                        }
+                        continue;
+                    }else{
+                        //ERROR DE QUE NOE XISTE EL VECTOR
+                    }
+                    
+                }else{
+                    Expresionesx.add(this.Hijos.get(2).Expresiones2.get(i));
+                }
+            }
+            this.Hijos.get(2).Expresiones2.clear();
+            this.Hijos.get(2).Expresiones2 = Expresionesx;
+            
+            
             int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
              for(int i = 0; i < this.Hijos.get(2).Expresiones2.size();i++){
                  
@@ -362,8 +373,12 @@ public class Aritmetica extends NodoAbstracto{
             }
             this.Hijos.get(2).Expresiones2.clear();
             this.Hijos.get(2).Expresiones2 = this.Expresiones3;
-            
-            entorno.Agregar2("VectorC2DeRomeo", this.Hijos.get(2).Expresiones2,  Tipo1y, "se me olvido");
+            if(entorno.ExisteVector("VectorC2DeRomeo")==false){
+                  entorno.Agregar2("VectorC2DeRomeo", this.Hijos.get(2).Expresiones2,  Tipo1y, "se me olvido");
+            }else{
+                  entorno.ModificarValorLista("VectorC2DeRomeo", this.Hijos.get(2).Expresiones2,  Tipo1y, "se me olvido");
+            }
+            //entorno.Agregar2("VectorC2DeRomeo", this.Hijos.get(2).Expresiones2,  Tipo1y, "se me olvido");
             Tipo2 = "id";
             this.Hijos.get(2).Nombre = "VectorC2DeRomeo";
             System.out.println("Dragon BAll" + this.Hijos.get(2).Expresiones2.size());    
@@ -396,6 +411,7 @@ public class Aritmetica extends NodoAbstracto{
                          entorno.Agregar2("VectorDragonBallBeatles", entorno.ObtenerLista(Vector), entorno.ObtenerTipo(Vector), "ss");
                     }else{
                         entorno.ModificarValorLista("VectorDragonBallBeatles", entorno.ObtenerLista(Vector), entorno.ObtenerTipo(Vector), "ss");
+                       
                     }
                     
                     ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");

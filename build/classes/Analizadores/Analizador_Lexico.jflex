@@ -23,8 +23,8 @@ import  Analizadores.IDE.TABLA_DE_ERRORES_SINTACTICOS;
 entero = [0-9]+
 decimal={entero}"."{entero}
 cadena = [\"]([^\"\n]|(\\\"))*[\"]
-id = (([A-Za-z]+)["_"|"."|0-9A-Za-z]*) | (([.][A-Za-z]+)["_"|"."|0-9A-Za-z]*)
-
+//id = (([A-Za-z]+)["_"|"."|0-9A-Za-z]*) | (([.][A-Za-z]+)["_"|"."|0-9A-Za-z]*)
+id = ("."("_"|[a-zA-Z]|".")|[a-zA-Z])([a-zA-Z]| [0-9]|"."|"_")*
 COMENT_UNILINEA =("#".*\r\n)|("#".*\n)|("#".*\r)
 COMENT_MULTILINEA ="#*""#"* ([^*#]|[^*]"#"|"*"[^#])* "*"*"*#"
 

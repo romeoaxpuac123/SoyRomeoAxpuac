@@ -31,10 +31,17 @@ public class Imprimir extends NodoAbstracto{
         System.out.println("<->" + "entro a imprimir" + this.Hijos.get(0).Nombre);
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
         String tipo = this.Hijos.get(0).TipoDato;
-        System.out.println("----------->Se esta ejecutnado imprimir \n" + val + "<->");
+        System.out.println("----------->Se esta ejecutnado imprimir->" + val + "<->");
         System.out.println("TIPO->" + tipo);
         String ElMero = "";
         int bandera = 0;
+        if (val.toUpperCase().contains("#ERROR")){
+            TError ERRORES = new TError("Imprimir",this.linea,this.columna,"Semantico", "Error en el contenido a imprimir"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            salida.append("#Error en el contenido a imprimir: "+val +"\n");
+             return "ERROR";
+        }
+        
         if(val.contains("RomeoAxpuac")){
             System.out.println("VAMOS A BUSCAR AL DRAGONBALL");
             this.Expresiones = entorno.ObtenerLista("VectorDragonBallBeatles");

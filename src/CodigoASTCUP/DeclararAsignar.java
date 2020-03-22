@@ -329,106 +329,22 @@ public class DeclararAsignar extends NodoAbstracto{
               nuevo.TipoDato = Tipo1y;
               this.Expresiones3.add(nuevo);
           }
-          entorno.Agregar2(Identificador, this.Expresiones3, Tipo1y, "SADf");
+          if(entorno.ExisteVector(Identificador)==false){
+            entorno.Agregar2(Identificador, this.Expresiones3, Tipo1y, "SADf");
+             ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ Tipo1y,ElTipoDeAmbitoRomeo);
+             TABLA_ReporteTS .add(SIMBOLO);
+          }else{
+          entorno.ModificarValorLista(Identificador, this.Expresiones3, Tipo1y, "SADf");
+          }
+            // entorno.Agregar2(Identificador, this.Expresiones3, Tipo1y, "SADf");
           entorno.MostrarVectoresLista(entorno, salida);
       
       /*
       
           
           
-          // ahora empezamos con el puto casteo
-          for(int i = 0; i < this.Expresiones.size();i++){
-              String Valor = this.Expresiones.get(i).Ejecutar(entorno, salida);
-              if(!Valor.equals("#Error")){
-                 // NodoAbstracto nuevo = new Nodo(this.Expresiones.get(i).Nombre);
-                  String ValorNodo = this.Expresiones.get(i).Ejecutar(entorno, salida);
-                  String TipoNodo = this.Expresiones.get(i).TipoDato ;
-                  //System.out.println("TIPOVECOTOR->" + Tipo1y + "<-TIPONODO->" + TipoNodo);
-                  if("id".equals(TipoNodo)){
-                      if(entorno.ObtenerListaN(this.Expresiones.get(i).Nombre)==0){
-                        TipoNodo = entorno.ObtenerTipo(this.Expresiones.get(i).Nombre);
-                        ValorNodo = entorno.ObtenerValor(this.Expresiones.get(i).Nombre);
-                      }else{
-                          System.out.println("ACA IRIA UN PROCESO PARA SACAR LOS DATOS DEL VECTOR");
-                          this.Expresiones3 = entorno.ObtenerLista(this.Expresiones.get(i).Nombre);
-                          for(int p = 0; p < this.Expresiones3.size(); p ++){
-                              String Valorxd = this.Expresiones3.get(p).Ejecutar(entorno, salida);
-                              String TipoVector = entorno.ObtenerTipo(this.Expresiones.get(i).Nombre);
-                              System.out.println("THORValorNodo:->" + Valorxd + "<-TipoVector->" + TipoVector + "<-TipoNuevoVector->"+Tipo1y );
-                              if("decimal".equals(Tipo1y) && "entero".equals(TipoVector)){
-                                  Valorxd = Valorxd + ".0";
-                              }
-                              else if("decimal".equals(Tipo1y) && "booleano".equals(TipoVector)){
-                                //System.out.println("generacion->"+ValorNodo+"<->");
-                                if("true".equals(TipoVector)){
-                                    Valorxd = "1.0";
-                                }
-
-                                else{
-                                    Valorxd = "0.0";
-                                }
-dsfsad
-                             }else if("entero".equals(Tipo1y) && "booleano".equals(TipoVector)){
-                              if("true".equals(Valorxd))
-                                Valorxd = "1.0";
-                                else
-                                    Valorxd = "0.0";
-                             }
-                                NodoAbstracto nuevo = new Nodo("Cadena");
-                                NodoAbstracto nuevovalor = new Nodo(Valorxd);
-                                nuevo.Hijos.add(nuevovalor);
-                                nuevo.TipoDato = Tipo1y;
-                                this.Expresiones2.add(nuevo);
-                          }
-                          System.out.println("FIN DEL PROCESO");
-                          continue;
-                      }
-                  }
-                   // System.out.println("TIPOVECOTOR->" + Tipo1y + "<-TIPONODO->" + TipoNodo+"<->"+ValorNodo+"<->");                  
-                  if("decimal".equals(Tipo1y) && "entero".equals(TipoNodo)){
-                      ValorNodo = ValorNodo + ".0";
-                  }
-                  else if("decimal".equals(Tipo1y) && "booleano".equals(TipoNodo)){
-                      //System.out.println("generacion->"+ValorNodo+"<->");
-                      if("true".equals(ValorNodo)){
-                          ValorNodo = "1.0";
-                      }
-                      
-                      else{
-                          ValorNodo = "0.0";
-                      }
-                          
-                  }else if("entero".equals(Tipo1y) && "booleano".equals(TipoNodo)){
-                    if("true".equals(ValorNodo))
-                      ValorNodo = "1.0";
-                      else
-                          ValorNodo = "0.0";
-                  }
-                  //System.out.println("Caracteristicas del Nodo del Vector");
-                  //System.out.println("DATO:"+ ValorNodo);
-                  //System.out.println("NOMBRE NODO:" + this.Expresiones.get(i).Nombre);
-                  //System.out.println("TIPO DEL NODO" + Tipo1y);
-                  NodoAbstracto nuevo = new Nodo("Cadena");
-                  NodoAbstracto nuevovalor = new Nodo(ValorNodo);
-                  nuevo.Hijos.add(nuevovalor);
-                  nuevo.TipoDato = Tipo1y;
-                  this.Expresiones2.add(nuevo);
-                  
-              }
-          
-          }
-           boolean ExisteVector =  entorno.ExisteVector(Identificador); 
-           if(ExisteVector == false){
-               entorno.Agregar2(Identificador, Expresiones2, Tipo1y, "sadfsad");
-           }else{
-               entorno.ModificarValorLista(Identificador, Expresiones2, Tipo1y, "sadfsad");
-           }
-          
-         entorno.MostrarVectores();
-         entorno.MostrarVectoresLista(entorno,salida);
-          ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ Tipo1y,ElTipoDeAmbitoRomeo);
-          TABLA_ReporteTS .add(SIMBOLO);
-          return "FIN C";
+         
+           
           */
       return "FIN C";
       }
@@ -449,7 +365,7 @@ dsfsad
         }else{
             entorno.ModificarValorLista(Identificador, entorno.ObtenerLista("VectorDragonBallBeatles"), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
         }
-         entorno.ModificarValorLista("VectorDragonBallBeatles",ExpresionesLola, "cadena", "prit");
+         entorno.ModificarValorLista("VectorDragonBallBeatles",null, "cadena", "prit");
          entorno.MostrarVectores();
          entorno.MostrarVectoresLista(entorno,salida);
          System.out.println("---------");

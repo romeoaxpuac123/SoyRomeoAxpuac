@@ -9,6 +9,7 @@ import CodigoASTCUP.NodoAbstracto;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 import javax.swing.JTextArea;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JTextArea;
  * @author Bayyron
  */
 public class Entorno {
-    Hashtable<String,Simbolo> Elementos;
+    public Hashtable<String,Simbolo> Elementos;
 
     public Entorno() {
         Elementos = new Hashtable<>();
@@ -184,20 +185,83 @@ public class Entorno {
             }
           }
     }
-    public Entorno  ModificandoEntornos(Entorno entorno1,Entorno entorno2){
+    public Entorno  ModificandoEntornos(Entorno entorno1,Entorno Global){
         Entorno entorno3 = new Entorno();
         Enumeration e = entorno1.Elementos.keys();
         Object clave;
         while( e.hasMoreElements() ) {
             clave = e.nextElement();
             String Clave2 = (String) clave;
-            if(entorno2.Elementos.containsKey(Clave2)==true){
-                System.out.println("Este Vector: " + Clave2 + " Si se agrega al Global(3)");
+            if(Global.Elementos.containsKey(Clave2)==true){
+                System.out.println("Este Vector: " + Clave2 + " Si se agrega al Global(3x)" + "<->Valor->" + Global.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + entorno1.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + Global.Elementos.get(Clave2).ObtenerValor());
+                //entorno1.Elementos.get(Clave2).ModificarValor(entorno1.Elementos.get(Clave2).ObtenerValor(), entorno1.Elementos.get(Clave2).ObtenerTipo());
+                
                 entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
+                System.out.println("VAMOS A VER QUE PEDO CON 3->" + entorno3.Elementos.get(Clave2).ObtenerValor());
+            
             } 
           }
         return entorno3;
     }
+    public ArrayList  ModificandoEntornosVectorLista(Entorno entorno1,Entorno Global){
+         ArrayList<String> ejemploLista = new ArrayList<String>(); 
+        Entorno entorno3 = new Entorno();
+        Enumeration e = entorno1.Elementos.keys();
+        Object clave;
+        while( e.hasMoreElements() ) {
+            clave = e.nextElement();
+            String Clave2 = (String) clave;
+            if(Global.Elementos.containsKey(Clave2)==true){
+                System.out.println("Este Vector: " + Clave2 + " Si se agrega al Global(3x)" + "<->Valor->" + Global.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + entorno1.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + Global.Elementos.get(Clave2).ObtenerValor());
+                //entorno1.Elementos.get(Clave2).ModificarValor(entorno1.Elementos.get(Clave2).ObtenerValor(), entorno1.Elementos.get(Clave2).ObtenerTipo());
+                entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
+                String Textolista = Clave2;
+                if(entorno3.ObtenerListaN(Clave2)==1){
+                    Textolista = Textolista  + ";" +  entorno3.ObtenerTipo(Clave2) ;
+                    ejemploLista.add(Textolista);
+                }
+                
+                System.out.println("VAMOS A VER QUE PEDO CON 3->" + entorno3.Elementos.get(Clave2).ObtenerValor());
+            
+            } 
+          }
+    
+        return ejemploLista;
+    }
+    
+    
+     public ArrayList  ModificandoEntornosLista(Entorno entorno1,Entorno Global){
+        	
+        ArrayList<String> ejemploLista = new ArrayList<String>(); 
+        Entorno entorno3 = new Entorno();
+        Enumeration e = entorno1.Elementos.keys();
+        Object clave;
+        while( e.hasMoreElements() ) {
+            clave = e.nextElement();
+            String Clave2 = (String) clave;
+            if(Global.Elementos.containsKey(Clave2)==true){
+                System.out.println("Este Vector: " + Clave2 + " Si se agrega al Global(3x)" + "<->Valor->" + Global.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + entorno1.Elementos.get(Clave2).ObtenerValor());
+                System.out.println("VECATOR->" + Clave2 + "<->valor2->" + Global.Elementos.get(Clave2).ObtenerValor());
+                //entorno1.Elementos.get(Clave2).ModificarValor(entorno1.Elementos.get(Clave2).ObtenerValor(), entorno1.Elementos.get(Clave2).ObtenerTipo());
+                entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
+                String Textolista = Clave2;
+                if(entorno3.ObtenerListaN(Clave2)==0){
+                    Textolista = Textolista  + ";" +  entorno3.ObtenerValor(Clave2) + ";" + entorno3.ObtenerTipo(Clave2) ;
+                    ejemploLista.add(Textolista);
+                }
+                
+                System.out.println("VAMOS A VER QUE PEDO CON 3->" + entorno3.Elementos.get(Clave2).ObtenerValor());
+            
+            } 
+          }
+        return ejemploLista;
+    }
+    
     public void AgregarElementosANuevoEntorno(Entorno Global, Entorno nuevo){
         Enumeration e = Global.Elementos.keys();
         Object clave;
