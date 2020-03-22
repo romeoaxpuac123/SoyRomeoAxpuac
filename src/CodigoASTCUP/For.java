@@ -10,6 +10,7 @@ import static Analizadores.IDE.ElTipoDeAmbitoRomeo;
 import static Analizadores.IDE.NumeroEntornosRomeo;
 import Analizadores.TError;
 import Codigo.Entorno;
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 
 /**
@@ -82,7 +83,35 @@ public class For extends NodoAbstracto{
                     for(int x = 0; x < this.Expresiones.size(); x++){
                             String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
                          if("break".equals(Resultado)){
-                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
+                            
+                            
+                            
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             NumeroEntornosRomeo--;
@@ -105,7 +134,32 @@ public class For extends NodoAbstracto{
                         for(int x = 0; x < this.Expresiones.size(); x++){
                             String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
                         if("break".equals(Resultado)){
-                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                             ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             NumeroEntornosRomeo--;
@@ -127,7 +181,32 @@ public class For extends NodoAbstracto{
                 for(int x = 0; x < this.Expresiones.size(); x++){
                     String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
                      if("break".equals(Resultado)){
-                            entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                            //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                             ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
                             System.out.println("NombreTemporal" + NombreTemporal);
                             //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
                             NumeroEntornosRomeo--;
@@ -151,57 +230,36 @@ public class For extends NodoAbstracto{
             return "#ERROR: La expresion1 debe ser un vector";
         }
                
-        entorno = entorno.ModificandoEntornos(Temporal,entorno);
+        //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+         ArrayList<String> ejemploLista = new ArrayList<String>(); 
+                            ejemploLista = Temporal.ModificandoEntornosLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTA->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                entorno.ModificarValor(palabras[0], palabras[1], palabras[2]);
+
+                            }
+                                  //proceso de vectores con listas
+                            ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
+                            for(int pp = 0; pp < ejemploLista.size();pp++){
+                                System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                String[] palabras = ejemploLista.get(pp).split(";");
+                                for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                    String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                    System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
+                         //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
+                         
+                     }
+                     //finprocesos de vecotres con lista
+                            System.out.println("terminamos el if--->");
+                            entorno.MostrarVectores();
+                            System.out.println("<-->");
+        
         System.out.println("NombreTemporal" + NombreTemporal);
         //entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
-       /*
-       String Expresion = this.Hijos.get(0).Ejecutar(entorno, salida);
-       String TipoExpresion = this.Hijos.get(0).TipoDato;
-       
-       String NombreTemporal = this.Hijos.get(0).Nombre;
-       String ExpresionTemporal =this.Hijos.get(0).Ejecutar(entorno, salida);
-       String TipoTemporal = entorno.ObtenerTipo(this.Hijos.get(0).Nombre);
-       
-       
-       if("id".equals(TipoExpresion)){
-           entorno.ModificarValor(this.Hijos.get(0).Nombre, this.Hijos.get(1).Ejecutar(entorno, salida), "entero");
-           TipoExpresion = entorno.ObtenerTipo(this.Hijos.get(0).Nombre);
-       }
-       System.out.println("Expresion->" + Expresion + " Tipo->" + TipoExpresion);
-       String ExpresionFinal = this.Hijos.get(1).Ejecutar(entorno, salida);
-       String TipoExpresionFinal = this.Hijos.get(1).TipoDato;
-       System.out.println("Final->" + ExpresionFinal + " Tipo->" + TipoExpresionFinal);
-       System.out.println("Total de expresiones" + this.Expresiones.size());
-       if("#Error".equals(TipoExpresion) || "#Error".equals(TipoExpresionFinal) || this.Expresiones.size()==0)
-       {
-            salida.append("#ERROR: La Sentencia del FOR es incorrecta \n");
-            TError ERRORES = new TError("FOR",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del FOR es incorrecta"  );
-            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-            return "#Error en For";
-       }
-       if("entero".equals(TipoExpresion) && "entero".equals(TipoExpresionFinal)){
-           int Inicio = Integer.valueOf(Expresion);
-           int Final = Integer.valueOf(ExpresionFinal);
-           Inicio = Final-1;
-           Entorno Temporal = new Entorno();
-           entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
-           for(int i = Inicio;i < Final;i++){
-               for(int x = 0; x < this.Expresiones.size(); x++){
-                   String Resultado = this.Expresiones.get(x).Ejecutar(Temporal, salida);
-            }
-            entorno = entorno.ModificandoEntornos(Temporal,entorno);
-               System.out.println("NombreTemporal" + NombreTemporal);
-             entorno.ModificarValor(NombreTemporal,ExpresionTemporal,TipoTemporal);
-           }
-           
-       }else{
-            salida.append("#ERROR: La Sentencia del FOR es incorrecta \n");
-            TError ERRORES = new TError("FOR",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del FOR es incorrecta un parametro no es entero"  );
-            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-            return "#Error en For";
-       }
-       
-       */
+      
                             NumeroEntornosRomeo--;
                                 if(NumeroEntornosRomeo==0)
                                 ElTipoDeAmbitoRomeo = "Global";
