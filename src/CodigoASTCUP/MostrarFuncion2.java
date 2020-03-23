@@ -94,8 +94,8 @@ public class MostrarFuncion2 extends NodoAbstracto{
             
            }
                        System.out.println("puta");
-                       Temporal.MostrarVectores();
-                       Temporal.MostrarVectoresLista(Temporal, salida);
+                      // Temporal.MostrarVectores();
+                      // Temporal.MostrarVectoresLista(Temporal, salida);
                        System.out.println("---");
               }
               //expresiones
@@ -117,10 +117,14 @@ public class MostrarFuncion2 extends NodoAbstracto{
                         Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
                         
                         System.out.println("Valor a RetornarMF2->" + Resultado + "Tipo->" + this.TipoDato);
-                        Temporal.MostrarVectores();
-                        Temporal.MostrarVectoresLista(entorno, salida);
+                       // Temporal.MostrarVectores();
+                       // Temporal.MostrarVectoresLista(entorno, salida);
                          System.out.println("--");
-                       
+                       if(this.TipoDato.contains("id")){
+                             //if(entorno.ob)
+                             this.TipoDato = "cadena";
+                             Resultado = entorno.ObtenerValor(Resultado);
+                         }
                          Resultadox = Resultado;
                          TipoPPPP = this.TipoDato;
                        

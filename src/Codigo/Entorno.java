@@ -220,7 +220,7 @@ public class Entorno {
                 //entorno1.Elementos.get(Clave2).ModificarValor(entorno1.Elementos.get(Clave2).ObtenerValor(), entorno1.Elementos.get(Clave2).ObtenerTipo());
                 entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
                 String Textolista = Clave2;
-                if(entorno3.ObtenerListaN(Clave2)==1){
+                if(entorno3.ObtenerListaN(Clave2)==1 && entorno3.ObtenerTipo(Clave2).contains("Funcion")==false){
                     Textolista = Textolista  + ";" +  entorno3.ObtenerTipo(Clave2) ;
                     ejemploLista.add(Textolista);
                 }
@@ -250,7 +250,7 @@ public class Entorno {
                 //entorno1.Elementos.get(Clave2).ModificarValor(entorno1.Elementos.get(Clave2).ObtenerValor(), entorno1.Elementos.get(Clave2).ObtenerTipo());
                 entorno3.Elementos.put(Clave2,entorno1.Elementos.get(Clave2));
                 String Textolista = Clave2;
-                if(entorno3.ObtenerListaN(Clave2)==0){
+                if(entorno3.ObtenerListaN(Clave2)==0 && entorno3.ObtenerTipo(Clave2).contains("Funcion")==false){
                     Textolista = Textolista  + ";" +  entorno3.ObtenerValor(Clave2) + ";" + entorno3.ObtenerTipo(Clave2) ;
                     ejemploLista.add(Textolista);
                 }

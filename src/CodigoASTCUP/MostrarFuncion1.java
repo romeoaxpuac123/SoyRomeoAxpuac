@@ -35,7 +35,7 @@ public class MostrarFuncion1 extends NodoAbstracto{
         Entorno Temporal = new Entorno();
         entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
         if(Temporal.ExisteVector(ElNombre)==true){
-            System.out.println("vamos a correr la funcion sin parametros" + ElNombre);
+            System.out.println("vamos a correr la funcion sin parametros->" + ElNombre);
             ArrayList <NodoAbstracto> ListaParetros = Temporal.ListaParetros(ElNombre);
             ArrayList <NodoAbstracto> ListaSentencias = Temporal.ListaSentenciasFuncion(ElNombre);
             ElTipoDeAmbitoRomeo = "FUNCION";
@@ -61,6 +61,11 @@ public class MostrarFuncion1 extends NodoAbstracto{
                          System.out.println("--");
                        
                          Resultadox = Resultado;
+                         if(this.TipoDato.contains("id")){
+                             this.TipoDato = entorno.ObtenerTipo(Resultado);
+                             Resultado = entorno.ObtenerValor(Resultado);
+                         }
+                         
                          TipoPPPP = this.TipoDato;
                        
                         return Resultado;
@@ -69,7 +74,7 @@ public class MostrarFuncion1 extends NodoAbstracto{
                         
                         //break;
                     }
-                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                    //entorno = entorno.ModificandoEntornos(Temporal,entorno);
                 }
             
             }else{

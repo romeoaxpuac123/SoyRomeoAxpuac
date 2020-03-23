@@ -40,6 +40,10 @@ public class Retorno extends NodoAbstracto{
         }        
         this.TipoDato = this.Hijos.get(0).TipoDato;
         //this.TipoDato = "entero";
+        if(this.TipoDato.contains("id")){
+            this.TipoDato = entorno.ObtenerTipo(Resultado);
+            Resultado = entorno.ObtenerValor(Resultado);
+        }
         System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);
         return "ESTOESUNRETORNOROMEO" +Resultado;
     
