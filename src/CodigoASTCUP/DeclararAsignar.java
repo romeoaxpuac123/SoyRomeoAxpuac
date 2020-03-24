@@ -41,29 +41,1494 @@ public class DeclararAsignar extends NodoAbstracto{
                 int TotalHijos = this.Hijos.get(1).Hijos.size();
                 System.out.println("EL HIJO PERDIDO DEL DRAGON->" + TotalHijos + "<->");
                 int eluno = 0;
+                int eltercero = 0;
                 for(int xx = 0 ; xx < TotalHijos; xx++){
                     String MC = this.Hijos.get(1).Hijos.get(xx).Ejecutar(entorno, salida);
                     if(MC.contains("RomeoAxpuac")){
+                        
                         eluno = 1;
                     }
+                    if(xx == 2){
+                            if(this.Hijos.get(1).Hijos.get(xx).TipoDato.contains("id")){
+                                 eltercero = 1;
+                             }
+                            
+                     }
                     System.out.println("DEJAME->" + MC);
                 }
                 //this.Hijos.get(1).Nombre = "RomeoAxpuac";
                 System.out.println("TAN SOLO POR UN BESO AMOR");
+                if(eltercero == 1 ){
+                    String NombreVectrox = this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida);
+                    System.out.println("YA DIME SI ME QUIERES");
+                    this.Expresiones.clear();
+                    String ElTipoDelVector = "";
+                     if(TotalHijos==3){
+                         
+                         int entero = 0, decimal = 0, cadena = 0, booleano = 0;
+                            for(int xx = 0; xx < entorno.ObtenerLista(NombreVectrox).size();xx++){
+                                String Valor2 = entorno.ObtenerLista(NombreVectrox).get(xx).Ejecutar(entorno, salida);
+                                String TipoValor2 =   entorno.ObtenerLista(NombreVectrox).get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String ElValor = this.Hijos.get(1).Hijos.get(0).Ejecutar(entorno, salida);
+                                String  Tipo = this.Hijos.get(1).Hijos.get(0).TipoDato;
+                                 System.out.println("PIENSA DOS VECES2->" + ElValor + "<->" + Tipo + " " + Simbolo +
+                                        " " + Valor2 + "<->Tipo:" + TipoValor2);
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                //Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                                entero = 1;
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                //Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                                decimal = 1;
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             booleano = 1;
+                                        }
+                                
+                            }
+                            if(cadena == 1){
+                                ElTipoDelVector = "cadena";
+                            }else if (decimal == 1){
+                                  ElTipoDelVector = "decimal";
+                            }
+                            else if (entero == 1){
+                                  ElTipoDelVector = "entero";
+                            }
+                            else if(booleano == 1){
+                                ElTipoDelVector = "booleano";
+                            }
+                     }
+                    System.out.println("EL TIPO DEL VECTOR SERIA .>" +  ElTipoDelVector);
+                    for(int xx = 0; xx < entorno.ObtenerLista(NombreVectrox).size();xx++){
+                                String Valor2 = entorno.ObtenerLista(NombreVectrox).get(xx).Ejecutar(entorno, salida);
+                                String TipoValor2 =   entorno.ObtenerLista(NombreVectrox).get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String ElValor = this.Hijos.get(1).Hijos.get(0).Ejecutar(entorno, salida);
+                                String  Tipo = this.Hijos.get(1).Hijos.get(0).TipoDato;
+                                String Resultado = "";
+                                
+                                switch(Simbolo){
+                                    case "+":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                case "-":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) - Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) - Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                  
+                                case "/":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) / Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) / Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;    
+                                 case "*":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) * Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) * Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                     case "%":
+                                         if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) % Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) % Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                    case "^":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                               Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                               case "==":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                 case "!=":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 return "#ERROR";
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case ">":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) > Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) > Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case "<":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) < Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) < Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                               case ">=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) >= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) >= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                             case "<=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) <= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) <= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                    case "&&":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase(Valor2)){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                     case "||":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase("true") | Valor2.equalsIgnoreCase("true")){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                }
+                            //AHRA A OBTENER EL TIPO DEL VECTOR    
+                            
+                            System.out.println("EL RESULTADO DE LA OPERACION222 ES:" + Resultado + "<->NUVOTIPO->" +ElTipoDelVector);
+                            NodoAbstracto nuevo = new Nodo("Cadena");
+                            NodoAbstracto nuevovalor = new Nodo( Resultado);
+                            nuevo.Hijos.add(nuevovalor);
+                            nuevo.TipoDato = ElTipoDelVector;
+                            this.Expresiones.add(nuevo);
+                            
+                    
+                      }
+                        boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+                
+                        if(!ExisteVector == true){
+                            entorno.Agregar2(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                        }else{
+                            entorno.ModificarValorLista(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                        }
+                    
+                    
+                    return "FIN DCA";
+                    
+                
+                }
+                
+                
+                
+                
                 if(eluno == 1){
                     System.out.println("SI ENTRO ROMEO AXPUAC");
-                       for(int xx = 0; xx < entorno.ObtenerLista("VectorDragonBallBeatles").size();xx++){
-                           System.out.println("PIENSA DOS VECES");
+                    this.Expresiones.clear();
+                    String ElTipoDelVector = "";
+                     if(TotalHijos==3){
+                         
+                         int entero = 0, decimal = 0, cadena = 0, booleano = 0;
+                            for(int xx = 0; xx < entorno.ObtenerLista("VectorDragonBallBeatles").size();xx++){
+                                String ElValor = entorno.ObtenerLista("VectorDragonBallBeatles").get(xx).Ejecutar(entorno, salida);
+                                String Tipo =   entorno.ObtenerLista("VectorDragonBallBeatles").get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String Valor2 = this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida);
+                                
+                                String  TipoValor2 = this.Hijos.get(1).Hijos.get(2).TipoDato;
+                                if(TipoValor2.contains("id")){
+                                    Valor2 = entorno.ObtenerValor(this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida));
+                                    Tipo = entorno.ObtenerTipo(this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida));
+                                }
+                                
+                                
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                //Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                                entero = 1;
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                //Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                                decimal = 1;
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             booleano = 1;
+                                        }
+                                
+                            }
+                            if(cadena == 1){
+                                ElTipoDelVector = "cadena";
+                            }else if (decimal == 1){
+                                  ElTipoDelVector = "decimal";
+                            }
+                            else if (entero == 1){
+                                  ElTipoDelVector = "entero";
+                            }
+                            else if(booleano == 1){
+                                ElTipoDelVector = "booleano";
+                            }
+                          //  sdfadsf
+                            
+                            for(int xx = 0; xx < entorno.ObtenerLista("VectorDragonBallBeatles").size();xx++){
+                                String ElValor = entorno.ObtenerLista("VectorDragonBallBeatles").get(xx).Ejecutar(entorno, salida);
+                                String Tipo =   entorno.ObtenerLista("VectorDragonBallBeatles").get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String Valor2 = this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida);
+                                String  TipoValor2 = this.Hijos.get(1).Hijos.get(2).TipoDato;
+                                System.out.println("PIENSA DOS VECES->" + ElValor + "<->" + Tipo + " " + Simbolo +
+                                        " " + Valor2 + "<->Tipo:" + TipoValor2);
+                                String Resultado = "";
+                                 if(TipoValor2.contains("id")){
+                                    Valor2 = entorno.ObtenerValor(this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida));
+                                    Tipo = entorno.ObtenerTipo(this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida));
+                                }
+                                
+                                switch(Simbolo){
+                                    case "+":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                case "-":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) - Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) - Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                  
+                                case "/":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) / Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) / Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;    
+                                 case "*":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) * Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) * Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                     case "%":
+                                         if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) % Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) % Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                    case "^":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                               Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                               case "==":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                 case "!=":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 return "#ERROR";
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case ">":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) > Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) > Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case "<":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) < Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) < Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                               case ">=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) >= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) >= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                             case "<=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) <= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) <= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                    case "&&":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase(Valor2)){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                     case "||":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase("true") | Valor2.equalsIgnoreCase("true")){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                }
+                            //AHRA A OBTENER EL TIPO DEL VECTOR    
+                            
+                            System.out.println("EL RESULTADO DE LA OPERACION ES:" + Resultado + "<->NUVOTIPO->" +ElTipoDelVector);
                           //ACA SE TENDRÍA QUE PROBAR ESTA ONDA DE LOS VECTORES EN SEGUNDA VUELTA
-                       }
-                }
-                boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+                            NodoAbstracto nuevo = new Nodo("Cadena");
+                            NodoAbstracto nuevovalor = new Nodo( Resultado);
+                            nuevo.Hijos.add(nuevovalor);
+                            nuevo.TipoDato = ElTipoDelVector;
+                            this.Expresiones.add(nuevo);
+                            }
+                      }
+                        boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+                
+                        if(!ExisteVector == true){
+                            entorno.Agregar2(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                        }else{
+                            entorno.ModificarValorLista(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                        }
+                      
+                }else{
+                        System.out.println("PUTA VIDA-------------------------->" + this.Hijos.get(1).Hijos.get(0).Nombre);
+                        String NombreVector =  this.Hijos.get(1).Hijos.get(0).Nombre;
+                        this.Expresiones.clear();
+                        String ElTipoDelVector = "";
+                        if(TotalHijos==3){
+                         
+                         int entero = 0, decimal = 0, cadena = 0, booleano = 0;
+                            for(int xx = 0; xx < entorno.ObtenerLista(NombreVector).size();xx++){
+                                String ElValor = entorno.ObtenerLista(NombreVector).get(xx).Ejecutar(entorno, salida);
+                                String Tipo =   entorno.ObtenerLista(NombreVector).get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String Valor2 = this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida);
+                                String  TipoValor2 = this.Hijos.get(1).Hijos.get(2).TipoDato;
+                                System.out.println("PIENSA DOS VECES->" + ElValor + "<->" + Tipo + " " + Simbolo +
+                                        " " + Valor2 + "<->Tipo:" + TipoValor2);
+                                String Resultado = "";
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                //Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                                entero = 1;
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                //Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                                decimal = 1;
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                //Resultado = ElValor + Valor2;
+                                                cadena = 1;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             booleano = 1;
+                                        }
+                                
+                            
+                                        if(cadena == 1){
+                                            ElTipoDelVector = "cadena";
+                                        }else if (decimal == 1){
+                                              ElTipoDelVector = "decimal";
+                                        }
+                                        else if (entero == 1){
+                                              ElTipoDelVector = "entero";
+                                        }
+                                        else if(booleano == 1){
+                                            ElTipoDelVector = "booleano";
+                                        }
+                            
+                            }
+                            for(int xx = 0; xx < entorno.ObtenerLista(NombreVector).size();xx++){
+                                String ElValor = entorno.ObtenerLista(NombreVector).get(xx).Ejecutar(entorno, salida);
+                                String Tipo =   entorno.ObtenerLista(NombreVector).get(xx).TipoDato;
+                                String Simbolo = this.Hijos.get(1).Hijos.get(1).Nombre;
+                                String Valor2 = this.Hijos.get(1).Hijos.get(2).Ejecutar(entorno, salida);
+                                String  TipoValor2 = this.Hijos.get(1).Hijos.get(2).TipoDato;
+                                System.out.println("PIENSA DOS VECES->" + ElValor + "<->" + Tipo + " " + Simbolo +
+                                        " " + Valor2 + "<->Tipo:" + TipoValor2);
+                                String Resultado = "";
+                                
+                                switch(Simbolo){
+                                    case "+":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) + Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) + Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                Resultado = ElValor + Valor2;
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                case "-":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) - Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) - Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                  
+                                case "/":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) / Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) / Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;    
+                                 case "*":
+                                     if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) * Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) * Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                     case "%":
+                                         if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = Integer.toString(Integer.valueOf(ElValor) % Integer.valueOf(Valor2));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf(Double.parseDouble(ElValor) % Double.parseDouble(Valor2));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                                    case "^":
+                                        if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                               Resultado = String.valueOf((double) Math.pow((Double.parseDouble(ElValor)),(Double.parseDouble(Valor2))));
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                 salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                             salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                             return "#ERROR";
+                                        }
+                                        
+                                        else{
+                                            salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                            return "#ERROR";
+                                        }
+                                        break;
+                               case "==":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                 case "!=":
+                                            if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+                                            else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                    if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                                 return "#ERROR";
+                                            }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                 if(!ElValor.equalsIgnoreCase(Valor2)){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                            }
+
+                                            else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case ">":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) > Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) > Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() > Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                case "<":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) < Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) < Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() < Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                               case ">=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) >= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) >= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() >= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                             case "<=":
+                                       if(Tipo.contains("entero") && (TipoValor2.contains("entero"))){
+                                                if(Integer.valueOf(ElValor) <= Integer.valueOf(Valor2)){
+                                                    Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("decimal") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero"))){
+                                                if(Double.parseDouble(ElValor) <= Double.parseDouble(Valor2)){
+                                                   Resultado = "true";
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                        }
+                                        else if(Tipo.contains("cadena") && (TipoValor2.contains("decimal")|TipoValor2.contains("entero")|TipoValor2.contains("cadena") | TipoValor2.contains("booleano"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+                                        }else  if(Tipo.contains("booleano") && (TipoValor2.contains("cadena"))){
+                                                     if(ElValor.length() <= Valor2.length()){
+                                                        Resultado = "true";
+                                                    }else{
+                                                        Resultado = "false";
+                                                    }
+
+                                        }else if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                    case "&&":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase(Valor2)){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                     case "||":
+                                        if(Tipo.contains("booleano") && (TipoValor2.contains("booleano"))){
+                                                if(ElValor.equalsIgnoreCase("true") | Valor2.equalsIgnoreCase("true")){
+                                                    Resultado = "true";                                                
+                                                }else{
+                                                    Resultado = "false";
+                                                }
+                                            }
+
+                                        else{
+                                                salida.append("ERROR EN LA OPERACIÓN DEL VECTOR");
+                                                return "#ERROR";
+                                            }
+                                        break;
+                                }
+                            //AHRA A OBTENER EL TIPO DEL VECTOR    
+                            
+                            System.out.println("EL RESULTADO DE LA OPERACION ES:" + Resultado + "<->NUVOTIPO->" +ElTipoDelVector);
+                          //ACA SE TENDRÍA QUE PROBAR ESTA ONDA DE LOS VECTORES EN SEGUNDA VUELTA
+                            NodoAbstracto nuevo = new Nodo("Cadena");
+                            NodoAbstracto nuevovalor = new Nodo( Resultado);
+                            nuevo.Hijos.add(nuevovalor);
+                            nuevo.TipoDato = ElTipoDelVector;
+                            this.Expresiones.add(nuevo);
+                            }
+                            System.out.println("EL VALOR DEL VECTOR SERA" + ElTipoDelVector);
+                            boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+                
+                                if(!ExisteVector == true){
+                                    entorno.Agregar2(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                                }else{
+                                    entorno.ModificarValorLista(Identificador, this.Expresiones, ElTipoDelVector, "prit2");
+                                }
+                        }
+                       
+                        
+                        /*
+                         boolean ExisteVector =  entorno.ExisteVector(Identificador); 
       
+                        if(!ExisteVector == true){
+                            entorno.Agregar2(Identificador, entorno.ObtenerLista(this.Hijos.get(1).Hijos.get(0).Nombre), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
+                        }else{
+                            entorno.ModificarValorLista(Identificador, entorno.ObtenerLista(this.Hijos.get(1).Hijos.get(0).Nombre), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
+                        }*/
+                        return "salida";
+                }
+                /*
+                boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+                
                 if(!ExisteVector == true){
                     entorno.Agregar2(Identificador, entorno.ObtenerLista("VectorDragonBallBeatles"), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
                 }else{
                     entorno.ModificarValorLista(Identificador, entorno.ObtenerLista("VectorDragonBallBeatles"), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
                 }
+               */
                 System.out.println("TAN SOLO POR UN BESO AMORX3");
                 //String Salida = this.Hijos.get(1).Ejecutar(entorno, salida);
                // System.out.println("---->" + Salida);
