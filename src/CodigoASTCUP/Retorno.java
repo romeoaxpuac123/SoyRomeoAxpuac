@@ -41,8 +41,22 @@ public class Retorno extends NodoAbstracto{
         this.TipoDato = this.Hijos.get(0).TipoDato;
         //this.TipoDato = "entero";
         if(this.TipoDato.contains("id")){
-            this.TipoDato = entorno.ObtenerTipo(Resultado);
-            Resultado = entorno.ObtenerValor(Resultado);
+            if(entorno.ObtenerListaN(Resultado)==0){
+                 this.TipoDato = entorno.ObtenerTipo(Resultado);
+                Resultado = entorno.ObtenerValor(Resultado);
+            }else{
+                 this.TipoDato = entorno.ObtenerTipo(Resultado);
+                 String NombreVectorRomeo = "Entorno" + Resultado;
+                 if (entorno.ExisteVector(NombreVectorRomeo)==false) {
+                     entorno.Agregar2(NombreVectorRomeo, entorno.ObtenerLista(Resultado) , this.TipoDato,"aaa");
+                     this.TipoDato = "id";
+                 }else{
+                      entorno.ModificarValorLista(NombreVectorRomeo, entorno.ObtenerLista(Resultado) , this.TipoDato,"aaa");
+                      this.TipoDato = "id";
+                 }
+                 Resultado = NombreVectorRomeo;
+            }
+           
         }
         System.out.println("Valor a Retornar->" + Resultado + "Tipo->" + this.TipoDato);
         return "ESTOESUNRETORNOROMEO" +Resultado;

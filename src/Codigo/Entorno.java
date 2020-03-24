@@ -324,5 +324,14 @@ public class Entorno {
             }
           }
     }
+       
+      public void ModificandoValoresFuncion(String id, ArrayList <NodoAbstracto> Parametros,ArrayList <NodoAbstracto> Expresioens){
+           if (Elementos.containsKey(id)) {
+                System.out.println("-------------------------------------------------------------->MODIFICANDO VALORES F");
+                Elementos.get(id).ModificarParametrosFuncion(Parametros);
+                Elementos.get(id).ModificarExpresionesFuncion(Expresioens);
+            }
+        }
+      
      
 }

@@ -28,15 +28,22 @@ public class Aritmetica extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
-        System.out.println("ENTRO ARITMETICA");
+        System.out.println("-------------------------------------------------------->ENTRO ARITMETICA");
         int total = 0;
         double totald = 0;
         String totalc = "";
         String val1 = this.Hijos.get(0).Ejecutar(entorno, salida);
         String val2 = this.Hijos.get(2).Ejecutar(entorno, salida);
         
+        
         String Tipo1 = this.Hijos.get(0).TipoDato;
         String Tipo2 = this.Hijos.get(2).TipoDato;
+        
+        System.out.println("Val1.->" + val1);
+        System.out.println("Val2.->" + val2);
+        System.out.println("Tipo1->" + Tipo1);
+        System.out.println("Tipo2->" + Tipo2);
+        System.out.println("---------------------------------------------------------> FIN DE OBTENER VALORES");
        
         if(Tipo1.contains("entero") && val1.length()>5){
             Tipo1 = "decimal";
@@ -388,6 +395,7 @@ public class Aritmetica extends NodoAbstracto{
         
        // System.out.println("TIPOS:" + Tipo1 + "-" + Tipo2);
         if("id".equals(Tipo1) && !"id".equals(Tipo2)){
+            System.out.println("el rpiemro si es ido el segundo no");
             String Vector = this.Hijos.get(0).Nombre;
             //System.out.println("VectorAritmetica:" + Vector);
                     
@@ -531,9 +539,11 @@ public class Aritmetica extends NodoAbstracto{
             
            // return "Go";
         }
-        
+          
         if("id".equals(Tipo2) && !"id".equals(Tipo1)){
+            
             String Vector = this.Hijos.get(2).Nombre;
+            System.out.println("EN TEORIA EL LADO DOS ES UN VECTOR--->>" + Vector + "<-sdaf");
             //System.out.println("VectorAritmetica:" + Vector);
             boolean ExisteVector =  entorno.ExisteVector(Vector); 
             if(ExisteVector == true){

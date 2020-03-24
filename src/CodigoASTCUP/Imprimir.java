@@ -32,6 +32,9 @@ public class Imprimir extends NodoAbstracto{
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
         String tipo = this.Hijos.get(0).TipoDato;
         System.out.println("----------->Se esta ejecutnado imprimir->" + val + "<->");
+        System.out.println("vectores:");
+        entorno.MostrarVectoresLista(entorno, salida);
+        System.out.println("safasd");
         System.out.println("TIPO->" + tipo);
         String ElMero = "";
         int bandera = 0;

@@ -61,7 +61,7 @@ public class MostrarFuncion2 extends NodoAbstracto{
                         return "#ERROR EN FUNCIONES LLAMDA";
       }else{
           Entorno Temporal = new Entorno();
-          entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+          Temporal.AgregarElementosANuevoEntorno(entorno,Temporal);
           System.out.println("DELCARACION DE PARAMETROS----------------");
           ElTipoDeAmbitoRomeo = "FUNCION";
           for(int i = 0; i < totalParmetros; i ++){
@@ -102,7 +102,7 @@ public class MostrarFuncion2 extends NodoAbstracto{
               for(int i = 0; i < ListaSentencias.size();i++){
                   String Resultado = ListaSentencias.get(i).Ejecutar(Temporal, salida);
                   String tipoxx = ListaSentencias.get(i).TipoDato;
-                  System.out.println("RESULTADO" + Resultado);
+                  System.out.println("RESULTADO++++->" + Resultado);
                  
                     if(Resultado.toUpperCase().contains("#ERROR")){
                         //vamos a ver que pedo con los errores 
@@ -117,21 +117,48 @@ public class MostrarFuncion2 extends NodoAbstracto{
                         Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
                         
                         System.out.println("Valor a RetornarMF2->" + Resultado + "Tipo->" + this.TipoDato);
-                       // Temporal.MostrarVectores();
-                       // Temporal.MostrarVectoresLista(entorno, salida);
+                        Temporal.MostrarVectores();
+                        Temporal.MostrarVectoresLista(Temporal, salida);
                          System.out.println("--");
                        if(this.TipoDato.contains("id")){
                              //if(entorno.ob)
-                             this.TipoDato = "cadena";
-                             Resultado = entorno.ObtenerValor(Resultado);
+                             if(Temporal.ObtenerListaN(Resultado)==0){
+                                 System.out.println("ES 1");
+                                 this.TipoDato = Temporal.ObtenerTipo(Resultado);
+                                Resultado = Temporal.ObtenerValor(Resultado);
+                             }else{
+                                System.out.println("ES LARGO");
+                                 if(Temporal.ObtenerTipo(Resultado).toUpperCase().contains("LISTA")){
+                                     //SE RETORNA UNA LISTA.
+                                     
+                                 }else{
+                                     //se retorna un vector
+                                     //Resultado = "hola mundo";
+                                    this.Nombre = Resultado;
+                                    if(entorno.ExisteVector(Resultado)== true){
+                                            entorno.ModificarValorLista(Resultado, Temporal.ObtenerLista(Resultado), Temporal.ObtenerTipo(Resultado), "adsf");
+                                    }else{
+                                        entorno.Agregar2(Resultado, Temporal.ObtenerLista(Resultado), Temporal.ObtenerTipo(Resultado), "adsf");
+                                    
+                                    }
+                                    
+                                 }
+                             
+                             }
+                              
                          }
-                         Resultadox = Resultado;
-                         TipoPPPP = this.TipoDato;
-                       
+                         //Resultadox = Resultado;
+                         //TipoPPPP = this.TipoDato;
+                        System.out.println("ROMEOOOOOOOOOOOOO");
+                        entorno.MostrarVectoresLista(entorno, salida);
+                        System.out.println("Resultado:" + Resultado+"<->");
+                        System.out.println("Tipo->" + this.TipoDato);
+                       //this.TipoDato = "cadena";
+                       //entorno = entorno.ModificandoEntornos(Temporal,entorno);
                         return Resultado;
                         //break;
                     }
-                    entorno = entorno.ModificandoEntornos(Temporal,entorno);
+                   // entorno = entorno.ModificandoEntornos(Temporal,entorno);
               }
       }
       

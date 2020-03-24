@@ -26,6 +26,12 @@ public class Simbolo {
         this.Tipo = Tipo;
     }
 
+    public void ModificarParametrosFuncion(ArrayList <NodoAbstracto> Expresionesx){
+        this.Parametros = Expresionesx;
+    }
+    public void ModificarExpresionesFuncion(ArrayList <NodoAbstracto> Expresionesx){
+        this.Expresiones = Expresionesx;
+    }
      public Simbolo(String Id, ArrayList <NodoAbstracto> Expresiones, String Tipo, String Borrador) {
         this.Id = Id;
         this.Expresiones = Expresiones;
@@ -78,7 +84,9 @@ public class Simbolo {
     }
    
     public ArrayList <NodoAbstracto> RetornarLista(){
-        return this.Expresiones;
+         ArrayList <NodoAbstracto> salida = new  ArrayList <NodoAbstracto>();
+         salida = Expresiones;
+        return salida;
     }
     
     public ArrayList <NodoAbstracto> RetornarParametros(){

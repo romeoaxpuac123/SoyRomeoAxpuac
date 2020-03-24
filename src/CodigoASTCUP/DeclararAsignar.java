@@ -34,7 +34,41 @@ public class DeclararAsignar extends NodoAbstracto{
     
           String Identificador = this.Hijos.get(0).Nombre;
       int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
+    
+        System.out.println("---------------------------------------->entramos a declarair asiganr");
+        System.out.println("->xx" + this.Hijos.get(1).Nombre);
+        if(this.Hijos.get(1).Nombre.contains("VectorDragonBallBeatles")){
+                int TotalHijos = this.Hijos.get(1).Hijos.size();
+                System.out.println("EL HIJO PERDIDO DEL DRAGON->" + TotalHijos + "<->");
+                int eluno = 0;
+                for(int xx = 0 ; xx < TotalHijos; xx++){
+                    String MC = this.Hijos.get(1).Hijos.get(xx).Ejecutar(entorno, salida);
+                    if(MC.contains("RomeoAxpuac")){
+                        eluno = 1;
+                    }
+                    System.out.println("DEJAME->" + MC);
+                }
+                //this.Hijos.get(1).Nombre = "RomeoAxpuac";
+                System.out.println("TAN SOLO POR UN BESO AMOR");
+                if(eluno == 1){
+                    System.out.println("SI ENTRO ROMEO AXPUAC");
+                       for(int xx = 0; xx < entorno.ObtenerLista("VectorDragonBallBeatles").size();xx++){
+                           System.out.println("PIENSA DOS VECES");
+                          //ACA SE TENDRÍA QUE PROBAR ESTA ONDA DE LOS VECTORES EN SEGUNDA VUELTA
+                       }
+                }
+                boolean ExisteVector =  entorno.ExisteVector(Identificador); 
       
+                if(!ExisteVector == true){
+                    entorno.Agregar2(Identificador, entorno.ObtenerLista("VectorDragonBallBeatles"), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
+                }else{
+                    entorno.ModificarValorLista(Identificador, entorno.ObtenerLista("VectorDragonBallBeatles"), entorno.ObtenerTipo("VectorDragonBallBeatles"), "prit2");
+                }
+                System.out.println("TAN SOLO POR UN BESO AMORX3");
+                //String Salida = this.Hijos.get(1).Ejecutar(entorno, salida);
+               // System.out.println("---->" + Salida);
+               return "salida";
+        }
         
      if("id".equals(this.Hijos.get(1).TipoDato)){
          //salida.append("VAMOS A IGUAL UN VECTOR CON OTRO VECTOR");
@@ -175,7 +209,7 @@ public class DeclararAsignar extends NodoAbstracto{
       this.Expresiones3.clear();
       
      for(int x = 0; x < this.Hijos.get(1).Hijos.get(1).Hijos.size();x++){
-         System.out.println("JUAN CALABERA->" + this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre);
+         //System.out.println("JUAN CALABERA->" + this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre);
          String Nombre = this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre;
          if(Nombre.contains("FuncionC")){
              System.out.println("Viejo los hijos de la funicon C");
@@ -258,7 +292,7 @@ public class DeclararAsignar extends NodoAbstracto{
       for(int i = 0; i < this.Expresiones2.size();i++){
           String Resultado = this.Expresiones2.get(i).Ejecutar(entorno, salida);
           String TipoDelResultado = this.Expresiones2.get(i).TipoDato;
-          System.out.println("HOLA MUNDO->" + Resultado + " TipoDelResultado->" + TipoDelResultado);
+          //System.out.println("HOLA MUNDO->" + Resultado + " TipoDelResultado->" + TipoDelResultado);
           if(!Resultado.equals("#Error")){
                    //System.out.println("aheuvo---->" + Valor);
                    //VAMOS A BUSCAR LA PRIORIDAD

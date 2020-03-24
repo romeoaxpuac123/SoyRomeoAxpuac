@@ -42,6 +42,7 @@ public class MostrarFuncion1 extends NodoAbstracto{
             if(ListaParetros == null){
                 for(int i = 0; i< ListaSentencias.size(); i++){
                     String Resultado = ListaSentencias.get(i).Ejecutar(Temporal, salida);
+                    System.out.println("EL RESULADO DE MF1->" + Resultado);
                     int xp = ListaSentencias.get(i).id;
                     if(Resultado.toUpperCase().contains("#ERROR")){
                         //vamos a ver que pedo con los errores 
@@ -55,19 +56,48 @@ public class MostrarFuncion1 extends NodoAbstracto{
                         this.TipoDato = ListaSentencias.get(i).TipoDato;
                         Resultado = Resultado.replaceAll("ESTOESUNRETORNOROMEO", "");
                         
-                        System.out.println("Valor a RetornarMF2->" + Resultado + "Tipo->" + this.TipoDato);
+                        System.out.println("Valor a RetornarMF1->" + Resultado + "<-Tipo->" + this.TipoDato);
                         Temporal.MostrarVectores();
                         Temporal.MostrarVectoresLista(entorno, salida);
                          System.out.println("--");
                        
                          Resultadox = Resultado;
-                         if(this.TipoDato.contains("id")){
-                             this.TipoDato = entorno.ObtenerTipo(Resultado);
-                             Resultado = entorno.ObtenerValor(Resultado);
+                         
+                        if(this.TipoDato.contains("id")){
+                             //if(entorno.ob)
+                             if(Temporal.ObtenerListaN(Resultado)==0){
+                                 System.out.println("ES 1");
+                                 this.TipoDato = Temporal.ObtenerTipo(Resultado);
+                                Resultado = Temporal.ObtenerValor(Resultado);
+                             }else{
+                                System.out.println("ES LARGO");
+                                 if(Temporal.ObtenerTipo(Resultado).toUpperCase().contains("LISTA")){
+                                     //SE RETORNA UNA LISTA.
+                                     
+                                 }else{
+                                     //se retorna un vector
+                                     //Resultado = "hola mundo";
+                                     this.Nombre = Resultado;
+                                     if(entorno.ExisteVector(Resultado)== true){
+                                            entorno.ModificarValorLista(Resultado, Temporal.ObtenerLista(Resultado), Temporal.ObtenerTipo(Resultado), "adsf");
+                                    }else{
+                                        entorno.Agregar2(Resultado, Temporal.ObtenerLista(Resultado), Temporal.ObtenerTipo(Resultado), "adsf");
+                                    
+                                    }
+                                 }
+                             
+                             }
+                              
                          }
                          
-                         TipoPPPP = this.TipoDato;
-                       
+                         //TipoPPPP = this.TipoDato;
+                       // for(int ix = 0; ix < entorno.ObtenerLista(Resultado).size(); ix++){
+                           // String Hola = entorno.ObtenerLista(Resultado).get(ix).Ejecutar(entorno, salida);
+                           // System.out.println("HOLA->" + Hola);
+                       // }
+                        System.out.println("ROMEOOOOOOOOOOOOO");
+                        System.out.println("Resultado:" + Resultado);
+                        System.out.println("Tipo->" + this.TipoDato);
                         return Resultado;
                         
                         
