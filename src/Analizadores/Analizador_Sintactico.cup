@@ -126,6 +126,7 @@ SENTENCIAS::=       SENTENCIAS:nodsentencias SENTENCIA:nod
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     :}
+                    //| MODVECTOR
                      ;
 
 SENTENCIA::=        DECLARARASIGNAR:nod
@@ -145,14 +146,15 @@ SENTENCIA::=        DECLARARASIGNAR:nod
                     //    Manejor_Error = "SENTENCIA INCORRECTA";
                      //   RESULT=nod;
                     //:}
-                    //| MODVECTOR:nod
-                    //{:
-                    //  Manejor_Error = "SENTENCIA INCORRECTA";
-                    //  RESULT=nod;
-                    //:}
+                    | MODVECTOR:nod
+                    {:
+                      Manejor_Error = "SENTENCIA INCORRECTA";
+                      RESULT=nod;
+                    :}
                     |ELIF:nod{:
                         RESULT = nod;
                     :}
+                    
                     |ELIFELSE:nod{:
                         RESULT = nod;
                     :}
@@ -585,8 +587,8 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
                 RESULT=nuevo;
                 
             :}
-            | id:valor corcheteabrir EXP:exp1 corchetecerrar igual FuncionC  EXP:exp2   parentesiscerrar FINAL{:
-                NodoAbstracto nuevo = new ModificarVector("Vecto");
+           /* | id:valor corcheteabrir EXP:exp1 corchetecerrar igual   EXP:exp2   FINAL{:
+               NodoAbstracto nuevo = new ModificarVector("Vecto");
                 NodoAbstracto nuevoid = new Nodo(valor);
                 nuevo.Hijos.add(nuevoid);
                 nuevo.Hijos.add(exp1);
@@ -597,7 +599,7 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
                 RESULT=nuevo;
                 
             :}
-             
+             */
              ;
 
 

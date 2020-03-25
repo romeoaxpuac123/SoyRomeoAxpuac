@@ -32,9 +32,31 @@ public class ModificarVector extends NodoAbstracto{
          String Posicion =  this.Hijos.get(1).Ejecutar(entorno, salida);// .Ejecutar(entorno, salida);
          String NuevoValor = this.Hijos.get(2).Ejecutar(entorno, salida);
         // System.out.println("MODIFICANDO VECTOR->" + Vector + " Posición->" + Posicion + " Nuevoalor->" + NuevoValor);
-       boolean ExisteVector =  entorno.ExisteVector(Vector); 
+        if(NuevoValor.equalsIgnoreCase("FuncionC")){
+            System.out.println("VIENE UNA FUNCION C--------->");
+            int TotalHijosDeC = this.Hijos.get(2).Hijos.size();
+            System.out.println("VIENE UNA FUNCION C--------->" + TotalHijosDeC);
+            if( TotalHijosDeC >2){
+                 salida.append("#ERROR: La funcion C traeme más parametros para el vector: " + Vector +"\n");
+            //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+                TError ERRORES = new TError(Vector,this.linea,this.columna,"Semantico", "#ERROR: La funcion C traeme más parametros para el vector: " + Vector );
+                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                return "#ERROR: No Existe el Vector";
+            }
+            /*
+            for(int i = 0; i < TotalHijosDeC; i++){
+                String Salida = this.Hijos.get(2).Hijos.get(i).Ejecutar(entorno, salida);
+                NuevoValor = Salida;
+                System.out.println("SALIDA->" + Salida);
+            }*/
+            NuevoValor = this.Hijos.get(2).Hijos.get(1).Hijos.get(0).Ejecutar(entorno, salida);
+            System.out.println("FIN->" + NuevoValor);
+        }
+        System.out.println("FIN->" + NuevoValor);
+        boolean ExisteVector =  entorno.ExisteVector(Vector); 
       
         if(ExisteVector == true){
+             System.out.println("FIN->" + NuevoValor);
             //entorno.Agregar(Identificador, Tipo1, val1);
             // System.out.println("MODIFICANDO VECTOR->" + Vector + " Posición->" + Posicion + " Nuevoalor->" + NuevoValor);
               ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
@@ -69,18 +91,30 @@ public class ModificarVector extends NodoAbstracto{
                     }
                  }else{
                     //Vectores de 2 o más posciones
-                        System.out.println("modificando vector maor2" + Posicion);
+                        System.out.println("modificando vector maor2->" + Posicion);
+                        String TipoDelVectorXD = entorno.ObtenerTipo(Vector);
+                        String Valor = "nulo";
+                        if(TipoDelVectorXD.equalsIgnoreCase("entero")){
+                            Valor = "0";
+                        }
+                        if(TipoDelVectorXD.equalsIgnoreCase("decimal")){
+                            Valor = "0.0";
+                        }
+                        if(TipoDelVectorXD.equalsIgnoreCase("booleano")){
+                            Valor = "false";
+                        }
+                        System.out.println("FIN->" + NuevoValor);
                         NodoAbstracto nuevo = new Nodo("Cadena");
-                        NodoAbstracto nuevovalor = new Nodo("nulo");
+                        NodoAbstracto nuevovalor = new Nodo(Valor);
                         nuevo.Hijos.add(nuevovalor);
-                        nuevo.TipoDato = "cadena";
+                        nuevo.TipoDato = TipoDelVectorXD;
                         ArrayList <NodoAbstracto> ExpresionesRomeo2 = new ArrayList();
                         ExpresionesRomeo = entorno.ObtenerLista(Vector);
                         if(ExpresionesRomeo.size()>=Integer.parseInt(Posicion)){
                             System.out.println("entro if");
                             for(int i = 0; i < ExpresionesRomeo.size();i++ ){
                                 if(i == Integer.parseInt(Posicion)-1){
-                                    ExpresionesRomeo2.add( this.Hijos.get(2));
+                                    ExpresionesRomeo2.add( this.Hijos.get(2).Hijos.get(1).Hijos.get(0));
                                 }else{
                                     ExpresionesRomeo2.add(ExpresionesRomeo.get(i));
                                 }
@@ -90,7 +124,7 @@ public class ModificarVector extends NodoAbstracto{
                             System.out.println("entro else");
                             for(int i = 0; i < Integer.parseInt(Posicion);i++){
                                 if(i== Integer.parseInt(Posicion)-1){
-                                    ExpresionesRomeo2.add( this.Hijos.get(2));
+                                    ExpresionesRomeo2.add( this.Hijos.get(2).Hijos.get(1).Hijos.get(0));
                                 }
                                 else if(ExpresionesRomeo.size()>i){
                                     //ExpresionesRomeo2.add(nuevo);

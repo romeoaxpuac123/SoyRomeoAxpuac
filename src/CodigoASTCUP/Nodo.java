@@ -741,6 +741,17 @@ public class Nodo extends NodoAbstracto{
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                     return "#Error";
                 }
+               System.out.println("SOY ROMEO AXPUAC");
+              /* 
+               if(this.id == 0){
+               
+                salida.append("#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo \n");
+                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo"  );
+                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                System.out.println("ERROR");
+                 return "#Error";
+               }
+               */
                System.out.println("DATOS LLAMADO-> Vector:" + Identificador + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificador));
                 if(entorno.ObtenerListaN(Identificador) ==0){
                     sali = entorno.ObtenerValor(Identificador);
@@ -748,11 +759,22 @@ public class Nodo extends NodoAbstracto{
                  }else{
                   String limite = this.Hijos.get(1).Ejecutar(entorno, salida);
                   //  System.out.println("limite es:" + limite + "--------------------");
-                  String Tipo1 = this.Hijos.get(1).TipoDato;
-                  String val1 = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
-                  this.TipoDato = entorno.ObtenerTipo(Identificador);
-                  sali = val1;
+                  if((Integer.parseInt(limite)-1)>=0 && ((Integer.parseInt(limite)-1)<entorno.ObtenerLista(Identificador).size())){
+                        String Tipo1 = this.Hijos.get(1).TipoDato;
+                        String val1 = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
+                        this.TipoDato = entorno.ObtenerTipo(Identificador);
+                        sali = val1;
                     
+                  }else{
+                       salida.append("#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo \n");
+                        TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo"  );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        System.out.println("ERROR");
+                         return "#Error";
+                  }
+                  
+                  
+                
                 }
                 //sali = this.Hijos.get(0).Nombre;
                 break;
