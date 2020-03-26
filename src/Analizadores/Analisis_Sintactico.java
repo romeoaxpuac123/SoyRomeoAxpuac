@@ -3265,7 +3265,7 @@ class CUP$Analisis_Sintactico$actions {
 		String valor = (String)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("Cadena");
-                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        NodoAbstracto nuevovalor = new Nodo("");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
                         Manejor_Error = "Error en expresion";

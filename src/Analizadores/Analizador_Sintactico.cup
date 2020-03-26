@@ -923,7 +923,7 @@ EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesi
         |nulo:valor
                     {:
                         NodoAbstracto nuevo = new Nodo("Cadena");
-                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        NodoAbstracto nuevovalor = new Nodo("");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
                         Manejor_Error = "Error en expresion";

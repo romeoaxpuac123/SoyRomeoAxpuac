@@ -39,6 +39,17 @@ public class Aritmetica extends NodoAbstracto{
         String Tipo1 = this.Hijos.get(0).TipoDato;
         String Tipo2 = this.Hijos.get(2).TipoDato;
         
+        if(val1.contains("null") && val2.contains("null")){
+            val1 = "null";
+            val2 = "";
+        }else if (val1.contains("null") && !val2.contains("null")){
+            val1 = "";
+        }
+        else if (!val1.contains("null") && val2.contains("null")){
+            val2 = "";
+        }
+        
+        
         System.out.println("Val1.->" + val1);
         System.out.println("Val2.->" + val2);
         System.out.println("Tipo1->" + Tipo1);
