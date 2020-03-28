@@ -31,9 +31,11 @@ public class Imprimir extends NodoAbstracto{
         System.out.println("<->" + "entro a imprimir" + this.Hijos.get(0).Nombre);
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
         String tipo = this.Hijos.get(0).TipoDato;
-        System.out.println("----------->Se esta ejecutnado imprimir->" + val + "<->");
-        System.out.println("vectores:");
-        entorno.MostrarVectoresLista(entorno, salida);
+        if(tipo.contains("Lista")){
+            if(entorno.ExisteVector(val)){
+                tipo = "id";
+            }
+        }
         System.out.println("safasd");
         System.out.println("TIPO->" + tipo);
         String ElMero = "";

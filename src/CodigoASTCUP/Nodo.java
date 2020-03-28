@@ -715,7 +715,9 @@ public class Nodo extends NodoAbstracto{
             case "Decimal":
                 sali = this.Hijos.get(0).Nombre;
                 break;
-            case "Cadena":
+            case "Cadena":                
+                sali = this.Hijos.get(0).Nombre;
+           case "FuncionC":                
                 sali = this.Hijos.get(0).Nombre;
              case "Booleano":
                 sali = this.Hijos.get(0).Nombre;
@@ -732,6 +734,45 @@ public class Nodo extends NodoAbstracto{
                     salida.append("#Error: No se ha encontrado la variables -> "+this.Hijos.get(0).Nombre+"\n");
                 }
                 break;
+            case "VectorIronMan":
+                 String Identificadory = this.Hijos.get(0).Nombre;
+                if(entorno.ExisteVector(Identificadory)==false){
+                    System.out.println("El vector" + Identificadory + "No Existe");
+                    salida.append("#Error: No se ha encontrado el vector -> "+Identificadory+"\n");
+                    TError ERRORES = new TError(Identificadory,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+Identificadory );
+                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    return "#Error";
+                }
+               System.out.println("SOY ROMEO AXPUAC");
+                System.out.println("DATOS LLAMADO-> Vector:" + Identificadory + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificadory));
+                 if(entorno.ObtenerListaN(Identificadory) ==0){
+                    sali = entorno.ObtenerValor(Identificadory);
+                    this.TipoDato = entorno.ObtenerTipo(Identificadory);
+                 }else{
+                  String limite = this.Hijos.get(1).Ejecutar(entorno, salida);
+                  //  System.out.println("limite es:" + limite + "--------------------");
+                  if((Integer.parseInt(limite)-1)>=0 && ((Integer.parseInt(limite)-1)<entorno.ObtenerLista(Identificadory).size())){
+                        String Tipo1 = this.Hijos.get(1).TipoDato;
+                        String val1 = entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
+                        this.TipoDato =  entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).TipoDato;
+                        sali = val1;
+                    
+                  }else{
+                       salida.append("#ERROR: Al llamar miembro del vector "+ Identificadory + " se produjo un error, revisar posición o nombre del mismo \n");
+                        TError ERRORES = new TError(Identificadory,this.linea,this.columna,"Semantico", "#ERROR: Al llamar miembro del vector "+ Identificadory + " se produjo un error, revisar posición o nombre del mismo"  );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        System.out.println("ERROR");
+                         return "#Error";
+                  }
+                  
+                  
+                
+                }
+                
+                
+                
+                
+                break;
             case "Vector":
                 String Identificador = this.Hijos.get(0).Nombre;
                 if(entorno.ExisteVector(Identificador)==false){
@@ -742,16 +783,7 @@ public class Nodo extends NodoAbstracto{
                     return "#Error";
                 }
                System.out.println("SOY ROMEO AXPUAC");
-              /* 
-               if(this.id == 0){
-               
-                salida.append("#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo \n");
-                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "#ERROR: Al llamar miembro del vector "+ Identificador + " se produjo un error, revisar posición o nombre del mismo"  );
-                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-                System.out.println("ERROR");
-                 return "#Error";
-               }
-               */
+             
                System.out.println("DATOS LLAMADO-> Vector:" + Identificador + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificador));
                 if(entorno.ObtenerListaN(Identificador) ==0){
                     sali = entorno.ObtenerValor(Identificador);

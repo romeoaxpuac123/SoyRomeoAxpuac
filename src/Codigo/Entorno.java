@@ -149,7 +149,7 @@ public class Entorno {
             clave = e.nextElement();
             String Clave2 = (String) clave;
             if(ObtenerListaN(Clave2) ==0 && !"Funcion".equals(ObtenerTipo(Clave2))){
-            System.out.println( "Vector : " + clave + " Valor:" + ObtenerValor(Clave2) + " Tipo:" + ObtenerTipo(Clave2));
+            System.out.println( "--->Vector : " + clave + " Valor:" + ObtenerValor(Clave2) + " Tipo:" + ObtenerTipo(Clave2));
         }
         }
     }
@@ -289,19 +289,28 @@ public class Entorno {
                 String val1 = Lista.get(i).Ejecutar(entorno, salida);
                 if(val1.contains("#Error")){
                     val1 = Lista.get(i).Hijos.get(0).Nombre;
-                    Valores = Valores + val1 + ",";
+                    Valores = Valores + val1  + ",";
                     continue;
                     
                 }
                //System.out.println("hoaaaaaaaaaa->" + Lista.get(i).TipoDato + "->" +Lista.get(i).Nombre );
                 if("id".equals(Lista.get(i).TipoDato)){
-                    Valores = Valores + entorno.ObtenerValor(Lista.get(i).Nombre) + ",";
+                    System.out.println("COMPA");
+                    if(Lista.get(i).Nombre.contains("Cadena")){
+                        if(entorno.ObtenerListaN(Lista.get(i).Hijos.get(0).Nombre)==0){
+                            Valores = Valores + entorno.ObtenerValor(Lista.get(i).Hijos.get(0).Nombre) + ",";
+                        }else{
+                            Valores = Valores + Lista.get(i).Hijos.get(0).Nombre + ",";
+                        }
+                    }
+                    
+                    //Valores = Valores + entorno.ObtenerValor(Lista.get(i).Nombre) + ",";
                 }else{
                       Valores = Valores + val1 + ",";
                 }
               
             }
-            System.out.println( "Vector : " + clave + " Valor:" + Valores + " Tipo:" + ObtenerTipo(Clave2) + "<-Bo->" + Borrador(Clave2) +
+            System.out.println( "--->Vector : " + clave + " Valor:" + Valores + " Tipo:" + ObtenerTipo(Clave2) + "<-Bo->" + Borrador(Clave2) +
                     "<-Total elementos->" + ObtenerLista(Clave2).size() );
             }
           }

@@ -943,6 +943,20 @@ EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesi
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     :}
+            |id:valor corcheteabrir corcheteabrir  EXP:pos corchetecerrar corchetecerrar
+                        {:
+                        NodoAbstracto nuevo = new Nodo("VectorIronMan");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.TipoDato = "vector";
+                        Manejor_Error = "Error en expresion";
+                        //RESULT = nuevo;
+                        //nuevo.id = Integer.parseInt(pos);
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
+                        RESULT = nuevo;
+                    :}
         |cadena:valor
                     {:
                         //valor =  valor.replaceAll("\\\"", "\\@");

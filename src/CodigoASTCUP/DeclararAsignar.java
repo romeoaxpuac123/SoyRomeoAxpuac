@@ -1577,7 +1577,8 @@ public class DeclararAsignar extends NodoAbstracto{
     
       //DECLARAR LISTAS Lista
       if("Lista".equals(this.Hijos.get(1).TipoDato)){
-        this.Expresiones.clear();
+      System.out.println("VAMOS A DECLARAR UNA LSITA");
+      this.Expresiones.clear();
       this.Expresiones2.clear();
       this.Expresiones3.clear();
       for(int x = 0; x < this.Hijos.get(1).Hijos.get(1).Hijos.size();x++){
@@ -1588,13 +1589,83 @@ public class DeclararAsignar extends NodoAbstracto{
       String NombreCoso = this.Hijos.get(1).Nombre;
       int tamanio1 = Expresiones.size();
       System.out.println("VAMOS A DECLARAR UNA LISTA->" + NombreLista);
-   
+      System.out.println("VAMOS A DECLARAR UNA LISTA-> coso?" + NombreLista);
+      System.out.println("VAMOS A DECLARAR UNA LISTA-> tamanio?" + NombreCoso);
+      for(int i = 0; i < tamanio1; i ++){
+            String Resultado = this.Expresiones.get(i).Ejecutar(entorno, salida);
+            String Tipo = this.Expresiones.get(i).TipoDato;
+            System.out.println("HOLASADFASD->xd->"+Resultado + "<->" + Tipo);
+            
+            if(Tipo.contains("FuncionC")){
+                System.out.println("VA UNA FUNCION C dentro de una lista");
+                        NodoAbstracto nuevo = new Nodo("FuncionC");
+                        NodoAbstracto nuevoid = new Nodo(this.Expresiones.get(i).Nombre);
+                        nuevo.Hijos.add(nuevoid);
+                        for(int ix = 0; ix < this.Expresiones.get(i).Hijos.get(1).Hijos.size();ix++ ){
+                            //System.out.println("hijo de la funcion c" + this.Expresiones.get(i).Hijos.get(1).Hijos.get(i).Ejecutar(entorno, salida));
+                            String Salida = this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Ejecutar(entorno, salida);
+                            if(Salida.contains("c(")){
+                                 //nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.get(0));
+                                 this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.get(0));
+                            }
+                                nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix));
+                            
+                            //nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix));
+                        }
+                        nuevo.TipoDato = "FuncionC";
+                        for(int ip = 0; ip < nuevo.Expresiones.size();ip++){
+                            String gyf = nuevo.Expresiones.get(ip).Ejecutar(entorno, salida);
+                            System.out.println("gyf->" + gyf);
+                        }
+                        this.Expresiones3.add(nuevo);
+                continue;
+            }
+            if(Tipo.contains("id")){
+                        if(entorno.ExisteVector(Resultado)==false){
+                            salida.append("ERROR NO EXISTE EL VECTOR " + this.Expresiones.get(i).Nombre);
+                            TError ERRORES = new TError(NombreLista,this.linea,this.columna,"Semantico","ERROR NO EXISTE EL VECTOR " + this.Expresiones.get(i).Nombre );
+                              TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                            return "ERROR NO EXISTE EL VECTOR " + this.Expresiones.get(i).Nombre;
+                        }
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevoid = new Nodo(Resultado);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.TipoDato = "id";
+                        this.Expresiones3.add(nuevo);
+                        System.out.println("NUEBO AGREGADO");
+                continue;
+            }
+            this.Expresiones3.add( this.Expresiones.get(i));
+      
+      }
+      for(int i = 0; i < this.Expresiones3.size();i++){
+          String Resultado = this.Expresiones3.get(i).Ejecutar(entorno, salida);
+          System.out.println("ASI DE ENMARODA->" + Resultado);
+      }
+      
+            boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+           if(ExisteVector == false){
+               entorno.Agregar2(NombreLista, this.Expresiones3, "Lista", "ListaArit");
+               
+           }else{
+               entorno.ModificarValorLista(NombreLista, this.Expresiones3, "Lista", "ListaArit");
+           }
+            System.out.println("-ASDFJLADSKJFADS");
+            entorno.MostrarVectores();
+            entorno.MostrarVectoresLista(entorno,salida);
+            ReporteTS SIMBOLO = new ReporteTS(NombreLista,this.linea,this.columna,"Lista",ElTipoDeAmbitoRomeo);
+            TABLA_ReporteTS .add(SIMBOLO);
+            System.out.println("FIN");
+           
+      /*
       for(int i = 0; i < tamanio1; i ++){
           
-          String Resultado = "";//this.Expresiones.get(i).Ejecutar(entorno, salida);
+          String Resultado = this.Expresiones.get(i).Ejecutar(entorno, salida);
           String Tipo = this.Expresiones.get(i).TipoDato;
-          System.out.println("HOLA->xd->"+Resultado + "<->" + Tipo);
-          boolean Aviccio = entorno.ExisteVector(this.Expresiones.get(i).Nombre);
+          System.out.println("HOLASADFASD->xd->"+Resultado + "<->" + Tipo);
+          
+          
+          boolean Aviccio = entorno.ExisteVector(Resultado);
             if("FuncionC".equals(Tipo)){
                 System.out.println("VA UNA FUNCION C dentro de una lista");
                         NodoAbstracto nuevo = new Nodo("FUNCIONC");
@@ -1634,11 +1705,13 @@ public class DeclararAsignar extends NodoAbstracto{
             }
             
             else{
-                        NodoAbstracto nuevo = new Nodo("EXP");
-                        NodoAbstracto nuevoid = new Nodo(this.Expresiones.get(i).Nombre);
+                System.out.println("AVICCI TRUE" + Resultado);
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevoid = new Nodo(Resultado);
                         nuevo.Hijos.add(nuevoid);
                         nuevo.TipoDato = "id";
                         this.Expresiones3.add(nuevo);
+                        System.out.println("NUEBO AGREGADO");
             }
           }else{
             this.Expresiones3.add(this.Expresiones.get(i));
@@ -1654,12 +1727,14 @@ public class DeclararAsignar extends NodoAbstracto{
            }else{
                entorno.ModificarValorLista(NombreLista, this.Expresiones3, "Lista", "ListaArit");
            }
-      
+          System.out.println("-ASDFJLADSKJFADS");
       entorno.MostrarVectores();
       entorno.MostrarVectoresLista(entorno,salida);
       ReporteTS SIMBOLO = new ReporteTS(NombreLista,this.linea,this.columna,"Lista",ElTipoDeAmbitoRomeo);
       TABLA_ReporteTS .add(SIMBOLO);
       System.out.println("FIN");
+      
+      */
         return "FIN DECLISTA";
       }
         
@@ -1669,12 +1744,14 @@ public class DeclararAsignar extends NodoAbstracto{
       
       //DECLARAR VECTORES :D
       if("FuncionC".equals(this.Hijos.get(1).TipoDato)){
-      this.Expresiones.clear();
-      this.Expresiones2.clear();
+      //this.Expresiones.clear();
+      //this.Expresiones2x.clear();
       this.Expresiones3.clear();
-      
+      ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+      ArrayList <NodoAbstracto> Expresiones2x = new ArrayList();
+      ArrayList <NodoAbstracto> Expresiones3x = new ArrayList();
      for(int x = 0; x < this.Hijos.get(1).Hijos.get(1).Hijos.size();x++){
-         //System.out.println("JUAN CALABERA->" + this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre);
+         System.out.println("JUAN CALABERA->" + this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre);
          String Nombre = this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Nombre;
          if(Nombre.contains("FuncionC")){
              System.out.println("Viejo los hijos de la funicon C");
@@ -1693,73 +1770,92 @@ public class DeclararAsignar extends NodoAbstracto{
                                  if(NombreHijo3.contains("FuncionC")){
                                    //por si queire añadira otra lectura de C
                                  }else{
-                                 this.Expresiones.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y).Hijos.get(1).Hijos.get(u).Hijos.get(1).Hijos.get(t));
+                                 Expresionesx.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y).Hijos.get(1).Hijos.get(u).Hijos.get(1).Hijos.get(t));
                                  }
                              }
                          }else{
-                             this.Expresiones.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y).Hijos.get(1).Hijos.get(u));
+                             Expresionesx.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y).Hijos.get(1).Hijos.get(u));
                          }
                      }
                  }else{
-                     this.Expresiones.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y));
+                     Expresionesx.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x).Hijos.get(1).Hijos.get(y));
                  }
                  //System.out.println("Hijo->" + NOmbreHijo);
              }
              System.out.println("FIN HIJOS FUNCION C");
          }else{
-             this.Expresiones.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x));
+             Expresionesx.add(this.Hijos.get(1).Hijos.get(1).Hijos.get(x));
          }
           
          
           
       }
       //AGRANGANDO LOS VALORES xd
-      this.Expresiones2.clear();
-      for(int i = 0; i < this.Expresiones.size(); i++){
-          String Resultado = this.Expresiones.get(i).Ejecutar(entorno, salida);
-          String TipoDelResultado = this.Expresiones.get(i).TipoDato;
+      Expresiones2x.clear();
+      
+      System.out.println("paz");
+         System.out.println("----asdjflTOYFELIZX1sdafdsfasd");
+            entorno.MostrarVectoresLista(entorno, salida);
+            System.out.println("----asdjflTOYFELIZX2->romeo");
+            System.out.println("\n\nseguridad");
+      for(int i = 0; i < Expresionesx.size(); i++){
+          String Resultado = Expresionesx.get(i).Ejecutar(entorno, salida);
+          String TipoDelResultado = Expresionesx.get(i).TipoDato;
           //System.out.println("HOLA MUNDO->" + Resultado + " TipoDelResultado->" + TipoDelResultado);
+         
           if(TipoDelResultado.contains("id")){
-              if(entorno.ExisteVector( this.Expresiones.get(i).Nombre)){
-                  if(entorno.ObtenerListaN(this.Expresiones.get(i).Nombre)==0){
-                        NodoAbstracto nuevo = new Nodo(entorno.ObtenerValor(this.Expresiones.get(i).Nombre));
-                        NodoAbstracto nuevoid = new Nodo(entorno.ObtenerValor(this.Expresiones.get(i).Nombre));
+            
+              if(entorno.ExisteVector( Expresionesx.get(i).Nombre)){
+                  
+                  if(entorno.ObtenerListaN(Expresionesx.get(i).Nombre)==0){
+                      System.out.println("SOLO VALORCITO");
+                        NodoAbstracto nuevo = new Nodo(entorno.ObtenerValor(Expresionesx.get(i).Nombre));
+                        NodoAbstracto nuevoid = new Nodo(entorno.ObtenerValor(Expresionesx.get(i).Nombre));
                         nuevo.Hijos.add(nuevoid);
-                        nuevo.TipoDato = entorno.ObtenerTipo(this.Expresiones.get(i).Nombre);
-                        this.Expresiones2.add(nuevo);
+                        nuevo.TipoDato = entorno.ObtenerTipo(Expresionesx.get(i).Nombre);
+                        Expresiones2x.add(nuevo);
                         continue;
                   }else{
-                      if(entorno.ObtenerTipo(this.Expresiones.get(i).Nombre).toUpperCase().contains("LIST")){
+                      System.out.println("MAS QUE SOLO UN VALOR");
+                      if(entorno.ObtenerTipo(Expresionesx.get(i).Nombre).toUpperCase().contains("LIST")){
                       
                       }else{
-                          this.Expresiones3.clear();
-                          this.Expresiones3 = entorno.ObtenerLista(this.Expresiones.get(i).Nombre);
-                          for(int er = 0; er < this.Expresiones3.size(); er++){
-                              this.Expresiones2.add(this.Expresiones3.get(er));
+                          //Expresiones3x.clear();
+                          Expresiones3x = entorno.ObtenerLista(Expresionesx.get(i).Nombre);
+                          for(int er = 0; er < Expresiones3x.size(); er++){
+                              Expresiones2x.add(Expresiones3x.get(er));
                           }
+                         
                           continue;
                       }
                   }
+                   
+                 
               }else{
-                  salida.append( "NO EXISTE EL VECTOR" + this.Expresiones.get(i).Nombre);
+                  salida.append( "NO EXISTE EL VECTOR" + Expresionesx.get(i).Nombre);
                   TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "NO EXISTE EL VECTOR" + this.Expresiones.get(i).Nombre );
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
           
                     return "ERROR AL DECLRAR VECTOR";
               }
           }
-          
-          this.Expresiones2.add(this.Expresiones.get(i));
+           
+         Expresiones2x.add(Expresionesx.get(i));
       }
-          System.out.println("AHORA SI TODOS LOS ELEMENTOS XD");
+      
+      
+      
           String Tipo1y = "";
-          this.Expresiones3.clear();
-      for(int i = 0; i < this.Expresiones2.size();i++){
-          String Resultado = this.Expresiones2.get(i).Ejecutar(entorno, salida);
-          String TipoDelResultado = this.Expresiones2.get(i).TipoDato;
+        // this.Expresiones3.clear();
+        ArrayList <NodoAbstracto> Expresiones4 = new ArrayList();
+      for(int i = 0; i < Expresiones2x.size();i++){
+          
+          String Resultado = Expresiones2x.get(i).Ejecutar(entorno, salida);
+          String TipoDelResultado = Expresiones2x.get(i).TipoDato;
           //System.out.println("HOLA MUNDO->" + Resultado + " TipoDelResultado->" + TipoDelResultado);
           if(!Resultado.equals("#Error")){
-                   //System.out.println("aheuvo---->" + Valor);
+                   //
+                   //System.out.println("aheuvo---->" + Resultado);
                    //VAMOS A BUSCAR LA PRIORIDAD
                    
                    switch (TipoDelResultado){
@@ -1800,10 +1896,17 @@ public class DeclararAsignar extends NodoAbstracto{
                     }
           
       }
-          System.out.println("FIN DEL LOS ULTIMOS ELEMENTOS el tipo del vector será->" + Tipo1y );
-          for(int i = 0; i < this.Expresiones2.size(); i ++){
-              String Valorxd = this.Expresiones2.get(i).Ejecutar(entorno, salida);
-              String TipoVector = this.Expresiones2.get(i).TipoDato;
+      
+            //entorno = entorno.ModificandoEntornos(Temporal,entorno);
+            
+          System.out.println("\n\n\nFIN DEL LOS ULTIMOS ELEMENTOS el tipo del vector será->" + Tipo1y );
+           System.out.println("----asdjflTOYFELIZX1");
+            entorno.MostrarVectoresLista(entorno, salida);
+            System.out.println("----asdjflTOYFELIZX2");
+          
+          for(int i = 0; i < Expresiones2x.size(); i ++){
+              String Valorxd = Expresiones2x.get(i).Ejecutar(entorno, salida);
+              String TipoVector = Expresiones2x.get(i).TipoDato;
               if("decimal".equals(Tipo1y) && "entero".equals(TipoVector)){
                                   Valorxd = Valorxd + ".0";
               }
@@ -1826,25 +1929,26 @@ public class DeclararAsignar extends NodoAbstracto{
               NodoAbstracto nuevovalor = new Nodo(Valorxd);
               nuevo.Hijos.add(nuevovalor);
               nuevo.TipoDato = Tipo1y;
-              this.Expresiones3.add(nuevo);
+              Expresiones4.add(nuevo);
           }
+          
           if(entorno.ExisteVector(Identificador)==false){
-            entorno.Agregar2(Identificador, this.Expresiones3, Tipo1y, "SADf");
+            entorno.Agregar2(Identificador, Expresiones4, Tipo1y, "SADf");
              ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ Tipo1y,ElTipoDeAmbitoRomeo);
              TABLA_ReporteTS .add(SIMBOLO);
           }else{
-          entorno.ModificarValorLista(Identificador, this.Expresiones3, Tipo1y, "SADf");
+          entorno.ModificarValorLista(Identificador, Expresiones4, Tipo1y, "SADf");
           }
             // entorno.Agregar2(Identificador, this.Expresiones3, Tipo1y, "SADf");
           entorno.MostrarVectoresLista(entorno, salida);
       
-      /*
+
       
           
           
          
            
-          */
+          
       return "FIN C";
       }
       
@@ -1889,6 +1993,7 @@ public class DeclararAsignar extends NodoAbstracto{
       boolean ExisteVector =  entorno.ExisteVector(Identificador); 
       
         if(!ExisteVector == true){
+            System.out.println("AGREGAMOS EL VECTOR NUEVO->" + Identificador);
             entorno.Agregar(Identificador, Tipo1, val1);
         }else{
             entorno.EliminarVector(Identificador);

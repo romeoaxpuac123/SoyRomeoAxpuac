@@ -56,6 +56,19 @@ public class Aritmetica extends NodoAbstracto{
         System.out.println("Tipo2->" + Tipo2);
         System.out.println("---------------------------------------------------------> FIN DE OBTENER VALORES");
        
+        if(Tipo1.contains("id")){
+            String eltiposs = entorno.ObtenerTipo(val1);
+            if(eltiposs.contains("Lista")){
+                return "#Error";
+            }
+        }
+        if(Tipo2.contains("id")){
+            String eltiposs = entorno.ObtenerTipo(val2);
+            if(eltiposs.contains("Lista")){
+                return "#Error";
+            }
+        }
+        
         if(Tipo1.contains("entero") && val1.length()>5){
             Tipo1 = "decimal";
         }
