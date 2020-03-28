@@ -35,10 +35,68 @@ public class plot extends NodoAbstracto{
     public String Ejecutar(Entorno entorno, JTextArea salida) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String VectorNumeros = this.Hijos.get(0).Nombre;
-        String TipoGrafica = this.Hijos.get(1).Ejecutar(entorno, salida).replaceAll("\"", "");
-        String Nombrex = this.Hijos.get(2).Ejecutar(entorno, salida).replaceAll("\"", "");
-        String NombreY = this.Hijos.get(3).Ejecutar(entorno, salida).replaceAll("\"", "");
-        String TituloGrafica = this.Hijos.get(4).Ejecutar(entorno, salida).replaceAll("\"", "");
+        String TipoGrafica = this.Hijos.get(1).Ejecutar(entorno, salida);
+        String Nombrex = this.Hijos.get(2).Ejecutar(entorno, salida);
+        String NombreY = this.Hijos.get(3).Ejecutar(entorno, salida);
+        String TituloGrafica = this.Hijos.get(4).Ejecutar(entorno, salida);
+        
+         if(this.Hijos.get(1).TipoDato.contains("id")){
+            if(entorno.ExisteVector(TipoGrafica)==false){
+               salida.append("#ERROR: ERRORE EN UN PARAMETRO BARRAS\n");
+            TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO BARRAS"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            return "#Error";
+           }
+           if(entorno.ObtenerListaN(TipoGrafica)==0){
+               TipoGrafica = entorno.ObtenerValor(TipoGrafica);
+           }else{
+               TipoGrafica = entorno.ObtenerLista(TipoGrafica).get(0).Ejecutar(entorno, salida);
+           }
+       }
+        
+        
+         if(this.Hijos.get(2).TipoDato.contains("id")){
+            if(entorno.ExisteVector(Nombrex)==false){
+               salida.append("#ERROR: ERRORE EN UN PARAMETRO BARRAS\n");
+            TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO BARRAS"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            return "#Error";
+           }
+           if(entorno.ObtenerListaN(Nombrex)==0){
+               Nombrex = entorno.ObtenerValor(Nombrex);
+           }else{
+               Nombrex = entorno.ObtenerLista(Nombrex).get(0).Ejecutar(entorno, salida);
+           }
+       }
+         
+         if(this.Hijos.get(3).TipoDato.contains("id")){
+            if(entorno.ExisteVector(NombreY)==false){
+               salida.append("#ERROR: ERRORE EN UN PARAMETRO BARRAS\n");
+            TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO BARRAS"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            return "#Error";
+           }
+           if(entorno.ObtenerListaN(NombreY)==0){
+               NombreY = entorno.ObtenerValor(NombreY);
+           }else{
+               NombreY = entorno.ObtenerLista(NombreY).get(0).Ejecutar(entorno, salida);
+           }
+       }
+        if(this.Hijos.get(4).TipoDato.contains("id")){
+            if(entorno.ExisteVector(TituloGrafica)==false){
+               salida.append("#ERROR: ERRORE EN UN PARAMETRO BARRAS\n");
+            TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO BARRAS"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            return "#Error";
+           }
+           if(entorno.ObtenerListaN(TituloGrafica)==0){
+              TituloGrafica = entorno.ObtenerValor(TituloGrafica);
+           }else{
+               TituloGrafica= entorno.ObtenerLista(TituloGrafica).get(0).Ejecutar(entorno, salida);
+           }
+       }
+        
+        
          System.out.println("VAMOS A GRAFICIAR EL PLOT CON NOMBRE->" + VectorNumeros + " Tipo grafica:" + TipoGrafica
         + "Titlo grafica:>" + TituloGrafica);
          //empezamos a graficar

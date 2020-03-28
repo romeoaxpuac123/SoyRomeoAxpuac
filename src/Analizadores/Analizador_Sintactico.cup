@@ -303,60 +303,60 @@ DECFUNCIONES::= id:nombre igual function parentesisabrir parentesiscerrar llavea
                :}
   ;
 
-GRAFICAS::= pie parentesisabrir  id:valores coma id:vector coma id:titulo parentesiscerrar FINAL{:
+GRAFICAS::= pie parentesisabrir  id:valores coma id:vector coma EXP:titulo parentesiscerrar FINAL{:
                 NodoAbstracto nuevo = new pie("PIE");
                 NodoAbstracto Datos = new Nodo(valores);
                 NodoAbstracto Vector = new Nodo(vector);
-                NodoAbstracto Titulo = new Nodo(titulo);
+                //NodoAbstracto Titulo = new Nodo(titulo);
                 nuevo.Hijos.add(Datos);
                 nuevo.Hijos.add(Vector);
-                nuevo.Hijos.add(Titulo);
+                nuevo.Hijos.add(titulo);
                 nuevo.columna = valoresleft;
                 nuevo.linea = valoresright;
                 RESULT = nuevo;            
 
         :}
    
-    |barplot parentesisabrir  id:nombre coma id:vector coma id:titulo coma id: cuatro coma id:cinco parentesiscerrar FINAL{:
+    |barplot parentesisabrir  id:nombre coma EXP:vector coma EXP:titulo coma EXP: cuatro coma id:cinco parentesiscerrar FINAL{:
          NodoAbstracto nuevo = new barras("BARRAS");
                 NodoAbstracto Datos = new Nodo(nombre);
-                NodoAbstracto Vector = new Nodo(vector);
-                NodoAbstracto Titulo = new Nodo(titulo);
-                NodoAbstracto Cuatro = new Nodo(cuatro);
+                //NodoAbstracto Vector = new Nodo(vector);
+                //NodoAbstracto Titulo = new Nodo(titulo);
+                //NodoAbstracto Cuatro = new Nodo(cuatro);
                 NodoAbstracto Cinco = new Nodo(cinco);
                 nuevo.Hijos.add(Datos);
-                nuevo.Hijos.add(Vector);
-                nuevo.Hijos.add(Titulo);
-                nuevo.Hijos.add(Cuatro);
+                nuevo.Hijos.add(vector);
+                nuevo.Hijos.add(titulo);
+                nuevo.Hijos.add(cuatro);
                 nuevo.Hijos.add(Cinco);
                 nuevo.columna = nombreleft;
                 nuevo.linea = nombreright;
                 RESULT = nuevo;    
     :}
-     |hist parentesisabrir  id:nombre coma id:vector coma id:titulo parentesiscerrar FINAL{:
+     |hist parentesisabrir  id:nombre coma EXP:vector coma EXP:titulo parentesiscerrar FINAL{:
                 NodoAbstracto nuevo = new histograma("HISTOGRAMA");
                 NodoAbstracto Datos = new Nodo(nombre);
-                NodoAbstracto Vector = new Nodo(vector);
-                NodoAbstracto Titulo = new Nodo(titulo);
+                //NodoAbstracto Vector = new Nodo(vector);
+                //NodoAbstracto Titulo = new Nodo(titulo);
                 nuevo.Hijos.add(Datos);
-                nuevo.Hijos.add(Vector);
-                nuevo.Hijos.add(Titulo);
+                nuevo.Hijos.add(vector);
+                nuevo.Hijos.add(titulo);
                 nuevo.columna = nombreleft;
                 nuevo.linea = nombreright;
                 RESULT = nuevo;   
             :}
-|plot parentesisabrir  id:nombre coma cadena:par1 coma cadena:par2 coma cadena:par3 coma cadena:par4 parentesiscerrar FINAL{:
+|plot parentesisabrir  id:nombre coma EXP:par1 coma EXP:par2 coma EXP:par3 coma EXP:par4 parentesiscerrar FINAL{:
         NodoAbstracto nuevo = new plot("PLOT");
                 NodoAbstracto Datos = new Nodo(nombre);
-                NodoAbstracto Vector = new Nodo(par1);
-                NodoAbstracto Titulo = new Nodo(par2) ;
-                NodoAbstracto Vector2 = new Nodo(par3);
-                NodoAbstracto Titulo2 = new Nodo(par4);
+               // NodoAbstracto Vector = new Nodo(par1);
+               // NodoAbstracto Titulo = new Nodo(par2) ;
+               // NodoAbstracto Vector2 = new Nodo(par3);
+               // NodoAbstracto Titulo2 = new Nodo(par4);
                 nuevo.Hijos.add(Datos);
-                nuevo.Hijos.add(Vector);
-                nuevo.Hijos.add(Titulo);
-                nuevo.Hijos.add(Vector2);
-                nuevo.Hijos.add(Titulo2);
+                nuevo.Hijos.add(par1);
+                nuevo.Hijos.add(par2);
+                nuevo.Hijos.add(par3);
+                nuevo.Hijos.add(par4);
                 nuevo.columna = nombreleft;
                 nuevo.linea = nombreright;
                 RESULT = nuevo;   

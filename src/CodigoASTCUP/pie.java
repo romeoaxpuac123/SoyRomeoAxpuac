@@ -31,11 +31,31 @@ public class pie  extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
-        
+        System.out.println("GRAFICA DE PIE--------------->");
        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
        String VectorDatos = this.Hijos.get(0).Nombre;
        String Datos = this.Hijos.get(1).Nombre;
-       String NombreGrafica = this.Hijos.get(2).Nombre;
+       String NombreGrafica = this.Hijos.get(2).Ejecutar(entorno, salida);
+       
+       if(this.Hijos.get(2).TipoDato.contains("id")){
+           if(!entorno.ExisteVector(NombreGrafica)){
+            salida.append("#ERROR: ERRORE EN UN PARAMETRO PIE\n");
+             TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO PIE"  );
+             TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+             return "#Error";
+           }
+           if(entorno.ObtenerListaN(Datos)==0){
+               NombreGrafica = entorno.ObtenerValor(NombreGrafica);
+           }else{
+               NombreGrafica = entorno.ObtenerLista(NombreGrafica).get(0).Ejecutar(entorno, salida);
+           }
+       }
+       if(NombreGrafica.equalsIgnoreCase("#Error") ){
+             salida.append("#ERROR: ERRORE EN UN PARAMETRO PIE\n");
+            TError ERRORES = new TError("pie",this.linea,this.columna,"Semantico", "ERRORE EN UN PARAMETRO PIE"  );
+            TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+            return "#Error";
+        }
       
        String TipoVector1 = entorno.ObtenerTipo(VectorDatos);
        this.Expresiones = entorno.ObtenerLista(VectorDatos);
