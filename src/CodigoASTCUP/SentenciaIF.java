@@ -43,10 +43,18 @@ public class SentenciaIF extends NodoAbstracto{
             }
         }
         
-        
+        ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
         System.out.println("Se esta ejecutando el if");
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
         System.out.println("->"+ ValorExpresion);
+        
+        if(ValorExpresion.contains("RomeoAxpuac")){
+            ExpresionesRomeo.clear();
+        ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");
+            ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
+        }
+        
+        System.out.println("XXXy->" + ValorExpresion);
         //if(!"true".equals(ValorExpresion) || !"false".equals(ValorExpresion)){
         //    System.out.println("ERROR EN LA EXPRESION");
         //     return "#Error";

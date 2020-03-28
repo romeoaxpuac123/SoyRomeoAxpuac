@@ -48,6 +48,13 @@ public class DoWhile extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                     return "#error en while";
             }
+             ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
+            ArrayList <NodoAbstracto> ExpresionesRomeo2 = new ArrayList();
+                if(ValorExpresion.contains("RomeoAxpuac")){
+                ExpresionesRomeo.clear();
+                ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");
+                ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
+            }
              Entorno Temporal = new Entorno();
              entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
             do{
@@ -124,6 +131,24 @@ public class DoWhile extends NodoAbstracto{
                        }
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
+                ArrayList <NodoAbstracto> ExpresionesRomeo2x = new ArrayList();
+                String ValorXD = "";  
+                ExpresionesRomeo2x.clear();
+               
+                ExpresionesRomeo2x = Temporal.ObtenerLista("VectorDragonBallBeatles");
+                //System.out.println("DEFINITIVO->" + ExpresionesRomeo2x.size());
+                
+                if(ValorExpresion.contains("RomeoAxpuac") && ExpresionesRomeo2x!=null && ExpresionesRomeo2x.size()>0){
+                                   System.out.println("ICIOIFWHIWLE" + ExpresionesRomeo2x.size()); 
+                
+              
+                     ValorXD =  ExpresionesRomeo2x.get(0).Ejecutar(Temporal, salida);
+                                System.out.println("FINCIOIFWHIWLE"); 
+                }
+                ValorExpresion = ValorXD;
+
+                System.out.println("EL IDIOTA-------->" + ValorXD);
+                
                 System.out.println("amoramio" + ValorExpresion);
             }while("true".equals(ValorExpresion.toLowerCase()));
                             NumeroEntornosRomeo--;

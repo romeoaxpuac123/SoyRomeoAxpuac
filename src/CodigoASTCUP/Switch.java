@@ -31,7 +31,11 @@ public class Switch extends NodoAbstracto{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
         System.out.println("El valor a evaluar->" + ValorExpresion);
-        if(this.Hijos.get(0).TipoDato.contains("id")){
+        ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
+        ExpresionesRomeo = entorno.ObtenerLista(ValorExpresion);
+        if(this.Hijos.get(0).TipoDato.contains("id") && entorno.ObtenerListaN(ValorExpresion)==1){
+            ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
+        }else if(this.Hijos.get(0).TipoDato.contains("id")){
             ValorExpresion = entorno.ObtenerValor(ValorExpresion);
         }
         //Sacando el total de CASES

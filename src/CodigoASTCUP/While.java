@@ -39,21 +39,31 @@ public class While extends NodoAbstracto{
             System.out.println("SE ESTA EJECUTANDO WILE");
             System.out.println("Total de WHILE: " + this.Expresiones.size());
             String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
-            System.out.println("->"+ ValorExpresion);
+            System.out.println("SADFDSAFADSFA***************************->"+ ValorExpresion);
+            ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
+            ArrayList <NodoAbstracto> ExpresionesRomeo2 = new ArrayList();
+                if(ValorExpresion.contains("RomeoAxpuac")){
+                ExpresionesRomeo.clear();
+                ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");
+                ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
+            }
             if(this.Expresiones.size() == 0){
                     salida.append("#ERROR: La Sentencia del While es incorrecta \n");
                     TError ERRORES = new TError("IF",this.linea,this.columna,"Semantico", "ERROR: La Sentencia del IF es incorrecta"  );
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                     return "#error en while";
             }
-             Entorno Temporal = new Entorno();
-             entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+            Entorno Temporal = new Entorno();
+            entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
+            
+          
             System.out.println("asjflkjasdlkfjlasd-"+ this.Expresiones.size() );
             while("true".equals(ValorExpresion.toLowerCase())){
-                
+               
+                    System.out.println("ENTRAMOS AL WHILEEEEEEEEEEEEEEEE-->");
                 for(int q = 0; q < this.Expresiones.size(); q++){
                      String Resultado = this.Expresiones.get(q).Ejecutar(Temporal, salida);
-                                        
+                              
                     if("break".equals(Resultado)){
                             //entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             ArrayList<String> ejemploLista = new ArrayList<String>(); 
@@ -118,10 +128,31 @@ public class While extends NodoAbstracto{
                                 ElTipoDeAmbitoRomeo = "Global";
                             return Resultado;
                        }
-                    System.out.println("---------->" + Resultado);
+                    System.out.println("----stodaiva------>" + Resultado);
                 }
                 ValorExpresion = this.Hijos.get(0).Ejecutar(Temporal, salida);
-                System.out.println("amoramio" + ValorExpresion);
+                
+                System.out.println("----------PORLO MENOS--------------------->" + ValorExpresion);
+                
+                ArrayList <NodoAbstracto> ExpresionesRomeo2x = new ArrayList();
+                String ValorXD = "";  
+                ExpresionesRomeo2x.clear();
+               
+                ExpresionesRomeo2x = Temporal.ObtenerLista("VectorDragonBallBeatles");
+                //System.out.println("DEFINITIVO->" + ExpresionesRomeo2x.size());
+                
+                if(ValorExpresion.contains("RomeoAxpuac") && ExpresionesRomeo2x!=null && ExpresionesRomeo2x.size()>0){
+                                   System.out.println("ICIOIFWHIWLE" + ExpresionesRomeo2x.size()); 
+                
+              
+                     ValorXD =  ExpresionesRomeo2x.get(0).Ejecutar(Temporal, salida);
+                                System.out.println("FINCIOIFWHIWLE"); 
+                }
+                ValorExpresion = ValorXD;
+
+                System.out.println("EL IDIOTA-------->" + ValorXD);
+
+                System.out.println("----------PORLO MENOS2--------------------->" + ValorExpresion);
             }
             //entorno = entorno.ModificandoEntornos(Temporal,entorno);
                              ArrayList<String> ejemploLista = new ArrayList<String>(); 

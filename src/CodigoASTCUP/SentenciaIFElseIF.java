@@ -55,8 +55,13 @@ public class SentenciaIFElseIF extends NodoAbstracto{
          }
          
          //System.out.println("lista2->" + this.Expresiones.size());
-       
+       ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
         String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
+         if(ValorExpresion.contains("RomeoAxpuac")){
+            ExpresionesRomeo.clear();
+        ExpresionesRomeo = entorno.ObtenerLista("VectorDragonBallBeatles");
+            ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
+        }
         switch (ValorExpresion.toLowerCase()) {
             case "true":
                     if(this.Expresiones2.size() == 0){
@@ -73,6 +78,7 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                     System.out.println("-><-" + this.Expresiones2.size() + "<->");
                     for(int i = 0; i < this.Expresiones2.size();i++){
                         String Resultado = this.Expresiones2.get(i).Ejecutar(Temporal, salida);
+                        
                         if("break".equals(Resultado)){
                            //-> entorno = entorno.ModificandoEntornos(Temporal,entorno);
                             
@@ -213,6 +219,11 @@ public class SentenciaIFElseIF extends NodoAbstracto{
                  entorno.AgregarElementosANuevoEntorno(entorno,Temporal);
                 for(int i = 0 ; i< this.Expresiones.size();i++){
                     String Resultadox = this.Expresiones.get(i).Hijos.get(0).Ejecutar(Temporal, salida);
+                       if(Resultadox.contains("RomeoAxpuac")){
+                            ExpresionesRomeo.clear();
+                            ExpresionesRomeo = Temporal.ObtenerLista("VectorDragonBallBeatles");
+                            Resultadox =  ExpresionesRomeo.get(0).Ejecutar(Temporal, salida);
+                        }
                     System.out.println("sadfjaslkdjfklasd->" + Resultadox );
                      switch (Resultadox.toLowerCase()) {
                         case "true":
