@@ -743,7 +743,7 @@ public class Nodo extends NodoAbstracto{
                     TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                     return "#Error";
                 }
-               System.out.println("SOY ROMEO AXPUAC");
+               System.out.println("SOY ROMEO AXPUA YOC");
                 System.out.println("DATOS LLAMADO-> Vector:" + Identificadory + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificadory));
                  if(entorno.ObtenerListaN(Identificadory) ==0){
                     sali = entorno.ObtenerValor(Identificadory);
@@ -751,10 +751,26 @@ public class Nodo extends NodoAbstracto{
                  }else{
                   String limite = this.Hijos.get(1).Ejecutar(entorno, salida);
                   //  System.out.println("limite es:" + limite + "--------------------");
+                     System.out.println("AHORITA VEMOS QUE PEDO");
                   if((Integer.parseInt(limite)-1)>=0 && ((Integer.parseInt(limite)-1)<entorno.ObtenerLista(Identificadory).size())){
                         String Tipo1 = this.Hijos.get(1).TipoDato;
                         String val1 = entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
-                        this.TipoDato =  entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).TipoDato;
+                        System.out.println("COSOS->" + val1); 
+                         if(val1.contains("FuncionC")){
+                           // for(int ui = 0; ui <  entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.size();ui++){
+                           //     String ElMeroMero = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.get(ui).Ejecutar(entorno, salida);
+                           //     System.out.println("EL MERO MERO->" +  ElMeroMero);
+                           // }
+                            System.out.println("PARTY" +  entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).Hijos.size());
+                            this.TipoDato = "CasteoC";
+                            for(int uxp = 1; uxp < entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).Hijos.size();uxp++ ){
+                            this.Expresiones.add(entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).Hijos.get(uxp));
+                            }
+                            System.out.println("FIN PARTY");
+                        }else{
+                              this.TipoDato =  entorno.NodoLista(Identificadory, Integer.parseInt(limite)-1).TipoDato;
+                         }
+                       
                         sali = val1;
                     
                   }else{
@@ -783,6 +799,7 @@ public class Nodo extends NodoAbstracto{
                     return "#Error";
                 }
                System.out.println("SOY ROMEO AXPUAC");
+               
              
                System.out.println("DATOS LLAMADO-> Vector:" + Identificador + " POSICION->" + this.id + " TipoDato->" + entorno.ObtenerTipo(Identificador));
                 if(entorno.ObtenerListaN(Identificador) ==0){
@@ -794,7 +811,21 @@ public class Nodo extends NodoAbstracto{
                   if((Integer.parseInt(limite)-1)>=0 && ((Integer.parseInt(limite)-1)<entorno.ObtenerLista(Identificador).size())){
                         String Tipo1 = this.Hijos.get(1).TipoDato;
                         String val1 = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
-                        this.TipoDato = entorno.ObtenerTipo(Identificador);
+                        if(val1.contains("FuncionC")){
+                           // for(int ui = 0; ui <  entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.size();ui++){
+                           //     String ElMeroMero = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.get(ui).Ejecutar(entorno, salida);
+                           //     System.out.println("EL MERO MERO->" +  ElMeroMero);
+                           // }
+                            System.out.println("PARTY" +  entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.size());
+                            this.TipoDato = "FuncionC";
+                            for(int uxp = 1; uxp < entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.size();uxp++ ){
+                            this.Expresiones.add(entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.get(uxp));
+                            }
+                            System.out.println("FIN PARTY");
+                        }else{
+                            this.TipoDato = entorno.ObtenerTipo(Identificador);
+                        }
+                        
                         sali = val1;
                     
                   }else{

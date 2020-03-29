@@ -35,7 +35,7 @@ public class DeclararAsignar extends NodoAbstracto{
           String Identificador = this.Hijos.get(0).Nombre;
       int valor1 = 0 ,valor2= 0 ,valor3= 0 ,valor4= 0 ,valor5 = 0,valor6 = 0;
     
-        System.out.println("---------------------------------------->entramos a declarair asiganr");
+        System.out.println("---------------------------------------->entramos a declarair asiganrx");
         System.out.println("->xx" + this.Hijos.get(1).Nombre);
         if(this.Hijos.get(1).Nombre.contains("VectorDragonBallBeatles")){
                 int TotalHijos = this.Hijos.get(1).Hijos.size();
@@ -1573,7 +1573,7 @@ public class DeclararAsignar extends NodoAbstracto{
    
          return "FIN DECLARARASIGNAR";
      }   
-        
+        System.out.println("QUE PEDO CAHCORORSSDFSD");
     
       //DECLARAR LISTAS Lista
       if("Lista".equals(this.Hijos.get(1).TipoDato)){
@@ -1608,15 +1608,15 @@ public class DeclararAsignar extends NodoAbstracto{
                                  //nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.get(0));
                                  this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix).Hijos.get(0));
                             }
-                                nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix));
+                                nuevo.Hijos.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix));
                             
                             //nuevo.Expresiones.add(this.Expresiones.get(i).Hijos.get(1).Hijos.get(ix));
                         }
                         nuevo.TipoDato = "FuncionC";
-                        for(int ip = 0; ip < nuevo.Expresiones.size();ip++){
-                            String gyf = nuevo.Expresiones.get(ip).Ejecutar(entorno, salida);
-                            System.out.println("gyf->" + gyf);
-                        }
+                        //for(int ip = 0; ip < nuevo.Expresiones.size();ip++){
+                        //    String gyf = nuevo.Expresiones.get(ip).Ejecutar(entorno, salida);
+                        //    System.out.println("gyf->" + gyf);
+                       // }
                         this.Expresiones3.add(nuevo);
                 continue;
             }
@@ -1740,7 +1740,7 @@ public class DeclararAsignar extends NodoAbstracto{
         
         
         
-      
+        System.out.println("hollynsdfsad");
       
       //DECLARAR VECTORES :D
       if("FuncionC".equals(this.Hijos.get(1).TipoDato)){
@@ -1911,7 +1911,7 @@ public class DeclararAsignar extends NodoAbstracto{
                                   Valorxd = Valorxd + ".0";
               }
               else if("decimal".equals(Tipo1y) && "booleano".equals(TipoVector)){
-                   if("true".equals(TipoVector)){
+                   if("true".equals(Valorxd)){
                          Valorxd = "1.0";
                     }
                     else{
@@ -1952,12 +1952,120 @@ public class DeclararAsignar extends NodoAbstracto{
       return "FIN C";
       }
       
-      
+        System.out.println("leaaaad-------------------------->");
       
        String val1 = this.Hijos.get(1).Ejecutar(entorno, salida);
        String Tipo1 = this.Hijos.get(1).TipoDato;
-         System.out.println("Se esta declarando el vector:" + Identificador + " Tipo->" + Tipo1 + " Valor->" + val1);
-      if("RomeoAxpuac".equals(val1)){
+       System.out.println("Se esta declarando el vector:" + Identificador + " Tipo->" + Tipo1 + "<-Valor->" + val1);
+       if(Tipo1.contains("FuncionC")){
+           System.out.println("---->los hijos son->"+  this.Hijos.get(1).Expresiones.size());
+           for(int i = 0; i < this.Hijos.get(1).Expresiones.size(); i++){
+               String Taza = this.Hijos.get(1).Expresiones.get(i).Ejecutar(entorno, salida);
+               System.out.println("ARDER->"+ Taza);
+           }
+           
+           if(entorno.ExisteVector(Identificador)==false){
+               entorno.Agregar2(Identificador, this.Hijos.get(1).Expresiones, "Lista", "sdaf");
+                ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ "Lista",ElTipoDeAmbitoRomeo);
+                TABLA_ReporteTS .add(SIMBOLO);
+           }else{
+               entorno.ModificarValorLista(Identificador, this.Hijos.get(1).Expresiones, "Lista", "sdaf");
+           }
+           entorno.MostrarVectores();
+         entorno.MostrarVectoresLista(entorno,salida);
+           return "FINDEC";
+       }
+       
+       if(Tipo1.contains("CasteoC")){
+           System.out.println("vamos a castenar de nuevo <V");
+           System.out.println("---->los hijos son->"+  this.Hijos.get(1).Expresiones.size());
+           String Tipo1y;
+           for(int i = 0; i < this.Hijos.get(1).Expresiones.size(); i++){
+               String Taza = this.Hijos.get(1).Expresiones.get(i).Ejecutar(entorno, salida);
+               String TipoDelResultado = this.Hijos.get(1).Expresiones.get(i).TipoDato;
+               System.out.println("IRONMANR->"+ Taza);
+            switch (TipoDelResultado){
+                        case "Lista":
+                            valor1 = 1;
+                            break;
+                        case "cadena":
+                            valor2 = 1;
+                            break;
+                        case "entero":
+                            valor4 = 1;
+                            break;
+                        case "decimal":
+                            valor3 = 1;
+                            break;
+                        case "booleano":
+                            valor5 = 1;
+                            break;
+                           
+                        }
+                }
+             
+         
+                String SSSSSS = "";
+                    if(valor1 == 1){
+                        SSSSSS = "Lista";
+                    }else if(valor2 == 1){
+                        SSSSSS = "cadena";
+                    }
+                    else if(valor3 == 1){
+                        SSSSSS = "decimal";
+                    }
+                    else if(valor4 == 1){
+                        SSSSSS = "entero";
+                    }
+                    else if(valor5 == 1){
+                        SSSSSS = "booleano";
+                    }
+                    System.out.println("EL FINAL DEL CASETEO ES->" + SSSSSS);
+                    ArrayList <NodoAbstracto> Expresiones4 = new ArrayList();
+             for(int i = 0; i < this.Hijos.get(1).Expresiones.size(); i ++){
+                 String Valorxd = this.Hijos.get(1).Expresiones.get(i).Ejecutar(entorno, salida);
+                 String TipoVector = this.Hijos.get(1).Expresiones.get(i).TipoDato;
+                 if("decimal".equals(SSSSSS) && "entero".equals(TipoVector)){
+                                  Valorxd = Valorxd + ".0";
+                }
+                else if("decimal".equals(SSSSSS) && "booleano".equals(TipoVector)){
+                   if("true".equals(Valorxd)){
+                         Valorxd = "1.0";
+                    }
+                    else{
+                         Valorxd = "0.0";
+                    }
+
+              }
+              else if("entero".equals(SSSSSS) && "booleano".equals(TipoVector)){
+                if("true".equals(Valorxd))
+                  Valorxd = "1";
+                else
+                 Valorxd = "0";
+              }
+              NodoAbstracto nuevo = new Nodo("Cadena");
+              NodoAbstracto nuevovalor = new Nodo(Valorxd);
+              nuevo.Hijos.add(nuevovalor);
+              nuevo.TipoDato = SSSSSS;
+              Expresiones4.add(nuevo);
+          }
+             
+              boolean ExisteVector =  entorno.ExisteVector(Identificador); 
+      
+        if(!ExisteVector == true){
+            entorno.Agregar2(Identificador, Expresiones4, SSSSSS, "prit2");
+        }else{
+            entorno.ModificarValorLista(Identificador, Expresiones4, SSSSSS, "prit2");
+        }
+         
+         entorno.MostrarVectores();
+         entorno.MostrarVectoresLista(entorno,salida);
+         System.out.println("---------");
+             
+           return "FINDECA";
+       }
+       
+       if("RomeoAxpuac".equals(val1)){
         System.out.println("SUMA DE DOS VECTORES");
         ArrayList <NodoAbstracto> ExpresionesLola = new ArrayList();
         ArrayList <NodoAbstracto> ExpresionesLola2 = new ArrayList();

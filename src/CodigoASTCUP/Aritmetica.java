@@ -59,12 +59,14 @@ public class Aritmetica extends NodoAbstracto{
         if(Tipo1.contains("id")){
             String eltiposs = entorno.ObtenerTipo(val1);
             if(eltiposs.contains("Lista")){
+                this.TipoDato = "#Error";
                 return "#Error";
             }
         }
         if(Tipo2.contains("id")){
             String eltiposs = entorno.ObtenerTipo(val2);
             if(eltiposs.contains("Lista")){
+                this.TipoDato = "#Error";
                 return "#Error";
             }
         }
