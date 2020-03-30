@@ -943,6 +943,48 @@ EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesi
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     :}
+        |id:valor corcheteabrir EXP:pos corchetecerrar corcheteabrir EXP:pos2 corchetecerrar
+                        {:
+                        NodoAbstracto nuevo = new Nodo("VectorSlushi");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.Hijos.add(pos2);
+                        nuevo.TipoDato = "vector";
+                       
+                       
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
+                        RESULT = nuevo;
+                    :}
+        |id:valor corcheteabrir EXP:pos corchetecerrar corcheteabrir  corcheteabrir EXP:pos2 corchetecerrar corchetecerrar
+                        {:
+                        NodoAbstracto nuevo = new Nodo("VectorSlushi");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.Hijos.add(pos2);
+                        nuevo.TipoDato = "vector";
+                       
+                       
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
+                        RESULT = nuevo;
+                    :}
+            |id:valor corcheteabrir corcheteabrir EXP:pos corchetecerrar corchetecerrar corcheteabrir   EXP:pos2 corchetecerrar 
+                        {:
+                        NodoAbstracto nuevo = new Nodo("VectorSlushi");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.Hijos.add(pos2);
+                        nuevo.TipoDato = "vector";
+                       
+                       
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
+                        RESULT = nuevo;
+                    :}
             |id:valor corcheteabrir corcheteabrir  EXP:pos corchetecerrar corchetecerrar
                         {:
                         NodoAbstracto nuevo = new Nodo("VectorIronMan");
@@ -957,6 +999,21 @@ EXP::=            id:nombre parentesisabrir LISTAPARAMETROS:parametros parentesi
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     :}
+      |id:valor corcheteabrir corcheteabrir EXP:pos corchetecerrar corchetecerrar corcheteabrir corcheteabrir EXP:pos2 corchetecerrar corchetecerrar
+                        {:
+                        NodoAbstracto nuevo = new Nodo("VectorSlushi2");
+                        NodoAbstracto nuevovalor = new Nodo(valor);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.Hijos.add(pos);
+                        nuevo.Hijos.add(pos2);
+                        nuevo.TipoDato = "vector";
+                       
+                       
+                        nuevo.columna = valorleft;
+                        nuevo.linea = valorright;
+                        RESULT = nuevo;
+                    :}
+
         |cadena:valor
                     {:
                         //valor =  valor.replaceAll("\\\"", "\\@");

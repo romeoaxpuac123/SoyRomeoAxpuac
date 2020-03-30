@@ -78,17 +78,29 @@ public class Nodo extends NodoAbstracto{
                 }
             break;
             case "Length":
+                
                 Entorno Tempora2l = new Entorno();
                 entorno.AgregarElementosANuevoEntorno(entorno,Tempora2l);
                 String TipoL = this.Hijos.get(0).TipoDato;
                 if(!TipoL.contains("id")){
-                    salida.append("#ERROR: la función Length usa un parametro incorrecto" + "\n");
-                    TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función Length usa un parametro incorrecto" );
-                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-                    return "#Error";
+                    sali = "1";
+                    //salida.append("#ERROR: la función Length usa un parametro incorrecto" + "\n");
+                    //TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función Length usa un parametro incorrecto" );
+                    //TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    //return "#Error";
+                }else{
+                    if(entorno.ExisteVector(this.Hijos.get(0).Nombre)){
+                        int tamanio = Tempora2l.ObtenerLista(this.Hijos.get(0).Nombre).size();
+                        sali = tamanio + "";
+                    }else{
+                         salida.append("#ERROR: la función Length usa un parametro incorrecto" + "\n");
+                        TError ERRORES = new TError("Lenght",this.linea,this.columna,"Semantico", "#ERROR: la función Length usa un parametro incorrecto" );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        return "#Error";
+                    }
+                    
                 }
-                int tamanio = Tempora2l.ObtenerLista(this.Hijos.get(0).Nombre).size();
-                sali = tamanio + "";
+                
                 break;
             case "StringLength":
                 Entorno Temporalx = new Entorno();
@@ -810,7 +822,14 @@ public class Nodo extends NodoAbstracto{
                   //  System.out.println("limite es:" + limite + "--------------------");
                   if((Integer.parseInt(limite)-1)>=0 && ((Integer.parseInt(limite)-1)<entorno.ObtenerLista(Identificador).size())){
                         String Tipo1 = this.Hijos.get(1).TipoDato;
+                        System.out.println();
                         String val1 = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Ejecutar(entorno, salida);
+                        String ElTipito = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).TipoDato;
+                        if(ElTipito.contains("id")){
+                            this.id = 12;
+                        }else{
+                            this.id = 0;
+                        }
                         if(val1.contains("FuncionC")){
                            // for(int ui = 0; ui <  entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.size();ui++){
                            //     String ElMeroMero = entorno.NodoLista(Identificador, Integer.parseInt(limite)-1).Hijos.get(ui).Ejecutar(entorno, salida);
@@ -835,12 +854,167 @@ public class Nodo extends NodoAbstracto{
                         System.out.println("ERROR");
                          return "#Error";
                   }
-                  
+                 
                   
                 
                 }
-                //sali = this.Hijos.get(0).Nombre;
+                //sali = "pago";
+                System.out.println("fin ECTS");
                 break;
+         case "VectorSlushi2":
+             System.out.println("ENTOR A SLUA2-------->");
+             this.id = 989;
+                String IdentificadorS2 = this.Hijos.get(0).Nombre;
+                if(entorno.ExisteVector(IdentificadorS2)==false){
+                    System.out.println("El vector" + IdentificadorS2 + "No Existe");
+                    salida.append("#Error: No se ha encontrado el vector -> "+IdentificadorS2+"\n");
+                    TError ERRORES = new TError(IdentificadorS2,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+IdentificadorS2 );
+                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    return "#Error";
+                }else{
+                     String Limite1 = this.Hijos.get(1).Ejecutar(entorno, salida);
+                     String Limite2 = this.Hijos.get(2).Ejecutar(entorno, salida);
+                     System.out.println("DATOS LLAMADO-> Vector:" + IdentificadorS2 + " POSICION->" + Limite1 + 
+                          " TipoDato->" + entorno.ObtenerTipo(IdentificadorS2) + "<-LIMITE2->" + Limite2);
+                    this.TipoDato = "KAMIKAZE";
+                     if((Integer.parseInt(Limite1)-1)>=0 && ((Integer.parseInt(Limite1)-1)<entorno.ObtenerLista(IdentificadorS2).size())){
+                         System.out.println("ENTRO A VER QUE PEDO LASSO-");
+                         
+                         
+                         String val1 = entorno.NodoLista(IdentificadorS2, Integer.parseInt(Limite1)-1).Ejecutar(entorno, salida);
+                         String Tipo1 =  entorno.NodoLista(IdentificadorS2, Integer.parseInt(Limite1)-1).TipoDato;
+                         System.out.println("PRIMER PARAMETRO->" + val1 + "<->Tipo" + Tipo1);
+                          if(Tipo1.contains("FuncionC")){
+                             System.out.println("Es una funcion C");
+                             int tamanio = entorno.NodoLista(IdentificadorS2, Integer.parseInt(Limite1)-1).Hijos.size();
+                             System.out.println("totla hijos->" + tamanio);
+                             for(int cc = 1; cc < tamanio; cc++){
+                                 this.Expresiones.add(entorno.NodoLista(IdentificadorS2, Integer.parseInt(Limite1)-1).Hijos.get(cc));
+                             }
+                              System.out.println("finC");
+                             return this.Nombre;
+                         }
+                         if(Tipo1.contains("id")){
+                             System.out.println("VIENDO TAMAÑO LISTAS->");
+                             if(entorno.ObtenerListaN(val1)==0){
+                                 System.out.println("VIENDO TAMAÑO LISTAS CEOOOOOO->");
+                                 if(!"1".equals(Limite2)){
+                                    System.out.println("El vectorSLUSHI" + val1 + "No Existe");
+                                    salida.append("#Error: No se ha encontrado el vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS2,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                    return "#Error";
+                                 }else{
+                                      NodoAbstracto nuevo = new Nodo("Cadena");
+                                        NodoAbstracto nuevovalor = new Nodo(entorno.ObtenerValor(val1));
+                                        nuevo.Hijos.add(nuevovalor);
+                                        nuevo.TipoDato = entorno.ObtenerTipo(val1);
+                                        this.Expresiones.add(nuevo);
+                                        return "Salida";
+                                 }
+                             }else{
+                                  System.out.println("VIENDO TAMAÑO LISTAS NO CEOOOOOO->");
+                                 ArrayList <NodoAbstracto> Expresionestt = new ArrayList();
+                                 Expresionestt = entorno.ObtenerLista(val1);
+                                 if(Integer.parseInt(Limite2)-1 > Expresionestt.size()){
+                                    salida.append("#Error: Limite incorrecto en El vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS2,this.linea,this.columna,"Semantico", "#Error: Limite incorrecto en El vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                 
+                                 }else{
+                                     for(int o = 0; o <  Expresionestt.size(); o++){
+                                         if(o == Integer.parseInt(Limite2)-1){
+                                             this.Expresiones.add(Expresionestt.get(o));
+                                         }
+                                     }
+                                 }
+                             }
+                         }else{
+                                    salida.append("#Error: Limite incorrecto en El vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS2,this.linea,this.columna,"Semantico", "#Error: Limite incorrecto en El vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                    return "#Error";
+                         }
+                         
+                     }
+                }
+               System.out.println("SOY ROMEO AXPUAC");    
+               sali = this.Nombre;
+                break;
+            case "VectorSlushi":
+                String IdentificadorS = this.Hijos.get(0).Nombre;
+                if(entorno.ExisteVector(IdentificadorS)==false){
+                    System.out.println("El vector" + IdentificadorS + "No Existe");
+                    salida.append("#Error: No se ha encontrado el vector -> "+IdentificadorS+"\n");
+                    TError ERRORES = new TError(IdentificadorS,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+IdentificadorS );
+                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                    return "#Error";
+                }else{
+                     String Limite1 = this.Hijos.get(1).Ejecutar(entorno, salida);
+                     String Limite2 = this.Hijos.get(2).Ejecutar(entorno, salida);
+                     System.out.println("DATOS LLAMADO-> Vector:" + IdentificadorS + " POSICION->" + Limite1 + 
+                          " TipoDato->" + entorno.ObtenerTipo(IdentificadorS) + "<-LIMITE2->" + Limite2);
+                    this.TipoDato = "VectorSlushi";
+                     if((Integer.parseInt(Limite1)-1)>=0 && ((Integer.parseInt(Limite1)-1)<entorno.ObtenerLista(IdentificadorS).size())){
+                         String val1 = entorno.NodoLista(IdentificadorS, Integer.parseInt(Limite1)-1).Ejecutar(entorno, salida);
+                         String Tipo1 =  entorno.NodoLista(IdentificadorS, Integer.parseInt(Limite1)-1).TipoDato;
+                         System.out.println("PRIMER PARAMETRO->" + val1 + "<->Tipo" + Tipo1);
+                         if(Tipo1.contains("FuncionC")){
+                             System.out.println("Es una funcion C");
+                             int tamanio = entorno.NodoLista(IdentificadorS, Integer.parseInt(Limite1)-1).Hijos.size();
+                             System.out.println("totla hijos->" + tamanio);
+                             for(int cc = 1; cc < tamanio; cc++){
+                                 this.Expresiones.add(entorno.NodoLista(IdentificadorS, Integer.parseInt(Limite1)-1).Hijos.get(cc));
+                             }
+                             return this.Nombre;
+                         }
+                         if(Tipo1.contains("id")){
+                             System.out.println("VIENDO TAMAÑO LISTAS->");
+                             if(entorno.ObtenerListaN(val1)==0){
+                                 System.out.println("VIENDO TAMAÑO LISTAS CEOOOOOO->");
+                                 if(!"1".equals(Limite2)){
+                                    System.out.println("El vectorSLUSHI" + val1 + "No Existe");
+                                    salida.append("#Error: No se ha encontrado el vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS,this.linea,this.columna,"Semantico", "No se ha encontrado el vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                    return "#Error";
+                                 }else{
+                                      NodoAbstracto nuevo = new Nodo("Cadena");
+                                        NodoAbstracto nuevovalor = new Nodo(entorno.ObtenerValor(val1));
+                                        nuevo.Hijos.add(nuevovalor);
+                                        nuevo.TipoDato = "Lista";
+                                        this.Expresiones.add(nuevo);
+                                        return "Salida";
+                                 }
+                             }else{
+                                  System.out.println("VIENDO TAMAÑO LISTAS NO CEOOOOOO->");
+                                 ArrayList <NodoAbstracto> Expresionestt = new ArrayList();
+                                 Expresionestt = entorno.ObtenerLista(val1);
+                                 if(Integer.parseInt(Limite2)-1 > Expresionestt.size()){
+                                    salida.append("#Error: Limite incorrecto en El vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS,this.linea,this.columna,"Semantico", "#Error: Limite incorrecto en El vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                 
+                                 }else{
+                                     for(int o = 0; o <  Expresionestt.size(); o++){
+                                         if(o == Integer.parseInt(Limite2)-1){
+                                             this.Expresiones.add(Expresionestt.get(o));
+                                         }
+                                     }
+                                 }
+                             }
+                         }else{
+                                    salida.append("#Error: Limite incorrecto en El vector -> "+val1+"\n");
+                                    TError ERRORES = new TError(IdentificadorS,this.linea,this.columna,"Semantico", "#Error: Limite incorrecto en El vector -> "+val1 );
+                                    TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                                    return "#Error";
+                         }
+                         
+                     }
+                }
+               System.out.println("SOY ROMEO AXPUAC");    
+               sali = this.Nombre;
+               break;
             case "x":
                 
                 break;

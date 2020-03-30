@@ -295,7 +295,7 @@ public class Entorno {
                 }
                //System.out.println("hoaaaaaaaaaa->" + Lista.get(i).TipoDato + "->" +Lista.get(i).Nombre );
                 if("id".equals(Lista.get(i).TipoDato)){
-                    System.out.println("COMPA");
+                    //System.out.println("COMPA");
                     if(Lista.get(i).Nombre.contains("Cadena")){
                         if(entorno.ObtenerListaN(Lista.get(i).Hijos.get(0).Nombre)==0){
                             Valores = Valores + entorno.ObtenerValor(Lista.get(i).Hijos.get(0).Nombre) + ",";
