@@ -516,7 +516,7 @@ public class IDE extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton2.setText("Grafica ASC");
+        jButton2.setText("Grafica Ayuda");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -567,7 +567,7 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setText("Graficas");
+        jButton10.setText("Grafica ASC");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -690,6 +690,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton19.setText("Graficas");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setText("Reporte Errores");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
@@ -3145,6 +3150,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        /*
          System.out.println("Este es el archivo" + Archivo);
         System.out.println("Este es el archivo" + Archivo1);
         System.out.println("Este es el archivo" + Archivo2);
@@ -3155,7 +3161,9 @@ public class IDE extends javax.swing.JFrame {
         System.out.println("Este es el archivo" + Archivo7);
         System.out.println("Este es el archivo" + Archivo8);
         System.out.println("Este es el archivo" + Archivo9);
-        System.out.println("Este es el archivo" + Archivo10);
+        System.out.println("Este es el archivo" + Archivo10);*/
+            Analizar3(jTextArea1.getText(), jTextArea2);
+        
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -3574,6 +3582,10 @@ public class IDE extends javax.swing.JFrame {
          TABLA_ReporteTS.clear();
     }//GEN-LAST:event_jButton129ActionPerformed
 
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton19ActionPerformed
+
      public void Analizar(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
         Analisis_Sintactico Sintactico = new Analisis_Sintactico (Texto);
@@ -3599,7 +3611,21 @@ public class IDE extends javax.swing.JFrame {
             
         }
     }
-    
+     public void Analizar3(String entrada,JTextArea salida){
+        Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
+        Analisis_Sintactico2 Sintactico = new Analisis_Sintactico2 (Texto);
+        
+        try{
+            Sintactico.parse();
+            Graficador g = new Graficador();
+            g.graficarAST(Sintactico.Raiz);
+            //this.Ejecutar(Sintactico.Raiz , salida);
+        }catch(Exception e){
+            
+        }
+    }
+        
+        
      public void Ejecutar(NodoAbstracto raiz,JTextArea salida){
         Entorno entorno = new Entorno();
         for (NodoAbstracto sentencia : raiz.Hijos.get(0).Hijos) {// para ejecutar solo sentencias 
