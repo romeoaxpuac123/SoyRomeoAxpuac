@@ -32,7 +32,155 @@ public class ModificarVector extends NodoAbstracto{
          String Posicion =  this.Hijos.get(1).Ejecutar(entorno, salida);// .Ejecutar(entorno, salida);
          String NuevoValor = this.Hijos.get(2).Ejecutar(entorno, salida);
          String NuevoTipo = this.Hijos.get(2).TipoDato;
-        // System.out.println("MODIFICANDO VECTOR->" + Vector + " Posición->" + Posicion + " Nuevoalor->" + NuevoValor);
+         // System.out.println("MODIFICANDO VECTOR->" + Vector + " Posición->" + Posicion + " Nuevoalor->" + NuevoValor);
+         int boludo = 0;
+         if(entorno.ExisteVector(Vector)){
+             if(entorno.ObtenerTipo(Vector).contains("Lista")){
+                 System.out.println("VAMOS A MODIFICAR UNA LISTA->" + Posicion);
+                 System.out.println("VAMOS A MODIFICAR UNA LISTA->" + NuevoValor);
+                 System.out.println("VAMOS A MODIFICAR UNA LISTA->" + NuevoTipo);
+                 
+                 /*esto no va en el otro2*/
+                 if(NuevoTipo.contains("id") && this.id != 765){
+                     if(entorno.ObtenerListaN(NuevoValor) == 1){
+                        salida.append("#ERROR: Modificacion no permitida en el  " + Vector +"\n");
+                        //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+                        TError ERRORES = new TError(Vector,this.linea,this.columna,"Semantico", "#ERROR: Modificacion no permitida en el  " + Vector );
+                        TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                        return "#ERROR: No Existe el Vector";
+                     }
+                 }   
+                 
+                 if(NuevoTipo.contains("FuncionC")){
+                     int Hijos = this.Hijos.get(2).Hijos.get(1).Hijos.size();
+                     
+                     System.out.println("Viene una funcion c con un totl de hijos de ->" + Hijos);
+                     if(Hijos > 1 && this.id != 765){
+                           
+                               salida.append("#ERROR: Modificacion no permitida en el  " + Vector +"\n");
+                               //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+                               TError ERRORES = new TError(Vector,this.linea,this.columna,"Semantico", "#ERROR: Modificacion no permitida en el  " + Vector );
+                               TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                               return "#ERROR: No Existe el Vector";
+                           
+                     
+                     }else{
+                         //salida.append("VAMOS A VER QUE PEDO");
+                         NodoAbstracto nuevoxY = new Nodo("FuncionC");
+                         NodoAbstracto nuevoid = new Nodo("FuncionC");
+                         nuevoxY.Hijos.add(nuevoid);
+                         for (int x = 0; x < Hijos; x++){
+                             String Valor = this.Hijos.get(2).Hijos.get(1).Hijos.get(x).Ejecutar(entorno, salida);
+                             System.out.println("VAMOS HIJOS------>" + Valor);
+                             nuevoxY.Hijos.add(this.Hijos.get(2).Hijos.get(1).Hijos.get(x));
+                         }
+                         nuevoxY.TipoDato = "FuncionC";
+                         
+                         boludo = 1;
+                            NodoAbstracto nuevox = new Nodo("Cadena");
+                            NodoAbstracto nuevovalorx = new Nodo("null");
+                            nuevox.Hijos.add(nuevovalorx);
+                            nuevox.TipoDato = "cadena";
+                            ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+                            ArrayList <NodoAbstracto> Expresiones2x = new ArrayList();
+                            Expresionesx = entorno.ObtenerLista(Vector);
+                            System.out.println("ACA EMPIEZA LA AÑADIDIURA->" + Expresionesx.size());
+                            System.out.println("INICIOS DEL FOR->" + (Integer.parseInt(Posicion) - 1));
+                            if((Integer.parseInt(Posicion))-1 > Expresionesx.size()){
+                                System.out.println("ACA SI INSERTA CUANDO ES MAS GRANDE .d");
+                                 for(int i = 0; i < (Integer.parseInt(Posicion)) ; i++){
+                                      System.out.println("--> el valor del i->"+ i);
+                                      if( i == (Integer.parseInt(Posicion) - 1)){
+                                          System.out.println("ACA INSERTO EL NUEVO->");
+                                          Expresiones2x.add(nuevoxY);
+                                      }else if( i >= Expresionesx.size()){
+                                          System.out.println("ACA INSERTO EL NULL");
+                                          Expresiones2x.add(nuevox);
+                                      }else{
+                                          System.out.println("ACA INSERTO LOS NORMALES");
+                                          Expresiones2x.add(Expresionesx.get(i));
+                                      }
+                                }
+
+                            }else{
+                                System.out.println("cuando la posciion esta dentro.");
+                                  for(int i = 0; i < Expresionesx.size()  ; i++){
+                                      System.out.println("--> el valor del i->"+ i);
+                                      if( i == (Integer.parseInt(Posicion) - 1)){
+                                          System.out.println("ACA INSERTO EL NUEVO->");
+                                          Expresiones2x.add(nuevoxY);
+                                      }else{
+                                          System.out.println("inserto la expreions");
+                                          Expresiones2x.add(Expresionesx.get(i));
+                                      }
+
+                                  }
+
+                            }
+                  
+                 
+                        entorno.ModificarValorLista(Vector, Expresiones2x, "Lista", "Lista");
+                     }
+                     
+                     return "FIN MODFICARVEC";
+                 
+                 }
+                 
+                 
+                 
+                 /*Esto no va en el otro fin */
+                 
+                  NodoAbstracto nuevox = new Nodo("Cadena");
+                  NodoAbstracto nuevovalorx = new Nodo("null");
+                  nuevox.Hijos.add(nuevovalorx);
+                  nuevox.TipoDato = "cadena";
+                  ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+                  ArrayList <NodoAbstracto> Expresiones2x = new ArrayList();
+                  Expresionesx = entorno.ObtenerLista(Vector);
+                  System.out.println("ACA EMPIEZA LA AÑADIDIURA->" + Expresionesx.size());
+                  System.out.println("INICIOS DEL FOR->" + (Integer.parseInt(Posicion) - 1));
+                  if((Integer.parseInt(Posicion))-1 > Expresionesx.size()){
+                      System.out.println("ACA SI INSERTA CUANDO ES MAS GRANDE .d");
+                       for(int i = 0; i < (Integer.parseInt(Posicion)) ; i++){
+                            System.out.println("--> el valor del i->"+ i);
+                            if( i == (Integer.parseInt(Posicion) - 1)){
+                                System.out.println("ACA INSERTO EL NUEVO->");
+                                Expresiones2x.add(this.Hijos.get(2));
+                            }else if( i >= Expresionesx.size()){
+                                System.out.println("ACA INSERTO EL NULL");
+                                Expresiones2x.add(nuevox);
+                            }else{
+                                System.out.println("ACA INSERTO LOS NORMALES");
+                                Expresiones2x.add(Expresionesx.get(i));
+                            }
+                      }
+                  
+                  }else{
+                      System.out.println("cuando la posciion esta dentro.");
+                        for(int i = 0; i < Expresionesx.size()  ; i++){
+                            System.out.println("--> el valor del i->"+ i);
+                            if( i == (Integer.parseInt(Posicion) - 1)){
+                                System.out.println("ACA INSERTO EL NUEVO->");
+                                Expresiones2x.add(this.Hijos.get(2));
+                            }else{
+                                System.out.println("inserto la expreions");
+                                Expresiones2x.add(Expresionesx.get(i));
+                            }
+                        
+                        }
+                  
+                  }
+                  
+                 
+                  entorno.ModificarValorLista(Vector, Expresiones2x, "Lista", "Lista");
+                  
+                  
+                 return "FINMODV";
+             }
+         
+         }
+        
+        
         if(NuevoValor.equalsIgnoreCase("FuncionC")){
             System.out.println("VIENE UNA FUNCION C--------->");
             int TotalHijosDeC = this.Hijos.get(2).Hijos.size();

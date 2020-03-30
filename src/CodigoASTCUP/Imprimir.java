@@ -47,7 +47,7 @@ public class Imprimir extends NodoAbstracto{
             salida.append("#Error en el contenido a imprimir: "+val +"\n");
              return "ERROR";
         }
-        if(tipo.contains("FuncionC")){
+        if(tipo.contains("FuncionC")| tipo.contains("CasteoC")){
             val = "";
             System.out.println("print los hijos del c son->" + this.Hijos.get(0).Expresiones.size());
             for(int i = 0; i < this.Hijos.get(0).Expresiones.size(); i ++){
@@ -163,7 +163,15 @@ public class Imprimir extends NodoAbstracto{
                                       }
                                   }
                                   continue;
-                              }else{
+                              }if(TipoResultado.contains("FuncionC")){
+                                  for(int ui = 1; ui < this.Expresiones.get(i).Hijos.size();ui++){
+                                         String Salidta = this.Expresiones.get(i).Hijos.get(ui).Ejecutar(entorno, salida);
+                                         ElMero = ElMero  +  Salidta + " ";
+                                  }
+                                  //ElMero = ElMero + "PUTA VIDA";
+                              }
+                              
+                              else{
                                   ElMero = ElMero +  Resultado  + " ";
                               }
                               if(TipoXD.contains("Lista")){
