@@ -6,6 +6,7 @@
 package Analizadores;
 
 
+
 import Codigo.Entorno;
 import CodigoASTCUP.NodoAbstracto;
 import borradorproyecto1.BorradorProyecto1;
@@ -16,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,6 +34,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Bayyron
@@ -531,6 +538,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton4.setText("Grafica DES");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Tabla de Simbolos");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -674,6 +686,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton16.setText("Grafica DES");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("Guardar Como");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -689,7 +706,7 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton19.setText("Graficas");
+        jButton19.setText("Grafica ASC");
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
@@ -803,6 +820,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton26.setText("Grafica DES");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
 
         jButton27.setText("Guardar Como");
         jButton27.addActionListener(new java.awt.event.ActionListener() {
@@ -818,7 +840,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton29.setText("Graficas");
+        jButton29.setText("Grafica ASC");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
 
         jButton30.setText("Reporte Errores");
         jButton30.addActionListener(new java.awt.event.ActionListener() {
@@ -927,6 +954,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton36.setText("Grafica DES");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
 
         jButton37.setText("Guardar Como");
         jButton37.addActionListener(new java.awt.event.ActionListener() {
@@ -942,7 +974,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton39.setText("Graficas");
+        jButton39.setText("Grafica ASC");
+        jButton39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton39ActionPerformed(evt);
+            }
+        });
 
         jButton40.setText("Reporte Errores");
         jButton40.addActionListener(new java.awt.event.ActionListener() {
@@ -1051,6 +1088,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton46.setText("Grafica DES");
+        jButton46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton46ActionPerformed(evt);
+            }
+        });
 
         jButton47.setText("Guardar Como");
         jButton47.addActionListener(new java.awt.event.ActionListener() {
@@ -1066,7 +1108,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton49.setText("Graficas");
+        jButton49.setText("Grafica ASC");
+        jButton49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton49ActionPerformed(evt);
+            }
+        });
 
         jButton50.setText("Reporte Errores");
         jButton50.addActionListener(new java.awt.event.ActionListener() {
@@ -1175,6 +1222,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton56.setText("Grafica DES");
+        jButton56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton56ActionPerformed(evt);
+            }
+        });
 
         jButton57.setText("Guardar Como");
         jButton57.addActionListener(new java.awt.event.ActionListener() {
@@ -1190,7 +1242,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton59.setText("Graficas");
+        jButton59.setText("Grafica ASC");
+        jButton59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton59ActionPerformed(evt);
+            }
+        });
 
         jButton60.setText("Reporte Errores");
         jButton60.addActionListener(new java.awt.event.ActionListener() {
@@ -1299,6 +1356,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton66.setText("Grafica DES");
+        jButton66.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton66ActionPerformed(evt);
+            }
+        });
 
         jButton67.setText("Guardar Como");
         jButton67.addActionListener(new java.awt.event.ActionListener() {
@@ -1314,7 +1376,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton69.setText("Graficas");
+        jButton69.setText("Grafica ASC");
+        jButton69.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton69ActionPerformed(evt);
+            }
+        });
 
         jButton70.setText("Reporte Errores");
         jButton70.addActionListener(new java.awt.event.ActionListener() {
@@ -1423,6 +1490,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton96.setText("Grafica DES");
+        jButton96.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton96ActionPerformed(evt);
+            }
+        });
 
         jButton97.setText("Guardar Como");
         jButton97.addActionListener(new java.awt.event.ActionListener() {
@@ -1431,7 +1503,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton98.setText("Graficas");
+        jButton98.setText("Grafica ASC");
+        jButton98.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton98ActionPerformed(evt);
+            }
+        });
 
         jButton99.setText("Tabla de Simbolos");
         jButton99.addActionListener(new java.awt.event.ActionListener() {
@@ -1547,6 +1624,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton106.setText("Grafica DES");
+        jButton106.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton106ActionPerformed(evt);
+            }
+        });
 
         jButton107.setText("Guardar Como");
         jButton107.addActionListener(new java.awt.event.ActionListener() {
@@ -1555,7 +1637,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton108.setText("Graficas");
+        jButton108.setText("Grafica ASC");
+        jButton108.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton108ActionPerformed(evt);
+            }
+        });
 
         jButton109.setText("Tabla de Simbolos");
         jButton109.addActionListener(new java.awt.event.ActionListener() {
@@ -1671,6 +1758,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton116.setText("Grafica DES");
+        jButton116.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton116ActionPerformed(evt);
+            }
+        });
 
         jButton117.setText("Guardar Como");
         jButton117.addActionListener(new java.awt.event.ActionListener() {
@@ -1679,7 +1771,12 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton118.setText("Graficas");
+        jButton118.setText("Grafica ASC");
+        jButton118.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton118ActionPerformed(evt);
+            }
+        });
 
         jButton119.setText("Tabla de Simbolos");
         jButton119.addActionListener(new java.awt.event.ActionListener() {
@@ -1795,6 +1892,11 @@ public class IDE extends javax.swing.JFrame {
         });
 
         jButton126.setText("Grafica DES");
+        jButton126.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton126ActionPerformed(evt);
+            }
+        });
 
         jButton127.setText("Guardar Como");
         jButton127.addActionListener(new java.awt.event.ActionListener() {
@@ -1803,7 +1905,7 @@ public class IDE extends javax.swing.JFrame {
             }
         });
 
-        jButton128.setText("Graficas");
+        jButton128.setText("Grafica ASC");
         jButton128.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton128ActionPerformed(evt);
@@ -1917,7 +2019,7 @@ public class IDE extends javax.swing.JFrame {
 
         jButton137.setText("Guardar Como");
 
-        jButton138.setText("Graficas");
+        jButton138.setText("Grafica ASC");
 
         jButton139.setText("Tabla de Simbolos");
 
@@ -3145,6 +3247,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton128ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton128ActionPerformed
         // TODO add your handling code here:
+        Analizar3(jTextArea14.getText(), jTextArea2);
        
     }//GEN-LAST:event_jButton128ActionPerformed
 
@@ -3584,7 +3687,127 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
+        Analizar3(jTextArea3.getText(), jTextArea2);
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        // comp parser = new comp(new BufferedReader(new StringReader(jTextArea1.getText())));
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea1.getText(), jTextArea2);
+        /*
+        try {
+            Gramatica parser = new Gramatica(new BufferedReader(new FileReader("./entrada.txt")));
+            parser.Analizar();
+        } catch (ParseException e) {
+            System.err.println(e.getMessage());
+        } catch (FileNotFoundException e) {
+            Logger.getLogger(BorradorProyecto1.class.getName()).log(Level.SEVERE, "Error al intentar leer el archivo.", e);
+        } catch(TokenMgrError e){
+            System.err.println(e.getMessage());
+        }
+        */
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea3.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea4.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea5.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea6.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton46ActionPerformed
+
+    private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea7.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton56ActionPerformed
+
+    private void jButton66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton66ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea8.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton66ActionPerformed
+
+    private void jButton96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton96ActionPerformed
+        // TODO add your handling code here:
+         System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea11.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton96ActionPerformed
+
+    private void jButton106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton106ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea12.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton106ActionPerformed
+
+    private void jButton116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton116ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea13.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton116ActionPerformed
+
+    private void jButton126ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton126ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("vamos a graficar desc");
+        Analizar4(jTextArea14.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton126ActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+         Analizar3(jTextArea4.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
+        // TODO add your handling code here:
+         Analizar3(jTextArea5.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton39ActionPerformed
+
+    private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        // TODO add your handling code here:
+         Analizar3(jTextArea6.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton49ActionPerformed
+
+    private void jButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton59ActionPerformed
+        // TODO add your handling code here:
+         Analizar3(jTextArea7.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton59ActionPerformed
+
+    private void jButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton69ActionPerformed
+        // TODO add your handling code here:
+         Analizar3(jTextArea8.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton69ActionPerformed
+
+    private void jButton98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton98ActionPerformed
+        // TODO add your handling code here:
+        Analizar3(jTextArea11.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton98ActionPerformed
+
+    private void jButton108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton108ActionPerformed
+        // TODO add your handling code here:
+        Analizar3(jTextArea12.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton108ActionPerformed
+
+    private void jButton118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton118ActionPerformed
+        // TODO add your handling code here:
+        Analizar3(jTextArea13.getText(), jTextArea2);
+    }//GEN-LAST:event_jButton118ActionPerformed
 
      public void Analizar(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
@@ -3624,7 +3847,19 @@ public class IDE extends javax.swing.JFrame {
             
         }
     }
+     public void Analizar4(String entrada,JTextArea salida){
+        Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
+        Gramatica  Sintactico = new Gramatica(Texto);
         
+        try{
+            Sintactico.parse();
+            Graficador g = new Graficador();
+            g.graficarAST(Sintactico.Raiz);
+            //this.Ejecutar(Sintactico.Raiz , salida);
+        }catch(Exception e){
+            
+        }
+    }    
         
      public void Ejecutar(NodoAbstracto raiz,JTextArea salida){
         Entorno entorno = new Entorno();

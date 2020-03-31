@@ -2800,15 +2800,15 @@ class CUP$Analisis_Sintactico2$actions {
 		int nodright = ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico2$stack.peek()).right;
 		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Analisis_Sintactico2$stack.peek()).value;
 		
-                       // NodoAbstracto nuevo = new Nodo("EXP");
-                       // nuevo.Hijos.add(nodsentencias);
-                       // nuevo.Hijos.add(nod);
+                        NodoAbstracto nuevo = new Nodo("EXP");
+                        nuevo.Hijos.add(nodsentencias);
+                        nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
                         Expresiones2.add(nod);
                         Expresiones3.add(nod);
-                        nodsentencias.Hijos.add(nod);
-                        RESULT = nodsentencias;
-                        //RESULT = nuevo;
+                       // nodsentencias.Hijos.add(nod);
+                       // RESULT = nodsentencias;
+                        RESULT = nuevo;
                     
               CUP$Analisis_Sintactico2$result = parser.getSymbolFactory().newSymbol("LISTAEXPRESIONES",10, ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico2$stack.elementAt(CUP$Analisis_Sintactico2$top-2)), ((java_cup.runtime.Symbol)CUP$Analisis_Sintactico2$stack.peek()), RESULT);
             }

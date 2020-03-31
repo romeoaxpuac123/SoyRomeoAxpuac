@@ -147,8 +147,9 @@ public class While extends NodoAbstracto{
               
                      ValorXD =  ExpresionesRomeo2x.get(0).Ejecutar(Temporal, salida);
                                 System.out.println("FINCIOIFWHIWLE"); 
+                                ValorExpresion = ValorXD;
                 }
-                ValorExpresion = ValorXD;
+                //ValorExpresion = ValorXD;
 
                 System.out.println("EL IDIOTA-------->" + ValorXD);
 

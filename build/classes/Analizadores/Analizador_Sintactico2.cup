@@ -614,15 +614,15 @@ MODVECTOR::= id:valor corcheteabrir EXP:exp1 corchetecerrar igual EXP:exp2  FINA
 
 LISTAEXPRESIONES::= LISTAEXPRESIONES:nodsentencias coma EXP:nod
                     {:
-                       // NodoAbstracto nuevo = new Nodo("EXP");
-                       // nuevo.Hijos.add(nodsentencias);
-                       // nuevo.Hijos.add(nod);
+                        NodoAbstracto nuevo = new Nodo("EXP");
+                        nuevo.Hijos.add(nodsentencias);
+                        nuevo.Hijos.add(nod);
                         Expresiones.add(nod);
                         Expresiones2.add(nod);
                         Expresiones3.add(nod);
-                        nodsentencias.Hijos.add(nod);
-                        RESULT = nodsentencias;
-                        //RESULT = nuevo;
+                       // nodsentencias.Hijos.add(nod);
+                       // RESULT = nodsentencias;
+                        RESULT = nuevo;
                     :}
                     |EXP:nod{:
                         //NodoAbstracto nuevo = new Nodo("EXP");

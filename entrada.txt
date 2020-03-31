@@ -1,0 +1,7 @@
+print[1];
+print[13];
+print[14];
+print[15];
+print[1.1];
+print[11.1];
+print[1.0	];
