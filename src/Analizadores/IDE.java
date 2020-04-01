@@ -2470,7 +2470,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-       System.out.println("REPORTE DE ERROES:");
+       System.out.println("REPORTE DE ERROES:" + TABLA_DE_ERRORES_SINTACTICOS.size());
        
         for(int i = 0;i< TABLA_DE_ERRORES_SINTACTICOS.size(); i++){
             String Error = TABLA_DE_ERRORES_SINTACTICOS.get(i).lexema;
