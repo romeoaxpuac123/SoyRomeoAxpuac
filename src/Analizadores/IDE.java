@@ -6,7 +6,7 @@
 package Analizadores;
 
 
-
+import Analizador.Gramatica;
 import Codigo.Entorno;
 import CodigoASTCUP.NodoAbstracto;
 import borradorproyecto1.BorradorProyecto1;
@@ -88,6 +88,7 @@ public class IDE extends javax.swing.JFrame {
         jTabbedPane1.remove(jPanel37);
         jTabbedPane1.remove(jPanel38);
         jTabbedPane1.remove(jPanel39);
+        jRadioButton1.setSelected(true);
         //int currentCaretPosition = jTextArea1.getCaretPosition ();
        jTextArea1.addCaretListener(new CaretListener() {           
    
@@ -501,6 +502,8 @@ public class IDE extends javax.swing.JFrame {
         jPanel39 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 255));
@@ -2290,6 +2293,10 @@ public class IDE extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("jLabel2");
 
+        jRadioButton1.setText("Ascendente");
+
+        jRadioButton2.setText("Descendente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2301,22 +2308,36 @@ public class IDE extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(jLabel2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(304, 304, 304)
+                                .addComponent(jButton3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(321, 321, 321)
+                                .addComponent(jLabel2)))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -2325,28 +2346,38 @@ public class IDE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TABLA_DE_ERRORES_SINTACTICOS.clear();
-        NumeroEntornosRomeo = 0;
-        TABLA_ReporteTS.clear();
         
-        BufferedWriter bw;
-        try {
-            bw = new BufferedWriter(new FileWriter("3d.txt"));
-             bw.write("");
-             bw.close();
-        } catch (IOException ex) {
-            Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
+                TABLA_DE_ERRORES_SINTACTICOS.clear();
+                NumeroEntornosRomeo = 0;
+                TABLA_ReporteTS.clear();
+
+                BufferedWriter bw;
+                try {
+                    bw = new BufferedWriter(new FileWriter("3d.txt"));
+                     bw.write("");
+                     bw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(IDE.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+                jTextArea2.setText("");
+                // RepasoCompi2 Hola = new RepasoCompi2();
+
+
+
+
+
+                Analizar(jTextArea1.getText(), jTextArea2);
+    
+        }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea1.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
         }
-       
         
-        jTextArea2.setText("");
-        // RepasoCompi2 Hola = new RepasoCompi2();
-       
-       
-        
-        
-        
-        Analizar(jTextArea1.getText(), jTextArea2);
         
        
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -2601,6 +2632,7 @@ public class IDE extends javax.swing.JFrame {
     }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2617,6 +2649,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea3.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+             AnalizarDESC(jTextArea3.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+        
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -2642,6 +2681,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
         TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2658,6 +2698,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea4.getText(), jTextArea2);
+        }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea4.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
@@ -2683,6 +2730,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
        TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2699,6 +2747,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea5.getText(), jTextArea2);
+        }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea5.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
@@ -2724,6 +2779,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2740,6 +2796,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea6.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+             AnalizarDESC(jTextArea6.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton42ActionPerformed
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
@@ -2765,6 +2828,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2781,6 +2845,14 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea7.getText(), jTextArea2);
+        
+        }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+                   System.out.println("Hagamos analisis2");
+                    AnalizarDESC(jTextArea7.getText(), jTextArea2);
+               }else{
+                   JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+               }
+
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
@@ -2807,6 +2879,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2823,6 +2896,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea8.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+             AnalizarDESC(jTextArea8.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton62ActionPerformed
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65ActionPerformed
@@ -2848,6 +2928,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton92ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2864,6 +2945,12 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea11.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea11.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
     }//GEN-LAST:event_jButton92ActionPerformed
 
     private void jButton95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton95ActionPerformed
@@ -2889,6 +2976,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton102ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2905,6 +2993,12 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea12.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea12.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
     }//GEN-LAST:event_jButton102ActionPerformed
 
     private void jButton105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton105ActionPerformed
@@ -2930,6 +3024,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton112ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2946,6 +3041,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea13.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+            AnalizarDESC(jTextArea13.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton112ActionPerformed
 
     private void jButton115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton115ActionPerformed
@@ -2971,6 +3073,7 @@ public class IDE extends javax.swing.JFrame {
 
     private void jButton122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton122ActionPerformed
         // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true &&(jRadioButton2.isSelected() ==false )){
          TABLA_DE_ERRORES_SINTACTICOS.clear();
         NumeroEntornosRomeo = 0;
         TABLA_ReporteTS.clear();
@@ -2987,6 +3090,13 @@ public class IDE extends javax.swing.JFrame {
         jTextArea2.setText("");
        // RepasoCompi2 Hola = new RepasoCompi2();
         Analizar(jTextArea14.getText(), jTextArea2);
+         }else if(jRadioButton1.isSelected()==false &&(jRadioButton2.isSelected() ==true) ){
+            System.out.println("Hagamos analisis2");
+             AnalizarDESC(jTextArea14.getText(), jTextArea2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciones sólo una opcion");
+        }
+
     }//GEN-LAST:event_jButton122ActionPerformed
 
     private void jButton125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton125ActionPerformed
@@ -3820,6 +3930,20 @@ public class IDE extends javax.swing.JFrame {
             
         }
     }
+   
+     public void AnalizaDESC(String entrada, JTextArea salida){
+         Gramatica parser = new Gramatica(new BufferedReader(new StringReader(entrada)));
+          Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
+        Analisis_Sintactico Sintactico = new Analisis_Sintactico (Texto);
+        
+        try{
+            Sintactico.parse();
+            this.Ejecutar(Sintactico.Raiz , salida);
+        }catch(Exception e){
+            
+        }
+     }
+     
     
         public void Analizar2(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
@@ -3849,7 +3973,7 @@ public class IDE extends javax.swing.JFrame {
     }
      public void Analizar4(String entrada,JTextArea salida){
         Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
-        Gramatica  Sintactico = new Gramatica(Texto);
+        ANALIZADOR2  Sintactico = new ANALIZADOR2(Texto);
         
         try{
             Sintactico.parse();
@@ -3860,7 +3984,17 @@ public class IDE extends javax.swing.JFrame {
             
         }
     }    
+          public void AnalizarDESC(String entrada,JTextArea salida){
+        Analizador_Lexico Texto = new Analizador_Lexico(new BufferedReader  (new StringReader(entrada)));
+        Analisis_Sintactico Sintactico = new Analisis_Sintactico (Texto);
         
+        try{
+            Sintactico.parse();
+            this.Ejecutar(Sintactico.Raiz , salida);
+        }catch(Exception e){
+            
+        }
+    }
      public void Ejecutar(NodoAbstracto raiz,JTextArea salida){
         Entorno entorno = new Entorno();
         for (NodoAbstracto sentencia : raiz.Hijos.get(0).Hijos) {// para ejecutar solo sentencias 
@@ -4056,6 +4190,8 @@ public class IDE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;

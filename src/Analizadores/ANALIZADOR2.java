@@ -14,7 +14,7 @@ import java_cup.runtime.XMLElement;
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
   */
 @SuppressWarnings({"rawtypes"})
-public class Gramatica extends java_cup.runtime.lr_parser {
+public class ANALIZADOR2 extends java_cup.runtime.lr_parser {
 
  public final Class getSymbolContainer() {
     return Simbolos.class;
@@ -22,14 +22,14 @@ public class Gramatica extends java_cup.runtime.lr_parser {
 
   /** Default constructor. */
   @Deprecated
-  public Gramatica() {super();}
+  public ANALIZADOR2() {super();}
 
   /** Constructor which sets the default scanner. */
   @Deprecated
-  public Gramatica(java_cup.runtime.Scanner s) {super(s);}
+  public ANALIZADOR2(java_cup.runtime.Scanner s) {super(s);}
 
   /** Constructor which sets the default scanner. */
-  public Gramatica(java_cup.runtime.Scanner s, java_cup.runtime.SymbolFactory sf) {super(s,sf);}
+  public ANALIZADOR2(java_cup.runtime.Scanner s, java_cup.runtime.SymbolFactory sf) {super(s,sf);}
 
   /** Production table. */
   protected static final short _production_table[][] = 
@@ -1366,12 +1366,12 @@ public class Gramatica extends java_cup.runtime.lr_parser {
   public short[][] reduce_table() {return _reduce_table;}
 
   /** Instance of action encapsulation class. */
-  protected CUP$Gramatica$actions action_obj;
+  protected CUP$ANALIZADOR2$actions action_obj;
 
   /** Action encapsulation object initializer. */
   protected void init_actions()
     {
-      action_obj = new CUP$Gramatica$actions(this);
+      action_obj = new CUP$ANALIZADOR2$actions(this);
     }
 
   /** Invoke a user supplied parse action. */
@@ -1383,7 +1383,7 @@ public class Gramatica extends java_cup.runtime.lr_parser {
     throws java.lang.Exception
   {
     /* call code in generated class */
-    return action_obj.CUP$Gramatica$do_action(act_num, parser, stack, top);
+    return action_obj.CUP$ANALIZADOR2$do_action(act_num, parser, stack, top);
   }
 
   /** Indicates start state. */
@@ -1450,71 +1450,71 @@ public class Gramatica extends java_cup.runtime.lr_parser {
 
 /** Cup generated class to encapsulate user supplied action code.*/
 @SuppressWarnings({"rawtypes", "unchecked", "unused"})
-class CUP$Gramatica$actions {
+class CUP$ANALIZADOR2$actions {
 
 
 
-  private final Gramatica parser;
+  private final ANALIZADOR2 parser;
 
   /** Constructor */
-  CUP$Gramatica$actions(Gramatica parser) {
+  CUP$ANALIZADOR2$actions(ANALIZADOR2 parser) {
     this.parser = parser;
   }
 
   /** Method 0 with the actual generated action code for actions 0 to 300. */
-  public final java_cup.runtime.Symbol CUP$Gramatica$do_action_part00000000(
-    int                        CUP$Gramatica$act_num,
-    java_cup.runtime.lr_parser CUP$Gramatica$parser,
-    java.util.Stack            CUP$Gramatica$stack,
-    int                        CUP$Gramatica$top)
+  public final java_cup.runtime.Symbol CUP$ANALIZADOR2$do_action_part00000000(
+    int                        CUP$ANALIZADOR2$act_num,
+    java_cup.runtime.lr_parser CUP$ANALIZADOR2$parser,
+    java.util.Stack            CUP$ANALIZADOR2$stack,
+    int                        CUP$ANALIZADOR2$top)
     throws java.lang.Exception
     {
       /* Symbol object for return from actions */
-      java_cup.runtime.Symbol CUP$Gramatica$result;
+      java_cup.runtime.Symbol CUP$ANALIZADOR2$result;
 
       /* select the action based on the action number */
-      switch (CUP$Gramatica$act_num)
+      switch (CUP$ANALIZADOR2$act_num)
         {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 0: // $START ::= INICIO EOF 
             {
               Object RESULT =null;
-		int start_valleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int start_valright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto start_val = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int start_valleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int start_valright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto start_val = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		RESULT = start_val;
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
           /* ACCEPT */
-          CUP$Gramatica$parser.done_parsing();
-          return CUP$Gramatica$result;
+          CUP$ANALIZADOR2$parser.done_parsing();
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 1: // INICIO ::= SENTENCIAS 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("INICIO");
                         nuevo.Hijos.add(nod);
                         parser.Raiz = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 2: // SENTENCIAS ::= SENTENCIA SENTENCIAS 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         
                         NodoAbstracto nuevo = new Nodo("SENTENCIAS");
@@ -1526,239 +1526,239 @@ class CUP$Gramatica$actions {
                         //nodsentencias.Hijos.add(nod);
                         //RESULT = nodsentencias;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // SENTENCIAS ::= SENTENCIA 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIAS");
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 4: // SENTENCIA ::= DECLARARASIGNAR 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         
                         
                         RESULT=nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // SENTENCIA ::= IMPRIM 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         
                         RESULT=nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // SENTENCIA ::= MODVECTOR 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                       
                       RESULT=nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // SENTENCIA ::= ELIF 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // SENTENCIA ::= ELIFELSE 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 9: // SENTENCIA ::= ELWHILE 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 10: // SENTENCIA ::= ELDOWHILE 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 11: // SENTENCIA ::= ELFOR 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 12: // SENTENCIA ::= ELBREAK 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 13: // SENTENCIA ::= ELCONTINUE 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 14: // SENTENCIA ::= ELSWITCH 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 15: // SENTENCIA ::= GRAFICAS 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 16: // SENTENCIA ::= DECFUNCIONES 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 17: // SENTENCIA ::= LLAMARFUNCIONES 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 18: // SENTENCIA ::= RETORNOS 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 19: // SENTENCIA ::= error puntoycoma 
@@ -1770,33 +1770,33 @@ class CUP$Gramatica$actions {
                          nuevo.Cadena   = "#Error Semantico Encontrado ver reporte";
                          RESULT= nuevo; 
                      
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("SENTENCIA",2, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 20: // RETORNOS ::= returno EXP FINAL 
             {
               NodoAbstracto RESULT =null;
-		int expresionleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int expresionright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto expresion = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int expresionleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int expresionright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto expresion = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new Retorno("RETORNO");
             nuevo.Hijos.add(expresion);
             RESULT = nuevo;
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("RETORNOS",33, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("RETORNOS",33, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 21: // LLAMARFUNCIONES ::= id parentesisabrir parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
 		
                         NodoAbstracto nod= new MostrarFuncion1("Llamado1");
                         NodoAbstracto nuevoid = new Nodo(nombre);
@@ -1806,20 +1806,20 @@ class CUP$Gramatica$actions {
                         RESULT = nod;
                     
                   
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LLAMARFUNCIONES",32, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LLAMARFUNCIONES",32, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 22: // LLAMARFUNCIONES ::= id parentesisabrir LISTAPARAMETROS parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int parametrosleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int parametrosright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int parametrosleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int parametrosright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nod= new MostrarFuncion2("Llamado1");
                         NodoAbstracto nuevoid = new Nodo(nombre);
@@ -1829,20 +1829,20 @@ class CUP$Gramatica$actions {
                         nod.linea = nombreright;
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LLAMARFUNCIONES",32, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LLAMARFUNCIONES",32, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 23: // LISTAPARAMETROS ::= LISTAPARAMETROS coma EXP 
             {
               NodoAbstracto RESULT =null;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("LISTAPARAMETROS");
                         nuevo.Hijos.add(nod);
@@ -1852,20 +1852,20 @@ class CUP$Gramatica$actions {
                         //nodsentencias.Hijos.add(nod);
                         //RESULT = nodsentencias;
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 24: // LISTAPARAMETROS ::= LISTAPARAMETROS coma DECLARARASIGNAR 
             {
               NodoAbstracto RESULT =null;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("LISTAPARAMETROS");
                         nuevo.Hijos.add(nod);
@@ -1876,52 +1876,52 @@ class CUP$Gramatica$actions {
                      //RESULT = nodsentencias;
 
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 25: // LISTAPARAMETROS ::= EXP 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 26: // LISTAPARAMETROS ::= DECLARARASIGNAR 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAPARAMETROS",31, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 27: // DECFUNCIONES ::= id igual function parentesisabrir parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                  NodoAbstracto nuevo = new Funciones1("FUNCION SIN PARAMETROS");
                  NodoAbstracto FuncionNombre = new Nodo(nombre);
@@ -1932,20 +1932,20 @@ class CUP$Gramatica$actions {
                  RESULT = nuevo; 
 
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 28: // DECFUNCIONES ::= id igual parentesisabrir parentesiscerrar igual MayorQue llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                  NodoAbstracto nuevo = new Funciones1("FUNCION SIN PARAMETROS");
                  NodoAbstracto FuncionNombre = new Nodo(nombre);
@@ -1956,23 +1956,23 @@ class CUP$Gramatica$actions {
                  RESULT = nuevo; 
 
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 29: // DECFUNCIONES ::= id igual function parentesisabrir LISTAPARAMETROS parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int parametrosleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int parametrosright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int parametrosleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int parametrosright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                     NodoAbstracto nuevo = new Funciones2("FUNCION con PARAMETROS");
                     NodoAbstracto FuncionNombre = new Nodo(nombre);
@@ -1983,23 +1983,23 @@ class CUP$Gramatica$actions {
                     nuevo.linea = nombreright;
                     RESULT = nuevo;
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 30: // DECFUNCIONES ::= id parentesisabrir LISTAPARAMETROS parentesiscerrar igual MayorQue llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int parametrosleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int parametrosright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int parametrosleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int parametrosright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                     NodoAbstracto nuevo = new Funciones2("FUNCION con PARAMETROS");
                    NodoAbstracto FuncionNombre = new Nodo(nombre);
@@ -2010,23 +2010,23 @@ class CUP$Gramatica$actions {
                    nuevo.linea = nombreright;
                    RESULT = nuevo;
                
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("DECFUNCIONES",30, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 31: // GRAFICAS ::= pie parentesisabrir id coma id coma EXP parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int valoresleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int valoresright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		String valores = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int vectorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int vectorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		String vector = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int tituloleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int tituloright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int valoresleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int valoresright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		String valores = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int vectorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int vectorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		String vector = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int tituloleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int tituloright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                 NodoAbstracto nuevo = new pie("PIE");
                 NodoAbstracto Datos = new Nodo(valores);
@@ -2040,29 +2040,29 @@ class CUP$Gramatica$actions {
                 RESULT = nuevo;            
 
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 32: // GRAFICAS ::= barplot parentesisabrir id coma EXP coma EXP coma EXP coma id parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).value;
-		int vectorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int vectorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		NodoAbstracto vector = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int tituloleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int tituloright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int cuatroleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int cuatroright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto cuatro = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int cincoleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int cincoright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		String cinco = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).value;
+		int vectorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int vectorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		NodoAbstracto vector = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int tituloleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int tituloright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int cuatroleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int cuatroright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto cuatro = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int cincoleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int cincoright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		String cinco = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
          NodoAbstracto nuevo = new barras("BARRAS");
                 NodoAbstracto Datos = new Nodo(nombre);
@@ -2079,23 +2079,23 @@ class CUP$Gramatica$actions {
                 nuevo.linea = nombreright;
                 RESULT = nuevo;    
     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-12)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-12)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 33: // GRAFICAS ::= hist parentesisabrir id coma EXP coma EXP parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int vectorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int vectorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto vector = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int tituloleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int tituloright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int vectorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int vectorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto vector = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int tituloleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int tituloright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto titulo = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                 NodoAbstracto nuevo = new histograma("HISTOGRAMA");
                 NodoAbstracto Datos = new Nodo(nombre);
@@ -2108,29 +2108,29 @@ class CUP$Gramatica$actions {
                 nuevo.linea = nombreright;
                 RESULT = nuevo;   
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // GRAFICAS ::= plot parentesisabrir id coma EXP coma EXP coma EXP coma EXP parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).value;
-		int par1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int par1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		NodoAbstracto par1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int par2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int par2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto par2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int par3left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int par3right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto par3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int par4left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int par4right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto par4 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).value;
+		int par1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int par1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		NodoAbstracto par1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int par2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int par2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto par2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int par3left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int par3right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto par3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int par4left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int par4right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto par4 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
         NodoAbstracto nuevo = new plot("PLOT");
                 NodoAbstracto Datos = new Nodo(nombre);
@@ -2147,43 +2147,43 @@ class CUP$Gramatica$actions {
                 nuevo.linea = nombreright;
                 RESULT = nuevo;   
 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-12)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("GRAFICAS",29, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-12)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 35: // ELSWITCH ::= SWITCH parentesisabrir EXP parentesiscerrar llaveabrir EXPRESIONESSWITCH llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new Switch("SWITCH");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
                 RESULT = nuevo;
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELSWITCH",27, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELSWITCH",27, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 36: // ELSWITCH ::= SWITCH parentesisabrir EXP parentesiscerrar llaveabrir EXPRESIONESSWITCH DEF DOSP SENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentdefleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentdefright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentdef = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentdefleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentdefright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentdef = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new Switch("SWITCH");
                 nuevo.Hijos.add(exp1);
@@ -2192,23 +2192,23 @@ class CUP$Gramatica$actions {
                 RESULT = nuevo;
             
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELSWITCH",27, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-9)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELSWITCH",27, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-9)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 37: // EXPRESIONESSWITCH ::= EXPRESIONESSWITCH CASE EXP DOSP SENTENCIAS 
             {
               NodoAbstracto RESULT =null;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("CASE");
                         nuevo.Hijos.add(exp1);
@@ -2216,29 +2216,29 @@ class CUP$Gramatica$actions {
                         nodsentencias.Hijos.add(nuevo);
                         RESULT = nodsentencias;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXPRESIONESSWITCH",28, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXPRESIONESSWITCH",28, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 38: // EXPRESIONESSWITCH ::= CASE EXP DOSP SENTENCIAS 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("CASE");
                         nuevo.Hijos.add(exp1);
                         nuevo.Hijos.add(sentencias);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXPRESIONESSWITCH",28, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXPRESIONESSWITCH",28, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 39: // ELBREAK ::= BREAK FINAL 
@@ -2248,9 +2248,9 @@ class CUP$Gramatica$actions {
              NodoAbstracto nuevo = new Break("Break");
              RESULT= nuevo; 
           
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELBREAK",24, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELBREAK",24, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 40: // ELCONTINUE ::= CONTINUE FINAL 
@@ -2260,23 +2260,23 @@ class CUP$Gramatica$actions {
             NodoAbstracto nuevo = new Continue("Break");
              RESULT= nuevo; 
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELCONTINUE",25, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELCONTINUE",25, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 41: // ELFOR ::= FOR parentesisabrir EXP IN EXP parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("FOR");
             nuevo.Hijos.add(exp1);
@@ -2291,20 +2291,20 @@ class CUP$Gramatica$actions {
             RESULT = nuevo;
     
          
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELFOR",23, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELFOR",23, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 42: // ELDOWHILE ::= DO llaveabrir LISTASENTENCIAS llavecerrar WHILE parentesisabrir EXP parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
            NodoAbstracto nuevo = new NodoLimpio("DO-WHILE");
             nuevo.Hijos.add(exp1);
@@ -2319,20 +2319,20 @@ class CUP$Gramatica$actions {
             RESULT = nuevo;
 
 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELDOWHILE",22, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELDOWHILE",22, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 43: // ELWHILE ::= WHILE parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIASwhile llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("WHILE");
             nuevo.Hijos.add(exp1);
@@ -2343,20 +2343,20 @@ class CUP$Gramatica$actions {
            
             RESULT = nuevo;
     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELWHILE",21, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELWHILE",21, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 44: // LISTASENTENCIASwhile ::= SENTENCIA LISTASENTENCIASwhile 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIA");
                         nuevo.Hijos.add(nod);
@@ -2364,17 +2364,17 @@ class CUP$Gramatica$actions {
                         
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIASwhile",26, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIASwhile",26, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 45: // LISTASENTENCIASwhile ::= SENTENCIA 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIA");
                         nuevo.Hijos.add(nod);
@@ -2382,20 +2382,20 @@ class CUP$Gramatica$actions {
                        // Expresiones2.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIASwhile",26, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIASwhile",26, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 46: // ELIF ::= IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("IF");
             nuevo.Hijos.add(exp1);
@@ -2406,23 +2406,23 @@ class CUP$Gramatica$actions {
             
             RESULT = nuevo;
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 47: // ELIF ::= IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar ELSE llaveabrir LISTASENTENCIAS2 llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).value;
-		int sentencias2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentencias2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).value;
+		int sentencias2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentencias2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("IF-ELSE");
             nuevo.Hijos.add(exp1);
@@ -2433,23 +2433,23 @@ class CUP$Gramatica$actions {
            
             RESULT = nuevo;
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 48: // ELIF ::= IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar LISTAELSES 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int sentencias2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int sentencias2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int sentencias2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int sentencias2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("IFelseIF");
             nuevo.Hijos.add(exp1);
@@ -2459,26 +2459,26 @@ class CUP$Gramatica$actions {
             nuevo.linea = exp1right;
             RESULT = nuevo;
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 49: // ELIF ::= IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS llavecerrar LISTAELSES ELSE llaveabrir LISTASENTENCIAS3 llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-9)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-9)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-9)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int sentencias2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int sentencias2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentaleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentaright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto senta = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-9)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-9)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-9)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int sentencias2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int sentencias2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto sentencias2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentaleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentaright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto senta = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
             NodoAbstracto nuevo = new NodoLimpio("IFelseIF");
             nuevo.Hijos.add(exp1);
@@ -2489,23 +2489,23 @@ class CUP$Gramatica$actions {
             nuevo.linea = exp1right;            
             RESULT = nuevo;
         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-11)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("ELIF",17, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-11)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 50: // LISTAELSES ::= LISTAELSES ELSE IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS2 llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int noditoleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int noditoright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		NodoAbstracto nodito = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int noditoleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int noditoright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		NodoAbstracto nodito = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new NodoLimpio("ELSE");
                 nuevo.Hijos.add(exp1);
@@ -2513,40 +2513,40 @@ class CUP$Gramatica$actions {
                 nodito.Hijos.add(nuevo);
                 RESULT = nodito;
               
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAELSES",20, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAELSES",20, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 51: // LISTAELSES ::= ELSE IF parentesisabrir EXP parentesiscerrar llaveabrir LISTASENTENCIAS2 llavecerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int sentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int sentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int sentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto sentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new NodoLimpio("ELSE");
                 nuevo.Hijos.add(exp1);
                 nuevo.Hijos.add(sentencias);
                 RESULT = nuevo;
               
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAELSES",20, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAELSES",20, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 52: // LISTASENTENCIAS ::= SENTENCIA LISTASENTENCIAS 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIAS");
                         
@@ -2560,17 +2560,17 @@ class CUP$Gramatica$actions {
                         Expresiones.add(nod);
                        // Expresiones2.add(nod);
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS",18, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS",18, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 53: // LISTASENTENCIAS ::= SENTENCIA 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIA");
                         nuevo.Hijos.add(nod);
@@ -2578,20 +2578,20 @@ class CUP$Gramatica$actions {
                        // Expresiones2.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS",18, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS",18, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 54: // LISTASENTENCIAS3 ::= SENTENCIA LISTASENTENCIAS3 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                       NodoAbstracto nuevo = new Nodo("SENTENCIAS");
                         nuevo.Hijos.add(nod);
@@ -2599,17 +2599,17 @@ class CUP$Gramatica$actions {
                         
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS3",16, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS3",16, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 55: // LISTASENTENCIAS3 ::= SENTENCIA 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIA");
                         nuevo.Hijos.add(nod);
@@ -2617,20 +2617,20 @@ class CUP$Gramatica$actions {
                        // Expresiones2.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS3",16, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS3",16, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 56: // LISTASENTENCIAS2 ::= SENTENCIA LISTASENTENCIAS2 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("LISTASENTENCIAS");
                         nuevo.Hijos.add(nod);
@@ -2638,17 +2638,17 @@ class CUP$Gramatica$actions {
                         
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS2",15, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS2",15, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 57: // LISTASENTENCIAS2 ::= SENTENCIA 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("SENTENCIA");
                         nuevo.Hijos.add(nod);
@@ -2656,23 +2656,23 @@ class CUP$Gramatica$actions {
                         Expresiones2.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS2",15, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTASENTENCIAS2",15, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 58: // MODVECTOR ::= id corcheteabrir EXP corchetecerrar igual EXP FINAL 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new ModificarVector("Vecto");
                 NodoAbstracto nuevoid = new Nodo(valor);
@@ -2685,23 +2685,23 @@ class CUP$Gramatica$actions {
                 RESULT=nuevo;
                 
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("MODVECTOR",11, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("MODVECTOR",11, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 59: // MODVECTOR ::= id corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar igual EXP FINAL 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                 NodoAbstracto nuevo = new ModificarVector("Vecto");
                 NodoAbstracto nuevoid = new Nodo(valor);
@@ -2715,20 +2715,20 @@ class CUP$Gramatica$actions {
                 RESULT=nuevo;
                 
             
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("MODVECTOR",11, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("MODVECTOR",11, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 60: // LISTAEXPRESIONES ::= EXP coma LISTAEXPRESIONES 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int nodsentenciasleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodsentenciasright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nodsentencias = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("EXP");
                         nuevo.Hijos.add(nod);
@@ -2741,17 +2741,17 @@ class CUP$Gramatica$actions {
                         //RESULT = nodsentencias;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAEXPRESIONES",10, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAEXPRESIONES",10, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 61: // LISTAEXPRESIONES ::= EXP 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         //NodoAbstracto nuevo = new Nodo("EXP");
                         //nuevo.Hijos.add(nod);
@@ -2763,20 +2763,20 @@ class CUP$Gramatica$actions {
                         nuevo.Hijos.add(nod);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("LISTAEXPRESIONES",10, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("LISTAEXPRESIONES",10, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 62: // DECLARARASIGNAR ::= id igual EXP FINAL 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new DeclararAsignar("DECLARARASIGNAR");
                         NodoAbstracto nuevoid = new Nodo(valor);
@@ -2794,35 +2794,35 @@ class CUP$Gramatica$actions {
                        // Expresiones3.clear();
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("DECLARARASIGNAR",5, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("DECLARARASIGNAR",5, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 63: // FINAL ::= puntoycoma 
             {
               NodoAbstracto RESULT =null;
 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("FINAL",7, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("FINAL",7, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 64: // FINAL ::= 
             {
               NodoAbstracto RESULT =null;
 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("FINAL",7, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("FINAL",7, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 65: // IMPRIM ::= imprimir parentesisabrir EXP parentesiscerrar FINAL 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
                         nuevo.Hijos.add(exp1);
@@ -2830,20 +2830,20 @@ class CUP$Gramatica$actions {
                         nuevo.linea = exp1right;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("IMPRIM",6, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("IMPRIM",6, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 66: // EXP ::= id parentesisabrir LISTAPARAMETROS parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int parametrosleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int parametrosright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int parametrosleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int parametrosright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto parametros = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nod= new MostrarFuncion2("Llamado1");
                         NodoAbstracto nuevoid = new Nodo(nombre);
@@ -2853,17 +2853,17 @@ class CUP$Gramatica$actions {
                         nod.linea = nombreright;
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 67: // EXP ::= id parentesisabrir parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nombreleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int nombreright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		String nombre = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nod= new MostrarFuncion1("Llamado1");
                         NodoAbstracto nuevoid = new Nodo(nombre);
@@ -2873,20 +2873,20 @@ class CUP$Gramatica$actions {
                         RESULT = nod;
 
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 68: // EXP ::= LISTA parentesisabrir LISTAEXPRESIONES parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int valo4left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int valo4right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		String valo4 = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int listaValoresleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int listaValoresright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto listaValores = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valo4left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int valo4right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		String valo4 = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int listaValoresleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int listaValoresright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto listaValores = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Lista");
                         NodoAbstracto nuevo2 = new Nodo("list(");
@@ -2897,20 +2897,20 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
 
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 69: // EXP ::= FuncionC parentesisabrir LISTAEXPRESIONES parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int valo4left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int valo4right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		Object valo4 = (Object)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int listaValoresleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int listaValoresright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto listaValores = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valo4left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int valo4right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		Object valo4 = (Object)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int listaValoresleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int listaValoresright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto listaValores = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("FuncionC");
                         NodoAbstracto nuevo2 = new Nodo("c(");
@@ -2924,23 +2924,23 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
 
                 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 70: // EXP ::= EXP PREGUNTAC EXP DOSP EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp3left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp3right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp3left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp3right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Ternario("EXP");
                         nuevo.Hijos.add(exp1);
@@ -2949,17 +2949,17 @@ class CUP$Gramatica$actions {
                          Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 71: // EXP ::= NOT EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new NOT("EXP");
                         NodoAbstracto nuevooperador = new Nodo("!");
@@ -2970,17 +2970,17 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
 
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 72: // EXP ::= menos EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Negativo("EXP");
                         NodoAbstracto nuevooperador = new Nodo("-");
@@ -2990,20 +2990,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 73: // EXP ::= EXP mas EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("+");
@@ -3014,20 +3014,20 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
                         
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 74: // EXP ::= EXP menos EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("-");
@@ -3037,20 +3037,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";                    
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 75: // EXP ::= EXP por EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("*");
@@ -3060,20 +3060,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 76: // EXP ::= EXP div EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("/");
@@ -3083,20 +3083,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";                      
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 77: // EXP ::= EXP modulo EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("%%");
@@ -3106,20 +3106,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";                   
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 78: // EXP ::= EXP potencia EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("^");
@@ -3129,20 +3129,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";                 
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 79: // EXP ::= EXP igualdad EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("==");
@@ -3154,20 +3154,20 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
                         
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 80: // EXP ::= EXP Noigualdad EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("!=");
@@ -3178,20 +3178,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 81: // EXP ::= EXP MayorQue EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo(">");
@@ -3202,20 +3202,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 82: // EXP ::= EXP MenorQue EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("<");
@@ -3226,20 +3226,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 83: // EXP ::= EXP MayorIgualQue EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo(">=");
@@ -3250,20 +3250,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 84: // EXP ::= EXP MenorIgualQue EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("<=");
@@ -3274,20 +3274,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 85: // EXP ::= EXP AND EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("&&");
@@ -3299,20 +3299,20 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
                         
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 86: // EXP ::= EXP OR EXP 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Aritmetica("EXP");
                         NodoAbstracto nuevooperador = new Nodo("||");
@@ -3324,47 +3324,47 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
                         
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 87: // EXP ::= parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int exp1left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp1right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int exp1left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp1right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp1 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         Manejor_Error = "Error en expresion";
                         RESULT = exp1;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 88: // EXP ::= NUMERO 
             {
               NodoAbstracto RESULT =null;
-		int nodleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int nodright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int nodleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int nodright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		NodoAbstracto nod = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         Manejor_Error = "Error en expresion";
                         RESULT = nod;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 89: // EXP ::= id 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("id");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3374,17 +3374,17 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                    
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 90: // EXP ::= nulo 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("Cadena");
                         NodoAbstracto nuevovalor = new Nodo("");
@@ -3393,20 +3393,20 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 91: // EXP ::= id corcheteabrir EXP corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Vector");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3420,23 +3420,23 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 92: // EXP ::= id corcheteabrir EXP corchetecerrar corcheteabrir EXP corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-4)).value;
-		int pos2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int pos2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-4)).value;
+		int pos2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int pos2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("VectorSlushi");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3450,23 +3450,23 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 93: // EXP ::= id corcheteabrir EXP corchetecerrar corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-6)).value;
-		int pos2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int pos2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-6)).value;
+		int pos2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int pos2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nuevo = new Nodo("VectorSlushi");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3480,23 +3480,23 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 94: // EXP ::= id corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar corcheteabrir EXP corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).value;
-		int pos2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int pos2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).value;
+		int pos2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int pos2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("VectorSlushi");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3510,20 +3510,20 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-8)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-8)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 95: // EXP ::= id corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nuevo = new Nodo("VectorIronMan");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3537,23 +3537,23 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 96: // EXP ::= id corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar corcheteabrir corcheteabrir EXP corchetecerrar corchetecerrar 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)).value;
-		int posleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).left;
-		int posright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).right;
-		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-7)).value;
-		int pos2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).left;
-		int pos2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).right;
-		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-2)).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)).value;
+		int posleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).left;
+		int posright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).right;
+		NodoAbstracto pos = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-7)).value;
+		int pos2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).left;
+		int pos2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).right;
+		NodoAbstracto pos2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-2)).value;
 		
                         NodoAbstracto nuevo = new Nodo("VectorSlushi2");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3567,17 +3567,17 @@ class CUP$Gramatica$actions {
                         nuevo.linea = valorright;
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-10)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-10)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 97: // EXP ::= cadena 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         //valor =  valor.replaceAll("\\\"", "\\@");
                         valor = valor.substring(1, valor.length()-1);
@@ -3589,17 +3589,17 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 98: // EXP ::= ttrue 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         
                         NodoAbstracto nuevo = new Nodo("Booleano");
@@ -3609,17 +3609,17 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 99: // EXP ::= tfalse 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("Booleano");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3628,17 +3628,17 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 100: // EXP ::= typeof parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("TypeOF");
                         nuevo.Hijos.add(nuevovalor);
@@ -3646,43 +3646,43 @@ class CUP$Gramatica$actions {
                         RESULT = nuevo;
 
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 101: // EXP ::= length parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Length");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 102: // EXP ::= stringlength parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("StringLength");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 103: // EXP ::= DEF 
@@ -3694,20 +3694,20 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
 
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 104: // EXP ::= remove parentesisabrir EXP coma EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Remove");
                         nuevo.Hijos.add(nuevovalor);
@@ -3715,85 +3715,85 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 105: // EXP ::= tolowercase parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("ToLowerCase");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 106: // EXP ::= touppercase parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("ToUpperCase");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "cadena";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 107: // EXP ::= trunk parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Trunk");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 108: // EXP ::= round parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Round");
                         nuevo.Hijos.add(nuevovalor);
                         nuevo.TipoDato = "entero";
                         RESULT = nuevo;
                         
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 109: // EXP ::= mean parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Mean");
                         nuevo.Hijos.add(nuevovalor);
@@ -3801,20 +3801,20 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "decimal";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 110: // EXP ::= mean parentesisabrir EXP coma EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int limiteleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int limiteright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto limite = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int limiteleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int limiteright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto limite = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Mean");
                         nuevo.Hijos.add(nuevovalor);
@@ -3822,17 +3822,17 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "decimal";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 111: // EXP ::= median parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Median");
                         nuevo.Hijos.add(nuevovalor);
@@ -3840,20 +3840,20 @@ class CUP$Gramatica$actions {
                         nuevo.Hijos.add(null);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 112: // EXP ::= median parentesisabrir EXP coma EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int exp3left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp3right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int exp3left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp3right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp3 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Median");
                         nuevo.Hijos.add(nuevovalor);
@@ -3861,17 +3861,17 @@ class CUP$Gramatica$actions {
                         nuevo.Hijos.add(exp3);
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 113: // EXP ::= mode parentesisabrir EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Mode");
                         nuevo.Hijos.add(nuevovalor);
@@ -3879,20 +3879,20 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "mode";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 114: // EXP ::= mode parentesisabrir EXP coma EXP parentesiscerrar 
             {
               NodoAbstracto RESULT =null;
-		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).left;
-		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).right;
-		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-3)).value;
-		int exp2left = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).left;
-		int exp2right = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).right;
-		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-1)).value;
+		int nuevovalorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).left;
+		int nuevovalorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).right;
+		NodoAbstracto nuevovalor = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-3)).value;
+		int exp2left = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).left;
+		int exp2right = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).right;
+		NodoAbstracto exp2 = (NodoAbstracto)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-1)).value;
 		
                         NodoAbstracto nuevo = new Nodo("Mode");
                         nuevo.Hijos.add(nuevovalor);
@@ -3900,17 +3900,17 @@ class CUP$Gramatica$actions {
                         nuevo.TipoDato = "mode";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.elementAt(CUP$Gramatica$top-5)), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("EXP",13, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.elementAt(CUP$ANALIZADOR2$top-5)), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 115: // NUMERO ::= entero 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("Entero");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3919,17 +3919,17 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("NUMERO",14, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("NUMERO",14, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 116: // NUMERO ::= decimal 
             {
               NodoAbstracto RESULT =null;
-		int valorleft = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).left;
-		int valorright = ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()).right;
-		String valor = (String)((java_cup.runtime.Symbol) CUP$Gramatica$stack.peek()).value;
+		int valorleft = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).left;
+		int valorright = ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()).right;
+		String valor = (String)((java_cup.runtime.Symbol) CUP$ANALIZADOR2$stack.peek()).value;
 		
                         NodoAbstracto nuevo = new Nodo("Decimal");
                         NodoAbstracto nuevovalor = new Nodo(valor);
@@ -3938,31 +3938,31 @@ class CUP$Gramatica$actions {
                         Manejor_Error = "Error en expresion";
                         RESULT = nuevo;
                     
-              CUP$Gramatica$result = parser.getSymbolFactory().newSymbol("NUMERO",14, ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), ((java_cup.runtime.Symbol)CUP$Gramatica$stack.peek()), RESULT);
+              CUP$ANALIZADOR2$result = parser.getSymbolFactory().newSymbol("NUMERO",14, ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), ((java_cup.runtime.Symbol)CUP$ANALIZADOR2$stack.peek()), RESULT);
             }
-          return CUP$Gramatica$result;
+          return CUP$ANALIZADOR2$result;
 
           /* . . . . . .*/
           default:
             throw new Exception(
-               "Invalid action number "+CUP$Gramatica$act_num+"found in internal parse table");
+               "Invalid action number "+CUP$ANALIZADOR2$act_num+"found in internal parse table");
 
         }
     } /* end of method */
 
   /** Method splitting the generated action code into several parts. */
-  public final java_cup.runtime.Symbol CUP$Gramatica$do_action(
-    int                        CUP$Gramatica$act_num,
-    java_cup.runtime.lr_parser CUP$Gramatica$parser,
-    java.util.Stack            CUP$Gramatica$stack,
-    int                        CUP$Gramatica$top)
+  public final java_cup.runtime.Symbol CUP$ANALIZADOR2$do_action(
+    int                        CUP$ANALIZADOR2$act_num,
+    java_cup.runtime.lr_parser CUP$ANALIZADOR2$parser,
+    java.util.Stack            CUP$ANALIZADOR2$stack,
+    int                        CUP$ANALIZADOR2$top)
     throws java.lang.Exception
     {
-              return CUP$Gramatica$do_action_part00000000(
-                               CUP$Gramatica$act_num,
-                               CUP$Gramatica$parser,
-                               CUP$Gramatica$stack,
-                               CUP$Gramatica$top);
+              return CUP$ANALIZADOR2$do_action_part00000000(
+                               CUP$ANALIZADOR2$act_num,
+                               CUP$ANALIZADOR2$parser,
+                               CUP$ANALIZADOR2$stack,
+                               CUP$ANALIZADOR2$top);
     }
 }
 

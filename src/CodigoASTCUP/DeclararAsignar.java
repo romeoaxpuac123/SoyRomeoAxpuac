@@ -2096,10 +2096,52 @@ public class DeclararAsignar extends NodoAbstracto{
            return "FINDECASADF";
        }
        
+       if(Tipo1.contains("PERRASOLA")){
+        String Pena = Tipo1.replaceAll("PERRASOLA", "");
+        entorno.ModificarValorLista(Identificador, entorno.ObtenerLista(Pena), "Lista", "GACHO");
+        return "FINDECA";
+       }
        
-       
-       if(Tipo1.contains("Lista")){
+       if(Tipo1.contains("Lista")| Tipo1.contains("SHAKA") | Tipo1.contains("ELHOUR")){
            System.out.println("es una lista" + val1 + "<-NUM>"+ this.Hijos.get(1).id );
+           if(val1.contains("ELHOUR")){
+               ArrayList <NodoAbstracto> ExpresionesELHOUR = new ArrayList();
+               ExpresionesELHOUR = entorno.ObtenerLista("ELHOUR");
+               System.out.println("ExpresionesELHOUR->" + ExpresionesELHOUR.size());
+               for(int i = 0; i < ExpresionesELHOUR.size(); i++){
+                   String Salida = ExpresionesELHOUR.get(i).Ejecutar(entorno, salida);
+                   System.out.println("PUMPU.M->" + Salida);
+               }
+               
+               //entorno.MostrarVectoresLista(entorno, salida);
+               if(entorno.ExisteVector(Identificador)==false){
+                               entorno.Agregar2(Identificador, ExpresionesELHOUR, "cadena", "AF");
+                            }else{
+                              entorno.ModificarValorLista(Identificador, ExpresionesELHOUR, "cadena", "AF");
+                            }
+               entorno.MostrarVectoresLista(entorno, salida);
+               return "FINDECA";
+           }
+           if(val1.contains("SHAKALACA")){
+               ArrayList <NodoAbstracto> ExpresionesSHAKA = new ArrayList();
+               ExpresionesSHAKA = entorno.ObtenerLista("SHAKALAKA");
+               System.out.println("ExpresionesSHAAK->" + ExpresionesSHAKA.size());
+               for(int i = 0; i < ExpresionesSHAKA.size(); i++){
+                   String Salida = ExpresionesSHAKA.get(i).Ejecutar(entorno, salida);
+                   System.out.println("PUMPU.M->" + Salida);
+               }
+               
+               //entorno.MostrarVectoresLista(entorno, salida);
+               if(entorno.ExisteVector(Identificador)==false){
+                               entorno.Agregar2(Identificador, ExpresionesSHAKA, "cadena", "AF");
+                            }else{
+                              entorno.ModificarValorLista(Identificador, ExpresionesSHAKA, "cadena", "AF");
+                            }
+               entorno.MostrarVectoresLista(entorno, salida);
+               return "FINDECA";
+           }
+           
+           
            ArrayList <NodoAbstracto> Expresionesxxx = new ArrayList();
            if(entorno.ExisteVector(val1)){
                if(entorno.ObtenerListaN(val1)==0){
@@ -2127,9 +2169,9 @@ public class DeclararAsignar extends NodoAbstracto{
                 return "findeca";
            }
            else{
-               salida.append("ERROR AL INVOCOAR AL VECTOR" + val1 +"\n");
+               salida.append("ERROR AL INVOCOAR AL VECTOR " + val1 +"\n");
                 //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
-                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "ERROR AL INVOCOAR AL VECTOR" + val1 );
+                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "ERROR AL INVOCOAR AL VECTOR " + val1 );
                 TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
                 return "#Error";
            }

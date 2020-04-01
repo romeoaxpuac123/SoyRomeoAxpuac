@@ -6,121 +6,559 @@ options {
 PARSER_BEGIN(Gramatica)
 /** Analizador de expresiones aritmeticas sencillas. */
 package Analizador; 
+
+
+import java.util.ArrayList;
 import CodigoASTCUP.*;
 import Codigo.*;
+
 
 public class Gramatica {
 }
 PARSER_END(Gramatica)
 
 /** Lexico */
-SKIP : {
-      " "
-    | "\t"
-    | "\r"
-    | "\n"
+
+
+MORE :
+{
+    "\"" :STRING_STATE
 }
 
 TOKEN : {
       <NUMERO: (["0"-"9"])+>
     | <DECIMAL: (["0"-"9"])+"."(["0"-"9"])+>
-    | <PRINT: "print">
+    | <ENTERO: "Numero">
+    | <CADENA: "Cadena">
+    | <IMPRIMIR: "print">
+    | <MIENTRAS: "while">
+    | <FUNCION: "Funcion">
+    | <RETORNO: "Return">
+    | <BREAK: "Break">
+| <CONTINUE: "continue">
+    | <SI: "if">
+    | <SINO: "else">
     | <PCOMA: ";">
     | <PARENI: "(">
     | <PAREND: ")">
     | <CORI: "[">
     | <CORD: "]">
+    | <LLAVEI: "{">
+    | <LLAVED: "}">
     | <MAS: "+">
     | <MENOS: "-">
     | <POR: "*">
     | <DIV: "/">
+    | <IGUAL: "=">
+    | <MENORQUE: "<">
+    | <MAYORQUE: ">">
+    | <MENORIGUAL: "<=">
+    | <MAYORIGUAL: ">=">
+    | <IGUALACION: "==">
+    | <DIFERENCIACION: "!=">
+    | <COMA: ",">
+    | <AND: "&&">
+    | <OR: "||">
+    | <NOT: "!" >
+    | <IDENTIFICADOR: ["a"-"z","A"-"Z", "_"] ( ["a"-"z","A"-"Z", "_"] | ["0"-"9"] )* >
+    
+}
+
+SKIP : {
+      " "
+    | "\t"
+    | "\r"
+    | "\n"
+    | <"//" (~["\n", "\r"])*>
+    | <"/*" (~["*"])* "*" ("*" | ~["*","/"] (~["*"])* "*")* "/">
+    | <(~[])> {System.out.println("error");}
+}
+
+<STRING_STATE> MORE:
+{
+    <~["\""]>
+}
+
+<STRING_STATE> TOKEN:
+{
+   <STRING:"\""> : DEFAULT 
 }
 /** Fin Lexico */
+
 
 /** Producción inicial 
     Analizar -> (Instruccion)+ EOF
 */
-void Analizar() :
+
+ArrayList<NodoAbstracto> Analizar(ArrayList<NodoAbstracto> ins) :
+{ NodoAbstracto e;}
+{
+    try {
+         (e=Instruccion() {ins.add(e);})+ <EOF> {return ins;}
+    } catch (ParseException exc) {
+            Token t;
+            System.out.println(exc.toString());
+            do {
+                t = getNextToken();
+                if(t.kind == EOF){
+                 return ins;
+                }
+             } while (t.kind != PCOMA && t!=null && t.kind != EOF );
+            return Analizar(ins);
+    }
+}
+
+/** Instruccion -> imprimir 
+                 | declaracion
+                 | asignacion
+                 | si
+                 | mientras
+*/
+NodoAbstracto Instruccion() :
+{NodoAbstracto e;}
+{
+  e=Imprimir() {return e;}
+  |
+  LOOKAHEAD(2)e=GrupoSentencias() <PCOMA> {return e;}
+  | 
+  e=Declaracion() {return e;}
+  | 
+  e=DECLARARASIGNAR() {return e;}
+  | 
+  e=ELIF() {return e;}
+  | 
+  e=ElWhile() {return e;}
+  |
+  e=Funcion() {return e;}
+  | 
+  e=retorno() {return e;}
+  | 
+  e=detener() {return e;}
+  | e=Continue() {return e;}
+}
+
+/** Tipo -> numero
+         |  cadena
+*/
+String Tipo() :
 {}
 {
-  (Instruccion())+ <EOF>
-}
-
-/** Instruccion -> evaluar [ Expresion ]; */
-void Instruccion() :
-{String e;}
-{
-  <PRINT> <CORI> e = Primitivo() <CORD> <PCOMA> {System.out.println("El valor de la expresion es: " + e);}
-}
-
-
-
-String Primitivo() :
-{String e;}
-{
-    <NUMERO> {return token.image;}
+    <ENTERO> {return  "Entero";}
     |
-    <DECIMAL> {return token.image;}
+    <CADENA> {return "Cadena";}
+}
+
+/** Imprimir -> imprimir ( Expresion ); */
+NodoAbstracto Imprimir() :
+{NodoAbstracto e;}
+{
+    <IMPRIMIR> <PARENI> e=Expresion() <PAREND> <PCOMA> {
+                        NodoAbstracto nuevo = new Imprimir("IMPRIMIR");
+                        nuevo.Hijos.add(e);
+                        return nuevo;
     
+    }
+}
+
+/** Declaracion -> tipo id = expresion; */
+NodoAbstracto Declaracion() :
+{NodoAbstracto dec, e = null; String t; Token id;}
+{
+  t=Tipo() id=<IDENTIFICADOR> (<IGUAL> e=Expresion())? <PCOMA> {
+     NodoAbstracto nuevo = new DeclararAsignar("DECLARARASIGNAR");
+                        NodoAbstracto nuevoid = new Nodo(id.image);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(e);
+                        return nuevo;
+    }
+}
+
+/** Asignacion -> id = expresion; */
+NodoAbstracto DECLARARASIGNAR() :
+{NodoAbstracto e; Token id;}
+{
+  id=<IDENTIFICADOR> <IGUAL> e=Expresion() <PCOMA> {
+                        NodoAbstracto nuevo = new DeclararAsignar("DECLARARASIGNAR");
+                        NodoAbstracto nuevoid = new Nodo(id.image);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(e);
+                        return nuevo;
+
+    }
+}
+
+/** Si -> if(condicion) instrucciones (else if(condicion) instrucciones)* (else instrucciones)? */
+NodoAbstracto ELIF() :
+{NodoAbstracto e, If; ArrayList<NodoAbstracto> insIf, insElse = new ArrayList<NodoAbstracto>();}
+{
+    <SI> <PARENI> e=Expresion() <PAREND> insIf=Bloque() 
+    (
+        LOOKAHEAD(2) <SINO> If=ELIF() {insElse.add(If);}
+        |
+        LOOKAHEAD(2) <SINO> insElse=Bloque()
+    )?
+
+    {
+             NodoAbstracto nuevo = new SentenciaIF("IF");
+            nuevo.Hijos.add(e);
+            nuevo.Expresiones = insIf;
+            nuevo.Expresiones2 = insElse;
+            return nuevo;
+
+     }
+}
+
+/** While -> while(condicion) instrucciones */
+NodoAbstracto ElWhile() :
+{NodoAbstracto e; ArrayList<NodoAbstracto> ins;}
+{
+    <MIENTRAS> <PARENI> e=Expresion() <PAREND> ins=Bloque() 
+    {
+            NodoAbstracto nuevo = new While("WHILE");
+            nuevo.Hijos.add(e);
+            nuevo.Expresiones = ins;
+            return nuevo;
+    }
 }
 
 
-/** Expresion -> ExpresionMultiplicativa ('+' ExpresionMultiplicativa)*
-              |  ExpresionMultiplicativa ('-' ExpresionMultiplicativa)*
+/** Bloque -> { (Instruccion)+ }
 */
-/*
-double Expresion() :
-{double e, e1;}
+ArrayList<NodoAbstracto> Bloque() :
+{ArrayList<NodoAbstracto> insBloque = new ArrayList<NodoAbstracto>(); NodoAbstracto e;}
+{
+  <LLAVEI> (e=Instruccion() {insBloque.add(e);})* <LLAVED> {return insBloque;}
+}
+
+/** Funcion -> funcion nombre (params){INSTRUCCIONES}
+*/
+
+NodoAbstracto Funcion() :
+{ Token id; ArrayList<NodoAbstracto> expresiones; ArrayList<NodoAbstracto> insBloque; String tipo;}
+{
+    <FUNCION> tipo=Tipo() id=<IDENTIFICADOR> <PARENI> expresiones=Lista_Parametros() <PAREND> insBloque=Bloque()
+                        { NodoAbstracto nuevo = new Funciones1("FUNCION_CON PARAMETROS");
+                        NodoAbstracto FuncionNombre = new Nodo(id.image);
+                        nuevo.Hijos.add(FuncionNombre);
+                        nuevo.TipoDato = tipo;
+                        nuevo.Expresiones = expresiones;
+                        nuevo.Expresiones2 = insBloque;
+                        return nuevo;}
+}
+
+NodoAbstracto GrupoSentencias() :
+{ArrayList<NodoAbstracto> expresiones; Token t;}
+{
+    t=<IDENTIFICADOR> <PARENI> expresiones=Lista_Expresiones() <PAREND> 
+    {
+                        NodoAbstracto nuevo = new Funciones1("FUNCION");
+                        NodoAbstracto FuncionNombre = new Nodo(t.image);
+                        nuevo.Hijos.add(FuncionNombre);
+                        nuevo.Expresiones = expresiones;
+        return nuevo;}
+}
+
+ArrayList<NodoAbstracto> Lista_Parametros() :
+{ArrayList<NodoAbstracto> lista = new ArrayList<NodoAbstracto>(); NodoAbstracto e = null; String t; Token id;}
+{
+    (
+        t=Tipo() id=<IDENTIFICADOR> {
+                       NodoAbstracto nuevo = new Nodo("SENTENCIA");
+                        NodoAbstracto nuevoid = new Nodo(id.image);
+                        nuevo.Hijos.add(nuevoid);
+                        nuevo.Hijos.add(e);
+                        nuevo.TipoDato = t;
+                        lista.add(nuevo );
+
+        }
+        (
+            <COMA> t=Tipo() id=<IDENTIFICADOR> {
+            lista.add(e);
+
+
+        }
+        )*
+    )?
+    {return lista;}
+}
+
+ArrayList<NodoAbstracto> Lista_Expresiones() :
+{ArrayList<NodoAbstracto> lista = new ArrayList<NodoAbstracto>(); NodoAbstracto e;}
+{
+    (
+        e=Expresion() {lista.add(e);}
+        (
+            <COMA> e=Expresion() {lista.add(e);}
+        )*
+    )?
+    {return lista;}
+}
+
+NodoAbstracto expresiones() :
+{ArrayList<NodoAbstracto> lista;}
+{
+    <CORI> lista=Lista_Expresiones() <CORD>
+    {return Lista_Expresiones().get(0);}
+}
+
+NodoAbstracto retorno() :
+{NodoAbstracto  e = null;}
+{
+    
+    <RETORNO> <PCOMA>{NodoAbstracto nuevo = new Retorno("RETORNO");
+            nuevo.Hijos.add(e);
+            return nuevo;
+            }
+}
+
+NodoAbstracto detener() :
+{NodoAbstracto e;}
+{
+    <BREAK> <PCOMA>{NodoAbstracto nuevo = new Break("Break"); return nuevo;}
+}
+NodoAbstracto Continue() :
+{NodoAbstracto e;}
+{
+    <CONTINUE> <PCOMA>{ NodoAbstracto nuevo = new Continue("Break"); return nuevo;}
+}
+
+NodoAbstracto Expresion() :
+{NodoAbstracto e, e1;}
+{
+    e=CondicionAnd() 
+    (
+        <OR> e1=CondicionAnd() { NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("||");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        nuevo.TipoDato = "booleano";
+                        return nuevo;}
+    )*
+    {return e;}
+}
+
+NodoAbstracto CondicionAnd() :
+{NodoAbstracto e, e1;}
+{
+    e=ExpresionIgualdad() 
+    (
+        <AND> e1=ExpresionIgualdad() {
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("&&");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        nuevo.TipoDato = "booleano";
+                        return nuevo;
+                        }
+    )*
+    {return e;}
+}
+
+
+/** ExpresionIgualdad -> ExpresionRelacional ('==' ExpresionRelacional)*
+                     |  ExpresionRelacional ('!=' ExpresionRelacional)*
+*/
+NodoAbstracto ExpresionIgualdad() :
+{NodoAbstracto e, e1;}
+{
+    e=ExpresionRelacional() 
+    (
+        <IGUALACION> e1=ExpresionRelacional() {
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("==");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        nuevo.TipoDato = "booleano";
+                        return nuevo;
+                        ;}
+        |
+        <DIFERENCIACION> e1=ExpresionRelacional() { 
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("!=");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        nuevo.TipoDato = "booleano";
+                        return nuevo;
+}
+    )*
+    {return e;}
+}
+
+
+/** ExpresionRelacional -> ExpresionAditiva ('>' ExpresionAditiva)*
+                     |  ExpresionAditiva ('<' ExpresionAditiva)*
+                     |  ExpresionAditiva ('>=' ExpresionAditiva)*
+                     |  ExpresionAditiva ('<=' ExpresionAditiva)*
+*/
+NodoAbstracto ExpresionRelacional() :
+{NodoAbstracto e, e1;}
+{
+    e=ExpresionAditiva() 
+    (
+        <MAYORQUE> e1=ExpresionAditiva() {
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo(">");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        return nuevo;
+                        }
+        |
+        <MENORQUE> e1=ExpresionAditiva() {
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("<");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        return nuevo;
+                        }
+        |
+        <MAYORIGUAL> e1=ExpresionAditiva() {
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo(">=");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        return nuevo;
+                        }
+        |
+        <MENORIGUAL> e1=ExpresionAditiva(){
+                        NodoAbstracto nuevo = new Aritmetica("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("<=");
+                        nuevo.Hijos.add(e);
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e1);
+                        return nuevo;
+                        }
+    )*
+    {return e;}
+}
+
+
+/** ExpresionAditiva -> ExpresionMultiplicativa ('+' ExpresionMultiplicativa)*
+                     |  ExpresionMultiplicativa ('-' ExpresionMultiplicativa)*
+*/
+NodoAbstracto ExpresionAditiva() :
+{NodoAbstracto e, e1;}
 {
     e=ExpresionMultiplicativa()
     (
-        <MAS> e1=ExpresionMultiplicativa() {e += e1;}
+        <MAS> e1=ExpresionMultiplicativa() { NodoAbstracto nuevo = new Aritmetica("EXP");
+                                            NodoAbstracto nuevooperador = new Nodo("+");
+                                            nuevo.Hijos.add(e);
+                                            nuevo.Hijos.add(nuevooperador);
+                                            nuevo.Hijos.add(e1);
+                                            e = nuevooperador;}
         |
-        <MENOS> e1=ExpresionMultiplicativa() {e -= e1;}
+        <MENOS> e1=ExpresionMultiplicativa() { NodoAbstracto nuevo = new Aritmetica("EXP");
+                                            NodoAbstracto nuevooperador = new Nodo("-");
+                                            nuevo.Hijos.add(e);
+                                            nuevo.Hijos.add(nuevooperador);
+                                            nuevo.Hijos.add(e1);
+                                            e = nuevooperador;}
     )*
     {return e;}
 }
-*/
+
 /** ExpresionMultiplicativa -> ExpresionUnaria ('*' ExpresionUnaria)*
                             |  ExpresionUnaria ('/' ExpresionUnaria)*
 */
-/*
-double ExpresionMultiplicativa() :
-{double e, e1;}
+NodoAbstracto ExpresionMultiplicativa() :
+{NodoAbstracto e, e1;}
 {
     e=ExpresionUnaria()
     (
-        <POR> e1=ExpresionUnaria() {e *= e1;}
+        <POR> e1=ExpresionUnaria() { NodoAbstracto nuevo = new Aritmetica("EXP");
+                                            NodoAbstracto nuevooperador = new Nodo("*");
+                                            nuevo.Hijos.add(e);
+                                            nuevo.Hijos.add(nuevooperador);
+                                            nuevo.Hijos.add(e1);
+                                            e = nuevooperador;
+                                   }
         |
-        <DIV> e1=ExpresionUnaria() {e /= e1;}
+        <DIV> e1=ExpresionUnaria() { NodoAbstracto nuevo = new Aritmetica("EXP");
+                                            NodoAbstracto nuevooperador = new Nodo("/");
+                                            nuevo.Hijos.add(e);
+                                            nuevo.Hijos.add(nuevooperador);
+                                            nuevo.Hijos.add(e1);
+                                            e = nuevooperador;
+                                   }
     )*
     {return e;}
 }
-*/
+
 /** ExpresionUnaria -> '-' ExpresionUnaria
                     |  Primitivo
  */
-/*
-double ExpresionUnaria() :
-{double e;}
+NodoAbstracto ExpresionUnaria() :
+{NodoAbstracto e;}
 {
-    <MENOS> e=ExpresionUnaria() {return -e;}
+    <MENOS> e=ExpresionUnaria() {
+                        NodoAbstracto nuevo = new NOT("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("!");
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e);                        
+                        nuevo.TipoDato = e.TipoDato;
+                        return nuevo;}
+    |
+    <NOT> e=ExpresionUnaria() { 
+                        NodoAbstracto nuevo = new Negativo("EXP");
+                        NodoAbstracto nuevooperador = new Nodo("-");
+                        nuevo.Hijos.add(nuevooperador);
+                        nuevo.Hijos.add(e);                        
+                        nuevo.TipoDato = e.TipoDato;
+                        return nuevo;
+                        }
     |
     e=Primitivo() {return e;}
 }
-*/
+
 /** Primitivo -> Numero
               |  Decimal
               |  '(' Expresion ')' 
 */
-/*
-double Primitivo() :
-{double e;}
+NodoAbstracto Primitivo() :
+{NodoAbstracto e; Token t; String cad;}
 {
-    <NUMERO> {return Double.parseDouble(token.image);}
+    <NUMERO> {
+                        NodoAbstracto nuevo = new Nodo("Entero");
+                        NodoAbstracto nuevovalor = new Nodo(token.image);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+            return nuevo;}
     |
-    <DECIMAL> {return Double.parseDouble(token.image);}
+    <DECIMAL> {NodoAbstracto nuevo = new Nodo("Decimal");
+                        NodoAbstracto nuevovalor = new Nodo(token.image);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "entero";
+            return nuevo;}
+    |
+    LOOKAHEAD(2)e=GrupoSentencias() {return e;}
+    |
+    t=<STRING> {    cad = t.image.substring(1,t.image.length()-1);
+                    cad = cad.replace("\\","\\");
+                    cad = cad.replace("\\n","\n");
+                    cad = cad.replace("\\t","\t");
+                        NodoAbstracto nuevo = new Nodo("Cadena");
+                        NodoAbstracto nuevovalor = new Nodo(cad);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "cadena";
+                        return nuevo;}
+    |
+    LOOKAHEAD(2)t=<IDENTIFICADOR> {
+                        NodoAbstracto nuevo = new Nodo("id");
+                        NodoAbstracto nuevovalor = new Nodo(t.image);
+                        nuevo.Hijos.add(nuevovalor);
+                        nuevo.TipoDato = "id";
+                        nuevo.Nombre = t.image;
+                        return nuevo;}
     |
     <PARENI> e=Expresion() <PAREND> {return e;}
+    |
+    e=expresiones() {return e;}
+    
 }
-*/

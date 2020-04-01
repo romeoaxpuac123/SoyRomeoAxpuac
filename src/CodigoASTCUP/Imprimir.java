@@ -29,9 +29,10 @@ public class Imprimir extends NodoAbstracto{
     @Override
     public String Ejecutar(Entorno entorno,JTextArea salida) {
         
-        System.out.println("<->" + "entro a imprimir" + this.Hijos.get(0).Nombre);
+        System.out.println("<------------------------------------->" + "entro a imprimir" + this.Hijos.get(0).Nombre);
         String val = this.Hijos.get(0).Ejecutar(entorno, salida);
         String tipo = this.Hijos.get(0).TipoDato;
+        System.out.println("el val->" + val);
         if(tipo.contains("Lista")){
             if(entorno.ExisteVector(val)){
                 tipo = "id";
@@ -156,12 +157,15 @@ public class Imprimir extends NodoAbstracto{
                                   if(entorno.ObtenerListaN(Resultado)==0){
                                         ElMero = ElMero +  entorno.ObtenerValor(Resultado)  + " ";
                                   }else{
-                                      System.out.println("si tiene lidta diablao");
+                                      System.out.println("si tiene lidta diablao->" + Resultado);
                                       for (int ix = 0; ix < entorno.ObtenerLista(Resultado).size();ix++){
                                           String RS = entorno.ObtenerLista(Resultado).get(ix).Ejecutar(entorno, salida);
                                           ElMero = ElMero + RS + " ";
+                                          
                                       }
+                                      System.out.println("tatat->" + ElMero);
                                   }
+                                  ElMero = ElMero  +  "\n";
                                   continue;
                               }if(TipoResultado.contains("FuncionC")){
                                   for(int ui = 1; ui < this.Expresiones.get(i).Hijos.size();ui++){
@@ -207,6 +211,14 @@ public class Imprimir extends NodoAbstracto{
             
       //  }
         if (!val.toUpperCase().contains("#ERROR")){
+            if(val.contains("addNode")){
+                
+                this.Expresiones3 = entorno.ObtenerLista(val);
+                val = "";
+                for(int i = 0; i < this.Expresiones3.size();i++){
+                    val = val + this.Expresiones3.get(i).Ejecutar(entorno, salida) + " ";
+                }
+            }
             salida.append("" + val + ""+"\n");
            
         }else{

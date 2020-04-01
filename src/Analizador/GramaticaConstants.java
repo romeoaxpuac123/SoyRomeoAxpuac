@@ -12,52 +12,131 @@ public interface GramaticaConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int NUMERO = 5;
+  int NUMERO = 2;
   /** RegularExpression Id. */
-  int DECIMAL = 6;
+  int DECIMAL = 3;
   /** RegularExpression Id. */
-  int PRINT = 7;
+  int ENTERO = 4;
   /** RegularExpression Id. */
-  int PCOMA = 8;
+  int CADENA = 5;
   /** RegularExpression Id. */
-  int PARENI = 9;
+  int IMPRIMIR = 6;
   /** RegularExpression Id. */
-  int PAREND = 10;
+  int MIENTRAS = 7;
   /** RegularExpression Id. */
-  int CORI = 11;
+  int FUNCION = 8;
   /** RegularExpression Id. */
-  int CORD = 12;
+  int RETORNO = 9;
   /** RegularExpression Id. */
-  int MAS = 13;
+  int BREAK = 10;
   /** RegularExpression Id. */
-  int MENOS = 14;
+  int CONTINUE = 11;
   /** RegularExpression Id. */
-  int POR = 15;
+  int SI = 12;
   /** RegularExpression Id. */
-  int DIV = 16;
+  int SINO = 13;
+  /** RegularExpression Id. */
+  int PCOMA = 14;
+  /** RegularExpression Id. */
+  int PARENI = 15;
+  /** RegularExpression Id. */
+  int PAREND = 16;
+  /** RegularExpression Id. */
+  int CORI = 17;
+  /** RegularExpression Id. */
+  int CORD = 18;
+  /** RegularExpression Id. */
+  int LLAVEI = 19;
+  /** RegularExpression Id. */
+  int LLAVED = 20;
+  /** RegularExpression Id. */
+  int MAS = 21;
+  /** RegularExpression Id. */
+  int MENOS = 22;
+  /** RegularExpression Id. */
+  int POR = 23;
+  /** RegularExpression Id. */
+  int DIV = 24;
+  /** RegularExpression Id. */
+  int IGUAL = 25;
+  /** RegularExpression Id. */
+  int MENORQUE = 26;
+  /** RegularExpression Id. */
+  int MAYORQUE = 27;
+  /** RegularExpression Id. */
+  int MENORIGUAL = 28;
+  /** RegularExpression Id. */
+  int MAYORIGUAL = 29;
+  /** RegularExpression Id. */
+  int IGUALACION = 30;
+  /** RegularExpression Id. */
+  int DIFERENCIACION = 31;
+  /** RegularExpression Id. */
+  int COMA = 32;
+  /** RegularExpression Id. */
+  int AND = 33;
+  /** RegularExpression Id. */
+  int OR = 34;
+  /** RegularExpression Id. */
+  int NOT = 35;
+  /** RegularExpression Id. */
+  int IDENTIFICADOR = 36;
+  /** RegularExpression Id. */
+  int STRING = 45;
 
   /** Lexical state. */
   int DEFAULT = 0;
+  /** Lexical state. */
+  int STRING_STATE = 1;
 
   /** Literal token values. */
   String[] tokenImage = {
     "<EOF>",
-    "\" \"",
-    "\"\\t\"",
-    "\"\\r\"",
-    "\"\\n\"",
+    "\"\\\"\"",
     "<NUMERO>",
     "<DECIMAL>",
+    "\"Numero\"",
+    "\"Cadena\"",
     "\"print\"",
+    "\"while\"",
+    "\"Funcion\"",
+    "\"Return\"",
+    "\"Break\"",
+    "\"continue\"",
+    "\"if\"",
+    "\"else\"",
     "\";\"",
     "\"(\"",
     "\")\"",
     "\"[\"",
     "\"]\"",
+    "\"{\"",
+    "\"}\"",
     "\"+\"",
     "\"-\"",
     "\"*\"",
     "\"/\"",
+    "\"=\"",
+    "\"<\"",
+    "\">\"",
+    "\"<=\"",
+    "\">=\"",
+    "\"==\"",
+    "\"!=\"",
+    "\",\"",
+    "\"&&\"",
+    "\"||\"",
+    "\"!\"",
+    "<IDENTIFICADOR>",
+    "\" \"",
+    "\"\\t\"",
+    "\"\\r\"",
+    "\"\\n\"",
+    "<token of kind 41>",
+    "<token of kind 42>",
+    "<token of kind 43>",
+    "<token of kind 44>",
+    "\"\\\"\"",
   };
 
 }
