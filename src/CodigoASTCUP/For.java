@@ -96,10 +96,12 @@ public class For extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                 String[] palabras = ejemploLista.get(pp).split(";");
                                 for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                     String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                     System.out.println("enloquecerse->" + EsoMero);
+                                }
                             }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
@@ -147,10 +149,12 @@ public class For extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                 String[] palabras = ejemploLista.get(pp).split(";");
                                 for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                     String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                     System.out.println("enloquecerse->" + EsoMero);
+                                }
                             }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
@@ -194,10 +198,12 @@ public class For extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                 String[] palabras = ejemploLista.get(pp).split(";");
                                 for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                     String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                     System.out.println("enloquecerse->" + EsoMero);
+                                }
                             }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
@@ -243,10 +249,12 @@ public class For extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                 String[] palabras = ejemploLista.get(pp).split(";");
                                 for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                     String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                     System.out.println("enloquecerse->" + EsoMero);
+                                }
                             }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");

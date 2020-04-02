@@ -244,6 +244,7 @@ public class Aritmetica extends NodoAbstracto{
             Tipo1 = "id";
             this.Hijos.get(0).Nombre = "VectorC1DeRomeo";
             System.out.println("Dragon BAll->SDFDA->" + this.Hijos.get(0).Expresiones2.size());   
+            Expresionesx.clear();
         }
         /*
        
@@ -254,6 +255,7 @@ public class Aritmetica extends NodoAbstracto{
             System.out.println("el lado 2 es de tipo funcioc");
             System.out.println("dragon ball->" + this.Hijos.get(2).Nombre);
             this.Hijos.get(2).Expresiones2.clear();
+            
              for(int x = 1; x < this.Hijos.get(2).Hijos.size();x++){
                 String MiniResultado = this.Hijos.get(2).Hijos.get(x).Ejecutar(entorno, salida);
                 System.out.println("resutaloa--->" + MiniResultado);
@@ -290,6 +292,7 @@ public class Aritmetica extends NodoAbstracto{
             }
             System.out.println("FINDG");
             ArrayList <NodoAbstracto> Expresionesx = new ArrayList();
+             this.Expresiones3.clear();
             for(int i = 0; i < this.Hijos.get(2).Expresiones2.size();i++){
                 String ElVectorX = this.Hijos.get(2).Expresiones2.get(i).Nombre;
                 if("id".equals(this.Hijos.get(2).Expresiones2.get(i).TipoDato)){
@@ -730,6 +733,7 @@ public class Aritmetica extends NodoAbstracto{
                     val1 = ValorVector;
                     Tipo2 = TipoVector2;
                     val2 = ValorVecto2;
+                    System.out.println("valor1->" + val1 + "<valor2>" + val2);
                 }else{
                     //cuando alguno de los vectores tiene mas de un lado XD
                     String TipoVector = entorno.ObtenerTipo(Vector1);
@@ -901,9 +905,10 @@ public class Aritmetica extends NodoAbstracto{
 
                                 }else if("entero".equals(Tipo1y)){
 
-                                   System.out.println("Aca Operamos Cadenas" + ValorVector1 + "Dato2->" + ValorVector2);
+                                   System.out.println("Aca Operamos Cadenas->" + ValorVector1 + "Dato2->" + ValorVector2);
                                     NodoAbstracto nuevo = new Nodo("Entero");
                                     String Resultadox = Resultado(ValorVector1,Tipo1y,ValorVector2,Tipo1y2,nuevo);
+                                    System.out.println("EL RESULTADO->" +  Resultadox );
                                     NodoAbstracto nuevovalor = new Nodo(Resultadox);
                                     nuevo.Hijos.add(nuevovalor);
                                     ElNuevoTipoXX = nuevo.TipoDato;
@@ -1694,7 +1699,7 @@ public class Aritmetica extends NodoAbstracto{
         
         String Tipo1 = Tipo1x;
         String Tipo2 = Tipo2x;
-        
+        System.out.println("MARCHEMOLLLLLLLLLLLLL.>" +this.Hijos.get(1).Nombre );
         if("entero".equals(Tipo1) && "entero".equals(Tipo2)){        
             int valor1 = Integer.parseInt(val1);
             int valor2 = Integer.parseInt(val2);
@@ -1753,6 +1758,628 @@ public class Aritmetica extends NodoAbstracto{
                         return "false";
                     }
                 case "<":
+                    System.out.println("marsss" + val1 + "<->" + val2);
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 < valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                 case ">=":
+                     Nodo.TipoDato = "booleano";  
+                    if(valor1 >= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<=":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 <= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+                default:
+
+            }
+
+            return Integer.toString(total);
+        }
+        else if(("decimal".equals(Tipo1)||"entero".equals(Tipo1)) && "decimal".equals(Tipo2)){   
+            Nodo.TipoDato="decimal";
+            double valor1 = Double.parseDouble(val1);
+            double valor2 =  Double.parseDouble(val2);
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totald = valor1 + valor2;
+                   // System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    totald = valor1 - valor2;
+                  //  System.out.println("Paso por una resta");
+                    break;
+                case "/":
+                    if(valor2==0){
+                        //salida.append("#Error: Se está intentando dividir por 0 \n");
+                        return "#Error";
+                    }
+                    totald = valor1 / valor2;
+                 //   System.out.println("Paso por una division");
+                    break;
+                case "*":
+                    totald = valor1 * valor2;
+                 //   System.out.println("Paso por una multiplicacion");
+                    break;
+              case "^":
+                    totald =  (double) Math.pow(valor1,valor2);
+                    System.out.println("Paso por una potencia");
+                    Nodo.TipoDato = "decimal";
+                    break;
+              case "%%":
+                    totald =  valor1  % valor2;
+                    System.out.println("Paso por una potencia");
+                    break;
+              case "==":
+                  Nodo.TipoDato = "booleano";  
+                    if(valor1 == valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  
+                case "!=":
+                   Nodo.TipoDato = "booleano"; 
+                    if(valor1 != valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case ">":
+                    Nodo.TipoDato = "booleano";   
+                    if(valor1 > valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 < valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                    case ">=":
+                        Nodo.TipoDato = "booleano"; 
+                    if(valor1 >= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<=":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 <= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+              case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+                default:
+
+            }
+
+            return String.valueOf(totald);
+        }
+        else if(("cadena".equals(Tipo1)||"decimal".equals(Tipo1)||"entero".equals(Tipo1)) && "cadena".equals(Tipo2)){        
+            String valor1 = val1;
+            String valor2 =  val2;
+           Nodo.TipoDato = "cadena";
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totalc = valor1 + valor2;
+                    System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    return "#Error";
+                case "/":
+                   return "#Error";
+                case "*":
+                   return "#Error";
+              case "^":
+                    return "#Error";
+               case "%%":
+                    return "#Error";
+               case "==":
+                   Nodo.TipoDato = "booleano"; 
+                  if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                       if(valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  }else{
+                    return "#Error";
+                  }
+                   
+                  
+                case "!=":
+                    Nodo.TipoDato = "booleano";  
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(!valor1.equals(valor2)){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                    
+                case ">":
+                   Nodo.TipoDato = "booleano"; 
+                    System.out.println("ENTRO");
+                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) > 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case "<":
+                    Nodo.TipoDato = "booleano";  
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) < 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                    
+                    
+             case ">=":
+                Nodo.TipoDato = "booleano"; 
+                    System.out.println("ENTRO");
+                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) >= 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case "<=":
+                Nodo.TipoDato = "booleano";   
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) <= 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }  
+             case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+                default:
+
+            }
+
+            return String.valueOf(totalc);
+        }
+        else if("decimal".equals(Tipo1) && ("decimal".equals(Tipo2)||"entero".equals(Tipo2))){        
+            double valor1 = Double.parseDouble(val1);
+            double valor2 =  Double.parseDouble(val2);
+            Nodo.TipoDato = "decimal";
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totald = valor1 + valor2;
+                    System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    totald = valor1 - valor2;
+                    System.out.println("Paso por una resta");
+                    break;
+                case "/":
+                    if(valor2==0){
+                       // salida.append("#Error: Se está intentando dividir por 0 \n");
+                        return "#Error";
+                    }
+                    totald = valor1 / valor2;
+                    System.out.println("Paso por una division");
+                    break;
+                case "*":
+                    totald = valor1 * valor2;
+                    System.out.println("Paso por una multiplicacion");
+                    break;
+              case "^":
+                    totald =  (double) Math.pow(valor1,valor2);
+                    Nodo.TipoDato = "decimal";
+                    System.out.println("Paso por una potencia");
+                    break;
+              case "%%":
+                    totald =  valor1  % valor2;
+                    System.out.println("Paso por una potencia");
+                    break;
+              case "==":
+                  Nodo.TipoDato = "booleano";  
+                    if(valor1 == valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  
+                case "!=":
+                    Nodo.TipoDato = "booleano";  
+                    if(valor1 != valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case ">":
+                    Nodo.TipoDato = "booleano";  
+                    if(valor1 > valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 < valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+             case ">=":
+                 Nodo.TipoDato = "booleano"; 
+                    if(valor1 >= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<=":
+                    Nodo.TipoDato = "booleano";  
+                    if(valor1 <= valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                    
+               case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+                default:
+
+            }
+
+            return String.valueOf(totald);
+        }
+        else if("cadena".equals(Tipo1) && ("cadena".equals(Tipo2)||"decimal".equals(Tipo2)||"entero".equals(Tipo2))){ 
+            String valor1 = val1;
+            String valor2 =  val2;
+            Nodo.TipoDato = "cadena";
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totalc = valor1 + valor2;
+                    System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    System.out.println("Paso por una suma");
+                    return "#Error";
+                case "/":
+                   return "#Error";
+                case "*":
+                   return "#Error";
+              case "^":
+                    return "#Error";
+               case "%%":
+                    return "#Error";
+                default:
+            case "==":
+                Nodo.TipoDato = "booleano";  
+                  if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                       if(valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  }else{
+                    return "#Error";
+                  }
+                   
+                  
+                case "!=":
+                    Nodo.TipoDato = "booleano";  
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(!valor1.equals(valor2)){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case ">":
+                    Nodo.TipoDato = "booleano";  
+                    System.out.println("ENTRO");
+                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) > 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case "<":
+                    Nodo.TipoDato = "booleano";  
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) < 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case ">=":
+                    Nodo.TipoDato = "booleano";  
+                    System.out.println("ENTRO");
+                   if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) >= 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                case "<=":
+                  Nodo.TipoDato = "booleano";   
+                    if("cadena".equals(Tipo2) && "cadena".equals(Tipo1)){
+                        if(valor1.compareTo(valor2) <= 0){
+                            return "true";
+                        }else{
+                            return "false";
+                        }
+                    }else{
+                        return "#Error";
+                    }
+                    
+                    
+                    case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+        
+        }
+            return String.valueOf(totalc);
+        }
+        else if("booleano".equals(Tipo1) && ("cadena".equals(Tipo2))){ 
+            String valor1 = val1;
+            String valor2 =  val2;
+            Nodo.TipoDato = "cadena";
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totalc = valor1 + valor2;
+                    System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    return "#Error";
+                case "/":
+                   return "#Error";
+                case "*":
+                   return "#Error";
+              case "^":
+                    return "#Error";
+               case "%%":
+                    return "#Error";
+               case "==":
+                    return "#Error";
+               case "!=":
+                    return "#Error";
+                 case ">":
+                   return "#Error";
+                case "<":
+                    return "#Error";
+                    case ">=":
+                   return "#Error";
+                case "<=":
+                    return "#Error";
+                    
+                    case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+                default:
+        
+        }
+            return String.valueOf(totalc);
+        }
+        else if("cadena".equals(Tipo1) && ("booleano".equals(Tipo2))){ 
+            String valor1 = val1;
+            String valor2 =  val2;
+            Nodo.TipoDato = "cadena";
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    totalc = valor1 + valor2;
+                    System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    return "#Error";
+                case "/":
+                   return "#Error";
+                case "*":
+                   return "#Error";
+              case "^":
+                    return "#Error";
+               case "%%":
+                    return "#Error";
+                default:
+              case "==":
+                    return "#Error";
+               case "!=":
+                    return "#Error";
+                 case ">":
+                   return "#Error";
+                case "<":
+                    return "#Error";
+              case ">=":
+                   return "#Error";
+                case "<=":
+                    return "#Error";
+                    
+                    case "&&":
+                     return "#Error";
+                case "||":
+                     return "#Error";
+        
+        }
+            return String.valueOf(totalc);
+        }
+         else if("booleano".equals(Tipo1) && ("booleano".equals(Tipo2))){ 
+            String valor1 = val1;
+            String valor2 =  val2;
+            //
+            switch(this.Hijos.get(1).Nombre){
+                case "+":
+                    return "#Error";
+                case "-":
+                    return "#Error";
+                case "/":
+                   return "#Error";
+                case "*":
+                   return "#Error";
+              case "^":
+                    return "#Error";
+               case "%%":
+                    return "#Error";
+                default:
+               case "==":
+                  Nodo.TipoDato = "booleano"; 
+                    if(valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  
+                case "!=":
+                   Nodo.TipoDato = "booleano";
+                     if(!valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+               case ">":
+                   return "#Error";
+                case "<":
+                    return "#Error";
+               case ">=":
+                   return "#Error";
+                case "<=":
+                    return "#Error";
+              case "&&":
+                  Nodo.TipoDato = "booleano";
+                    if(valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "||":
+                    Nodo.TipoDato = "booleano"; 
+                     if(!valor1.equals(valor2)){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+        
+        }
+        }
+        this.TipoDato = "#Error";
+        return "#Error";
+    }
+    
+    public String Resultado2(String Valor1, String Tipo1x, String Valor2, String Tipo2x, NodoAbstracto Nodo, String Simboloxd){
+        int total = 0;
+        double totald = 0;
+        String totalc = "";
+        String val1 = Valor1;
+        String val2 = Valor2;
+        
+        String Tipo1 = Tipo1x;
+        String Tipo2 = Tipo2x;
+        //System.out.println("MARCHEMOLLLLLLLLLLLLL.>" +this.Hijos.get(1).Nombre );
+        if("entero".equals(Tipo1) && "entero".equals(Tipo2)){        
+            int valor1 = Integer.parseInt(val1);
+            int valor2 = Integer.parseInt(val2);
+            Nodo.TipoDato = "entero";
+            switch(Simboloxd){
+                case "+":
+                    total = valor1 + valor2;
+                  //  System.out.println("Paso por una suma");
+                    break;
+                case "-":
+                    total = valor1 - valor2;
+               //     System.out.println("Paso por una resta");
+                    break;
+                case "/":
+                    if(valor2==0){
+                        //salida.append("#Error: Se está intentando dividir por 0 \n");
+                        return "#Error";
+                    }
+                    total = valor1 / valor2;
+                 //   System.out.println("Paso por una division");
+                    break;
+                case "*":
+                    total = valor1 * valor2;
+                  //  System.out.println("Paso por una multiplicacion");
+                    break;
+              case "^":
+                    total =  (int) Math.pow(valor1,valor2);
+                    Nodo.TipoDato = "entero";
+                 //   System.out.println("Paso por una potencia");
+                    break;
+              case "%%":
+                    total =  valor1  % valor2;
+                 //   System.out.println("Paso por una potencia");
+                    break;
+              case "==":
+                  Nodo.TipoDato = "booleano";  
+                    if(valor1 == valor2){
+                          
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                  
+                case "!=":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 != valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case ">":
+                    Nodo.TipoDato = "booleano"; 
+                    if(valor1 > valor2){
+                        return "true";
+                    }else{
+                        return "false";
+                    }
+                case "<":
+                    System.out.println("marsss" + val1 + "<->" + val2);
                     Nodo.TipoDato = "booleano"; 
                     if(valor1 < valor2){
                         return "true";

@@ -58,17 +58,19 @@ public class MostrarFuncion2 extends NodoAbstracto{
               if(entorno.ExisteVector(Vector)==true){
                   System.out.println("SI EXISTE EL VECTOR");
                   if(entorno.ObtenerListaN(Vector)==1){
-                      if(entorno.ExisteVector("addNode1")==false){
+                      if(entorno.ExisteVector(Vector+"addNode1")==false ){
                           for(int ix = 0; ix < entorno.ObtenerLista(Vector).size(); ix++){
                           String Salida =entorno.ObtenerLista(Vector).get(ix).Ejecutar(entorno, salida);
                           System.out.println("HASTA 10->" + Salida);
                           Expresiones2x.add(entorno.ObtenerLista(Vector).get(ix));
                       }
+                     
+                          
                       NodoAbstracto nuevo = new Nodo("Cadena");
-                      NodoAbstracto nuevovalor = new Nodo("addNode1");
+                      NodoAbstracto nuevovalor = new Nodo(Vector+"addNode1");
                       nuevo.Hijos.add(nuevovalor);
                       nuevo.TipoDato = "id";
-                      entorno.Agregar2("addNode1",Expresiones2x, "Lista", "AS");
+                      entorno.Agregar2((Vector+"addNode1"),Expresiones2x, "Lista", "AS");
                       Pokemon.add(nuevo);
                       }else{
                           for(int u = 0; u < entorno.ObtenerLista(Vector).size(); u++){
@@ -85,10 +87,10 @@ public class MostrarFuncion2 extends NodoAbstracto{
                           Expresiones2xx.add(entorno.ObtenerLista("SHAKALAKA").get(ix));
                       }
                       NodoAbstracto nuevo = new Nodo("Cadena");
-                      NodoAbstracto nuevovalor = new Nodo("addNode" + (entorno.ObtenerLista(Vector).size()+1));
+                      NodoAbstracto nuevovalor = new Nodo((Vector+"addNode") + (entorno.ObtenerLista(Vector).size()+1));
                       nuevo.Hijos.add(nuevovalor);
                       nuevo.TipoDato = "id";
-                      entorno.Agregar2("addNode" + (entorno.ObtenerLista(Vector).size()+1),Expresiones2xx, "Lista", "AS");
+                      entorno.Agregar2((Vector+"addNode") + (entorno.ObtenerLista(Vector).size()+1),Expresiones2xx, "Lista", "AS");
                       Pokemon.add(nuevo);
                       entorno.ModificarValorLista(Vector,Pokemon, "Lista", "List");
                       this.TipoDato = "PERRASOLA" + Vector;

@@ -2060,41 +2060,7 @@ public class DeclararAsignar extends NodoAbstracto{
         }
         
         
-       if(Tipo1.contains("id")){
-           ArrayList <NodoAbstracto> Expresionesxxx = new ArrayList();
-           if(entorno.ExisteVector(val1)){
-               if(entorno.ObtenerListaN(val1)==0){
-                   String Valor = entorno.ObtenerValor(val1);
-                   String Tipos = entorno.ObtenerTipo(val1);
-                    if(entorno.ExisteVector(Identificador)==false){
-                        entorno.Agregar(Identificador, Tipos, Valor);
-                    }else{
-                        entorno.ModificarValor(Identificador, Valor, Tipos);
-                    }
-                   
-               }else{
-                   Expresionesxxx = entorno.ObtenerLista(val1);
-               }
-           }else{
-               salida.append("ERROR AL INVOCOAR AL VECTOR" + val1 +"\n");
-                //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
-                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "ERROR AL INVOCOAR AL VECTOR" + val1 );
-                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
-                return "#Error";
-           }
-           if(entorno.ExisteVector(Identificador)==false){
-               entorno.Agregar2(Identificador, Expresionesxxx, entorno.ObtenerTipo(val1), "sdaf");
-                ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ "Lista",ElTipoDeAmbitoRomeo);
-                TABLA_ReporteTS .add(SIMBOLO);
-           }else{
-               entorno.ModificarValorLista(Identificador, Expresionesxxx, entorno.ObtenerTipo(val1), "sdaf");
-           }
-           System.out.println("VAMOS A VER QUE PEDO.>");
-           entorno.MostrarVectores();
-         entorno.MostrarVectoresLista(entorno,salida);
-         System.out.println("FIN DEL VAMOS A VER QUE PEDO.>");
-           return "FINDECASADF";
-       }
+      
        
        if(Tipo1.contains("PERRASOLA")){
         String Pena = Tipo1.replaceAll("PERRASOLA", "");
@@ -2311,7 +2277,42 @@ public class DeclararAsignar extends NodoAbstracto{
          entorno.MostrarVectoresLista(entorno,salida);
          System.out.println("---------");
           return "Fin";
-      }else if(val1.indexOf("#ERROR: El vector ")==0){
+      }
+        if(Tipo1.contains("id")){
+           ArrayList <NodoAbstracto> Expresionesxxx = new ArrayList();
+           if(entorno.ExisteVector(val1)){
+               if(entorno.ObtenerListaN(val1)==0){
+                   String Valor = entorno.ObtenerValor(val1);
+                   String Tipos = entorno.ObtenerTipo(val1);
+                    if(entorno.ExisteVector(Identificador)==false){
+                        entorno.Agregar(Identificador, Tipos, Valor);
+                    }else{
+                        entorno.ModificarValor(Identificador, Valor, Tipos);
+                    }
+                   
+               }else{
+                   Expresionesxxx = entorno.ObtenerLista(val1);
+               }
+           }else{
+               salida.append("ERROR AL INVOCOAR AL VECTOR" + val1 +"\n");
+                //System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
+                TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", "ERROR AL INVOCOAR AL VECTOR" + val1 );
+                TABLA_DE_ERRORES_SINTACTICOS.add(ERRORES);
+                return "#Error";
+           }
+           if(entorno.ExisteVector(Identificador)==false){
+               entorno.Agregar2(Identificador, Expresionesxxx, entorno.ObtenerTipo(val1), "sdaf");
+                ReporteTS SIMBOLO = new ReporteTS(Identificador,this.linea,this.columna,"Vector: "+ "Lista",ElTipoDeAmbitoRomeo);
+                TABLA_ReporteTS .add(SIMBOLO);
+           }else{
+               entorno.ModificarValorLista(Identificador, Expresionesxxx, entorno.ObtenerTipo(val1), "sdaf");
+           }
+           System.out.println("VAMOS A VER QUE PEDO.>");
+           entorno.MostrarVectores();
+         entorno.MostrarVectoresLista(entorno,salida);
+         System.out.println("FIN DEL VAMOS A VER QUE PEDO.>");
+           return "FINDECASADF";
+       }else if(val1.indexOf("#ERROR: El vector ")==0){
           salida.append(val1 +"\n");
           System.out.println("-------->"+  val1    +"<----------------Columna: " + this.columna + "**Fila: " + this.linea+1);
           TError ERRORES = new TError(Identificador,this.linea,this.columna,"Semantico", val1  );

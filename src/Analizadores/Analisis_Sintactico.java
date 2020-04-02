@@ -2535,6 +2535,7 @@ class CUP$Analisis_Sintactico$actions {
             nuevo.Hijos.add(exp1);
             nuevo.Hijos.add(sentencias);
             nuevo.Hijos.add(sentencias2);
+            nuevo.Hijos.add(null);
             nuevo.columna = exp1left;
             nuevo.linea = exp1right;
             RESULT = nuevo;

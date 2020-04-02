@@ -30,6 +30,7 @@ public class SentenciaIF extends NodoAbstracto{
 
     @Override
     public String Ejecutar(Entorno entorno, JTextArea salida) {
+        System.out.println("INICIAMOS EL IF-------------->");
         ElTipoDeAmbitoRomeo = "Local: IF";
         NumeroEntornosRomeo++;
         this.Expresiones.clear();
@@ -44,9 +45,63 @@ public class SentenciaIF extends NodoAbstracto{
         }
         
         ArrayList <NodoAbstracto> ExpresionesRomeo = new ArrayList();
-        System.out.println("Se esta ejecutando el if");
-        String ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
+        System.out.println("----------------------------------Se esta ejecutando el if");
+        
+        
+        this.Hijos.get(0).Hijos.get(0).Ejecutar(entorno, salida);
+        this.Hijos.get(0).Hijos.get(2).Ejecutar(entorno, salida);
+        String Valorcito1 = "";
+        String cito1 = "";
+        String Valorcito2 = "";
+        String cito2 = "";
+        int bandera1 = 0;
+        int bandera2 = 0;
+        if(this.Hijos.get(0).Hijos.get(0).TipoDato.contains("FuncionC")){
+            System.out.println("SIMON");
+            Valorcito1 = this.Hijos.get(0).Hijos.get(0).Hijos.get(1).Hijos.get(0).Ejecutar(entorno, salida);
+            cito1 = this.Hijos.get(0).Hijos.get(0).Hijos.get(1).Hijos.get(0).TipoDato;
+            if(cito1.contains("id")){
+                String Valorcito1x = "";
+                Valorcito1x = entorno.ObtenerValor(Valorcito1);
+                cito1 = entorno.ObtenerTipo(Valorcito1);
+                Valorcito1 = Valorcito1x;
+            }
+            bandera1 = 1;
+        }
+        
+        if(this.Hijos.get(0).Hijos.get(2).TipoDato.contains("FuncionC")){
+            Valorcito2 = this.Hijos.get(0).Hijos.get(2).Hijos.get(1).Hijos.get(0).Ejecutar(entorno, salida);
+            System.out.println("SIMONX2");
+            cito2 = this.Hijos.get(0).Hijos.get(2).Hijos.get(1).Hijos.get(0).TipoDato;
+             if(cito2.contains("id")){
+                String Valorcito1x = "";
+                Valorcito1x = entorno.ObtenerValor(Valorcito2);
+                cito2 = entorno.ObtenerTipo(Valorcito2);
+                Valorcito2 = Valorcito1x;
+            }
+            bandera2 = 1;
+        }
+        
+        System.out.println("vALOR1->" + Valorcito1);
+        System.out.println("vALOR2->" + Valorcito2);
+        System.out.println("Tipo1->" + cito1);
+        System.out.println("Tipo2->" + cito2);
+        String ValorExpresion = "";
+        
+        
+        if(bandera1 == 1 && bandera2 == 1){
+            String Simbolo = this.Hijos.get(0).Hijos.get(1).Ejecutar(entorno, salida);
+            System.out.println("El Simbolo->" + Simbolo);
+            Aritmetica NuevoXD = new Aritmetica("hola");
+            NodoAbstracto XD = new Nodo("Cadena");
+            ValorExpresion = NuevoXD.Resultado2(Valorcito1, cito1, Valorcito2, cito2, XD,Simbolo);
+            
+        }else{
+            ValorExpresion = this.Hijos.get(0).Ejecutar(entorno, salida);
+        }
+        
         System.out.println("->"+ ValorExpresion);
+        
         
         if(ValorExpresion.contains("RomeoAxpuac")){
             ExpresionesRomeo.clear();
@@ -54,7 +109,7 @@ public class SentenciaIF extends NodoAbstracto{
             ValorExpresion =  ExpresionesRomeo.get(0).Ejecutar(entorno, salida);
         }
         
-        System.out.println("XXXy->" + ValorExpresion);
+        System.out.println("XXXy------------------------------------------>" + ValorExpresion);
         //if(!"true".equals(ValorExpresion) || !"false".equals(ValorExpresion)){
         //    System.out.println("ERROR EN LA EXPRESION");
         //     return "#Error";
@@ -96,11 +151,16 @@ public class SentenciaIF extends NodoAbstracto{
                     ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                     for(int pp = 0; pp < ejemploLista.size();pp++){
                          System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
-                         String[] palabras = ejemploLista.get(pp).split(";");
-                         for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
-                             String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
-                             System.out.println("enloquecerse->" + EsoMero);
+                         
+                         if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
+                              String[] palabras = ejemploLista.get(pp).split(";");
+                            for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
+                                String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
+                                System.out.println("enloquecerse->" + EsoMero);
+                            }
+                         
                          }
+                        
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
                          
@@ -128,12 +188,13 @@ public class SentenciaIF extends NodoAbstracto{
                     ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                     for(int pp = 0; pp < ejemploLista.size();pp++){
                          System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                         if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                          String[] palabras = ejemploLista.get(pp).split(";");
                          for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                              String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                              System.out.println("enloquecerse->" + EsoMero);
                          }
-                         
+                         }
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
                          
                      }
@@ -159,12 +220,13 @@ public class SentenciaIF extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                  System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                 if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                  String[] palabras = ejemploLista.get(pp).split(";");
                                  for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                      String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                      System.out.println("enloquecerse->" + EsoMero);
                                  }
-
+                                 }
                                  //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
 
                              }
@@ -201,12 +263,13 @@ public class SentenciaIF extends NodoAbstracto{
                     ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                     for(int pp = 0; pp < ejemploLista.size();pp++){
                          System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                         if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                          String[] palabras = ejemploLista.get(pp).split(";");
                          for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                              String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                              System.out.println("enloquecerse->" + EsoMero);
                          }
-                         
+                         }
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
                          
                      }
@@ -244,10 +307,12 @@ public class SentenciaIF extends NodoAbstracto{
                                 ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                                 for(int pp = 0; pp < ejemploLista.size();pp++){
                                      System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                     if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                      String[] palabras = ejemploLista.get(pp).split(";");
                                      for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                          String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                          System.out.println("enloquecerse->" + EsoMero);
+                                     }
                                 }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
@@ -276,10 +341,12 @@ public class SentenciaIF extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                                 System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                                if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                                 String[] palabras = ejemploLista.get(pp).split(";");
                                 for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                     String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                     System.out.println("enloquecerse->" + EsoMero);
+                                }
                             }
                          
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
@@ -308,12 +375,13 @@ public class SentenciaIF extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                             System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                            if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                             String[] palabras = ejemploLista.get(pp).split(";");
                             for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                 String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                 System.out.println("enloquecerse->" + EsoMero);
                             }
-                         
+                            }
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
                          
                      }
@@ -348,12 +416,13 @@ public class SentenciaIF extends NodoAbstracto{
                             ejemploLista = Temporal.ModificandoEntornosVectorLista(Temporal, entorno);
                             for(int pp = 0; pp < ejemploLista.size();pp++){
                             System.out.println("VALOR EJEMPLOLISTAlargaaaaaaa->" + ejemploLista.get(pp));
+                            if(ejemploLista.get(pp).contains("VectorDragonBallBeatles")==false){
                             String[] palabras = ejemploLista.get(pp).split(";");
                             for(int px = 0; px < Temporal.ObtenerLista(palabras[0]).size();px++){
                                 String EsoMero = Temporal.ObtenerLista(palabras[0]).get(px).Ejecutar(Temporal, salida);
                                 System.out.println("enloquecerse->" + EsoMero);
                             }
-
+                            }
                          //entorno.ModificarValorLista(palabras[0], Temporal.ObtenerLista(palabras[0]), palabras[1], "");
                          
                      }
